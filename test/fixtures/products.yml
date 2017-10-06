@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_name: MyString
+  price: 9.99
+  weight: 1.5
+  customer_id: 
+  operator_id: 
+
+two:
+  product_name: MyString
+  price: 9.99
+  weight: 1.5
+  customer_id: 
+  operator_id: 
