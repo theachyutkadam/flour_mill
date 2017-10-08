@@ -24,8 +24,13 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
+    @user = User.new
+    @user.email = params[:customer][:mail]
+    @user.password = params[:customer][:mobile_num]
+    @user.save
+    user_id = User.last.id
     @customer = Customer.new(customer_params)
-
+    @customer.user_id = user_id
     respond_to do |format|
       if @customer.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
