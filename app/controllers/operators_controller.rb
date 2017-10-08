@@ -24,8 +24,13 @@ class OperatorsController < ApplicationController
   # POST /operators
   # POST /operators.json
   def create
+    @user = User.new
+    @user.email = params[:operator][:mail]
+    @user.password = params[:operator][:mobile]
+    @user.save
+    user_id = User.last.id
     @operator = Operator.new(operator_params)
-
+    @operator.user_id = user_id
     respond_to do |format|
       if @operator.save
         format.html { redirect_to @operator, notice: 'Operator was successfully created.' }
