@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<%= link_to 'Back', products_path(cust_id: @product.customer.id) %>

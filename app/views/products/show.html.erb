@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @product.price %>
+  <strong>Total Price:</strong>
+  <%= @product.weight * 3 %>
 </p>
 
 <p>
@@ -17,13 +17,13 @@
 
 <p>
   <strong>Customer:</strong>
-  <%= @product.customer %>
+  <%= @product.customer.first_name %>
 </p>
 
 <p>
   <strong>Operator:</strong>
-  <%= @product.operator %>
+  <%= @product.operator.first_name %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to 'Edit', edit_products_path(cust_id: @product.customer.id, id: @product.id) %>
+<%= link_to 'Back', products_path(cust_id: @product.customer.id) %>

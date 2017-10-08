@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :products
+  resources :products do
+    collection do
+      get :edit
+    end
+  end
 
   resources :operators
   resources :customers

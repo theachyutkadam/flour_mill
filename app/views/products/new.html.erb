@@ -1,5 +1,5 @@
 <h1>New Product</h1>
-
+<h3><%= @cust.first_name %></h3> <br>
 <%= render 'form' %>
 
-<%= link_to 'Back', products_path %>
+<%= link_to 'Back', products_path(cust_id: @cust.id) %>
