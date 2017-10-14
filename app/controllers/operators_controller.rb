@@ -27,6 +27,7 @@ class OperatorsController < ApplicationController
     @user = User.new
     @user.email = params[:operator][:mail]
     @user.password = params[:operator][:mobile]
+    @user.role_id = Role.find_by_name("Operator").id
     @user.save
     user_id = User.last.id
     @operator = Operator.new(operator_params)

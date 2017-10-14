@@ -27,6 +27,7 @@ class CustomersController < ApplicationController
     @user = User.new
     @user.email = params[:customer][:mail]
     @user.password = params[:customer][:mobile_num]
+    @user.role_id = Role.find_by_name("Customer").id
     @user.save
     user_id = User.last.id
     @customer = Customer.new(customer_params)
