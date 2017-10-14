@@ -1,0 +1,25 @@
+customer this is the practical
+<h1>customer</h1>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Product name</th>
+      <th>Price</th>
+      <th>Weight</th>
+      <th>Customer</th>
+      <th>Operator</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.product_name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.weight %></td>
+        <td><%= product.customer.first_name%></td>
+        <td><%= product.operator.first_name%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,3 +1,5 @@
-<marquee>this is the flour mill erp application</marquee>
-<%= link_to "Customers", customers_path %>
-<%= link_to "Operators", operators_path %>
+<% if current_user.id == 1 %>
+ <%= render "home/admin" %>
+<% elsif current_user.id == 2%>
+ <%= render "home/customer" %>
+<% end%>
