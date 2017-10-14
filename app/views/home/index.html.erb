@@ -1,0 +1,7 @@
+<% if current_user.role.name == "Admin" %>
+ <%= render "home/admin" %>
+<% elsif current_user.role.name == "Customer"%>
+ <%= render "home/customer" %>
+<% elsif current_user.role.name == "Operator"%>
+ <%= render "home/operator" %>
+<% end%>

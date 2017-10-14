@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product name:</strong>
+  <%= @product.product_name %>
+</p>
+
+<p>
+  <strong>Total Price:</strong>
+  <%= @product.weight * 3 %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @product.weight %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @product.customer.first_name %>
+</p>
+
+<p>
+  <strong>Operator:</strong>
+  <%= @product.operator.first_name %>
+</p>
+
+<%= link_to 'Edit', edit_products_path(cust_id: @product.customer.id, id: @product.id) %>
+<%= link_to 'Back', products_path(cust_id: @product.customer.id) %>

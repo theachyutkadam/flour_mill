@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @operator.first_name %>
+</p>
+
+<p>
+  <strong>Middle name:</strong>
+  <%= @operator.middle_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @operator.last_name %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @operator.mobile %>
+</p>
+
+<p>
+  <strong>Mail:</strong>
+  <%= @operator.mail %>
+</p>
+
+<p>
+  <strong>Permanent address:</strong>
+  <%= @operator.permanent_address %>
+</p>
+
+<p>
+  <strong>Salary:</strong>
+  <%= @operator.salary %>
+</p>
+
+<%= link_to 'Edit', edit_operator_path(@operator) %> |
+<%= link_to 'Back', operators_path %>
