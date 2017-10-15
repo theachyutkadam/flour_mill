@@ -5,7 +5,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :operators
+  resources :operators do
+    collection do
+      get :record
+    end
+  end
+
   resources :customers
   get 'home/index'
   devise_for :users
