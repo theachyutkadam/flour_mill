@@ -5,29 +5,32 @@
 <table border="1">
   <thead>
     <tr>
+      <th>Date</th>
       <th>First name</th>
       <th>Middle name</th>
       <th>Last name</th>
       <th>Address</th>
       <th>Mobile</th>
       <th>Mail</th>
-      <th colspan="4">Links</th>
+      <th colspan="5">Links</th>
     </tr>
   </thead>
 
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
+        <td><%= customer.created_at %></td>
         <td><%= customer.first_name %></td>
         <td><%= customer.middle_name %></td>
         <td><%= customer.last_name %></td>
         <td><%= customer.address %></td>
         <td><%= customer.mobile_num %></td>
         <td><%= customer.mail %></td>
-        <td><%= link_to 'Product', new_product_path(cust_id: customer.id) %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Enter Products', new_product_path(cust_id: customer.id) %></td>
+        <td><%= link_to 'Show Products', products_path(cust_id: customer.id) %></td>
+        <td><%= link_to 'Edit Customer', edit_customer_path(customer) %></td>
         <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Payment'%></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,4 +38,5 @@
 <br>
 
 <%= link_to 'New Customer', new_customer_path %><br>
+<%= link_to 'Operator', operators_path %>
 <%= link_to 'Home', home_index_path %>

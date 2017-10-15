@@ -5,6 +5,7 @@
 <table border="1">
   <thead>
     <tr>
+      <th>Date</th>
       <th>First name</th>
       <th>Middle name</th>
       <th>Last name</th>
@@ -19,6 +20,7 @@
   <tbody>
     <% @operators.each do |operator| %>
       <tr>
+        <td><%= operator.created_at %></td>
         <td><%= operator.first_name %></td>
         <td><%= operator.middle_name %></td>
         <td><%= operator.last_name %></td>
@@ -36,4 +38,5 @@
 
 <br>
 <%= link_to 'New Operator', new_operator_path %><br>
+<%= link_to 'Customer', customers_path %>
 <%= link_to 'Home', home_index_path %>
