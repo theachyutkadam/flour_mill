@@ -1,1 +1,22 @@
 Operator dashboard
+<table border="1">
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Price</th>
+      <th>Weight</th>
+      <th>Customer</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.product_name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.weight %></td>
+        <td><%= product.customer.first_name%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
     @cust = Customer.find(params[:cust_id])
+    @products = @cust.products
   end
 
   # GET /products/1
