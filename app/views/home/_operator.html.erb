@@ -1,22 +1,28 @@
 Operator dashboard
+<h1><%= current_user.operator.first_name %></h1>
 <table border="1">
   <thead>
     <tr>
+      <th>Customer</th>
       <th>Product Name</th>
       <th>Price</th>
       <th>Weight</th>
-      <th>Customer</th>
     </tr>
   </thead>
 
   <tbody>
+    <% sum = 0 %>
     <% @products.each do |product| %>
       <tr>
+        <% sum = sum + product.weight%>
+        <td><%= product.customer.first_name%></td>
         <td><%= product.product_name %></td>
         <td><%= product.price %></td>
         <td><%= product.weight %></td>
-        <td><%= product.customer.first_name%></td>
       </tr>
     <% end %>
+    <th colspan="2">Total</th>
+    <th>Rs-<%= sum * 3 %></th>
+    <th><%= sum %>/kg</th>
   </tbody>
 </table>

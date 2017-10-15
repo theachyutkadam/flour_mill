@@ -11,7 +11,7 @@
       <th>Address</th>
       <th>Mobile</th>
       <th>Mail</th>
-      <th colspan="4">Links</th>
+      <th colspan="5">Links</th>
     </tr>
   </thead>
 
@@ -24,10 +24,11 @@
         <td><%= customer.address %></td>
         <td><%= customer.mobile_num %></td>
         <td><%= customer.mail %></td>
-        <td><%= link_to 'Product', new_product_path(cust_id: customer.id) %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Enter Products', new_product_path(cust_id: customer.id) %></td>
+        <td><%= link_to 'Show Products', products_path(cust_id: customer.id) %></td>
+        <td><%= link_to 'Edit Customer', edit_customer_path(customer) %></td>
         <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Payment'%></td>
       </tr>
     <% end %>
   </tbody>
