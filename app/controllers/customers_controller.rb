@@ -60,12 +60,15 @@ class CustomersController < ApplicationController
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
-    if(params[:customer][:password] == "mill.123")
+    if(params[:customer][:password] == "password")
     @customer.destroy
     respond_to do |format|
       format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
       format.json { head :no_content }
     end
+    else
+      flash[:notice] = "Password is incorrect"
+      redirect_to customers_url
     end
   end
 
