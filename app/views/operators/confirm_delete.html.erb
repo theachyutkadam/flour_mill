@@ -1,0 +1,7 @@
+<center>
+  <%=form_for @operator, method: :delete do |f| %>
+    <%= f.label :attribute, "Enter the Password" %><br>
+    <%= f.password_field :password %><br>
+    <%= f.submit "Submit" %>
+  <% end -%>
+</center>

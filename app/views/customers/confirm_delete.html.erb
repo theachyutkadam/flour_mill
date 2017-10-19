@@ -1,0 +1,6 @@
+<center>
+  <%=form_for @customer, method: :delete do |f|%>
+    Enter Password <br><%= f.password_field :password %>
+    <%= f.submit "Submit"%>
+  <% end -%>
+</center>
