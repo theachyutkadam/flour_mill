@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   end
 
   resources :operators
-  resources :customers
+  resources :customers do
+    collection do
+      get :confirm_delete
+    end
+  end
   get 'home/index'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
