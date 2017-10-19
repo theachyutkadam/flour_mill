@@ -12,6 +12,10 @@ class OperatorsController < ApplicationController
   def show
   end
 
+  def record
+    @products = Operator.find(params[:operator_id]).products
+  end
+
   # GET /operators/new
   def new
     @operator = Operator.new

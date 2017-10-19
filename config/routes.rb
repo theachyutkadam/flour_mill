@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :operators do
     collection do
       get :confirm_delete
+      get :record
     end
   end
   resources :customers do
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
       get :confirm_delete
     end
   end
+  
   get 'home/index'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
