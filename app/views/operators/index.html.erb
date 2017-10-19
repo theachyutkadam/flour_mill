@@ -30,7 +30,7 @@
         <td><%= operator.salary %></td>
         <td><%= link_to 'Show', operator %></td>
         <td><%= link_to 'Edit', edit_operator_path(operator) %></td>
-        <td><%= link_to 'Destroy', operator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', confirm_delete_operators_path(operator_id: operator.id) %></td>
       </tr>
     <% end %>
   </tbody>

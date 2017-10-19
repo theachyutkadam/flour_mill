@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :operators
+  resources :operators do
+    collection do
+      get :confirm_delete
+    end
+  end
   resources :customers do
     collection do
       get :confirm_delete
