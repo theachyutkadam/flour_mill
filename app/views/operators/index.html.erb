@@ -29,6 +29,7 @@
         <td><%= operator.permanent_address %></td>
         <td><%= operator.salary %></td>
         <td><%= link_to 'Records', record_operators_path(operator_id: operator.id) %></td>
+        <td><%= link_to 'Show', operator %></td>
         <td><%= link_to 'Edit', edit_operator_path(operator) %></td>
         <td><%= link_to 'Destroy', operator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
