@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     elsif current_user.role.name == "Customer"
       @products = Product.where(customer_id: current_user.customer.id)
     elsif current_user.role.name == "Operator"
-      @products = Product.where(operator_id: current_user.operator.id)
+      @customers = Customer.all
       # TODO Write a variable which only need for operator page.
     end
   end
