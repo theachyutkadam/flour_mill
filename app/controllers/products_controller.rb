@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    @cust = Customer.find(params[:cust_id])
+    @cust = Customer.find(params[:id])
   end
 
   # POST /products
