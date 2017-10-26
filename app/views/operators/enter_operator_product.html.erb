@@ -1,0 +1,32 @@
+<%= form_for(:enter_operator_product, url: create_product_operators_path) do |f| %>
+  <% if @enter_operator_product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@enter_operator_product.errors.count, "error") %> prohibited this enter_operator_product from being saved:</h2>
+      <ul>
+      <% @enter_operator_product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= @customer.first_name %>
+  <%= current_user.operator.first_name%>
+  <%= f.hidden_field :customer_id, value: @customer.id %>
+  <%= f.hidden_field :operator_id, value: current_user.operator.id %>
+
+  <div class="field">
+    <%= f.label :product_name %>
+    <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]] %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %>
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :price, "Rate Rs 3 per kg" %>
+  </div>
+   <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     collection do
       get :confirm_delete
       get :show_operator_product
+      get :enter_operator_product
+      post :create_product
     end
   end
   resources :customers do

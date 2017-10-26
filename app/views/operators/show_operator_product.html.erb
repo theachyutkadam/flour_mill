@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @products.first.operator.first_name%></h1>
-
 <table border="1">
   <thead>
     <tr>
@@ -12,7 +10,7 @@
       <th colspan="2">Links</th>
     </tr>
   </thead>
-
+  <h2><%= current_user.operator.first_name%></h2>
   <tbody>
     <%sum = 0%>
     <% @products.each do |product| %>
@@ -25,7 +23,7 @@
         <td><%= link_to 'Edit', edit_products_path(cust_id: product.customer.id, id: product.customer.id) %></td>
       </tr>
     <% end %>
-    <th colspan="2">Total</th>
+    <th colspan="1">Total</th>
     <th><%= @products.count %></th>
     <th>Rs-<%= sum * 3 %></th>
     <th><%= sum %>/kg</th>
