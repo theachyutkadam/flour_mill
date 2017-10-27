@@ -1,0 +1,18 @@
+
+<h1>Expenditure#index</h1>
+<%= form_for(:expenditure, url: create_expense_expenses_path) do |f|%>
+
+  <div class="field">
+    <%= f.label :expense_type, "Expenditure Type :" %><br>
+    <%= f.text_field :expense_type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :expense, "Expenditure :" %><br>
+    <%= f.text_field :expense %>
+  </div>
+
+  <div class="field">	
+    <%= f.submit "Submit" %>
+  </div>
+<% end -%>
