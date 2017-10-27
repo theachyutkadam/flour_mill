@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'expenses/index'
+
   resources :products do
     collection do
       get :edit
@@ -19,7 +21,14 @@ Rails.application.routes.draw do
       get :confirm_delete
     end
   end
-  
+
+  resources :expenses do
+    collection do
+      get :index
+      post :create_expense
+    end
+  end
+
   get 'home/index'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
