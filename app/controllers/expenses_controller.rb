@@ -21,8 +21,16 @@ class ExpensesController < ApplicationController
     end
   end
 
-  def delete
-  	
+  def edit_exp
+  	@exp = Expense.find(params[:expense_id])
+  end
+
+  def destroy_exp
+  	puts "**********************"
+  	@exp = Expense.find(params[:id])
+  	@exp.destroy
+  	puts "***************trrt*******"
+  	redirect_to expenses_path
   end
 
 end

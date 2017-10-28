@@ -14,5 +14,23 @@
 
   <div class="field">	
     <%= f.submit "Submit" %>
-  </div>
+  </div><br><br>
 <% end -%>
+
+<table border="1">
+	<tr>
+		<th>Date</th>
+	  <th>Expense_type</th>
+	  <th>Expense</th>
+	  <th colspan="2">Link</th>
+  </tr>
+  <% @exp.each do |exp|%>
+  <tr>
+  	<td><%= exp.created_at %></td>
+  	<td><%= exp.expence_type %></td>
+  	<td><%= exp.expence %></td>
+  	<td><%= link_to "Edit", edit_exp_expenses_path(expense_id: exp.id) %></td>
+  	<td><%= link_to "Delete", destroy_exp_expense_path(id: exp.id) %></td>
+  </tr>
+  <% end -%>
+</table>

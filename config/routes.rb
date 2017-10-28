@@ -26,6 +26,11 @@ Rails.application.routes.draw do
     collection do
       get :index
       post :create_expense
+      get :edit_exp
+    end
+
+    member do
+      get :destroy_exp
     end
   end
 
