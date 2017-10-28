@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  expence_type: MyString
+  expence: 1.5
+
+two:
+  expence_type: MyString
+  expence: 1.5

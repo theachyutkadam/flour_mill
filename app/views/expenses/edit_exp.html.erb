@@ -1,0 +1,18 @@
+<%= form_for :edit_exp, url: update_exp_expense_path, method: :patch do |f|%>
+  <div class="field">
+    <%= f.hidden_field :id, value:@exp.id %>
+  </div>
+  <div class="field">
+    <%= f.label :expense_type, "Expenditure Type :" %><br>
+    <%= f.text_field :expense_type, value:@exp.expence_type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :expense, "Expenditure :" %><br>
+    <%= f.text_field :expense, value:@exp.expence %>
+  </div>
+
+  <div class="field">	
+    <%= f.submit "Submit" %>
+  </div><br><br>
+<% end -%>
