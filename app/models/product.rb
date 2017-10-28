@@ -5,4 +5,6 @@ class Product < ActiveRecord::Base
   validates :product_name, presence: true
   validates :price, presence: true
   validates :weight, presence: true
+  validates :operator_id, presence: true
 end
+

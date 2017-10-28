@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get :show_operator_product
       get :enter_operator_product
       post :create_product
+      get :record
     end
   end
   resources :customers do
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
       get :confirm_delete
     end
   end
+  
   get 'home/index'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
