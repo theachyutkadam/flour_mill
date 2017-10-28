@@ -12,7 +12,7 @@
  <%= f.hidden_field :customer_id, value: @cust.id %>
   <div class="field">
     <%= f.label :product_name %>
-    <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]] %>
+    <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Product"} %>
   </div>
   <div class="field">
     <%= f.label :weight %>
