@@ -65,11 +65,20 @@ class OperatorsController < ApplicationController
   # DELETE /operators/1
   # DELETE /operators/1.json
   def destroy
-    @operator.destroy
-    respond_to do |format|
-      format.html { redirect_to operators_url, notice: 'Operator was successfully destroyed.' }
-      format.json { head :no_content }
+    if(params[:operator][:password] == "password")
+      @operator.destroy
+      respond_to do |format|
+        format.html { redirect_to operators_url, notice: 'Operator was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      flash[:notice] = "Password incorrect"
+      redirect_to operators_url
     end
+  end
+
+  def confirm_delete
+    @operator = Operator.find(params[:operator_id])
   end
 
   private

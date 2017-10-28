@@ -7,12 +7,11 @@
   <thead>
     <tr>
       <th>Date</th>
+      <th>Operator</th>
       <th>Product name</th>
       <th>Price</th>
       <th>Weight</th>
-      <th>Customer</th>
-      <th>Operator</th>
-      <th colspan="3">Links</th>
+      <th colspan="2">Links</th>
     </tr>
   </thead>
 
@@ -22,17 +21,16 @@
       <tr>
         <% sum = sum + product.weight%>
         <td><%= product.created_at %></td>
+        <td><%= product.operator.first_name%></td>
         <td><%= product.product_name %></td>
         <td><%= product.price %></td>
         <td><%= product.weight %></td>
-        <td><%= product.customer.first_name%></td>
-        <td><%= product.operator.first_name%></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_products_path(cust_id: product.customer.id, id: product.customer.id) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     <th colspan="2">Total</th>
+    <th><%= @products.count %></th>
     <th>Rs-<%= sum * 3 %></th>
     <th><%= sum %>/kg</th>
   </tbody>

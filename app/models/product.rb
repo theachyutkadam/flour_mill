@@ -7,3 +7,4 @@ class Product < ActiveRecord::Base
   validates :weight, presence: true
   validates :operator_id, presence: true
 end
+
