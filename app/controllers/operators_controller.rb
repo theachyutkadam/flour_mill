@@ -6,7 +6,30 @@ class OperatorsController < ApplicationController
   def index
     @operators = Operator.all
   end
+  
+  def show_operator_product
+    @products = Product.where(customer_id: params[:cust_id], operator_id: current_user.operator.id)
+  end
 
+  def enter_operator_product
+    @enter_operator_product = Product.new
+    @customer = Customer.find(params[:cust_id])
+  end
+
+  def create_product
+    product = Product.new
+    product_params = params[:enter_operator_product]
+    product.operator_id = product_params[:operator_id]
+    product.customer_id = product_params[:customer_id]
+    product.weight = product_params[:weight]
+    product.product_name = product_params[:product_name]
+    product.price = 3 * product.weight
+    if product.save
+      redirect_to show_operator_product_operators_path(cust_id: product.customer_id)
+    else
+      redirect_to enter_operator_product_operators_path(cust_id: product.customer_id)
+    end
+  end
   # GET /operators/1
   # GET /operators/1.json
   def show
