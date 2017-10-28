@@ -13,3 +13,114 @@
  *= require_tree .
  *= require_self
  */
+
+
+body {
+}
+
+table {
+	border-spacing: 0;
+  border: 1px solid #EBEBEB;
+  background-color: transparent;
+  border-collapse: collapse;
+
+}
+tr {
+  width: 100%;
+}
+
+td, th {
+  padding: 10px;
+}
+
+/*tr:nth-child(even){background-color: #ddd;}*/
+
+th {
+  font-family: "Trebuchet MS", Bold, Helvetica, sans-serif;
+  font-style: oblique;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: black;
+}
+
+input[type=submit] {
+  width: 140px;
+  padding: 12px 20px;
+  margin: 4px 0px;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.link-blue {
+  border: none;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 8px 15px;
+  cursor: pointer;
+  background: cornflowerblue;
+}
+
+.link-blue:hover {
+  background-color: #2196F3;
+  color: black;
+}
+
+.link_create {
+  color: white;
+  background: #4CAF50;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.link_create:hover {
+	color: black;
+	font-size: 20;
+}
+.link_show {
+  color: white;
+  background: lightblue;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.link_show:hover {
+	color: black;
+	font-size: 20;
+}
+.link_edit {
+  color: white;
+  background: orange;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.link_edit:hover {
+	color: black;
+	font-size: 20;
+}
+.link_delete {
+  color: white;
+  background: red;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.link_delete:hover {
+	color: black;
+	font-size: 20;
+}
+
+.link_exp {
+	padding: 8px;
+	text-decoration: none;
+	color: white;
+	background-color: green;
+}
+.link_exp:hover {
+  text-decoration: underline;
+  color: black;
+	background: lightblue;
+}

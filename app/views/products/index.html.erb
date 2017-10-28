@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Products</h1>
-<h1><%= @cust.first_name %></h1>
+<%= link_to 'Home', home_index_path%>
+<h3><%= @cust.first_name + " " + @cust.middle_name + " " + @cust.last_name %></h3>
 
 <table border="1">
   <thead>
@@ -11,7 +9,6 @@
       <th>Product name</th>
       <th>Price</th>
       <th>Weight</th>
-      <th>Links</th>
     </tr>
   </thead>
 
@@ -25,7 +22,6 @@
         <td><%= product.product_name %></td>
         <td><%= product.price %></td>
         <td><%= product.weight %></td>
-        <td><%= link_to 'Edit', edit_products_path(cust_id: product.customer.id, id: product.customer.id) %></td>
       </tr>
     <% end %>
     <th colspan="2">Total</th>
@@ -34,8 +30,4 @@
     <th><%= sum %>/kg</th>
   </tbody>
 </table>
-
 <br>
-<%= link_to 'New Product', new_product_path(cust_id: @cust.id) %><br>
-
-<%= link_to 'Home', home_index_path %>
