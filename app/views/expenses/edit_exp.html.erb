@@ -1,4 +1,7 @@
-<%= form_for :edit_exp do |f|%>
+<%= form_for :edit_exp, url: update_exp_expense_path, method: :patch do |f|%>
+  <div class="field">
+    <%= f.hidden_field :id, value:@exp.id %>
+  </div>
   <div class="field">
     <%= f.label :expense_type, "Expenditure Type :" %><br>
     <%= f.text_field :expense_type, value:@exp.expence_type %>
