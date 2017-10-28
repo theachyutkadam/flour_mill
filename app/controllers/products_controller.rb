@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    @cust = Customer.find(params[:product][:customer_id])
     @product = Product.new(product_params)
     @product.price = 3 * params[:product][:weight].to_i
     respond_to do |format|

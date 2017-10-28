@@ -10,6 +10,7 @@ class OperatorsController < ApplicationController
   # GET /operators/1
   # GET /operators/1.json
   def show
+    @products = Product.where(operator_id: params[:id])
   end
 
   def record
