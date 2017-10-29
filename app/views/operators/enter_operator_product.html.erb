@@ -10,8 +10,9 @@
     </div>
   <% end %>
 
-  <%= @customer.first_name %>
-  <%= current_user.operator.first_name%>
+  <h2><%= current_user.operator.first_name + " " + current_user.operator.last_name%></h2>
+  <h3><%= @customer.first_name + " " + @customer.middle_name + " " + @customer.last_name %></h3>
+
   <%= f.hidden_field :customer_id, value: @customer.id %>
   <%= f.hidden_field :operator_id, value: current_user.operator.id %>
 

@@ -7,11 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body style="margin: 0px;">
-  <div class="header" style="height: 50px; background-color: LightGray;">
-    <div style="float: left; margin: -10px 10px 0px 10px;">
+  <div class="header" style="height: 60px; background-color:  #ebebe0;">
+
+    <div id ="div4" style="float: left; margin: -10px 10px 0px 10px;">
       <h2>Vishwakarma Flour Mill</h2> 
     </div>
-    
+
     <div style="float:right; margin: 10px 10px 10px 10px;">
       <% if user_signed_in? %>
         <%= link_to("Logout", destroy_user_session_path, method: :delete, style: "font-size: large;color: blueviolet;")%>

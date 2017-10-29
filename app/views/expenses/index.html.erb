@@ -1,5 +1,5 @@
+<%= link_to "Back", home_index_path, class: "link_back" %>
 
-<h1>Expenditure#index</h1>
 <%= form_for(:expenditure, url: create_expense_expenses_path) do |f|%>
 
   <div class="field">
@@ -12,25 +12,25 @@
     <%= f.text_field :expense %>
   </div>
 
-  <div class="field">	
+  <div class="field"> 
     <%= f.submit "Submit" %>
   </div><br><br>
 <% end -%>
 
 <table border="1">
-	<tr>
-		<th>Date</th>
-	  <th>Expense_type</th>
-	  <th>Expense</th>
-	  <th colspan="2">Link</th>
+  <tr>
+    <th>Date</th>
+    <th>Expense_type</th>
+    <th>Expense</th>
+    <th colspan="2">Link</th>
   </tr>
   <% @exp.each do |exp|%>
   <tr>
-  	<td><%= exp.created_at %></td>
-  	<td><%= exp.expence_type %></td>
-  	<td><%= exp.expence %></td>
-  	<td><%= link_to "Edit", edit_exp_expense_path(id: exp.id) %></td>
-  	<td><%= link_to "Delete", destroy_exp_expense_path(id: exp.id) %></td>
+    <td><%= exp.created_at %></td>
+    <td><%= exp.expence_type %></td>
+    <td><%= exp.expence %></td>
+    <td><%= link_to "Edit", edit_exp_expense_path(id: exp.id) %></td>
+    <td><%= link_to "Delete", destroy_exp_expense_path(id: exp.id) %></td>
   </tr>
   <% end -%>
 </table>

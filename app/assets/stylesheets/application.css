@@ -28,6 +28,9 @@ table {
 tr {
   width: 100%;
 }
+tr:hover {
+	background: #e6eeff;
+}
 
 td, th {
   padding: 10px;
@@ -42,15 +45,39 @@ th {
   padding-bottom: 10px;
   text-align: center;
   color: black;
+  align-items: center;
 }
 
 input[type=submit] {
-  width: 140px;
-  padding: 12px 20px;
+  font-size: 15px;
+  font-style: bold;
+  padding: 5px 10px;
   margin: 4px 0px;
   border-radius: 4px;
-  background-color: #4CAF50;
+  background-color: lightblue;
+  color: black;
+}
+input[type=submit]:hover {
+ background-color: lightgreen;
+ color: black;
+}
+
+.input_field {
+  height: 30px;
+  width: 100px;
+}
+
+.link_back {
+  padding: 5px 15px 8px 15px;
+  margin: -20px 15px;
+  text-decoration: none;
+  color: black;
+  background: lightblue;
+}
+.link_back:hover {
   color: white;
+  background-color: lightgreen;
+  text-decoration: underline;
 }
 
 .link-blue {
@@ -69,48 +96,52 @@ input[type=submit] {
 }
 
 .link_create {
-  color: white;
-  background: #4CAF50;
+  color: black;
+  background: #b3ffb3;
   padding: 8px;
   text-decoration: none;
 }
 
 .link_create:hover {
-	color: black;
+	color: white 	;
 	font-size: 20;
+  background: green;
 }
 .link_show {
-  color: white;
+  color: black;
   background: lightblue;
   padding: 8px;
   text-decoration: none;
 }
 
 .link_show:hover {
-	color: black;
+	color: white 	;
 	font-size: 20;
+  background: blue;
 }
 .link_edit {
-  color: white;
-  background: orange;
+  color: black;
+  background: #ffecb3;
   padding: 8px;
   text-decoration: none;
 }
 
 .link_edit:hover {
-	color: black;
+	color: white 	;
 	font-size: 20;
+  background: orange;
 }
 .link_delete {
-  color: white;
-  background: red;
+  color: black;
+  background: #ffb3b3;
   padding: 8px;
   text-decoration: none;
 }
 
 .link_delete:hover {
-	color: black;
+	color: white 	;
 	font-size: 20;
+	background: red;
 }
 
 .link_exp {
@@ -123,4 +154,22 @@ input[type=submit] {
   text-decoration: underline;
   color: black;
 	background: lightblue;
+}
+
+#div4 {
+	animation-timing-function: ease-out;
+	position: relative;
+	animation: mymove 5s;
+}
+
+@keyframes mymove {
+  from {left: 0px;}
+  to {left: 700px;}
+}
+
+.field {
+	padding: 10px;
+}
+.field:hover {
+	color: black;
 }

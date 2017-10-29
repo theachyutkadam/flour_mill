@@ -9,23 +9,11 @@
       </ul>
     </div>
   <% end %>
- <%= f.hidden_field :customer_id, value: @cust.id %>
-  <div class="field">
-    <%= f.label :product_name %>
-    <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Product"} %>
-  </div>
-  <div class="field">
-    <%= f.label :weight %>
-    <%= f.text_field :weight %>
-  </div>
-  <div class="field">
-    <%= f.label :price, "Rate Rs 3 per kg" %>
-  </div>
-  <div class="field">
-    <%= f.label :operator_id %>
-    <%= f.select :operator_id, Operator.all.collect {|a| [a.first_name + " " + a.last_name, a.id]},{include_blank: "Select Operator" } %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+  <%= f.hidden_field :customer_id, value: @cust.id %>
+  <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Grain"}, class: "input_field" %>
+  <%= f.text_field :weight, placeholder: "Weight", class: "input_field" %>
+  <%= f.select :operator_id, Operator.all.collect {|a| [a.first_name + " " + a.last_name, a.id]},{include_blank: "Select Operator" }, class: "input_field" %>
+  <%= f.submit :Save %>
+  <%= link_to "Back", home_index_path, class: "link_back" %>
 <% end %>
