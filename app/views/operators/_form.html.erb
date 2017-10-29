@@ -1,3 +1,4 @@
+<center>
 <%= form_for(@operator) do |f| %>
   <% if @operator.errors.any? %>
     <div id="error_explanation">
@@ -13,33 +14,34 @@
 
   <div class="field">
     <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, placeholder: "Your First Name Here..." %>
   </div>
   <div class="field">
     <%= f.label :middle_name %><br>
-    <%= f.text_field :middle_name %>
+    <%= f.text_field :middle_name, placeholder: "Your Middle Name Here..." %>
   </div>
   <div class="field">
     <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, placeholder: "Your Last Name Here..."%>
   </div>
   <div class="field">
     <%= f.label :mobile %><br>
-    <%= f.text_field :mobile %>
+    <%= f.text_field :mobile, placeholder: "Your Mobile No Here..." %>
   </div>
     <div class="field">
     <%= f.label :mail %><br>
-    <%= f.text_field :mail %>
+    <%= f.text_field :mail, placeholder: "Your Mail Id Here..." %>
   </div>
   <div class="field">
     <%= f.label :permanent_address %><br>
-    <%= f.text_field :permanent_address %>
+    <%= f.text_field :permanent_address, placeholder: "Your Permanent Address Here..." %>
   </div>
   <div class="field">
     <%= f.label :salary %><br>
-    <%= f.text_field :salary %>
+    <%= f.text_field :salary, placeholder: "Your Salary Here..." %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</center>

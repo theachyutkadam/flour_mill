@@ -1,5 +1,2 @@
-<h1>New Product</h1>
-<h3><%= @cust.first_name %></h3> <br>
+<h2>Enter <%= @cust.first_name + " " + @cust.last_name %>'s New Product</h2>
 <%= render 'form' %>
-
-<%= link_to 'Back', products_path(cust_id: @cust.id) %>

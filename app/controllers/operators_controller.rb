@@ -2,11 +2,7 @@ class OperatorsController < ApplicationController
   before_action :set_operator, only: [:show, :edit, :update, :destroy]
 
   # GET /operators
-  # GET /operators.json
-  def index
-    @operators = Operator.all
-  end
-  
+  # GET /operators.json  
   def show_operator_product
     @products = Product.where(customer_id: params[:cust_id], operator_id: current_user.operator.id)
   end

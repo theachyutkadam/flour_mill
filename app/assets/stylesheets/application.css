@@ -13,3 +13,163 @@
  *= require_tree .
  *= require_self
  */
+
+
+body {
+}
+
+table {
+	border-spacing: 0;
+  border: 1px solid #EBEBEB;
+  background-color: transparent;
+  border-collapse: collapse;
+
+}
+tr {
+  width: 100%;
+}
+tr:hover {
+	background: #e6eeff;
+}
+
+td, th {
+  padding: 10px;
+}
+
+/*tr:nth-child(even){background-color: #ddd;}*/
+
+th {
+  font-family: "Trebuchet MS", Bold, Helvetica, sans-serif;
+  font-style: oblique;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: black;
+  align-items: center;
+}
+
+input[type=submit] {
+  font-size: 15px;
+  font-style: bold;
+  padding: 5px 10px;
+  margin: 4px 0px;
+  border-radius: 4px;
+  background-color: lightblue;
+  color: black;
+}
+input[type=submit]:hover {
+ background-color: lightgreen;
+ color: black;
+}
+
+.input_field {
+  height: 30px;
+  width: 100px;
+}
+
+.link_back {
+  padding: 5px 15px 8px 15px;
+  margin: -20px 15px;
+  text-decoration: none;
+  color: black;
+  background: lightblue;
+}
+.link_back:hover {
+  color: white;
+  background-color: lightgreen;
+  text-decoration: underline;
+}
+
+.link-blue {
+  border: none;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 8px 15px;
+  cursor: pointer;
+  background: cornflowerblue;
+}
+
+.link-blue:hover {
+  background-color: #2196F3;
+  color: black;
+}
+
+.link_create {
+  color: black;
+  background: #b3ffb3;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.link_create:hover {
+	color: white 	;
+	font-size: 20;
+  background: green;
+}
+.link_show {
+  color: black;
+  background: lightblue;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.link_show:hover {
+	color: white 	;
+	font-size: 20;
+  background: blue;
+}
+.link_edit {
+  color: black;
+  background: #ffecb3;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.link_edit:hover {
+	color: white 	;
+	font-size: 20;
+  background: orange;
+}
+.link_delete {
+  color: black;
+  background: #ffb3b3;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.link_delete:hover {
+	color: white 	;
+	font-size: 20;
+	background: red;
+}
+
+.link_exp {
+	padding: 8px;
+	text-decoration: none;
+	color: white;
+	background-color: green;
+}
+.link_exp:hover {
+  text-decoration: underline;
+  color: black;
+	background: lightblue;
+}
+
+#div4 {
+	animation-timing-function: ease-out;
+	position: relative;
+	animation: mymove 5s;
+}
+
+@keyframes mymove {
+  from {left: 0px;}
+  to {left: 700px;}
+}
+
+.field {
+	padding: 10px;
+}
+.field:hover {
+	color: black;
+}
