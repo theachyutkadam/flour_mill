@@ -15,8 +15,10 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
     @cust = Customer.find(params[:cust_id])
+    @products = @cust.products
+    @product = Product.new
+
   end
 
   # GET /products/1/edit
@@ -27,13 +29,13 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @cust = Customer.find(params[:product][:customer_id])
+    @cust = Customer.find(params[:product][:cust_id])
     @product = Product.new(product_params)
     @product.price = 3 * params[:product][:weight].to_i
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
+        format.json { render :new, status: :created, location: @product }
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }

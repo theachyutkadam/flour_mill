@@ -1,3 +1,5 @@
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -32,6 +34,10 @@ tr:hover {
 	background: #e6eeff;
 }
 
+thead tr{
+  background-color: gainsboro;
+}
+
 td, th {
   padding: 10px;
 }
@@ -49,22 +55,21 @@ th {
 }
 
 input[type=submit] {
-  font-size: 15px;
-  font-style: bold;
+  background-color: lightblue;
+  border-radius: 4px;
   padding: 5px 10px;
   margin: 4px 0px;
-  border-radius: 4px;
-  background-color: lightblue;
+  font-size: 15px;
   color: black;
 }
 input[type=submit]:hover {
- background-color: lightgreen;
- color: black;
+  background-color: blue;
+  color: white;
 }
 
 .input_field {
   height: 30px;
-  width: 100px;
+  width: 130px;
 }
 
 .link_back {
@@ -76,7 +81,7 @@ input[type=submit]:hover {
 }
 .link_back:hover {
   color: white;
-  background-color: lightgreen;
+  background-color: blue;
   text-decoration: underline;
 }
 
@@ -156,10 +161,20 @@ input[type=submit]:hover {
 	background: lightblue;
 }
 
-#div4 {
+#header_name {
 	animation-timing-function: ease-out;
 	position: relative;
+  color: lightcoral;
+  margin: -10px 10px 0px 10px;
 	animation: mymove 5s;
+}
+
+#link_logout {
+  margin: 10px 10px 10px 10px;
+}
+
+#link_logout:hover {
+  color: black;
 }
 
 @keyframes mymove {
@@ -168,8 +183,5 @@ input[type=submit]:hover {
 }
 
 .field {
-	padding: 10px;
-}
-.field:hover {
-	color: black;
+  padding: 10px;
 }

@@ -3,7 +3,7 @@
 </div>
 <br><br>
 <%= link_to 'New Customer', new_customer_path, class: "link-blue" %><br><br>
-<table>
+<table border="1">
   <thead>
     <tr>
       <th>Name</th>
@@ -33,7 +33,7 @@
 <br><br>
 
 <%= link_to 'New Operator', new_operator_path, class: "link-blue" %><br><br>
-<table>
+<table border="1">
   <thead>
     <tr>
       <th>Name</th>
@@ -53,7 +53,7 @@
         <td><%= operator.permanent_address %></td>
         <td><%= operator.mail %></td>
         <td><%= operator.salary %></td>
-        <td><%= link_to 'Records', record_operators_path(operator_id: operator.id), class: "link_create" %></td>
+        <td><%= link_to 'Records', record_operators_path(operator_id: operator.id), class: "link_show" %></td>
         <td><%= link_to 'Edit', edit_operator_path(operator), class: "link_edit" %></td>
         <td><%= link_to 'Destroy', confirm_delete_operators_path(operator_id: operator.id), class: "link_delete" %></td>
       </tr>
