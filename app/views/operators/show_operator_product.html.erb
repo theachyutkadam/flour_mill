@@ -5,8 +5,8 @@
     <tr>
       <th>Date</th>
       <th>Product name</th>
-      <th>Price</th>
       <th>Weight</th>
+      <th>Price</th>
       <th colspan="2">Links</th>
     </tr>
   </thead>
@@ -18,14 +18,14 @@
         <% sum = sum + product.weight%>
         <td><%= product.created_at %></td>
         <td><%= product.product_name %></td>
-        <td><%= product.price %></td>
         <td><%= product.weight %></td>
-        <td><%= link_to 'Edit', edit_products_path(cust_id: product.customer.id, id: product.customer.id) %></td>
+        <td><%= product.price %></td>
+        <td><%= link_to 'Edit', edit_products_path(cust_id: product.customer.id, id: product.customer.id), class: "link_edit" %></td>
       </tr>
     <% end %>
     <th colspan="1">Total</th>
     <th><%= @products.count %></th>
-    <th>Rs-<%= sum * 3 %></th>
     <th><%= sum %>/kg</th>
+    <th>Rs-<%= sum * 3 %></th>
   </tbody>
 </table>
