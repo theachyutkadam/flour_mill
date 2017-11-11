@@ -51,6 +51,7 @@ th {
   padding-bottom: 10px;
   text-align: center;
   color: black;
+  background-color: #FFEFD5;
   align-items: center;
 }
 
@@ -73,7 +74,7 @@ input[type=submit]:hover {
 }
 
 .link_back {
-  padding: 5px 15px 8px 15px;
+  padding: 7px 15px 7px 15px;
   margin: -20px 15px;
   text-decoration: none;
   color: black;
@@ -153,6 +154,8 @@ input[type=submit]:hover {
 	padding: 8px;
 	text-decoration: none;
 	color: white;
+  font-size: 15px;
+  padding: 8px 15px;
 	background-color: springgreen;
 }
 .link_exp:hover {
