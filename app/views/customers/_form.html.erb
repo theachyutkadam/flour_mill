@@ -11,31 +11,47 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name, placeholder: "Your First Name Here..." %>
-  </div>
-  <div class="field">
-    <%= f.label :middle_name %><br>
-    <%= f.text_field :middle_name, placeholder: "Your Middle Name Here..." %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name, placeholder: "Your Last Name Here..." %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address, placeholder: "Your Address Here..." %>
-  </div>
-  <div class="field">
-    <%= f.label :mobile_num %><br>
-    <%= f.text_field :mobile_num, placeholder: "Your Mobile No Here..." %>
-  </div>
-  <div class="field">
-    <%= f.label :mail %><br>
-    <%= f.text_field :mail, placeholder: "Your Mail Id Here..." %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table>
+    <div class="field">
+      <tr>
+        <td> <%= f.label :first_name %> </td>
+        <td>: <%= f.text_field :first_name, placeholder: "  Enter First Name..." %> </td>
+      </tr>
+    </div>
+    <div class="field">
+      <tr>
+        <td> <%= f.label :middle_name %> </td>
+        <td>: <%= f.text_field :middle_name, placeholder: "  Enter Middle Name..." %> </td>
+      </tr>
+    </div>
+    <div class="field">
+      <tr>
+        <td> <%= f.label :last_name %> </td>
+        <td>: <%= f.text_field :last_name, placeholder: "  Enter Last Name..." %> </td>
+      </tr>
+    </div>
+    <div class="field">
+      <tr>
+        <td> <%= f.label :address %> </td>
+        <td>: <%= f.text_field :address, placeholder: "  Enter Address..." %> </td>
+      </tr>
+    </div>
+    <div class="field">
+      <tr>
+        <td> <%= f.label :mobile_num %> </td>
+        <td>: <%= f.text_field :mobile_num, placeholder: "  Enter Mobile No..." %> </td>
+      </tr>
+    </div>
+    <div class="field">
+      <tr>
+        <td> <%= f.label :mail %> </td>
+        <td>: <%= f.text_field :mail, placeholder: "  Enter Mail Id..." %> </td>
+      </tr>
+    </div>
+    <div class="actions">
+      <tr align="center">
+        <td colspan="2"> <%= f.submit %> </td>
+      </tr>
+    </div>
+  </table>
 <% end %>

@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
     @cust = Customer.find(params[:cust_id])
     @products = @cust.products
     @product = Product.new
-    @payments = Payment.all
+    # @payments = Payment.all
   end
 
   # GET /products/1/edit
