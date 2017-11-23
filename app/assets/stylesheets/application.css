@@ -194,18 +194,24 @@ input[type=submit]:hover {
 
 #login_table {
   background-color: lightblue;
-  padding: 5px 25px 25px 5px;
-  margin: 5px 25px 5px 25px;
-
+  padding: 25px;
+  margin: 250px 25px 5px 750px;
 }
 
 #head_row {
   color: black;
   background-color: red;
-  padding: 8px;
+  padding: 25px 55px 8px 55px;
   height: 50;
 }
-
+#login_head {
+  color: white;
+  text-align: center;
+  font-size: 50;
+}
+#login_head {
+  background-color: lightblue;
+}
 #login_row:hover {
   background-color: lightblue;
 }
