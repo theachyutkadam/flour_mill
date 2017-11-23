@@ -29,14 +29,16 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @cust = Customer.find(params[:product][:cust_id])
+    @cust = Customer.find(params[:product][:customer_id])
+    puts "****************"
     @products = @cust.products
     @payments = Payment.all
     @product = Product.new(product_params)
+    puts @product.inspect
     @product.price = 3 * params[:product][:weight].to_i
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to new_product_path(cust_id: @cust.id), notice: 'Product was successfully created.' }
         format.json { render :new, status: :created, location: @product }
       else
         format.html { render :new }

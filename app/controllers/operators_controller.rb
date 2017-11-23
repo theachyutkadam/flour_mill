@@ -58,7 +58,7 @@ class OperatorsController < ApplicationController
     @operator.user_id = user_id
     respond_to do |format|
       if @operator.save
-        format.html { redirect_to @operator, notice: 'Operator was successfully created.' }
+        format.html { redirect_to home_index_path, notice: 'Operator was successfully created.' }
         format.json { render :show, status: :created, location: @operator }
       else
         format.html { render :new }
@@ -87,12 +87,12 @@ class OperatorsController < ApplicationController
     if(params[:operator][:password] == "password")
       @operator.destroy
       respond_to do |format|
-        format.html { redirect_to operators_url, notice: 'Operator was successfully destroyed.' }
+        format.html { redirect_to home_index_path, notice: 'Operator was successfully destroyed.' }
         format.json { head :no_content }
       end
     else
       flash[:notice] = "Password incorrect"
-      redirect_to operators_url
+      redirect_to home_index_path
     end
   end
 
