@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027105019) do
+ActiveRecord::Schema.define(version: 20171101140342) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "first_name"
@@ -27,27 +27,11 @@ ActiveRecord::Schema.define(version: 20171027105019) do
 
   add_index "customers", ["user_id"], name: "index_customers_on_user_id"
 
-  create_table "expenditures", force: :cascade do |t|
-    t.string   "expence_type"
-    t.float    "expence"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "expenses", force: :cascade do |t|
     t.string   "expence_type"
     t.float    "expence"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-  end
-
-  create_table "maintenances", force: :cascade do |t|
-    t.string   "maintenance_type"
-    t.float    "expencess"
-    t.string   "maintenance"
-    t.string   "edit"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
   end
 
   create_table "operators", force: :cascade do |t|
@@ -64,6 +48,13 @@ ActiveRecord::Schema.define(version: 20171027105019) do
   end
 
   add_index "operators", ["user_id"], name: "index_operators_on_user_id"
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.float    "payment"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string   "product_name"

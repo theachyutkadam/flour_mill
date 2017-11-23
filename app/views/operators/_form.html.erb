@@ -1,4 +1,3 @@
-<center>
 <%= form_for(@operator) do |f| %>
   <% if @operator.errors.any? %>
     <div id="error_explanation">
@@ -12,36 +11,60 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name, placeholder: "Your First Name Here..." %>
-  </div>
-  <div class="field">
-    <%= f.label :middle_name %><br>
-    <%= f.text_field :middle_name, placeholder: "Your Middle Name Here..." %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name, placeholder: "Your Last Name Here..."%>
-  </div>
-  <div class="field">
-    <%= f.label :mobile %><br>
-    <%= f.text_field :mobile, placeholder: "Your Mobile No Here..." %>
-  </div>
-    <div class="field">
-    <%= f.label :mail %><br>
-    <%= f.text_field :mail, placeholder: "Your Mail Id Here..." %>
-  </div>
-  <div class="field">
-    <%= f.label :permanent_address %><br>
-    <%= f.text_field :permanent_address, placeholder: "Your Permanent Address Here..." %>
-  </div>
-  <div class="field">
-    <%= f.label :salary %><br>
-    <%= f.text_field :salary, placeholder: "Your Salary Here..." %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table border="-0" id="operator_table">
+    <tr>
+      <div class="field">
+        <td id="label_operator"><%= f.label :first_name %> : <br></td>
+        <td> <%= f.text_field :first_name, placeholder: "First Name Here..." , class: "txt_operator"%></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td id="label_operator"><%= f.label :middle_name %> : <br></td>
+        <td> <%= f.text_field :middle_name, placeholder: "Middle Name Here..." , class: "txt_operator"%></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td id="label_operator"><%= f.label :last_name %> : <br></td>
+        <td> <%= f.text_field :last_name, placeholder: "Last Name Here...", class: "txt_operator"%></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td id="label_operator"><%= f.label :mobile %> : <br></td>
+        <td> <%= f.text_field :mobile, placeholder: "Mobile No Here..." , class: "txt_operator"%></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td id="label_operator"><%= f.label :mail %> : <br></td>
+        <td> <%= f.text_field :mail, placeholder: "Mail Id Here..." , class: "txt_operator"%></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td id="label_operator"><%= f.label :permanent_address %> : <br></td>
+        <td> <%= f.text_field :permanent_address, placeholder: "Permanent Address Here..." , class: "txt_operator"%></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td id="label_operator"><%= f.label :salary %> : <br></td>
+        <td> <%= f.text_field :salary, placeholder: "Salary Here..." , class: "txt_operator"%></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="actions">
+        <td> <%= f.submit %></td>
+      </div>
+    </tr>
+  </table>
 <% end %>
-</center>

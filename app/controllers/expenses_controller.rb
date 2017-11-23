@@ -4,7 +4,6 @@ class ExpensesController < ApplicationController
   end
   
   def create_expense
-    puts "*/*/**"
     form = params[:expenditure]
     @exp = Expense.new
    

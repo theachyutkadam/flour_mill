@@ -1,6 +1,5 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Customers on Operators login</h1>
+<h1>Listing Customers on <%= current_user.operator.first_name + " " + current_user.operator.last_name%> login</h1>
 
 <table border="1">
   <thead>

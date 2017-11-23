@@ -21,7 +21,7 @@ body {
 }
 
 table {
-	border-spacing: 0;
+  border-spacing: 0;
   border: 1px solid #EBEBEB;
   background-color: transparent;
   border-collapse: collapse;
@@ -31,15 +31,15 @@ tr {
   width: 100%;
 }
 tr:hover {
-	background: #e6eeff;
+  background: #e6eeff;
 }
 
-thead tr{
-  background-color: gainsboro;
+thead tr:hover {
+  background-color: white;
 }
 
 td, th {
-  padding: 10px;
+  padding: 8px;
 }
 
 /*tr:nth-child(even){background-color: #ddd;}*/
@@ -65,11 +65,25 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: blue;
   color: white;
+
 }
 
-.input_field {
+.dropdown {
+  background-color: white;
+  border: 5;
   height: 30px;
   width: 130px;
+}
+
+input[type=text]:focus, select:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.input_field_weight {
+  height: 25px;
+  width: 130px;
+  padding: 1px 5px 0px 5px;
 }
 
 .link_back {
@@ -100,18 +114,6 @@ input[type=submit]:hover {
   color: black;
 }
 
-.link_create {
-  color: black;
-  background: #b3ffb3;
-  padding: 8px;
-  text-decoration: none;
-}
-
-.link_create:hover {
-	color: white 	;
-	font-size: 20;
-  background: green;
-}
 .link_show {
   color: black;
   background: lightblue;
@@ -120,8 +122,8 @@ input[type=submit]:hover {
 }
 
 .link_show:hover {
-	color: white 	;
-	font-size: 20;
+  color: white   ;
+  font-size: 20;
   background: blue;
 }
 .link_edit {
@@ -132,8 +134,8 @@ input[type=submit]:hover {
 }
 
 .link_edit:hover {
-	color: white 	;
-	font-size: 20;
+  color: white;
+  font-size: 20;
   background: orange;
 }
 .link_delete {
@@ -144,29 +146,29 @@ input[type=submit]:hover {
 }
 
 .link_delete:hover {
-	color: white 	;
-	font-size: 20;
-	background: red;
+  color: white;
+  font-size: 20;
+  background: red;
 }
 
 .link_exp {
-	padding: 8px;
-	text-decoration: none;
-	color: white;
-	background-color: green;
+  padding: 8px;
+  text-decoration: none;
+  color: white;
+  background-color: green;
 }
 .link_exp:hover {
   text-decoration: underline;
   color: black;
-	background: lightblue;
+  background: lightblue;
 }
 
 #header_name {
-	animation-timing-function: ease-out;
-	position: relative;
+  animation-timing-function: ease-out;
+  position: relative;
   color: lightcoral;
   margin: -10px 10px 0px 10px;
-	animation: mymove 5s;
+  animation: mymove 5s;
 }
 
 #link_logout {
@@ -184,4 +186,66 @@ input[type=submit]:hover {
 
 .field {
   padding: 10px;
+}
+
+#login_table {
+  background-color: white;
+  padding: 25px;
+  margin: 250px 25px 5px 750px;
+}
+
+#login_head {
+  color: black;
+  text-align: center;
+  font-size: 50;
+  background-color: lightblue;
+}
+
+#login_row:hover {
+  background-color: white;
+}
+
+.text_login {
+  padding: 8px 55px 8px 55px;
+  margin: 5px 25px 5px 25px;
+}
+
+.login_btn {
+  background-color: red;
+  color: white;
+}
+
+
+#operator_table {
+  margin: -140px 0px 0px 0px;
+}
+
+#customer_table {
+  margin: -140px 0px 0px 0px;
+}
+
+#label_operator {
+  color: black;
+  padding: 10px 25px 10px 25px;
+}
+
+.txt_operator {
+  color: black;
+  padding: 3px 25px 5px 8px;
+}
+
+.txt_customer {
+  color: black;
+  padding: 3px 25px 5px 8px;
+}
+
+.txt_expense {
+  color: black;
+  padding: 8px 25px 8px 8px;
+}
+
+#expense_table {
+  color: black;
+  /*padding: -15px 25px 10px 25px; */
+  margin: -100px 0px 0px 0px;
 }
