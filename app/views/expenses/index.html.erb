@@ -1,20 +1,27 @@
-<%= link_to "Back", home_index_path, class: "link_back" %>
 
 <%= form_for(:expenditure, url: create_expense_expenses_path) do |f|%>
+  <table border="0">
+    <tr>
+      <div class="field">
+        <td> <%= f.label :expense_type, "Expenditure Type :" %><br></td>
+        <td> <%= f.text_field :expense_type, placeholder: "Enter Expense Type..." %></td>
+      </div>
+    </tr>
 
-  <div class="field">
-    <%= f.label :expense_type, "Expenditure Type :" %><br>
-    <%= f.text_field :expense_type %>
-  </div>
+    <tr>
+      <div class="field">
+        <td> <%= f.label :expense, "Expenditure :" %><br></td>
+        <td> <%= f.text_field :expense, placeholder: "Enter Amount..." %></td>
+      </div>
+    </tr>
 
-  <div class="field">
-    <%= f.label :expense, "Expenditure :" %><br>
-    <%= f.text_field :expense %>
-  </div>
-
-  <div class="field"> 
-    <%= f.submit "Submit" %>
-  </div><br><br>
+    <tr>
+      <div class="field">
+        <td> <%= f.submit "Submit" %></td>
+        <td> <%= link_to "Back", home_index_path, class: "link_back" %></td>
+      </div><br><br>
+    </tr>
+  </table>
 <% end -%>
 
 <table border="1">

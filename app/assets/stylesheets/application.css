@@ -21,7 +21,7 @@ body {
 }
 
 table {
-	border-spacing: 0;
+  border-spacing: 0;
   border: 1px solid #EBEBEB;
   background-color: transparent;
   border-collapse: collapse;
@@ -31,7 +31,7 @@ tr {
   width: 100%;
 }
 tr:hover {
-	background: #e6eeff;
+  background: #e6eeff;
 }
 
 thead tr{
@@ -65,6 +65,7 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: blue;
   color: white;
+
 }
 
 .input_field {
@@ -108,8 +109,8 @@ input[type=submit]:hover {
 }
 
 .link_create:hover {
-	color: white 	;
-	font-size: 20;
+  color: white;
+  font-size: 20;
   background: green;
 }
 .link_show {
@@ -120,8 +121,8 @@ input[type=submit]:hover {
 }
 
 .link_show:hover {
-	color: white 	;
-	font-size: 20;
+  color: white   ;
+  font-size: 20;
   background: blue;
 }
 .link_edit {
@@ -132,8 +133,8 @@ input[type=submit]:hover {
 }
 
 .link_edit:hover {
-	color: white 	;
-	font-size: 20;
+  color: white;
+  font-size: 20;
   background: orange;
 }
 .link_delete {
@@ -144,29 +145,29 @@ input[type=submit]:hover {
 }
 
 .link_delete:hover {
-	color: white 	;
-	font-size: 20;
-	background: red;
+  color: white;
+  font-size: 20;
+  background: red;
 }
 
 .link_exp {
-	padding: 8px;
-	text-decoration: none;
-	color: white;
-	background-color: green;
+  padding: 8px;
+  text-decoration: none;
+  color: white;
+  background-color: green;
 }
 .link_exp:hover {
   text-decoration: underline;
   color: black;
-	background: lightblue;
+  background: lightblue;
 }
 
 #header_name {
-	animation-timing-function: ease-out;
-	position: relative;
+  animation-timing-function: ease-out;
+  position: relative;
   color: lightcoral;
   margin: -10px 10px 0px 10px;
-	animation: mymove 5s;
+  animation: mymove 5s;
 }
 
 #link_logout {
@@ -184,4 +185,27 @@ input[type=submit]:hover {
 
 .field {
   padding: 10px;
+}
+
+#login_table {
+  background-color: lightblue;
+  padding: 5px 25px 25px 5px;
+  margin: 5px 25px 5px 25px;
+
+}
+
+#head_row {
+  color: black;
+  background-color: red;
+  padding: 8px;
+  height: 50;
+}
+
+#login_row:hover {
+  background-color: lightblue;
+}
+
+.text_login {
+  padding: 8px 55px 8px 55px;
+  margin: 5px 25px 5px 25px;
 }
