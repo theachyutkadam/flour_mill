@@ -34,12 +34,12 @@ tr:hover {
   background: #e6eeff;
 }
 
-thead tr{
-  background-color: gainsboro;
+thead tr:hover {
+  background-color: white;
 }
 
 td, th {
-  padding: 10px;
+  padding: 8px;
 }
 
 /*tr:nth-child(even){background-color: #ddd;}*/
@@ -68,14 +68,22 @@ input[type=submit]:hover {
 
 }
 
-.input_field {
+.dropdown {
+  background-color: white;
+  border: 5;
   height: 30px;
   width: 130px;
+}
+
+input[type=text]:focus, select:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
 }
 
 .input_field_weight {
   height: 25px;
   width: 130px;
+  padding: 1px 5px 0px 5px;
 }
 
 .link_back {
@@ -106,18 +114,6 @@ input[type=submit]:hover {
   color: black;
 }
 
-.link_create {
-  color: black;
-  background: #b3ffb3;
-  padding: 8px;
-  text-decoration: none;
-}
-
-.link_create:hover {
-  color: white;
-  font-size: 20;
-  background: green;
-}
 .link_show {
   color: black;
   background: lightblue;
@@ -193,27 +189,20 @@ input[type=submit]:hover {
 }
 
 #login_table {
-  background-color: lightblue;
+  background-color: white;
   padding: 25px;
   margin: 250px 25px 5px 750px;
 }
 
-#head_row {
-  color: black;
-  background-color: red;
-  padding: 25px 55px 8px 55px;
-  height: 50;
-}
 #login_head {
-  color: white;
+  color: black;
   text-align: center;
   font-size: 50;
-}
-#login_head {
   background-color: lightblue;
 }
+
 #login_row:hover {
-  background-color: lightblue;
+  background-color: white;
 }
 
 .text_login {
@@ -221,12 +210,18 @@ input[type=submit]:hover {
   margin: 5px 25px 5px 25px;
 }
 
+.login_btn {
+  background-color: red;
+  color: white;
+}
+
+
 #operator_table {
-  margin: -130px 0px 0px 0px;
+  margin: -140px 0px 0px 0px;
 }
 
 #customer_table {
-  margin: -130px 0px 0px 0px;
+  margin: -140px 0px 0px 0px;
 }
 
 #label_operator {
@@ -236,12 +231,12 @@ input[type=submit]:hover {
 
 .txt_operator {
   color: black;
-  padding: 8px 25px 8px 8px;
+  padding: 3px 25px 5px 8px;
 }
 
 .txt_customer {
   color: black;
-  padding: 8px 25px 8px 8px;
+  padding: 3px 25px 5px 8px;
 }
 
 .txt_expense {
