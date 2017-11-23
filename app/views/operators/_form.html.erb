@@ -11,53 +11,60 @@
     </div>
   <% end %>
 
-  <table border="0">
-    <div class="field">
-      <tr>
-        <td> <%= f.label :first_name %><br></td>
-        <td> <%= f.text_field :first_name, placeholder: "Enter First Name..." %></td>
-      </tr>
-    </div>
-    <div class="field">
-      <tr>
-        <td> <%= f.label :middle_name %><br></td>
-        <td> <%= f.text_field :middle_name, placeholder: "Enter Middle Name..." %></td>
-      </tr>
-    </div>
-    <div class="field">
-      <tr>
-        <td> <%= f.label :last_name %><br></td>
-        <td> <%= f.text_field :last_name, placeholder: "Enter Last Name...."%></td>
-      </tr>
-    </div>
-    <div class="field">
-      <tr>
-        <td> <%= f.label :mobile %><br></td>
-        <td> <%= f.text_field :mobile, placeholder: "Enter Mobile No..." %></td>
-      </tr>
-    </div>
+  <table border="-0" id="operator_table">
+    <tr>
       <div class="field">
-      <tr>
-        <td> <%= f.label :mail %><br></td>
-        <td> <%= f.text_field :mail, placeholder: "Enter Mail Id..." %></td>
-      </tr>
-    </div>
-    <div class="field">
-      <tr>
-        <td> <%= f.label :permanent_address %><br></td>
-        <td> <%= f.text_field :permanent_address, placeholder: "Enter Permanent Address..." %></td>
-      </tr>
-    </div>
-    <div class="field">
-      <tr>
-        <td> <%= f.label :salary %><br></td>
-        <td> <%= f.text_field :salary, placeholder: "Enter Salary..." %></td>
-      </tr>
-    </div>
-    <div class="actions">
-      <tr align="center">
-       <td colspan="2"> <%= f.submit %> </td>
-     </tr>
-    </div>
-  </tabl>
+        <td id="label_operator"><%= f.label :first_name %> : <br></td>
+        <td> <%= f.text_field :first_name, placeholder: "First Name Here..." , class: "txt_operator"%></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td id="label_operator"><%= f.label :middle_name %> : <br></td>
+        <td> <%= f.text_field :middle_name, placeholder: "Middle Name Here..." , class: "txt_operator"%></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td id="label_operator"><%= f.label :last_name %> : <br></td>
+        <td> <%= f.text_field :last_name, placeholder: "Last Name Here...", class: "txt_operator"%></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td id="label_operator"><%= f.label :mobile %> : <br></td>
+        <td> <%= f.text_field :mobile, placeholder: "Mobile No Here..." , class: "txt_operator"%></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td id="label_operator"><%= f.label :mail %> : <br></td>
+        <td> <%= f.text_field :mail, placeholder: "Mail Id Here..." , class: "txt_operator"%></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td id="label_operator"><%= f.label :permanent_address %> : <br></td>
+        <td> <%= f.text_field :permanent_address, placeholder: "Permanent Address Here..." , class: "txt_operator"%></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td id="label_operator"><%= f.label :salary %> : <br></td>
+        <td> <%= f.text_field :salary, placeholder: "Salary Here..." , class: "txt_operator"%></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="actions">
+        <td> <%= f.submit %></td>
+      </div>
+    </tr>
+  </table>
 <% end %>

@@ -11,47 +11,48 @@
     </div>
   <% end %>
 
-  <table>
-    <div class="field">
-      <tr>
-        <td> <%= f.label :first_name %> </td>
-        <td>: <%= f.text_field :first_name, placeholder: "  Enter First Name..." %> </td>
-      </tr>
-    </div>
-    <div class="field">
-      <tr>
-        <td> <%= f.label :middle_name %> </td>
-        <td>: <%= f.text_field :middle_name, placeholder: "  Enter Middle Name..." %> </td>
-      </tr>
-    </div>
-    <div class="field">
-      <tr>
-        <td> <%= f.label :last_name %> </td>
-        <td>: <%= f.text_field :last_name, placeholder: "  Enter Last Name..." %> </td>
-      </tr>
-    </div>
-    <div class="field">
-      <tr>
-        <td> <%= f.label :address %> </td>
-        <td>: <%= f.text_field :address, placeholder: "  Enter Address..." %> </td>
-      </tr>
-    </div>
-    <div class="field">
-      <tr>
-        <td> <%= f.label :mobile_num %> </td>
-        <td>: <%= f.text_field :mobile_num, placeholder: "  Enter Mobile No..." %> </td>
-      </tr>
-    </div>
-    <div class="field">
-      <tr>
-        <td> <%= f.label :mail %> </td>
-        <td>: <%= f.text_field :mail, placeholder: "  Enter Mail Id..." %> </td>
-      </tr>
-    </div>
-    <div class="actions">
-      <tr align="center">
-        <td colspan="2"> <%= f.submit %> </td>
-      </tr>
-    </div>
+  <table border="-0" id="customer_table">
+  <h1>New Customer</h1>
+    <tr>
+      <div class="field">
+        <td><%= f.label :first_name %> : <br></td>
+        <td><%= f.text_field :first_name, placeholder: "Your First Name Here...", class: "txt_customer" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :middle_name %> : <br></td>
+        <td><%= f.text_field :middle_name, placeholder: "Your Middle Name Here...", class: "txt_customer" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :last_name %> : <br></td>
+        <td><%= f.text_field :last_name, placeholder: "Your Last Name Here...", class: "txt_customer" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :address %> : <br></td>
+        <td><%= f.text_field :address, placeholder: "Your Address Here...", class: "txt_customer" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :mobile_num %> : <br></td>
+        <td><%= f.text_field :mobile_num, placeholder: "Your Mobile No Here...", class: "txt_customer" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :mail %> : <br></td>
+        <td><%= f.text_field :mail, placeholder: "Your Mail Id Here...", class: "txt_customer" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="actions">
+        <td><%= f.submit %></td>
+      </div>
+  </tr>
   </table>
 <% end %>
