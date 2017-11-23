@@ -10,7 +10,7 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :cust_id, value: @cust.id %>
+  <%= f.hidden_field :customer_id, value: @cust.id %>
   <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Grain"}, class: "dropdown" %>
   <%= f.text_field :weight, placeholder: "Weight", class: "input_field_weight" %>
   <%= f.select :operator_id, Operator.all.collect {|a| [a.first_name + " " + a.last_name, a.id]},{include_blank: "Select Operator" }, class: "dropdown" %>

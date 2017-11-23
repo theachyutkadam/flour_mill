@@ -1,29 +1,33 @@
-<h1><%= @products.first.operator.first_name %></h1>
-<table border="1">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Customer</th>
-      <th>Product Name</th>
-      <th>Weight</th>
-      <th>Price</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% sum = 0 %>
-    <% @products.each do |product| %>
+<% if @products.first.nil? %>
+  <h1> Product not available </h1>
+<% else %>
+  <h1><%= @products.first.operator.first_name %></h1>
+  <table border="1">
+    <thead>
       <tr>
-        <% sum = sum + product.weight%>
-        <td><%= product.created_at %></td>
-        <td><%= product.customer.first_name %></td>
-        <td><%= product.product_name %></td>
-        <td><%= product.weight %></td>
-        <td><%= product.price %></td>
+        <th>Date</th>
+        <th>Customer</th>
+        <th>Product Name</th>
+        <th>Weight</th>
+        <th>Price</th>
       </tr>
-    <% end %>
-    <th colspan="3">Total</th>
-    <th>Rs-<%= sum * 3 %></th>
-    <th><%= sum %>/kg</th>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% sum = 0 %>
+      <% @products.each do |product| %>
+        <tr>
+          <% sum = sum + product.weight%>
+          <td><%= product.created_at %></td>
+          <td><%= product.customer.first_name %></td>
+          <td><%= product.product_name %></td>
+          <td><%= product.weight %></td>
+          <td><%= product.price %></td>
+        </tr>
+      <% end %>
+      <th colspan="3">Total</th>
+      <th>Rs-<%= sum * 3 %></th>
+      <th><%= sum %>/kg</th>
+    </tbody>
+  </table>
+<% end %>
