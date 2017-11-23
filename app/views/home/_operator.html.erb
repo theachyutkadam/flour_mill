@@ -11,7 +11,7 @@
       <th>Address</th>
       <th>Mobile</th>
       <th>Mail</th>
-      <th colspan="3">Links</th>
+      <th colspan="2">Links</th>
     </tr>
   </thead>
 
@@ -27,7 +27,6 @@
         <td><%= customer.mail %></td>
         <td><%= link_to 'New Product', enter_operator_product_operators_path(cust_id: customer.id), class: "link_create" %></td>
         <td><%= link_to 'Details', show_operator_product_operators_path(cust_id: customer.id), class: "link_show" %></td>
-        <td><%= link_to 'Payment'%></td>
       </tr>
     <% end %>
   </tbody>

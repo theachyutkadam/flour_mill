@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
     @cust = Customer.find(params[:cust_id])
     @products = @cust.products
     @product = Product.new
-
+    # @payments = Payment.all
   end
 
   # GET /products/1/edit
@@ -30,6 +30,8 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @cust = Customer.find(params[:product][:cust_id])
+    @products = @cust.products
+    @payments = Payment.all
     @product = Product.new(product_params)
     @product.price = 3 * params[:product][:weight].to_i
     respond_to do |format|

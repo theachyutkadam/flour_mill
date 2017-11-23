@@ -17,7 +17,6 @@
 
 <p>
   <strong>Customer:</strong>
-  <%= @product.customer.first_name %>
 </p>
 
 <p>
@@ -25,5 +24,4 @@
   <%= @product.operator.first_name %>
 </p>
 
-<%= link_to 'Edit', edit_products_path(cust_id: @product.customer.id, id: @product.id) %>
-<%= link_to 'Back', products_path(cust_id: @product.customer.id) %>
+<%= link_to "Back", home_index_path, class: "link_back" %>
