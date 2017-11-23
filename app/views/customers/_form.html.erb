@@ -10,32 +10,48 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name, placeholder: "Your First Name Here..." %>
-  </div>
-  <div class="field">
-    <%= f.label :middle_name %><br>
-    <%= f.text_field :middle_name, placeholder: "Your Middle Name Here..." %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name, placeholder: "Your Last Name Here..." %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address, placeholder: "Your Address Here..." %>
-  </div>
-  <div class="field">
-    <%= f.label :mobile_num %><br>
-    <%= f.text_field :mobile_num, placeholder: "Your Mobile No Here..." %>
-  </div>
-  <div class="field">
-    <%= f.label :mail %><br>
-    <%= f.text_field :mail, placeholder: "Your Mail Id Here..." %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table border="-0" id="customer_table">
+  <h1>New Customer</h1>
+    <tr>
+      <div class="field">
+        <td><%= f.label :first_name %> : <br></td>
+        <td><%= f.text_field :first_name, placeholder: "Your First Name Here...", class: "txt_customer" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :middle_name %> : <br></td>
+        <td><%= f.text_field :middle_name, placeholder: "Your Middle Name Here...", class: "txt_customer" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :last_name %> : <br></td>
+        <td><%= f.text_field :last_name, placeholder: "Your Last Name Here...", class: "txt_customer" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :address %> : <br></td>
+        <td><%= f.text_field :address, placeholder: "Your Address Here...", class: "txt_customer" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :mobile_num %> : <br></td>
+        <td><%= f.text_field :mobile_num, placeholder: "Your Mobile No Here...", class: "txt_customer" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="field">
+        <td><%= f.label :mail %> : <br></td>
+        <td><%= f.text_field :mail, placeholder: "Your Mail Id Here...", class: "txt_customer" %></td>
+      </div>
+    </tr>
+    <tr>
+      <div class="actions">
+        <td><%= f.submit %></td>
+      </div>
+  </tr>
+  </table>
 <% end %>

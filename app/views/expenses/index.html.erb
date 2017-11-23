@@ -1,17 +1,17 @@
 
 <%= form_for(:expenditure, url: create_expense_expenses_path) do |f|%>
-  <table border="0">
+  <table border="0" id="expense_table">
     <tr>
       <div class="field">
         <td> <%= f.label :expense_type, "Expenditure Type :" %><br></td>
-        <td> <%= f.text_field :expense_type, placeholder: "Enter Expense Type..." %></td>
+        <td> <%= f.text_field :expense_type, placeholder: "Enter Expense Type...", class: "txt_expense" %></td>
       </div>
     </tr>
 
     <tr>
       <div class="field">
         <td> <%= f.label :expense, "Expenditure :" %><br></td>
-        <td> <%= f.text_field :expense, placeholder: "Enter Amount..." %></td>
+        <td> <%= f.text_field :expense, placeholder: "Enter Amount...", class: "txt_expense" %></td>
       </div>
     </tr>
 

@@ -12,7 +12,7 @@
 
   <%= f.hidden_field :cust_id, value: @cust.id %>
   <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Grain"}, class: "input_field" %>
-  <%= f.text_field :weight, placeholder: "Weight", class: "input_field" %>
+  <%= f.text_field :weight, placeholder: "Weight", class: "input_field_weight" %>
   <%= f.select :operator_id, Operator.all.collect {|a| [a.first_name + " " + a.last_name, a.id]},{include_blank: "Select Operator" }, class: "input_field" %>
   <%= f.submit :Save %>
   <%= link_to "Back", home_index_path, class: "link_back" %>
