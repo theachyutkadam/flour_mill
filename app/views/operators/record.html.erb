@@ -1,5 +1,7 @@
 <h1><%= @products.first.operator.first_name + " " + @products.first.operator.last_name %></h1>
-<table border="1">
+<%= link_to "Back", home_index_path, class: "link_back_record" %>
+<table border="1" id="operator_record_table">
+  <tr></tr>
   <thead>
     <tr>
       <th>Date</th>
