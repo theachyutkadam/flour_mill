@@ -13,22 +13,16 @@
     </div>
   <% end %>
 
-  <table border="0" id="expense_table">
-    <tr>
+  <table id="expense_table">
+    <tr id="expense_table_tr">
       <div class="field">
-        <td> <%= f.label :expense_type, "Expenditure Type :" %><br></td>
         <td> <%= f.text_field :expense_type, placeholder: "Enter Expense Type...", class: "txt_expense" %></td>
       </div>
-    </tr>
 
-    <tr>
       <div class="field">
-        <td> <%= f.label :expense, "Expenditure :" %><br></td>
         <td> <%= f.text_field :expense, placeholder: "Enter Amount...", class: "txt_expense" %></td>
       </div>
-    </tr>
 
-    <tr>
       <div class="field">
         <td> <%= f.submit "Submit" %></td>
         <td> <%= link_to "Back", home_index_path, class: "link_back" %></td>
@@ -37,7 +31,7 @@
   </table>
 <% end -%>
 
-<table>
+<table border="0">
   <tr>
     <th>Date</th>
     <th>Expense_type</th>
