@@ -26,6 +26,7 @@
       <th>Product name</th>
       <th>Price</th>
       <th>Weight</th>
+      <th>Edit</th>
     </tr>
   </thead>
 
@@ -39,6 +40,7 @@
         <td><%= product.product_name %></td>
         <td><%= product.price %></td>
         <td><%= product.weight %></td>
+        <td><%= link_to 'Edit', edit_products_path(id: product.id, customer_id: product.customer.id), class: "link_edit" %></td>
       </tr>
     <% end %>
     <th colspan="2">Total</th>

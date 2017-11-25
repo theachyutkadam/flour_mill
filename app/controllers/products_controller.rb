@@ -23,14 +23,14 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    @cust = Customer.find(params[:id])
+    @cust = Customer.find(params[:customer_id])
+    @products = @cust.products
   end
 
   # POST /products
   # POST /products.json
   def create
     @cust = Customer.find(params[:product][:customer_id])
-    puts "****************"
     @products = @cust.products
     @payments = Payment.all
     @product = Product.new(product_params)
@@ -53,7 +53,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       @product.price = 3 * params[:product][:weight].to_i
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to new_product_path(cust_id: @product.customer_id), notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
