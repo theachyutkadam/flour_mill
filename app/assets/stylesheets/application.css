@@ -256,7 +256,7 @@ input[type=text]:focus, select:focus {
 
 #operator_table {
   border: none;
-  margin: -210px 0px 0px 0px;
+  margin: -160px 0px 0px 0px;
 }
 
 #label_operator {
@@ -288,7 +288,7 @@ input[type=text]:focus, select:focus {
 
 #customer_table {
   border: none;
-  margin: -190px 0px 0px 0px;
+  margin: -140px 0px 0px 0px;
 }
 
 .txt_customer {
