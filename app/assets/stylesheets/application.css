@@ -20,7 +20,7 @@
 body {
 }
 
-table {
+table { 
   border-spacing: 0;
   border: 1px solid #EBEBEB;
   background-color: transparent;
@@ -71,8 +71,23 @@ input[type=submit]:hover {
 .dropdown {
   background-color: white;
   border: 5;
+  transition: .3s;
   height: 30px;
   width: 130px;
+  display: inline-block;
+}
+
+.dropdwon:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+select {
+  color: black;
+}
+
+select:hover {
+  color: red;
+  visibility: visible;
 }
 
 input[type=text]:focus, select:focus {
@@ -87,7 +102,7 @@ input[type=text]:focus, select:focus {
 }
 
 .link_back {
-  padding: 5px 15px 8px 15px;
+  padding: 8px 15px 8px 15px;
   margin: -20px 15px;
   text-decoration: none;
   color: black;
@@ -215,13 +230,15 @@ input[type=text]:focus, select:focus {
   color: white;
 }
 
-
+#operator_record_table {
+  margin: 10px 0px 0px 0px;
+}
 #operator_table {
-  margin: -140px 0px 0px 0px;
+  margin: -190px 0px 0px 0px;
 }
 
 #customer_table {
-  margin: -140px 0px 0px 0px;
+  margin: -160px 0px 0px 0px;
 }
 
 #label_operator {
@@ -232,6 +249,19 @@ input[type=text]:focus, select:focus {
 .txt_operator {
   color: black;
   padding: 3px 25px 5px 8px;
+}
+
+.link_back_record {
+  padding: 8px 15px 8px 15px;
+  margin: -10px 437px;
+  text-decoration: none;
+  color: black;
+  background: lightblue;
+}
+.link_back_record:hover {
+  color: white;
+  background-color: blue;
+  text-decoration: underline;
 }
 
 .txt_customer {
