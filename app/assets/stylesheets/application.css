@@ -114,18 +114,33 @@ input[type=text]:focus, select:focus {
   text-decoration: underline;
 }
 
-.link-blue {
+.link_create_customer {
+  /*margin: 50px 0px 0px 635px;*/
   border: none;
   color: white;
   text-decoration: none;
   font-size: 15px;
   padding: 8px 15px;
   cursor: pointer;
-  background: cornflowerblue;
+  background:   #98FB98;
 }
 
-.link-blue:hover {
-  background-color: #2196F3;
+.link_create_customer:hover {
+  background-color: mediumspringgreen;
+  color: black;
+}
+
+.link_create_operator {
+  border: none;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 8px 15px;
+  cursor: pointer;
+  background:   #98FB98;
+}
+.link_create_operator:hover {
+  background-color: mediumspringgreen;
   color: black;
 }
 
@@ -138,7 +153,7 @@ input[type=text]:focus, select:focus {
 
 .link_show:hover {
   color: white;
-  font-size: 20px;
+  /*font-size: 20px;*/
   background: blue;
 }
 .link_edit {
@@ -150,7 +165,7 @@ input[type=text]:focus, select:focus {
 
 .link_edit:hover {
   color: white;
-  font-size: 20;
+  /*font-size: 20;*/
   background: orange;
 }
 .link_delete {
@@ -162,7 +177,7 @@ input[type=text]:focus, select:focus {
 
 .link_delete:hover {
   color: white;
-  font-size: 20;
+  /*font-size: 20;*/
   background: red;
 }
 
@@ -241,7 +256,7 @@ input[type=text]:focus, select:focus {
 
 #operator_table {
   border: none;
-  margin: -210px 0px 0px 0px;
+  margin: -160px 0px 0px 0px;
 }
 
 #label_operator {
@@ -273,7 +288,7 @@ input[type=text]:focus, select:focus {
 
 #customer_table {
   border: none;
-  margin: -190px 0px 0px 0px;
+  margin: -140px 0px 0px 0px;
 }
 
 .txt_customer {
@@ -294,4 +309,12 @@ input[type=text]:focus, select:focus {
 }
 #expense_table_tr:hover {
   background-color: white;
+}
+
+#admin_customer_table {
+  margin: 0px 0px 0px 0px;
+}
+
+#admin_operator_table {
+  margin: -251px 0px 0px 780px;
 }
