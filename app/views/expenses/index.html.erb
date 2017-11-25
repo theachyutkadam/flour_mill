@@ -1,5 +1,18 @@
-
 <%= form_for(:expenditure, url: create_expense_expenses_path) do |f|%>
+  <h1>Expenses</h1>
+
+  <% if @exp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@exp.errors.count, "error") %> prohibited this expense from being saved:</h2>
+
+      <ul>
+      <% @exp.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <table border="0" id="expense_table">
     <tr>
       <div class="field">
@@ -24,7 +37,7 @@
   </table>
 <% end -%>
 
-<table border="1">
+<table>
   <tr>
     <th>Date</th>
     <th>Expense_type</th>
@@ -32,7 +45,7 @@
     <th colspan="2">Link</th>
   </tr>
   <% sum = 0 %>
-  <% @exp.each do |exp|%>
+  <% @expenses.each do |exp|%>
   <tr>
     <% sum = sum + exp.expence%>
     <td><%= exp.created_at.strftime("%d/%b/%Y") %></td>
@@ -42,9 +55,8 @@
     <td><%= link_to "Delete", destroy_exp_expense_path(id: exp.id), class: "link_delete" %></td>
   </tr>
   <% end -%>
-
   <th>Total
-    <th><%= @exp.count %></th>
+    <th><%= @expenses.count %></th>
     <th>Rs-<%= sum %></th>
-  </th>>
+  </th>
 </table>

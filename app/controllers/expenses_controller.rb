@@ -1,6 +1,7 @@
 class ExpensesController < ApplicationController
   def index
-    @exp = Expense.all
+    @expenses = Expense.all
+    @exp = Expense.new
   end
 
   def create_expense
@@ -9,8 +10,13 @@ class ExpensesController < ApplicationController
 
     @exp.expence_type = form[:expense_type]
     @exp.expence = form[:expense]
-    @exp.save
-    redirect_to expenses_path
+    if @exp.save
+      redirect_to expenses_path
+    else
+      @expenses = Expense.all
+      @exp.errors.messages
+      render :index
+    end
   end
 
   def edit_exp
