@@ -11,57 +11,36 @@
     </div>
   <% end %>
 
-  <table border="-0" id="operator_table">
-    <tr>
+  <table id="operator_table">
+    <tr id="operator_table_tr">
       <div class="field">
-        <td id="label_operator"><%= f.label :first_name %> : <br></td>
         <td> <%= f.text_field :first_name, placeholder: "First Name Here..." , class: "txt_operator"%></td>
       </div>
-    </tr>
 
-    <tr>
       <div class="field">
-        <td id="label_operator"><%= f.label :middle_name %> : <br></td>
         <td> <%= f.text_field :middle_name, placeholder: "Middle Name Here..." , class: "txt_operator"%></td>
       </div>
-    </tr>
 
-    <tr>
       <div class="field">
-        <td id="label_operator"><%= f.label :last_name %> : <br></td>
         <td> <%= f.text_field :last_name, placeholder: "Last Name Here...", class: "txt_operator"%></td>
       </div>
-    </tr>
 
-    <tr>
       <div class="field">
-        <td id="label_operator"><%= f.label :mobile %> : <br></td>
         <td> <%= f.text_field :mobile, placeholder: "Mobile No Here..." , class: "txt_operator"%></td>
       </div>
-    </tr>
 
-    <tr>
       <div class="field">
-        <td id="label_operator"><%= f.label :mail %> : <br></td>
         <td> <%= f.text_field :mail, placeholder: "Mail Id Here..." , class: "txt_operator"%></td>
       </div>
-    </tr>
 
-    <tr>
       <div class="field">
-        <td id="label_operator"><%= f.label :permanent_address %> : <br></td>
         <td> <%= f.text_field :permanent_address, placeholder: "Permanent Address Here..." , class: "txt_operator"%></td>
       </div>
-    </tr>
 
-    <tr>
       <div class="field">
-        <td id="label_operator"><%= f.label :salary %> : <br></td>
         <td> <%= f.text_field :salary, placeholder: "Salary Here..." , class: "txt_operator"%></td>
       </div>
-    </tr>
 
-    <tr>
       <div class="actions">
         <td> <%= f.submit %></td>
         <td> <%= link_to "Back", home_index_path, class: "link_back" %></td>

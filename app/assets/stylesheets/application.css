@@ -57,7 +57,7 @@ th {
 input[type=submit] {
   background-color: lightblue;
   border-radius: 4px;
-  padding: 5px 10px;
+  padding: 4px 10px 4px 10px;
   margin: 4px 0px;
   font-size: 15px;
   color: black;
@@ -101,7 +101,7 @@ input[type=text]:focus, select:focus {
 }
 
 .link_back {
-  padding: 8px 15px 8px 15px;
+  padding: 5px 15px 5px 15px;
   margin: -20px 15px;
   text-decoration: none;
   color: black;
@@ -232,8 +232,14 @@ input[type=text]:focus, select:focus {
 #operator_record_table {
   margin: 10px 0px 0px 0px;
 }
+
+#operator_table_tr:hover {
+  background-color: white
+}
+
 #operator_table {
-  margin: -190px 0px 0px 0px;
+  border: none;
+  margin: -210px 0px 0px 0px;
 }
 
 #customer_table {
