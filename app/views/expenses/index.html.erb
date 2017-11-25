@@ -31,13 +31,20 @@
     <th>Expense</th>
     <th colspan="2">Link</th>
   </tr>
+  <% sum = 0 %>
   <% @exp.each do |exp|%>
   <tr>
-    <td><%= exp.created_at %></td>
+    <% sum = sum + exp.expence%>
+    <td><%= exp.created_at.strftime("%d/%b/%Y") %></td>
     <td><%= exp.expence_type %></td>
     <td><%= exp.expence %></td>
-    <td><%= link_to "Edit", edit_exp_expense_path(id: exp.id) %></td>
-    <td><%= link_to "Delete", destroy_exp_expense_path(id: exp.id) %></td>
+    <td><%= link_to "Edit", edit_exp_expense_path(id: exp.id), class: "link_edit" %></td>
+    <td><%= link_to "Delete", destroy_exp_expense_path(id: exp.id), class: "link_delete" %></td>
   </tr>
   <% end -%>
+
+  <th>Total
+    <th><%= @exp.count %></th>
+    <th>Rs-<%= sum %></th>
+  </th>>
 </table>
