@@ -137,8 +137,8 @@ input[type=text]:focus, select:focus {
 }
 
 .link_show:hover {
-  color: white   ;
-  font-size: 20;
+  color: white;
+  font-size: 20px;
   background: blue;
 }
 .link_edit {
@@ -168,14 +168,15 @@ input[type=text]:focus, select:focus {
 
 .link_exp {
   padding: 8px;
+  color: black;
   text-decoration: none;
-  color: white;
-  background-color: green;
+  padding: 8px 15px;
+  background-color: lightblue;
 }
 .link_exp:hover {
-  text-decoration: underline;
-  color: black;
-  background: lightblue;
+  color: white;
+  background: blue;
+  /*text-decoration: underline;*/
 }
 
 #header_name {
@@ -243,15 +244,6 @@ input[type=text]:focus, select:focus {
   margin: -210px 0px 0px 0px;
 }
 
-#customer_table_tr:hover {
-  background-color: white;
-}
-
-#customer_table {
-  border: none;
-  margin: -190px 0px 0px 0px;
-}
-
 #label_operator {
   color: black;
   padding: 10px 25px 10px 25px;
@@ -275,6 +267,15 @@ input[type=text]:focus, select:focus {
   text-decoration: underline;
 }
 
+#customer_table_tr:hover {
+  background-color: white;
+}
+
+#customer_table {
+  border: none;
+  margin: -190px 0px 0px 0px;
+}
+
 .txt_customer {
   color: black;
   padding: 3px 25px 5px 8px;
@@ -287,6 +288,10 @@ input[type=text]:focus, select:focus {
 
 #expense_table {
   color: black;
+  border: none;
   /*padding: -15px 25px 10px 25px; */
-  margin: -100px 0px 0px 0px;
+  margin: -120px 0px 0px 0px;
+}
+#expense_table_tr:hover {
+  background-color: white;
 }
