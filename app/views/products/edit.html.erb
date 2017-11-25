@@ -1,6 +1,2 @@
-<h1>Editing Product</h1>
-
+<h2>Editing <%= @cust.first_name + " " + @cust.last_name %>'s Product</h2>
 <%= render 'form' %>
-
-<%= link_to 'Show', @product %>
-<%= link_to 'Back', products_path(cust_id: @product.customer.id) %>

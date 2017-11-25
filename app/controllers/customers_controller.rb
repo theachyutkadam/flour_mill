@@ -63,12 +63,12 @@ class CustomersController < ApplicationController
     if(params[:customer][:password] == "password")
     @customer.destroy
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
+      format.html { redirect_to home_index_path, notice: 'Customer was successfully destroyed.' }
       format.json { head :no_content }
     end
     else
       flash[:notice] = "Password is incorrect"
-      redirect_to customers_url
+      redirect_to home_index_path
     end
   end
 

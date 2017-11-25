@@ -81,16 +81,15 @@ input[type=submit]:hover {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-select {
-  color: black;
-}
-
-select:hover {
-  color: red;
-  visibility: visible;
-}
-
 input[type=text]:focus, select:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+.password {
+  padding: 5px;
+}
+.password:focus {
+  padding: 5px;
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   border: 1px solid rgba(81, 203, 238, 1);
 }

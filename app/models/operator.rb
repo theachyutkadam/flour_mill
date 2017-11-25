@@ -8,5 +8,5 @@ class Operator < ActiveRecord::Base
   validates :mobile, presence: true, length: { minimum: 10}
   validates :mail, presence: true
   validates :permanent_address, presence: true
-  validates :salary , presence: true
+  validates :salary, presence: true
 end
