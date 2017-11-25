@@ -1,18 +1,26 @@
 <%= form_for :edit_exp, url: update_exp_expense_path, method: :patch do |f|%>
-  <div class="field">
-    <%= f.hidden_field :id, value:@exp.id %>
-  </div>
-  <div class="field">
-    <%= f.label :expense_type, "Expenditure Type :" %><br>
-    <%= f.text_field :expense_type, value:@exp.expence_type %>
-  </div>
+  <%= f.hidden_field :id, value:@exp.id %>
 
-  <div class="field">
-    <%= f.label :expense, "Expenditure :" %><br>
-    <%= f.text_field :expense, value:@exp.expence %>
-  </div>
+  <table border="0" id="expense_table">
+    <tr>
+      <div class="field">
+        <td> <%= f.label :expense_type, "Expenditure Type :" %><br></td>
+        <td> <%= f.text_field :expense_type, value:@exp.expence_type, class: "txt_expense" %></td>
+      </div>
+    </tr>
 
-  <div class="field">	
-    <%= f.submit "Submit" %>
-  </div><br><br>
+    <tr>
+      <div class="field">
+        <td> <%= f.label :expense, "Expenditure :" %><br></td>
+        <td> <%= f.text_field :expense, value:@exp.expence, class: "txt_expense" %></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+        <td> <%= f.submit "Submit" %></td>
+        <td> <%= link_to "Back", expenses_index_path, class: "link_back" %></td>
+      </div><br><br>
+    </tr>
+  </table>
 <% end -%>
