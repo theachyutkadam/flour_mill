@@ -8,22 +8,24 @@ class OperatorsController < ApplicationController
   end
 
   def enter_operator_product
-    @enter_operator_product = Product.new
+    @product = Product.new
     @customer = Customer.find(params[:cust_id])
   end
 
   def create_product
-    product = Product.new
+    @product = Product.new
     product_params = params[:enter_operator_product]
-    product.operator_id = product_params[:operator_id]
-    product.customer_id = product_params[:customer_id]
-    product.weight = product_params[:weight]
-    product.product_name = product_params[:product_name]
-    product.price = 3 * product.weight
-    if product.save
-      redirect_to show_operator_product_operators_path(cust_id: product.customer_id)
+    @product.operator_id = product_params[:operator_id]
+    @product.customer_id = product_params[:customer_id]
+    @product.weight = product_params[:weight]
+    @product.product_name = product_params[:product_name]
+    @customer = Customer.find(product_params[:customer_id])
+    # @product.price = @product.weight * 3
+    if @product.save
+      redirect_to show_operator_product_operators_path(cust_id: @product.customer_id)
     else
-      redirect_to enter_operator_product_operators_path(cust_id: product.customer_id)
+      # redirect_to enter_operator_product_operators_path(cust_id: product.customer_id)
+      render :enter_operator_product
     end
   end
   # GET /operators/1
