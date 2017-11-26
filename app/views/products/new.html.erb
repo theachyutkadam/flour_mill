@@ -1,2 +1,2 @@
-<h2>Enter <%= @cust.first_name + " " + @cust.last_name %>'s New Product</h2>
+<h2>Enter <%= @cust.first_name.capitalize.to_s + " " + @cust.last_name.capitalize.to_s %>'s New Product</h2>
 <%= render 'form' %>

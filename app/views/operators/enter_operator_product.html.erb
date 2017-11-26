@@ -1,33 +1,34 @@
 <%= form_for(:enter_operator_product, url: create_product_operators_path) do |f| %>
-  <% if @enter_operator_product.errors.any? %>
+  
+  <% if @product.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@enter_operator_product.errors.count, "error") %> prohibited this enter_operator_product from being saved:</h2>
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
       <ul>
-      <% @enter_operator_product.errors.full_messages.each do |message| %>
+      <% @product.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <h2><%= current_user.operator.first_name + " " + current_user.operator.last_name%></h2>
-  <h3><%= @customer.first_name + " " + @customer.middle_name + " " + @customer.last_name %></h3>
+  <h3><%= @customer.first_name.capitalize.to_s + " " + @customer.last_name.capitalize.to_s %></h3>
 
   <%= f.hidden_field :customer_id, value: @customer.id %>
   <%= f.hidden_field :operator_id, value: current_user.operator.id %>
+  <table id="record_table">
+    <tr id="record_table_tr">
+      <div class="field">
+        <td> <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Gain"}, class: "dropdown" %></td>
+      </div>
 
-  <div class="field">
-    <%= f.label :product_name %>
-    <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]] %>
-  </div>
-  <div class="field">
-    <%= f.label :weight %>
-    <%= f.text_field :weight %>
-  </div>
-  <div class="field">
-    <%= f.label :price, "Rate Rs 3 per kg" %>
-  </div>
-   <div class="actions">
-    <%= f.submit %>
-  </div>
+      <div class="field">
+        <td> <%= f.text_field :weight, placeholder: "Enter weight" ,class: "input_field_weight" %></td>
+      </div>
+
+      <div class="actions">
+        <td> <%= f.submit :save%></td>
+        <td> <%= link_to "Back", home_index_path, class: "link_back" %></td>
+      </div>
+    </tr>
+  </table>  
 <% end %>

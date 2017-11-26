@@ -318,3 +318,12 @@ input[type=text]:focus, select:focus {
 #admin_operator_table {
   margin: -251px 0px 0px 780px;
 }
+
+#record_table {
+ color: black;
+  border: none;
+  margin: -60px 0px 0px 0px;
+}
+#record_table_tr:hover {
+  background-color: white;
+}
