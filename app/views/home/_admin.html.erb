@@ -21,7 +21,7 @@
         <td><%= customer.mail %></td>
         <td><%= link_to 'New Products', new_product_path(cust_id: customer.id), class: "link_show" %></td>
         <td><%= link_to 'Edit', edit_customer_path(customer), class: "link_edit" %></td>
-        <td><%= link_to 'Destroy', confirm_delete_customers_path(cust_id: customer.id), class: "link_delete" %></td>
+        <td><%= link_to 'Payment', new_payment_path(cust_id: customer.id), class: "link_delete" %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,6 +1,2 @@
-<h1>Editing Payment</h1>
-
 <%= render 'form' %>
-
-<%= link_to 'Show', @payment %> |
-<%= link_to 'Back', payments_path %>
+<%= link_to 'Back', new_payment_path(cust_id: @customer), class: "link_back" %>
