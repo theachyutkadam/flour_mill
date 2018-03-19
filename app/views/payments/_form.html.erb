@@ -15,6 +15,7 @@
     <%= f.hidden_field :customer_id, value:@customer.id %>
     <h2><%= @customer.first_name + " " + @customer.last_name%></h2>
   </div>
+  
   <div class="field">
     <%= f.text_field :payment %>
   </div>
@@ -29,7 +30,7 @@
       <th>Date</th>
       <th>Payment Type</th>
       <th>Payment In Rs.</th>
-      <th colspan="2"></th>
+      <th>Link</th>
     </tr>
   </thead>
 
@@ -37,6 +38,7 @@
     <%@payments.each do |payment| %>
       <tr>
         <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
+        <td><%= payment.payment_type %></td>
         <td><%= payment.payment %></td>
         <td><%= link_to 'Edit', edit_payment_path(payment, cust_id: payment.customer.id) %></td>
       </tr>

@@ -31,6 +31,7 @@ class PaymentsController < ApplicationController
   # POST /payments.json
   def create
     @payment = Payment.new(payment_params)
+    @payment.payment_type = params[:_form][:value]
     if @payment.save
       redirect_to new_payment_path(cust_id: @payment.customer.id)
     else
