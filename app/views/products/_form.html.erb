@@ -10,6 +10,9 @@
     </div>
   <% end %>
 
+  <%= f.radio_button(:payment_type, "Cash") %>Cash
+  <%= f.radio_button(:payment_type, "Borrow") %>Borrow
+
   <%= f.hidden_field :customer_id, value: @cust.id %>
   <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Grain"}, class: "dropdown" %>
   <%= f.text_field :weight, placeholder: "Weight", class: "input_field_weight" %>
@@ -26,6 +29,7 @@
       <th>Product name</th>
       <th>Price</th>
       <th>Weight</th>
+      <th>Payment_type</th>
       <th>Edit</th>
     </tr>
   </thead>
@@ -34,12 +38,13 @@
     <%sum = 0%>
     <% @products.each do |product| %>
       <tr>
-        <% sum = sum + product.weight%>
+        <% sum = sum + product.weight %>
         <td><%= product.created_at %></td>
         <td><%= product.operator.first_name%></td>
         <td><%= product.product_name %></td>
         <td><%= product.price %></td>
         <td><%= product.weight %></td>
+        <td><%= product.payment_type %></td>
         <td><%= link_to 'Edit', edit_products_path(id: product.id, customer_id: product.customer.id), class: "link_edit" %></td>
       </tr>
     <% end %>

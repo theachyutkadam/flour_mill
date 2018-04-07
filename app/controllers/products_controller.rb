@@ -36,6 +36,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     puts @product.inspect
     @product.price = 3 * params[:product][:weight].to_i
+    @product.payment_type = params[:product][:payment_type]
     respond_to do |format|
       if @product.save
         format.html { redirect_to new_product_path(cust_id: @cust.id), notice: 'Product was successfully created.' }
@@ -78,6 +79,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:product_name, :price, :weight, :customer_id, :operator_id)
+      params.require(:product).permit(:product_name, :price, :weight, :customer_id, :operator_id, :payment_type )
     end
 end

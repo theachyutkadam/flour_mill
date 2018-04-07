@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180318150653) do
+ActiveRecord::Schema.define(version: 20180407175007) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "first_name"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20180318150653) do
     t.integer  "operator_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "payment_type"
   end
 
   add_index "products", ["customer_id"], name: "index_products_on_customer_id"
