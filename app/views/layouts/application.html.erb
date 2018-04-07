@@ -1,26 +1,19 @@
 <!DOCTYPE html>
+
 <html>
-<head>
-  <title>Floor Mill</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div>
 
-    <div>
-      <h2>Vishwakarma Flour Mill</h2> 
-    </div>
+  <head>
+    <title>Floor Mill</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-    <div>
-      <% if user_signed_in? %>
-        <%= link_to("Logout", destroy_user_session_path, method: :delete)%>
-      <% end %>
-    </div>
-  </div>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
-</body>
+  <body>
+    <%= link_to("Logout", destroy_user_session_path, method: :delete) if user_signed_in? %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+
 </html>
