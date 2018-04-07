@@ -12,15 +12,36 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :customer_id %><br>
     <%= f.hidden_field :customer_id, value:@customer.id %>
     <h2><%= @customer.first_name + " " + @customer.last_name%></h2>
   </div>
+  
   <div class="field">
-    <%= f.label :payment %><br>
     <%= f.text_field :payment %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Payment Type</th>
+      <th>Payment In Rs.</th>
+      <th>Link</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%@payments.each do |payment| %>
+      <tr>
+        <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
+        <td><%= payment.payment_type %></td>
+        <td><%= payment.payment %></td>
+        <td><%= link_to 'Edit', edit_payment_path(payment, cust_id: payment.customer.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

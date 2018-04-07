@@ -4,7 +4,8 @@ class PaymentsController < ApplicationController
   # GET /payments
   # GET /payments.json
   def index
-    @payments = Payment.all
+    @customer = Customer.find(params[:cust_id])
+    @payments = @customer.payments
   end
 
   # GET /payments/1
@@ -15,40 +16,36 @@ class PaymentsController < ApplicationController
   # GET /payments/new
   def new
     @customer = Customer.find(params[:cust_id])
+    puts @customer.inspect
+    @payments = @customer.payments
     @payment = Payment.new
   end
 
   # GET /payments/1/edit
   def edit
+    @customer = Customer.find(params[:cust_id])
+    @payments = @customer.payments
   end
 
   # POST /payments
   # POST /payments.json
   def create
     @payment = Payment.new(payment_params)
-
-    respond_to do |format|
-      if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
-        format.json { render :show, status: :created, location: @payment }
-      else
-        format.html { render :new }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
-      end
+    @payment.payment_type = params[:_form][:value]
+    if @payment.save
+      redirect_to new_payment_path(cust_id: @payment.customer.id)
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /payments/1
   # PATCH/PUT /payments/1.json
   def update
-    respond_to do |format|
-      if @payment.update(payment_params)
-        format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @payment }
-      else
-        format.html { render :edit }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
-      end
+    if @payment.update(payment_params)
+      redirect_to new_payment_path(cust_id: @payment.customer.id)
+    else
+      render :edit
     end
   end
 
