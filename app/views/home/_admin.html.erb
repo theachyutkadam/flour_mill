@@ -1,54 +1,57 @@
-<table border="1">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Mobile</th>
-      <th>Address</th>
-      <th>Mail</th>
-      <th colspan="3"><%= link_to 'New Customer', new_customer_path %></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @customers.each do |customer| %>
+<div class="col-sm-6">
+  <table class="table table-hover"
+    <thead>
       <tr>
-        <td><%= customer.first_name + " " + customer.middle_name + " " + customer.last_name %></td>
-        <td><%= customer.mobile_num %></td>
-        <td><%= customer.address %></td>
-        <td><%= customer.mail %></td>
-        <td><%= link_to 'New Products', new_product_path(cust_id: customer.id) %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Payment', new_payment_path(cust_id: customer.id) %></td>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Address</th>
+        <th>Mail</th>
+        <th colspan="3"><%= link_to 'New Customer', new_customer_path %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<table border="1">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Mobile</th>
-      <th>Address</th>
-      <th>Mail</th>
-      <th>Salary</th>
-      <th colspan="3"><%= link_to 'New Operator', new_operator_path %></th>
-    </tr>
-  </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.first_name + " " + customer.middle_name + " " + customer.last_name %></td>
+          <td><%= customer.mobile_num %></td>
+          <td><%= customer.address %></td>
+          <td><%= customer.mail %></td>
+          <td><%= link_to 'New Products', new_product_path(cust_id: customer.id) %></td>
+          <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+          <td><%= link_to 'Payment', new_payment_path(cust_id: customer.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-  <tbody>
-    <% @operators.each do |operator| %>
+<div class="col-sm-6">
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= operator.first_name + " " + operator.middle_name + " " + operator.last_name %></td>
-        <td><%= operator.mobile %></td>
-        <td><%= operator.permanent_address %></td>
-        <td><%= operator.mail %></td>
-        <td><%= operator.salary %></td>
-        <td><%= link_to 'Records', record_operators_path(operator_id: operator.id) %></td>
-        <td><%= link_to 'Edit', edit_operator_path(operator) %></td>
-        <td><%= link_to 'Destroy', confirm_delete_operators_path(operator_id: operator.id) %></td>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Address</th>
+        <th>Mail</th>
+        <th>Salary</th>
+        <th colspan="3"><%= link_to 'New Operator', new_operator_path %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<br><br>
+    </thead>
+
+    <tbody>
+      <% @operators.each do |operator| %>
+        <tr>
+          <td><%= operator.first_name + " " + operator.middle_name + " " + operator.last_name %></td>
+          <td><%= operator.mobile %></td>
+          <td><%= operator.permanent_address %></td>
+          <td><%= operator.mail %></td>
+          <td><%= operator.salary %></td>
+          <td><%= link_to 'Records', record_operators_path(operator_id: operator.id) %></td>
+          <td><%= link_to 'Edit', edit_operator_path(operator) %></td>
+          <td><%= link_to 'Destroy', confirm_delete_operators_path(operator_id: operator.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
