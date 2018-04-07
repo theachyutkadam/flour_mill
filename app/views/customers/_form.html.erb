@@ -11,35 +11,35 @@
     </div>
   <% end %>
 
-  <table id="customer_table">
-    <tr id="customer_table_tr">
+  <table>
+    <tr>
       <div class="field">
-        <td><%= f.text_field :first_name, placeholder: "Enter First Name Here...", class: "txt_customer" %></td>
+        <td><%= f.text_field :first_name, placeholder: "Enter First Name Here..." %></td>
       </div>
 
       <div class="field">
-        <td><%= f.text_field :middle_name, placeholder: "Enter Middle Name Here...", class: "txt_customer" %></td>
+        <td><%= f.text_field :middle_name, placeholder: "Enter Middle Name Here..." %></td>
       </div>
 
       <div class="field">
-        <td><%= f.text_field :last_name, placeholder: "Enter Last Name Here...", class: "txt_customer" %></td>
+        <td><%= f.text_field :last_name, placeholder: "Enter Last Name Here..." %></td>
       </div>
 
       <div class="field">
-        <td><%= f.text_field :address, placeholder: "Enter Address Here...", class: "txt_customer" %></td>
+        <td><%= f.text_field :address, placeholder: "Enter Address Here..." %></td>
       </div>
 
       <div class="field">
-        <td><%= f.text_field :mobile_num, placeholder: "Enter Mobile No Here...", class: "txt_customer" %></td>
+        <td><%= f.text_field :mobile_num, placeholder: "Enter Mobile No Here..." %></td>
       </div>
 
       <div class="field">
-        <td><%= f.text_field :mail, placeholder: "Enter Mail Id Here...", class: "txt_customer" %></td>
+        <td><%= f.text_field :mail, placeholder: "Enter Mail Id Here..." %></td>
       </div>
 
       <div class="actions">
         <td><%= f.submit %></td>
-        <td> <%= link_to "Back", home_index_path, class: "link_back" %></td>
+        <td> <%= link_to "Back", home_index_path %></td>
       </div>
     </tr>
   </table>

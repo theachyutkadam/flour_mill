@@ -1,4 +1,4 @@
-<div class="form" style="border: 1px">
+<div class="form" >
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%= f.email_field :email, autofocus: true, placeholder: "Username" %></br></br>
       <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %></br></br>
@@ -10,22 +10,3 @@
     <%= f.submit "Log in" %>
   <% end %>
 </div>
-
-<style type="text/css">
-.form {
-  margin: 150px 0px 0px 600px;
-  border: 1px solid #ccc!important;
-  width: max-content;
-  padding: 50px;
-}
-input {
-  width: 200px;
-  height: 25px
-}
-
-input[type=submit] {
-  border-radius: 0px;
-  width: 100px;
-  background-color: deepskyblue;
-}
-</style>

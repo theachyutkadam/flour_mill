@@ -15,19 +15,19 @@
 
   <%= f.hidden_field :customer_id, value: @customer.id %>
   <%= f.hidden_field :operator_id, value: current_user.operator.id %>
-  <table id="record_table">
-    <tr id="record_table_tr">
+  <table>
+    <tr>
       <div class="field">
-        <td> <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Gain"}, class: "dropdown" %></td>
+        <td> <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Gain"} %></td>
       </div>
 
       <div class="field">
-        <td> <%= f.text_field :weight, placeholder: "Enter weight" ,class: "input_field_weight" %></td>
+        <td> <%= f.text_field :weight, placeholder: "Enter weight" %></td>
       </div>
 
       <div class="actions">
         <td> <%= f.submit :save%></td>
-        <td> <%= link_to "Back", home_index_path, class: "link_back" %></td>
+        <td> <%= link_to "Back", home_index_path %></td>
       </div>
     </tr>
   </table>  

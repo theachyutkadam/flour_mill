@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= link_to "Back", home_index_path, class: "link_back" %>
+<%= link_to "Back", home_index_path %>
 
 <table border="1">
   <thead>
@@ -21,7 +21,7 @@
         <td><%= product.product_name %></td>
         <td><%= product.weight %></td>
         <td><%= product.price %></td>
-        <td><%= link_to 'Edit', edit_products_path(cust_id: product.customer.id, id: product.customer.id), class: "link_edit" %></td>
+        <td><%= link_to 'Edit', edit_products_path(cust_id: product.customer.id, id: product.customer.id) %></td>
       </tr>
     <% end %>
     <th colspan="1">Total</th>

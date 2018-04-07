@@ -6,16 +6,16 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body style="margin: 0px;">
-  <div class="header" style="height: 60px; background-color:  #ebebe0;">
+<body>
+  <div>
 
-    <div id ="header_name" style="float: left">
+    <div>
       <h2>Vishwakarma Flour Mill</h2> 
     </div>
 
-    <div id = "link_logout" style="float:right">
+    <div>
       <% if user_signed_in? %>
-        <%= link_to("Logout", destroy_user_session_path, method: :delete, style: "font-size: large;color: blueviolet;")%>
+        <%= link_to("Logout", destroy_user_session_path, method: :delete)%>
       <% end %>
     </div>
   </div>

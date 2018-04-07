@@ -14,11 +14,11 @@
   <%= f.radio_button(:payment_type, "Borrow") %>Borrow
 
   <%= f.hidden_field :customer_id, value: @cust.id %>
-  <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Grain"}, class: "dropdown" %>
-  <%= f.text_field :weight, placeholder: "Weight", class: "input_field_weight" %>
-  <%= f.select :operator_id, Operator.all.collect {|a| [a.first_name + " " + a.last_name, a.id]},{include_blank: "Select Operator" }, class: "dropdown" %>
+  <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Grain"} %>
+  <%= f.text_field :weight, placeholder: "Weight" %>
+  <%= f.select :operator_id, Operator.all.collect {|a| [a.first_name + " " + a.last_name, a.id]},{include_blank: "Select Operator" } %>
   <%= f.submit :Save %>
-  <%= link_to "Back", home_index_path, class: "link_back" %>
+  <%= link_to "Back", home_index_path %>
 <% end %>
 
 <table border="1">
@@ -45,7 +45,7 @@
         <td><%= product.price %></td>
         <td><%= product.weight %></td>
         <td><%= product.payment_type %></td>
-        <td><%= link_to 'Edit', edit_products_path(id: product.id, customer_id: product.customer.id), class: "link_edit" %></td>
+        <td><%= link_to 'Edit', edit_products_path(id: product.id, customer_id: product.customer.id) %></td>
       </tr>
     <% end %>
     <th colspan="2">Total</th>

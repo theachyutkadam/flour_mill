@@ -13,19 +13,19 @@
     </div>
   <% end %>
 
-  <table id="expense_table">
-    <tr id="expense_table_tr">
+  <table>
+    <tr>
       <div class="field">
-        <td> <%= f.text_field :expense_type, placeholder: "Enter Expense Type...", class: "txt_expense" %></td>
+        <td> <%= f.text_field :expense_type, placeholder: "Enter Expense Type..." %></td>
       </div>
 
       <div class="field">
-        <td> <%= f.text_field :expense, placeholder: "Enter Amount...", class: "txt_expense" %></td>
+        <td> <%= f.text_field :expense, placeholder: "Enter Amount..." %></td>
       </div>
 
       <div class="field">
         <td> <%= f.submit "Submit" %></td>
-        <td> <%= link_to "Back", home_index_path, class: "link_back" %></td>
+        <td> <%= link_to "Back", home_index_path %></td>
       </div><br><br>
     </tr>
   </table>
@@ -45,8 +45,8 @@
     <td><%= exp.created_at.strftime("%d/%b/%Y") %></td>
     <td><%= exp.expence_type %></td>
     <td><%= exp.expence %></td>
-    <td><%= link_to "Edit", edit_exp_expense_path(id: exp.id), class: "link_edit" %></td>
-    <td><%= link_to "Delete", destroy_exp_expense_path(id: exp.id), class: "link_delete" %></td>
+    <td><%= link_to "Edit", edit_exp_expense_path(id: exp.id) %></td>
+    <td><%= link_to "Delete", destroy_exp_expense_path(id: exp.id) %></td>
   </tr>
   <% end -%>
   <th>Total

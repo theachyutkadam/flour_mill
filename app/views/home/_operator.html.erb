@@ -25,8 +25,8 @@
         <td><%= customer.address %></td>
         <td><%= customer.mobile_num %></td>
         <td><%= customer.mail %></td>
-        <td><%= link_to 'New Product', enter_operator_product_operators_path(cust_id: customer.id), class: "link_create" %></td>
-        <td><%= link_to 'Details', show_operator_product_operators_path(cust_id: customer.id), class: "link_show" %></td>
+        <td><%= link_to 'New Product', enter_operator_product_operators_path(cust_id: customer.id) %></td>
+        <td><%= link_to 'Details', show_operator_product_operators_path(cust_id: customer.id) %></td>
       </tr>
     <% end %>
   </tbody>
