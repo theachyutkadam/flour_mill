@@ -1,7 +1,7 @@
 <h1><%= @products.first.operator.first_name + " " + @products.first.operator.last_name %></h1>
-<%= link_to "Back", home_index_path %>
-<table border="1">
-  <tr></tr>
+<%= link_to "Back", home_index_path, class: "btn btn-info pull-right" %>
+<!-- <div class="col-md-6"><span >$42</span></div>/ -->
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Date</th>
@@ -17,7 +17,7 @@
     <% @products.each do |product| %>
       <tr>
         <% sum = sum + product.weight%>
-        <td><%= product.created_at %></td>
+        <td><%= product.created_at.strftime '%d/%B/%Y' %></td>
         <td><%= product.customer.first_name %></td>
         <td><%= product.product_name %></td>
         <td><%= product.price %></td>

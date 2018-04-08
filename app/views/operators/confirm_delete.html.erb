@@ -1,6 +1,6 @@
 <center>
   <%=form_for @operator, method: :delete do |f| %>
     <%= f.password_field :password, placeholder: "Password Here" %><br><br>
-    <%= f.submit "Submit"%>
+    <%= f.submit "Submit", class: "btn btn-primary btn-sm"%>
   <% end -%>
 </center>

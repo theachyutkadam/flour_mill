@@ -19,7 +19,7 @@
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
-        <td><%= customer.created_at %></td>
+        <td><%= customer.created_at.strftime '%d/%B/%Y' %></td>
         <td><%= customer.first_name %></td>
         <td><%= customer.middle_name %></td>
         <td><%= customer.last_name %></td>
