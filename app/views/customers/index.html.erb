@@ -1,5 +1,3 @@
-<%= render 'form' %>
-
 <table class="table table-bordered table-responsive">
   <thead>
     <tr>
@@ -12,7 +10,7 @@
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
-        <td><%= customer.first_name + " " + customer.last_name %></td>
+        <td><%= customer.first_name.capitalize + " " + customer.last_name.capitalize %></td>
         <td><%= customer.mobile_num %></td>
         <td><%= link_to '', new_product_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %></td>
         <td><%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>

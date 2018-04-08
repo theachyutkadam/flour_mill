@@ -1,0 +1,27 @@
+<%= render 'form' %>
+<table class="table table-bordered table-responsive">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Address</th>
+      <th>Salary</th>
+      <th>Email</th>
+      <th colspan="2">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @operators.each do |operator| %>
+      <tr>
+        <td><%= operator.first_name.capitalize + " " + operator.last_name.capitalize %></td>
+        <td><%= operator.mobile %></td>
+        <td><%= operator.permanent_address %></td>
+        <td><%= operator.salary %></td>
+        <td><%= operator.mail %></td>
+        <td><%= link_to '', record_operators_path(operator_id: operator.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %></td>
+        <td><%= link_to '', edit_operator_path(operator), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

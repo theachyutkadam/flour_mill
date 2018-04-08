@@ -11,40 +11,61 @@
     </div>
   <% end %>
 
-  <table>
-    <tr>
-      <div class="field">
-        <td> <%= f.text_field :first_name, placeholder: "First Name Here..." %></td>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="input-group-sm">
+          <td> <%= f.text_field :first_name, placeholder: "First Name", class: "form-control" %></td>
+        </div>
       </div>
 
-      <div class="field">
-        <td> <%= f.text_field :middle_name, placeholder: "Middle Name Here..." %></td>
+      <div class="col-sm-2">
+        <div class="input-group-sm">
+          <td> <%= f.text_field :middle_name, placeholder: "Middle Name", class: "form-control" %></td>
+        </div>
       </div>
 
-      <div class="field">
-        <td> <%= f.text_field :last_name, placeholder: "Last Name Here..."%></td>
+      <div class="col-sm-2">
+        <div class="input-group-sm">
+          <td> <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control"%></td>
+        </div>
       </div>
 
-      <div class="field">
-        <td> <%= f.text_field :mobile, placeholder: "Mobile No Here..." %></td>
+      <div class="col-sm-2">
+        <div class="input-group-sm">
+          <td> <%= f.text_field :mobile, placeholder: "Mobile No", class: "form-control" %></td>
+        </div>
       </div>
 
-      <div class="field">
-        <td> <%= f.text_field :mail, placeholder: "Mail Id Here..." %></td>
+
+      <div class="col-sm-4">
+        <div class="input-group-sm">
+          <td> <%= f.text_field :permanent_address, placeholder: "Permanent Address", class: "form-control" %></td>
+        </div>
       </div>
 
-      <div class="field">
-        <td> <%= f.text_field :permanent_address, placeholder: "Permanent Address Here..." %></td>
-      </div>
 
-      <div class="field">
-        <td> <%= f.text_field :salary, placeholder: "Salary Here..." %></td>
-      </div>
+    </div>
+  </div>
 
-      <div class="actions">
-        <td> <%= f.submit class:"btn btn-primary btn-sm" %></td>
-        <td> <%= link_to "Back", home_index_path, class: "btn btn-info btn-sm" %></td>
+  <div class="form-group">
+    <div class="row">
+
+      <div class="col-sm-4">
+        <div class="input-group-sm">
+          <td> <%= f.text_field :salary, placeholder: "Salary", class: "form-control" %></td>
+        </div>
       </div>
-    </tr>
-  </table>
+      <div class="col-sm-6">
+        <div class="input-group-sm">
+          <td> <%= f.text_field :mail, placeholder: "Email", class: "form-control" %></td>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="input-group-sm">
+          <%= f.submit class: "btn btn-sm btn-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
