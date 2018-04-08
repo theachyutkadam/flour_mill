@@ -24,9 +24,6 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <%= link_to("Logout", destroy_user_session_path, method: :delete) if user_signed_in? %>
-        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -35,6 +32,9 @@
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
           </ul>
+        </li>
+        <li>
+          <%= link_to("Logout", destroy_user_session_path, method: :delete) if user_signed_in? %>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->

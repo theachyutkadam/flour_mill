@@ -1,5 +1,5 @@
 <div class="col-sm-6">
-  <table class="table table-hover"
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>Name</th>
@@ -17,9 +17,9 @@
           <td><%= customer.mobile_num %></td>
           <td><%= customer.address %></td>
           <td><%= customer.mail %></td>
-          <td><%= link_to 'New Products', new_product_path(cust_id: customer.id) %></td>
-          <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-          <td><%= link_to 'Payment', new_payment_path(cust_id: customer.id) %></td>
+          <td><%= link_to 'New Products', new_product_path(cust_id: customer.id), class:"btn btn-primary btn-sm" %></td>
+          <td><%= link_to 'Edit', edit_customer_path(customer), class:"btn btn-warning btn-sm" %></td>
+          <td><%= link_to 'Payment', new_payment_path(cust_id: customer.id), class:"btn btn-success btn-sm" %></td>
         </tr>
       <% end %>
     </tbody>
@@ -47,9 +47,9 @@
           <td><%= operator.permanent_address %></td>
           <td><%= operator.mail %></td>
           <td><%= operator.salary %></td>
-          <td><%= link_to 'Records', record_operators_path(operator_id: operator.id) %></td>
-          <td><%= link_to 'Edit', edit_operator_path(operator) %></td>
-          <td><%= link_to 'Destroy', confirm_delete_operators_path(operator_id: operator.id) %></td>
+          <td><%= link_to 'Records', record_operators_path(operator_id: operator.id), class:"btn btn-info btn-sm" %></td>
+          <td><%= link_to 'Edit', edit_operator_path(operator), class:"btn btn-warning btn-sm" %></td>
+          <td><%= link_to 'Destroy', confirm_delete_operators_path(operator_id: operator.id), class:"btn btn-danger btn-sm" %></td>
         </tr>
       <% end %>
     </tbody>
