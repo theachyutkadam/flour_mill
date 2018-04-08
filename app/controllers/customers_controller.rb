@@ -4,6 +4,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
+    @customer = Customer.new
     @customers = Customer.all
   end
 
@@ -32,14 +33,12 @@ class CustomersController < ApplicationController
     user_id = User.last.id
     @customer = Customer.new(customer_params)
     @customer.user_id = user_id
-    respond_to do |format|
-      if @customer.save
-        format.html { redirect_to home_index_path, notice: 'Customer was successfully created.' }
-        format.json { render :show, status: :created, location: @customer }
-      else
-        format.html { render :new }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
+    @customers = Customer.all
+    if @customer.save
+      flash[:notice] = 'Customer was successfully created'
+      redirect_to customers_path
+    else
+      render :index
     end
   end
 
