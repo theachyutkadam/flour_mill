@@ -39,10 +39,9 @@
 
       <div class="col-sm-4">
         <div class="input-group-sm">
-          <td> <%= f.text_field :permanent_address, placeholder: "Permanent Address", class: "form-control" %></td>
+          <td> <%= f.text_field :salary, placeholder: "Salary", class: "form-control" %></td>
         </div>
       </div>
-
 
     </div>
   </div>
@@ -52,17 +51,24 @@
 
       <div class="col-sm-4">
         <div class="input-group-sm">
-          <td> <%= f.text_field :salary, placeholder: "Salary", class: "form-control" %></td>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="input-group-sm">
           <td> <%= f.text_field :mail, placeholder: "Email", class: "form-control" %></td>
         </div>
       </div>
-      <div class="col-sm-2">
+
+      <div class="col-sm-6">
+        <div class="input-group-sm">
+          <td> <%= f.text_field :permanent_address, placeholder: "Address", class: "form-control" %></td>
+        </div>
+      </div>
+
+      <div class="col-sm-1">
         <div class="input-group-sm">
           <%= f.submit class: "btn btn-sm btn-info" %>
+        </div>
+      </div>
+      <div class="col-sm-1">
+        <div class="input-group-sm">
+          <%= link_to "Back", home_index_path, class: "btn btn-info"%>
         </div>
       </div>
     </div>
