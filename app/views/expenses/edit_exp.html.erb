@@ -1,20 +1,31 @@
 <%= form_for :edit_exp, url: update_exp_expense_path, method: :patch do |f|%>
   <%= f.hidden_field :id, value:@exp.id %>
-  <h1>Edit Expenses</h1>
-  <table>
-    <tr>
-      <div class="field">
-        <td> <%= f.text_field :expense_type, value:@exp.expence_type %></td>
+  
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="input-group-sm">
+          <td> <%= f.text_field :expense_type, value:@exp.expence_type, class: "form-control" %></td>
+        </div>
       </div>
 
-      <div class="field">
-        <td> <%= f.text_field :expense, value:@exp.expence %></td>
+      <div class="col-sm-2">
+        <div class="input-group-sm">
+          <td> <%= f.text_field :expense, value:@exp.expence, class: "form-control" %></td>
+        </div>
       </div>
 
-      <div class="field">
-        <td> <%= f.submit "Submit" %></td>
-        <td> <%= link_to "Back", expenses_index_path %></td>
-      </div><br><br>
-    </tr>
-  </table>
+      <div class="col-sm-1">
+        <div class="input-group-sm">
+          <td> <%= f.submit "Update", class: "btn btn-primary" %></td>
+        </div>
+      </div>
+
+      <div class="col-sm-1">
+        <div class="input-group-sm">
+          <td> <%= link_to "Back", expenses_index_path, class: "btn btn-info" %></td>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end -%>
