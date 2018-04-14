@@ -8,7 +8,11 @@
   </head>
 
   <body>
-    <%= render "layouts/navbar" %>
+
+    <% if user_signed_in? %>
+      <%= render "layouts/navbar" %>
+    <% end %>
+
     <div class="col-sm-12">
       <% if flash[:notice] %>
         <div class="alert alert-success alert-dismissible fade in">
