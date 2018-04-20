@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-5"></div>
   <div class="col-sm-2">
-    <h3 align="center">Sign Up</h3>
+    <h3 style="font-family: Lobster, serif"; align="center">LOGIN</h3><br><br>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="input-group margT25"> 
         <span class="input-group-addon">
@@ -9,12 +9,10 @@
         </span> 
         <%= f.email_field :email, autofocus: true, placeholder: "Username", class: "form-control" %>
       </div><br><br>
-
       <div class="input-group margT25"> 
         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
         <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
       </div>
-
       <div class="text-center mt-4 mb-2">
         <div class="checkbox">
           <% if devise_mapping.rememberable? -%>
@@ -22,11 +20,9 @@
           <% end -%>
         </div>
       </div>
-
       <div class="text-center mt-4 mb-2">
-        <%= f.submit "Login", class: "btn btn-primary" %>
+        <%= f.submit "Sign up", class: "btn btn-primary" %>
       </div>
-
     <% end %>
   </div>
 </div>
