@@ -1,7 +1,7 @@
-<p id="notice"><%= notice %></p>
-<%= link_to "Back", home_index_path, class: "link_back" %>
+  <p id="notice"><%= notice %></p>
+<%= link_to "Back", home_index_path, class: "btn btn-info btn-sm" %>
 
-<table border="1">
+<table class="table table-bordered table-hover"">
   <thead>
     <tr>
       <th>Date</th>
@@ -21,7 +21,7 @@
         <td><%= product.product_name %></td>
         <td><%= product.weight %></td>
         <td><%= product.price %></td>
-        <td><%= link_to 'Edit', edit_products_path(cust_id: product.customer.id, id: product.customer.id), class: "link_edit" %></td>
+        <td><%= link_to 'Edit', edit_products_path(cust_id: product.customer.id, id: product.customer.id), class: "btn btn-warning btn-sm" %></td>
       </tr>
     <% end %>
     <th colspan="1">Total</th>

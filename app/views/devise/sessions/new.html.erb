@@ -1,31 +1,28 @@
-<div class="form" style="border: 1px">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= f.email_field :email, autofocus: true, placeholder: "Username" %></br></br>
-      <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %></br></br>
-
-    <% if devise_mapping.rememberable? -%>
-      Remember me <br>
-      <%= f.check_box :remember_me %></br></br>
-    <% end -%>
-    <%= f.submit "Log in" %>
-  <% end %>
+<div class="row">
+  <div class="col-sm-5"></div>
+  <div class="col-sm-2">
+    <h3 style="font-family: Lobster, serif"; align="center">LOGIN</h3><br><br>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="input-group margT25"> 
+        <span class="input-group-addon">
+          <i class="glyphicon glyphicon-user"></i>
+        </span> 
+        <%= f.email_field :email, autofocus: true, placeholder: "Username", class: "form-control" %>
+      </div><br><br>
+      <div class="input-group margT25"> 
+        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
+        <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
+      </div>
+      <div class="text-center mt-4 mb-2">
+        <div class="checkbox">
+          <% if devise_mapping.rememberable? -%>
+            <%= f.check_box :remember_me %> Remember Me
+          <% end -%>
+        </div>
+      </div>
+      <div class="text-center mt-4 mb-2">
+        <%= f.submit "Sign up", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<style type="text/css">
-.form {
-  margin: 150px 0px 0px 600px;
-  border: 1px solid #ccc!important;
-  width: max-content;
-  padding: 50px;
-}
-input {
-  width: 200px;
-  height: 25px
-}
-
-input[type=submit] {
-  border-radius: 0px;
-  width: 100px;
-  background-color: deepskyblue;
-}
-</style>

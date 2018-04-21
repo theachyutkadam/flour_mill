@@ -3,6 +3,11 @@ class OperatorsController < ApplicationController
 
   # GET /operators
   # GET /operators.json  
+  def index
+    @operator = Operator.new
+    @operators = Operator.all
+  end
+
   def show_operator_product
     @products = Product.where(customer_id: params[:cust_id], operator_id: current_user.operator.id)
   end

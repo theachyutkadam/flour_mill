@@ -1,7 +1,7 @@
 <%= form_for(@product) do |f| %>
   <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+    <div class="alert alert-danger fade in">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
       <ul>
       <% @product.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,47 +10,81 @@
     </div>
   <% end %>
 
-  <%= f.radio_button(:payment_type, "Cash") %>Cash
-  <%= f.radio_button(:payment_type, "Borrow") %>Borrow
-
   <%= f.hidden_field :customer_id, value: @cust.id %>
-  <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Grain"}, class: "dropdown" %>
-  <%= f.text_field :weight, placeholder: "Weight", class: "input_field_weight" %>
-  <%= f.select :operator_id, Operator.all.collect {|a| [a.first_name + " " + a.last_name, a.id]},{include_blank: "Select Operator" }, class: "dropdown" %>
-  <%= f.submit :Save %>
-  <%= link_to "Back", home_index_path, class: "link_back" %>
+  <div class="form_group">
+    <div class="row">
+      <div class="col-sm-1">
+        <%= f.radio_button(:payment_type, "Cash") %>Cash
+      </div>
+
+      <div class="col-sm-1">
+        <%= f.radio_button(:payment_type, "Borrow") %>Borrow
+      </div>
+
+      <div class="col-sm-2">
+        <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Grain"}, class: "form-control" %>
+      </div>
+
+      <div class="col-sm-2">
+        <div class="input-group-sm">
+          <%= f.text_field :weight, placeholder: "Weight", class: "form-control"%>
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+        <%= f.select :operator_id, Operator.all.collect {|a| [a.  first_name + " " + a.last_name, a.id]},{include_blank: "Select Operator" }, class: "form-control" %>
+      </div>
+
+      <div class="col-sm-1">
+        <div class="input-group-sm">
+          <%= f.submit :Save, class:"btn btn-primary" %>
+
+        </div>
+      </div>
+
+      <div class="col-sm-1">
+        <div class="input-group-sm">
+          <%= link_to "Back", home_index_path, class: "btn btn-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
 
-<table border="1">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Operator</th>
-      <th>Product name</th>
-      <th>Price</th>
-      <th>Weight</th>
-      <th>Payment_type</th>
-      <th>Edit</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <%sum = 0%>
-    <% @products.each do |product| %>
+
+<div class="col-sm-6"><br>
+  <table class="table table-bordered table-hover">
+    <thead>
       <tr>
-        <% sum = sum + product.weight %>
-        <td><%= product.created_at %></td>
-        <td><%= product.operator.first_name%></td>
-        <td><%= product.product_name %></td>
-        <td><%= product.price %></td>
-        <td><%= product.weight %></td>
-        <td><%= product.payment_type %></td>
-        <td><%= link_to 'Edit', edit_products_path(id: product.id, customer_id: product.customer.id), class: "link_edit" %></td>
+        <th>Date</th>
+        <th>Operator</th>
+        <th>Product name</th>
+        <th>Price</th>
+        <th>Weight</th>
+        <th>Payment_type</th>
+        <th>Edit</th>
       </tr>
-    <% end %>
-    <th colspan="2">Total</th>
-    <th><%= @products.count %></th>
-    <th>Rs-<%= sum * 3 %></th>
-    <th><%= sum %>/kg</th>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <%sum = 0%>
+      <% @products.each do |product| %>
+        <tr>
+          <% sum = sum + product.weight %>
+          <td><%= product.created_at.strftime '%d/%B/%Y'%></td>
+          <td><%= product.operator.first_name%></td>
+          <td><%= product.product_name %></td>
+          <td><%= product.price %></td>
+          <td><%= product.weight %></td>
+          <td><%= product.payment_type %></td>
+          <td><%= link_to '', edit_products_path(id: product.id, customer_id: product.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+        </tr>
+      <% end %>
+      <th colspan="2">Total</th>
+      <th><%= @products.count %></th>
+      <th>Rs-<%= sum * 3 %></th>
+      <th><%= sum %>/kg</th>
+    </tbody>
+  </table>
+</div>

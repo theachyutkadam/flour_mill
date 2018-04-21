@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Erp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body style="margin: 0px;">
-  <div class="header" style="height: 60px; background-color:  #ebebe0;">
+  <head>
+    <title>Floor Mill</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-    <div id ="header_name" style="float: left">
-      <h2>Vishwakarma Flour Mill</h2> 
-    </div>
+  <body>
 
-    <div id = "link_logout" style="float:right">
-      <% if user_signed_in? %>
-        <%= link_to("Logout", destroy_user_session_path, method: :delete, style: "font-size: large;color: blueviolet;")%>
-      <% end %>
+    <% if user_signed_in? %>
+      <%= render "layouts/navbar" %>
+    <% end %>
+    <div class="col-sm-12">
+      <% if flash[:notice] %>
+        <div class="alert alert-success alert-dismissible fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success!</strong>
+          <%= flash[:notice] %>
+        </div>
+      <% elsif flash[:alert] %>
+        <div class="alert alert-danger alert-dismissible fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Danger!</strong>
+          <%= flash[:alert] %>
+        </div>
+      <% elsif false %>
+        <div class="alert alert-info alert-dismissible fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Info!</strong> This alert box could indicate a neutral informative change or action.
+        </div>
+        <div class="alert alert-warning alert-dismissible fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
+        </div>
+      <%end%>
+      <%= yield %>
     </div>
-  </div>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
-</body>
+    <footer class="py-5">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Vishwkarma Flour Mill 2018</p>
+      </div>
+    </footer>
+  </body>
+
 </html>
