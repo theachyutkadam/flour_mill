@@ -1,8 +1,7 @@
 <%= form_for(:enter_operator_product, url: create_product_operators_path) do |f| %>
-  
   <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+    <div class="alert alert-danger fade in">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
       <ul>
       <% @product.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -15,20 +14,36 @@
 
   <%= f.hidden_field :customer_id, value: @customer.id %>
   <%= f.hidden_field :operator_id, value: current_user.operator.id %>
-  <table>
-    <tr>
-      <div class="field">
-        <td> <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Gain"} %></td>
+  <div class="form_group">
+    <div class="row">
+      <div class="col-sm-1">
+        <%= f.radio_button(:payment_type, "Cash") %>Cash
       </div>
 
-      <div class="field">
-        <td> <%= f.text_field :weight, placeholder: "Enter weight" %></td>
+      <div class="col-sm-1">
+        <%= f.radio_button(:payment_type, "Borrow") %>Borrow
       </div>
 
-      <div class="actions">
-        <td> <%= f.submit :save%></td>
-        <td> <%= link_to "Back", home_index_path %></td>
+      <div class="col-sm-2">
+        <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Gain"}, class: "form-control" %>
       </div>
-    </tr>
-  </table>  
+
+      <div class="col-sm-2">
+        <%= f.text_field :weight, placeholder: "Enter weight in Kg", class: "form-control" %>
+      </div>
+
+      <div class="col-sm-1">
+        <div class="input-group-sm">
+          <%= f.submit :Save, class:"btn btn-primary" %>
+
+        </div>
+      </div>
+
+      <div class="col-sm-1">
+        <div class="input-group-sm">
+          <%= link_to "Back", home_index_path, class: "btn btn-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
