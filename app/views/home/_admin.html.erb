@@ -4,7 +4,8 @@
       <tr>
         <th>Name</th>
         <th>Mobile</th>
-        <th colspan="3"><%= link_to 'New Customer', new_customer_path, class: "btn btn-xs btn-info" %></th>
+        <th>Total Price</th>
+        <th colspan="1"><%= link_to 'New Customer', new_customer_path, class: "btn btn-xs btn-info" %></th>
       </tr>
     </thead>
 
@@ -13,9 +14,12 @@
         <tr>
           <td><%= customer.first_name + " " + customer.last_name %></td>
           <td><%= customer.mobile_num %></td>
-          <td><%= link_to '', new_product_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %></td>
-          <td><%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
-          <td><%= link_to '', new_payment_path(cust_id: customer.id), class:"btn btn-xs btn-warning glyphicon glyphicon-euro" %></td>
+          <td><%= customer.products.sum(:price).to_f %></td>
+          <td>
+            <%= link_to '', new_product_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
+            <%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %>
+            <%= link_to '', new_payment_path(cust_id: customer.id), class:"btn btn-xs btn-warning glyphicon glyphicon-euro" %>
+          </td>
         </tr>
       <% end %>
     </tbody>
