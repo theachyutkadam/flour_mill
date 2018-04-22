@@ -34,9 +34,12 @@ class ProductsController < ApplicationController
     @products = @cust.products
     @payments = Payment.all
     @product = Product.new(product_params)
-    puts @product.inspect
-    @product.price = 3 * params[:product][:weight].to_i
+    # puts @product.inspect
+    # @product.price = 3 * params[:product][:weight].to_i
+    @product.weight = params[:product][:price].to_i/3
     @product.payment_type = params[:product][:payment_type]
+    puts @product.weight
+    puts "****************************"
     respond_to do |format|
       if @product.save
         format.html { redirect_to new_product_path(cust_id: @cust.id), notice: 'Product was successfully created.' }
@@ -52,7 +55,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
-      @product.price = 3 * params[:product][:weight].to_i
+      @product.weight = 3/params[:product][:price].to_i
       if @product.update(product_params)
         format.html { redirect_to new_product_path(cust_id: @product.customer_id), notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
