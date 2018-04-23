@@ -1,8 +1,7 @@
 <%= form_for(@payment) do |f| %>
   <% if @payment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
-
+     <div class="alert alert-danger fade in">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
       <ul>
       <% @payment.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,37 +9,68 @@
       </ul>
     </div>
   <% end %>
-  <h2><%= @customer.products.sum(:price).to_f %></h2>
-
-  <div class="field">
-    <%= f.hidden_field :customer_id, value:@customer.id %>
-    <h2><%= @customer.first_name + " " + @customer.last_name%></h2>
-  </div>
+  <h2><%= @customer.first_name.capitalize + " " + @customer.last_name.capitalize%> Total Rs.
+  <%= @customer.products.sum(:price).to_f %></h2>
+  <%= f.hidden_field :customer_id, value:@customer.id %>
   
-  <div class="field">
-    <%= f.text_field :payment %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <div class="form_group">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="input-group-sm">
+          <%= f.text_field :payment_ammount, placeholder: "Enter Ammount", class: "form-control" %>
+        </div>
+      </div>
 
-<table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Payment In Rs.</th>
-      <th>Link</th>
-    </tr>
-  </thead>
+      <div class="col-sm-2">
+        <div class="input-group-sm">
+          <%= f.text_field :receiver, placeholder: "Receiver Name", class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="input-group-sm">
+          <%= f.text_field :giver, placeholder: "Giver Name", class: "form-control" %>
+        </div>
+      </div>
+    </div><br>
 
-  <tbody>
-    <%@payments.each do |payment| %>
+    <div class="row">
+      <div class="col-sm-1">
+        <div class="input-group-sm">
+          <%= f.submit :Save, class:"btn btn-primary" %>
+        </div>
+      </div>
+
+      <div class="col-sm-1">
+        <div class="input-group-sm">
+          <%= link_to "Back", home_index_path, class: "btn btn-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %><br>
+
+<div class="col-sm-6">
+  <table class="table table-bordered table-hover">
+    <thead>
       <tr>
-        <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
-        <td><%= payment.payment %></td>
-        <td><%= link_to 'Edit', edit_payment_path(payment, cust_id: payment.customer.id) %></td>
+        <th>Date</th>
+        <th>Payment In Rs.</th>
+        <th>Receiver</th>
+        <th>Giver</th>
+        <th>Link</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <%@payments.each do |payment| %>
+        <tr>
+          <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
+          <td><%= payment.payment_ammount %></td>
+          <td><%= payment.receiver %></td>
+          <td><%= payment.giver %></td>
+          <td><%= link_to '', edit_payment_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

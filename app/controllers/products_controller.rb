@@ -37,9 +37,7 @@ class ProductsController < ApplicationController
     # puts @product.inspect
     # @product.price = 3 * params[:product][:weight].to_i
     @product.weight = params[:product][:price].to_i/3
-    @product.payment_type = params[:product][:payment_type]
-    puts @product.weight
-    puts "****************************"
+    # @product.payment_type = params[:product][:payment_type]
     respond_to do |format|
       if @product.save
         format.html { redirect_to new_product_path(cust_id: @cust.id), notice: 'Product was successfully created.' }

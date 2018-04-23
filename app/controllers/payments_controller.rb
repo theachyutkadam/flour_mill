@@ -31,7 +31,7 @@ class PaymentsController < ApplicationController
   # POST /payments.json
   def create
     @payment = Payment.new(payment_params)
-    # puts @payment.inspect
+    @payment.payment_ammount = params[:payment][:payment_ammount].to_i
     if @payment.save
       redirect_to new_payment_path(cust_id: @payment.customer.id)
     else
@@ -67,6 +67,6 @@ class PaymentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def payment_params
-      params.require(:payment).permit(:customer_id, :payment)
+      params.require(:payment).permit(:customer_id, :payment_ammount, :receiver, :giver)
     end
 end
