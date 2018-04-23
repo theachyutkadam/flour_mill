@@ -45,9 +45,11 @@
           <td><%= operator.first_name.capitalize + " " + operator.last_name.capitalize %></td>
           <td><%= operator.mobile %></td>
           <td><%= operator.permanent_address.capitalize %></td>
-          <td><%= link_to '', record_operators_path(operator_id: operator.id), class:"btn btn-info btn-xs glyphicon glyphicon-th-list" %></td>
-          <td><%= link_to '', edit_operator_path(operator), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
-          <td><%= link_to '', confirm_delete_operators_path(operator_id: operator.id), class:"btn btn-danger btn-xs glyphicon glyphicon-trash" %></td>
+          <td>
+            <%= link_to '', record_operators_path(operator_id: operator.id), class:"btn btn-info btn-xs glyphicon glyphicon-th-list" %>
+            <%= link_to '', edit_operator_path(operator), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %>
+            <%= link_to '', confirm_delete_operators_path(operator_id: operator.id), class:"btn btn-danger btn-xs glyphicon glyphicon-trash" %>
+          </td>
         </tr>
       <% end %>
     </tbody>
