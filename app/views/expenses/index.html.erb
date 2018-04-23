@@ -52,7 +52,7 @@
         <tr>
           <% sum = sum + exp.expence%>
           <td><%= exp.created_at.strftime("%d/%b/%Y") %></td>
-          <td><%= exp.expence_type %></td>
+          <td><%= exp.expence_type.capitalize %></td>
           <td><%= exp.expence %></td>
           <td><%= link_to "", edit_exp_expense_path(id: exp.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
           <td><%= link_to "", destroy_exp_expense_path(id: exp.id), class:"btn btn-danger btn-xs glyphicon glyphicon-trash" %></td>

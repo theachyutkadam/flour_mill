@@ -15,7 +15,7 @@
       <tr>
         <td><%= customer.first_name.capitalize + " " + customer.last_name.capitalize %></td>
         <td><%= customer.mobile_num %></td>
-        <td><%= customer.address %></td>
+        <td><%= customer.address.capitalize %></td>
         <td><%= customer.mail %></td>
 
         <td><%= link_to '', new_product_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %></td>

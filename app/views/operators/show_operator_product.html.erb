@@ -10,14 +10,14 @@
         <th colspan="2">Links</th>
       </tr>
     </thead>
-    <h2><%= current_user.operator.first_name%></h2>
+    <h2><%= current_user.operator.first_name.capitalize+ " " +current_user.operator.last_name.capitalize%></h2>
     <tbody>
       <%sum = 0%>
       <% @products.each do |product| %>
         <tr>
           <% sum = sum + product.weight%>
           <td><%= product.created_at %></td>
-          <td><%= product.product_name %></td>
+          <td><%= product.product_name.capitalize %></td>
           <td><%= product.weight %></td>
           <td><%= product.price %></td>
           <td><%= link_to 'Edit', edit_products_path(cust_id: product.customer.id, id: product.customer.id), class: "btn btn-warning btn-sm" %></td>

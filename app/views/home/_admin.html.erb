@@ -4,6 +4,7 @@
       <tr>
         <th>Name</th>
         <th>Mobile</th>
+        <th>Address</th>
         <th>Total Price</th>
         <th colspan="1"><%= link_to 'New Customer', new_customer_path, class: "btn btn-xs btn-info" %></th>
       </tr>
@@ -12,8 +13,9 @@
     <tbody>
       <% @customers.each do |customer| %>
         <tr>
-          <td><%= customer.first_name + " " + customer.last_name %></td>
+          <td><%= customer.first_name.capitalize + " " + customer.last_name.capitalize %></td>
           <td><%= customer.mobile_num %></td>
+          <td><%= customer.address %></td>
           <td><%= customer.products.sum(:price).to_f %></td>
           <td>
             <%= link_to '', new_product_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
@@ -40,9 +42,9 @@
     <tbody>
       <% @operators.each do |operator| %>
         <tr>
-          <td><%= operator.first_name + " " + operator.last_name %></td>
+          <td><%= operator.first_name.capitalize + " " + operator.last_name.capitalize %></td>
           <td><%= operator.mobile %></td>
-          <td><%= operator.permanent_address %></td>
+          <td><%= operator.permanent_address.capitalize %></td>
           <td><%= link_to '', record_operators_path(operator_id: operator.id), class:"btn btn-info btn-xs glyphicon glyphicon-th-list" %></td>
           <td><%= link_to '', edit_operator_path(operator), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
           <td><%= link_to '', confirm_delete_operators_path(operator_id: operator.id), class:"btn btn-danger btn-xs glyphicon glyphicon-trash" %></td>

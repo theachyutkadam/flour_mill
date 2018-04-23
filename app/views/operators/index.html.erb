@@ -16,7 +16,7 @@
       <tr>
         <td><%= operator.first_name.capitalize + " " + operator.last_name.capitalize %></td>
         <td><%= operator.mobile %></td>
-        <td><%= operator.permanent_address %></td>
+        <td><%= operator.permanent_address.capitalize %></td>
         <td><%= operator.salary %></td>
         <td><%= operator.mail %></td>
         <td><%= link_to '', record_operators_path(operator_id: operator.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %></td>

@@ -1,13 +1,11 @@
 
-<h1>Listing Customers on <%= current_user.operator.first_name + " " + current_user.operator.last_name%> login</h1>
+<h1>Listing Customers on<%= current_user.operator.first_name.capitalize + " " + current_user.operator.last_name.capitalize%> login</h1>
 
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>Date</th>
-      <th>First name</th>
-      <th>Middle name</th>
-      <th>Last name</th>
+      <th>Name</th>
       <th>Address</th>
       <th>Mobile</th>
       <th>Mail</th>
@@ -19,10 +17,8 @@
     <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.created_at.strftime '%d/%B/%Y' %></td>
-        <td><%= customer.first_name %></td>
-        <td><%= customer.middle_name %></td>
-        <td><%= customer.last_name %></td>
-        <td><%= customer.address %></td>
+        <td><%= customer.first_name.capitalize+ " " +customer.middle_name.capitalize+ " " +customer.last_name.capitalize %></td>
+        <td><%= customer.address.capitalize %></td>
         <td><%= customer.mobile_num %></td>
         <td><%= customer.mail %></td>
         <td><%= link_to '', enter_operator_product_operators_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %></td>
