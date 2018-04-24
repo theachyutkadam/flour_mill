@@ -100,11 +100,11 @@
     </thead>
 
     <tbody>
-        <tr>
-          <td><%= @products.where(payment_type: 'Cash').count %></td>
-          <td><%= @products.where(payment_type: 'Borrow').count %></td>
-          <td><%= 25 %></td>
-        </tr>
+      <tr>
+        <td><%= @products.where(payment_type: 'Cash').count %></td>
+        <td><%= @products.where(payment_type: 'Borrow').count %></td>
+        <td><%= 25 %></td>
+      </tr>
     </tbody>
   </table>
 </div>
