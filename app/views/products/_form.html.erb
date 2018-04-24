@@ -88,3 +88,23 @@
     </tbody>
   </table>
 </div>
+
+<div class="col-sm-6"><br>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Cash</th>
+        <th>Borrow</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+          <td><%= @products.where(payment_type: 'Cash').count %></td>
+          <td><%= @products.where(payment_type: 'Borrow').count %></td>
+          <td><%= 25 %></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
