@@ -93,17 +93,20 @@
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
-        <th>Cash</th>
-        <th>Borrow</th>
+        <th colspan="2">Cash</th>
+        <th colspan="2">Borrow</th>
         <th>Total</th>
       </tr>
     </thead>
 
     <tbody>
+      <%total = 0%>
       <tr>
-        <td><%= @products.where(payment_type: 'Cash').count %></td>
-        <td><%= @products.where(payment_type: 'Borrow').count %></td>
-        <td><%= 25 %></td>
+        <td>Quntity-<%= cash = @products.where(payment_type: 'Cash').count %></td>
+        <td>Rs-<%= total %></td>
+        <td>Quntity-<%= borrow = @products.where(payment_type: 'Borrow').count %></td>
+        <td>Rs-<%= total %></td>
+        <td><%= cash + borrow %></td>
       </tr>
     </tbody>
   </table>
