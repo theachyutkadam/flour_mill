@@ -95,18 +95,19 @@
       <tr>
         <th colspan="2">Cash</th>
         <th colspan="2">Borrow</th>
-        <th>Total</th>
+        <th colspan="2">Total</th>
       </tr>
     </thead>
 
     <tbody>
       <%total = 0%>
       <tr>
-        <td>Quntity-<%= cash = @products.where(payment_type: 'Cash').count %></td>
-        <td>Rs-<%= total %></td>
-        <td>Quntity-<%= borrow = @products.where(payment_type: 'Borrow').count %></td>
-        <td>Rs-<%= total %></td>
-        <td><%= cash + borrow %></td>
+        <td>Quntity- <%= cash = @products.where(payment_type: 'Cash').count %></td>
+        <td>Rs- <%= @products.where(payment_type: 'Cash').sum(:price).to_f %></td>
+        <td>Quntity- <%= borrow = @products.where(payment_type: 'Borrow').count %></td>
+        <td>Rs- <%= @products.where(payment_type: 'Borrow').sum(:price).to_f %></td>
+        <td>Quntity- <%= cash + borrow %></td>
+        <td>Rs- <%= @products.sum(:price) %></td>
       </tr>
     </tbody>
   </table>
