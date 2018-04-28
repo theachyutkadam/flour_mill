@@ -27,7 +27,7 @@
       </form>
       <% if current_user.role.name == "Admin" %>
         <ul class="nav navbar-nav">
-          <li ><a href="/operators">Operator<span class="sr-only">(current)</span></a></li>
+          <li><a href="/operators">Operator<span class="sr-only">(current)</span></a></li>
           <li><a href="/customers">Customer</a></li>
           <li><a href="/expenses">Expense</a></li>
         </ul>
@@ -40,9 +40,9 @@
             <% if current_user.role.name == "Admin" %>
               <li><a href="#">Report </a></li>
             <% end -%>
+            <li><a href="#">Information</a></li>
             <li><a href="#">Careers </a></li>
             <li><a href="#">Complaint </a></li>
-            <li><a href="#">Information</a></li>
             <li role="separator" class="divider"></li>
           </ul>
         </li>

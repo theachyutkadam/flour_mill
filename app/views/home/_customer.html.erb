@@ -54,4 +54,30 @@ Details</h2></center>
       </tr>
     </tbody>
   </table>
+</div><br><br>
+
+<div class="col-sm-6">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Payment In Rs.</th>
+        <th>Receiver</th>
+        <th>Giver</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%@current_user.customer.payments.each do |payment| %>
+        <tr>
+          <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
+          <td><%= payment.payment_ammount %></td>
+          <td><%= payment.receiver.capitalize %></td>
+          <td><%= payment.giver.capitalize %></td>
+          <td><%= link_to '', edit_payment_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

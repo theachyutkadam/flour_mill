@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -6,6 +7,7 @@ class ProductsController < ApplicationController
   def index
     @cust = Customer.find(params[:cust_id])
     @products = @cust.products
+    @payments = @cust.payments
   end
 
   # GET /products/1
