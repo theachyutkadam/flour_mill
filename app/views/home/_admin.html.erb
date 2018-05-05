@@ -5,7 +5,7 @@
         <th>Name</th>
         <th>Mobile</th>
         <th>Address</th>
-        <th>Total Amt</th>
+        <th>Left Amt</th>
         <th colspan="1"><%= link_to 'New Customer', new_customer_path, class: "btn btn-xs btn-info" %></th>
       </tr>
     </thead>
@@ -16,7 +16,13 @@
           <td><%= customer.first_name.capitalize + " " + customer.last_name.capitalize %></td>
           <td><%= customer.mobile_num %></td>
           <td><%= customer.address %></td>
-          <td>Rs. <%= customer.products.sum(:price).to_f %></td>
+
+          <% if customer.payments.first.previous_ammount == 0 %>
+            <td><%= customer.products.sum(:price).to_f %> </td>
+          <% else %>
+            <td><%= customer.payments.last.left_ammount.to_f %></td>
+          <% end %>
+
           <td>
             <%= link_to '', new_product_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
             <%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %>

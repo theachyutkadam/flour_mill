@@ -9,8 +9,13 @@
       </ul>
     </div>
   <% end %>
-  <h2><%= @customer.first_name.capitalize + " " + @customer.last_name.capitalize%> Total Rs.
-  <%= @customer.products.sum(:price).to_f %></h2>
+  <h2><%= @customer.first_name.capitalize + " " + @customer.last_name.capitalize%> Left Rs.
+
+  <% if @customer.payments.first.previous_ammount == 0 %>
+      <%= @customer.products.sum(:price).to_f %>
+    <% else %>
+      <%= @customer.payments.last.left_ammount.to_f %>
+    <% end %></h2>
   <%= f.hidden_field :customer_id, value:@customer.id %>
   
   <div class="form_group">
@@ -54,7 +59,9 @@
     <thead>
       <tr>
         <th>Date</th>
+        <th>Previous</th>
         <th>Payment In Rs.</th>
+        <th>Left Rs.</th>
         <th>Receiver</th>
         <th>Giver</th>
         <th>Link</th>
@@ -65,7 +72,9 @@
       <%@payments.each do |payment| %>
         <tr>
           <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
+          <td><%= payment.previous_ammount %></td>
           <td><%= payment.payment_ammount %></td>
+          <td><%= payment.left_ammount %></td>
           <td><%= payment.receiver.capitalize %></td>
           <td><%= payment.giver.capitalize %></td>
           <td><%= link_to '', edit_payment_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>

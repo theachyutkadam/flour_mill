@@ -16,7 +16,6 @@ class PaymentsController < ApplicationController
   # GET /payments/new
   def new
     @customer = Customer.find(params[:cust_id])
-    puts @customer.inspect
     @payments = @customer.payments
     @payment = Payment.new
   end
@@ -30,8 +29,25 @@ class PaymentsController < ApplicationController
   # POST /payments
   # POST /payments.json
   def create
+    @customer = Customer.find(params[:payment][:customer_id])
     @payment = Payment.new(payment_params)
-    @payment.payment_ammount = params[:payment][:payment_ammount].to_i
+
+    if @customer.payments.last.previous_ammount == 0
+      previous_ammount = @customer.products.sum(:price).to_f
+    else
+      previous_ammount = Payment.last.left_ammount.to_f
+    end
+
+    payment_ammount = params[:payment][:payment_ammount].to_i
+    puts "********************************************"
+    @payment.previous_ammount = previous_ammount
+    @payment.payment_ammount = payment_ammount
+    @payment.left_ammount = previous_ammount - payment_ammount
+    puts @payment.previous_ammount
+    puts @payment.payment_ammount
+    puts @payment.left_ammount
+    puts "********************************************"
+
     if @payment.save
       redirect_to new_payment_path(cust_id: @payment.customer.id)
     else
@@ -67,6 +83,6 @@ class PaymentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def payment_params
-      params.require(:payment).permit(:customer_id, :payment_ammount, :receiver, :giver)
+      params.require(:payment).permit(:customer_id, :payment_ammount, :receiver, :giver, :previous_ammount, :left_ammount)
     end
 end

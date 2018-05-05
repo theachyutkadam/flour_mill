@@ -1,32 +1,20 @@
 class ProductsController < ApplicationController
 
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
-
-  # GET /products
-  # GET /products.json
-  def index
-    @cust = Customer.find(params[:cust_id])
-    @products = @cust.products
-    @payments = @cust.payments
-  end
-
-  # GET /products/1
-  # GET /products/1.json
-  def show
-  end
+  before_action :set_product, only: [:edit, :update, :destroy]
 
   # GET /products/new
   def new
     @cust = Customer.find(params[:cust_id])
     @products = @cust.products
     @product = Product.new
-    # @payments = Payment.all
+    @payments = @cust.payments
   end
 
   # GET /products/1/edit
   def edit
     @cust = Customer.find(params[:customer_id])
     @products = @cust.products
+    @payments = @cust.payments
   end
 
   # POST /products

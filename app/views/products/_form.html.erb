@@ -30,22 +30,24 @@
           <%= f.text_field :price, placeholder: "Price", class: "form-control"%>
         </div>
       </div>
+    </div>
+  </div><br>
 
-      <div class="col-sm-2">
-        <%= f.select :operator_id, Operator.all.collect {|a| [a.  first_name + " " + a.last_name, a.id]},{include_blank: "Select Operator" }, class: "form-control" %>
+  <div class="row">
+    <div class="col-sm-2">
+      <%= f.select :operator_id, Operator.all.collect {|a| [a.  first_name + " " + a.last_name, a.id]},{include_blank: "Select Operator" }, class: "form-control" %>
+    </div>
+
+    <div class="col-sm-1">
+      <div class="input-group-sm">
+        <%= f.submit :Save, class:"btn btn-primary" %>
+
       </div>
+    </div>
 
-      <div class="col-sm-1">
-        <div class="input-group-sm">
-          <%= f.submit :Save, class:"btn btn-primary" %>
-
-        </div>
-      </div>
-
-      <div class="col-sm-1">
-        <div class="input-group-sm">
-          <%= link_to "Back", home_index_path, class: "btn btn-info" %>
-        </div>
+    <div class="col-sm-1">
+      <div class="input-group-sm">
+        <%= link_to "Back", home_index_path, class: "btn btn-info" %>
       </div>
     </div>
   </div>
@@ -119,7 +121,9 @@
     <thead>
       <tr>
         <th>Date</th>
-        <th>Payment In Rs.</th>
+        <th>Previous Amt</th>
+        <th>Payment Rs</th>
+        <th>Left Amt</th>
         <th>Receiver</th>
         <th>Giver</th>
         <th>Link</th>
@@ -127,11 +131,12 @@
     </thead>
 
     <tbody>
-      <%=@payments%>
       <% @payments.each do |payment| %>
         <tr>
           <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
+          <td><%= payment.previous_ammount %></td>
           <td><%= payment.payment_ammount %></td>
+          <td><%= payment.left_ammount %></td>
           <td><%= payment.receiver.capitalize %></td>
           <td><%= payment.giver.capitalize %></td>
           <td><%= link_to '', edit_payment_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>

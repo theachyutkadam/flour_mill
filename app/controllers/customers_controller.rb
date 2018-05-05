@@ -34,12 +34,22 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     @customer.user_id = user_id
     @customers = Customer.all
+
     if @customer.save
+      @payment=Payment.new
+      @payment.customer_id = @customer.id
+      @payment.payment_ammount = 0
+      @payment.previous_ammount = 0
+      @payment.left_ammount = 0
+      @payment.receiver = "default"
+      @payment.giver = "default"
+      @payment.save
       flash[:notice] = 'Customer was successfully created'
       redirect_to customers_path
     else
       render :index
     end
+
   end
 
   # PATCH/PUT /customers/1
