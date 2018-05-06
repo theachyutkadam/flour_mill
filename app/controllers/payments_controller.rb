@@ -18,6 +18,8 @@ class PaymentsController < ApplicationController
     @customer = Customer.find(params[:cust_id])
     @payments = @customer.payments
     @payment = Payment.new
+    @products = @customer.products
+
   end
 
   # GET /payments/1/edit
@@ -39,19 +41,20 @@ class PaymentsController < ApplicationController
     end
 
     payment_ammount = params[:payment][:payment_ammount].to_i
-    puts "********************************************"
     @payment.previous_ammount = previous_ammount
     @payment.payment_ammount = payment_ammount
     @payment.left_ammount = previous_ammount - payment_ammount
-    puts @payment.previous_ammount
-    puts @payment.payment_ammount
-    puts @payment.left_ammount
-    puts "********************************************"
 
-    if @payment.save
-      redirect_to new_payment_path(cust_id: @payment.customer.id)
-    else
-      render :new
+    respond_to do |format|
+      if @payment.receiver != "default" && @payment.giver != "default"
+        format.html { render :new, alert: 'This value not allowed' }
+      elsif @payment.save
+        format.html { redirect_to new_payment_path(cust_id: @payment.customer.id), notice: 'payment was successfully created.' }
+        format.json { render :new, status: :created, location: @payment }
+      else
+        format.html { render :new }
+        format.json { render json: @payment.errors, status: :unprocessable_entity }
+      end
     end
   end
 

@@ -1,5 +1,5 @@
 
-<h1>Listing Customers on<%= current_user.operator.first_name.capitalize + " " + current_user.operator.last_name.capitalize%> login</h1>
+<h1>Operator <%= current_user.operator.first_name.capitalize + " " + current_user.operator.last_name.capitalize%> login</h1>
 
 <table class="table table-bordered table-hover">
   <thead>
@@ -9,7 +9,7 @@
       <th>Address</th>
       <th>Mobile</th>
       <th>Mail</th>
-      <th colspan="2">Links</th>
+      <th colspan="1"><%= link_to 'New Customer', new_customer_path, class: "btn btn-xs btn-info" %></th>
     </tr>
   </thead>
 
@@ -21,8 +21,8 @@
         <td><%= customer.address.capitalize %></td>
         <td><%= customer.mobile_num %></td>
         <td><%= customer.mail %></td>
-        <td><%= link_to '', enter_operator_product_operators_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %></td>
-        <td><%= link_to '', show_operator_product_operators_path(cust_id: customer.id), class:"btn btn-info btn-xs glyphicon glyphicon-th-list" %></td>
+        <td><%= link_to '', enter_operator_product_operators_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
+        <%= link_to '', show_operator_product_operators_path(cust_id: customer.id), class:"btn btn-info btn-xs glyphicon glyphicon-th-list" %></td>
       </tr>
     <% end %>
   </tbody>

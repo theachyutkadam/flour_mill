@@ -3,9 +3,9 @@
     <div class="alert alert-danger fade in">
       <a href="#" class="close" data-dismiss="alert">&times;</a>
       <ul>
-      <% @product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -54,94 +54,94 @@
 <% end %>
 
 
-
-<div class="col-sm-6"><br>
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Operator</th>
-        <th>Product name</th>
-        <th>Price</th>
-        <th>Weight</th>
-        <th>Payment_type</th>
-        <th>Edit</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <%sum = 0%>
-      <% @products.each do |product| %>
+<div class="row">
+  <div class="col-sm-6"><br>
+    <table class="table table-bordered table-hover">
+      <thead>
         <tr>
-          <% sum = sum + product.weight %>
-          <td><%= product.created_at.strftime '%d/%B/%Y'%></td>
-          <td><%= product.operator.first_name.capitalize%></td>
-          <td><%= product.product_name %></td>
-          <td><%= product.price %></td>
-          <td><%= product.weight %></td>
-          <td><%= product.payment_type %></td>
-          <td><%= link_to '', edit_products_path(id: product.id, customer_id: product.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+          <th>Date</th>
+          <th>Operator</th>
+          <th>Product name</th>
+          <th>Price</th>
+          <th>Weight</th>
+          <th>Payment_type</th>
+          <th>Edit</th>
         </tr>
-      <% end %>
-      <th colspan="2">Total</th>
-      <th><%= @products.count %></th>
-      <th>Rs-<%= sum * 3 %></th>
-      <th><%= sum %>/kg</th>
-    </tbody>
-  </table>
-</div>
+      </thead>
 
-<div class="col-sm-6"><br>
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th colspan="2">Cash</th>
-        <th colspan="2">Borrow</th>
+      <tbody>
+        <%sum = 0%>
+        <% @products.each do |product| %>
+          <tr>
+            <% sum = sum + product.weight %>
+            <td><%= product.created_at.strftime '%d/%B/%Y'%></td>
+            <td><%= product.operator.first_name.capitalize%></td>
+            <td><%= product.product_name %></td>
+            <td><%= product.price %></td>
+            <td><%= product.weight %></td>
+            <td><%= product.payment_type %></td>
+            <td><%= link_to '', edit_products_path(id: product.id, customer_id: product.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+          </tr>
+        <% end %>
         <th colspan="2">Total</th>
-      </tr>
-    </thead>
+        <th><%= @products.count %></th>
+        <th>Rs-<%= sum * 3 %></th>
+        <th><%= sum %>/kg</th>
+      </tbody>
+    </table>
+  </div>
 
-    <tbody>
-      <%total = 0%>
-      <tr>
-        <td>Quntity- <%= cash = @products.where(payment_type: 'Cash').count %></td>
-        <td>Rs- <%= @products.where(payment_type: 'Cash').sum(:price).to_f %></td>
-        <td>Quntity- <%= borrow = @products.where(payment_type: 'Borrow').count %></td>
-        <td>Rs- <%= @products.where(payment_type: 'Borrow').sum(:price).to_f %></td>
-        <td>Quntity- <%= cash + borrow %></td>
-        <td>Rs- <%= @products.sum(:price) %></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
-<div class="col-sm-6">
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Previous Amt</th>
-        <th>Payment Rs</th>
-        <th>Left Amt</th>
-        <th>Receiver</th>
-        <th>Giver</th>
-        <th>Link</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @payments.each do |payment| %>
+  <div class="col-sm-6"><br>
+    <table class="table table-bordered table-hover">
+      <thead>
         <tr>
-          <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
-          <td><%= payment.previous_ammount %></td>
-          <td><%= payment.payment_ammount %></td>
-          <td><%= payment.left_ammount %></td>
-          <td><%= payment.receiver.capitalize %></td>
-          <td><%= payment.giver.capitalize %></td>
-          <td><%= link_to '', edit_payment_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+          <th colspan="2">Cash</th>
+          <th colspan="2">Borrow</th>
+          <th colspan="2">Total</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Quntity- <%= cash = @products.where(payment_type: 'Cash').count %></td>
+          <td>Rs- <%= @products.where(payment_type: 'Cash').sum(:price).to_f %></td>
+          <td>Quntity- <%= borrow = @products.where(payment_type: 'Borrow').count %></td>
+          <td>Rs- <%= @products.where(payment_type: 'Borrow').sum(:price).to_f %></td>
+          <td>Quntity- <%= cash + borrow %></td>
+          <td>Rs- <%= @products.sum(:price) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="col-sm-6">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Previous Amt</th>
+          <th>Payment Rs</th>
+          <th>Left Amt</th>
+          <th>Receiver</th>
+          <th>Giver</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @payments.each do |payment| %>
+          <tr>
+            <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
+            <td><%= payment.previous_ammount %></td>
+            <td><%= payment.payment_ammount %></td>
+            <td><%= payment.left_ammount %></td>
+            <td><%= payment.receiver.capitalize %></td>
+            <td><%= payment.giver.capitalize %></td>
+            <td><%= link_to '', edit_payment_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

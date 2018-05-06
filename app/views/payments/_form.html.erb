@@ -3,16 +3,16 @@
      <div class="alert alert-danger fade in">
       <a href="#" class="close" data-dismiss="alert">&times;</a>
       <ul>
-      <% @payment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @payment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
   <h2><%= @customer.first_name.capitalize + " " + @customer.last_name.capitalize%> Left Rs.
 
   <% if @customer.payments.last.receiver == "default" %>
-      <%= @customer.products.sum(:price).to_f %>
+      <%= @customer.products.where(payment_type: 'Borrow').sum(:price).to_f %>
     <% else %>
       <%= @customer.payments.last.left_ammount.to_f %>
     <% end %></h2>
@@ -54,32 +54,57 @@
   </div>
 <% end %><br>
 
-<div class="col-sm-6">
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Previous</th>
-        <th>Payment In Rs.</th>
-        <th>Left Rs.</th>
-        <th>Receiver</th>
-        <th>Giver</th>
-        <th>Link</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <%@payments.each do |payment| %>
+<div class="row">
+  <div class="col-sm-6">
+    <table class="table table-bordered table-hover">
+      <thead>
         <tr>
-          <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
-          <td><%= payment.previous_ammount %></td>
-          <td><%= payment.payment_ammount %></td>
-          <td><%= payment.left_ammount %></td>
-          <td><%= payment.receiver.capitalize %></td>
-          <td><%= payment.giver.capitalize %></td>
-          <td><%= link_to '', edit_payment_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+          <th>Date</th>
+          <th>Previous</th>
+          <th>Payment In Rs.</th>
+          <th>Left Rs.</th>
+          <th>Receiver</th>
+          <th>Giver</th>
+          <th>Link</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <%@payments.each do |payment| %>
+          <tr>
+            <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
+            <td><%= payment.previous_ammount %></td>
+            <td><%= payment.payment_ammount %></td>
+            <td><%= payment.left_ammount %></td>
+            <td><%= payment.receiver.capitalize %></td>
+            <td><%= payment.giver.capitalize %></td>
+            <td><%= link_to '', edit_payment_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-sm-6">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th colspan="2">Cash</th>
+          <th colspan="2">Borrow</th>
+          <th colspan="2">Total</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Quntity- <%= cash = @products.where(payment_type: 'Cash').count %></td>
+          <td>Rs- <%= @products.where(payment_type: 'Cash').sum(:price).to_f %></td>
+          <td>Quntity- <%= borrow = @products.where(payment_type: 'Borrow').count %></td>
+          <td>Rs- <%= @products.where(payment_type: 'Borrow').sum(:price).to_f %></td>
+          <td>Quntity- <%= cash + borrow %></td>
+          <td>Rs- <%= @products.sum(:price) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
