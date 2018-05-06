@@ -33,9 +33,9 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
 
     if @customer.payments.last.previous_ammount == 0
-      previous_ammount = @customer.products.sum(:price).to_f
+      previous_ammount = @customer.products.sum(:price).to_i
     else
-      previous_ammount = Payment.last.left_ammount.to_f
+      previous_ammount = Payment.last.left_ammount.to_i
     end
 
     payment_ammount = params[:payment][:payment_ammount].to_i

@@ -11,7 +11,7 @@
   <% end %>
   <h2><%= @customer.first_name.capitalize + " " + @customer.last_name.capitalize%> Left Rs.
 
-  <% if @customer.payments.first.previous_ammount == 0 %>
+  <% if @customer.payments.last.receiver == "default" %>
       <%= @customer.products.sum(:price).to_f %>
     <% else %>
       <%= @customer.payments.last.left_ammount.to_f %>

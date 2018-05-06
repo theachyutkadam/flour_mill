@@ -17,10 +17,10 @@
           <td><%= customer.mobile_num %></td>
           <td><%= customer.address %></td>
 
-          <% if customer.payments.first.previous_ammount == 0 %>
-            <td><%= customer.products.sum(:price).to_f %> </td>
+          <% if customer.payments.last.receiver == "default" %>
+            <td><%= customer.products.sum(:price).to_i %> </td>
           <% else %>
-            <td><%= customer.payments.last.left_ammount.to_f %></td>
+            <td><%= customer.payments.last.left_ammount.to_i %></td>
           <% end %>
 
           <td>
