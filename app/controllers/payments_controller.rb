@@ -45,16 +45,12 @@ class PaymentsController < ApplicationController
     @payment.payment_ammount = payment_ammount
     @payment.left_ammount = previous_ammount - payment_ammount
 
-    respond_to do |format|
-      if @payment.receiver != "default" && @payment.giver != "default"
-        format.html { render :new, alert: 'This value not allowed' }
-      elsif @payment.save
-        format.html { redirect_to new_payment_path(cust_id: @payment.customer.id), notice: 'payment was successfully created.' }
-        format.json { render :new, status: :created, location: @payment }
-      else
-        format.html { render :new }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
-      end
+    if @payment.receiver != "default" && @payment.giver != "default"
+      render :new
+    elsif @payment.save
+      redirect_to new_payment_path(cust_id: @payment.customer.id)
+    else
+      render :new
     end
   end
 

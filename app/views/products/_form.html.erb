@@ -73,7 +73,6 @@
         <%sum = 0%>
         <% @products.each do |product| %>
           <tr>
-            <% sum = sum + product.weight %>
             <td><%= product.created_at.strftime '%d/%B/%Y'%></td>
             <td><%= product.operator.first_name.capitalize%></td>
             <td><%= product.product_name %></td>
@@ -85,8 +84,8 @@
         <% end %>
         <th colspan="2">Total</th>
         <th><%= @products.count %></th>
-        <th>Rs-<%= sum * 3 %></th>
-        <th><%= sum %>/kg</th>
+        <th>Rs-<%= @products.sum(:price) %></th>
+        <th><%= @products.sum(:weight) %>/kg</th>
       </tbody>
     </table>
   </div>

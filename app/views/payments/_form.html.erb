@@ -70,40 +70,21 @@
       </thead>
 
       <tbody>
-        <%@payments.each do |payment| %>
-          <tr>
-            <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
-            <td><%= payment.previous_ammount %></td>
-            <td><%= payment.payment_ammount %></td>
-            <td><%= payment.left_ammount %></td>
-            <td><%= payment.receiver.capitalize %></td>
-            <td><%= payment.giver.capitalize %></td>
-            <td><%= link_to '', edit_payment_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
-          </tr>
+        <% if @payments.nil? %>
+
+        <% else %>
+          <%@payments.each do |payment| %>
+            <tr>
+              <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
+              <td><%= payment.previous_ammount %></td>
+              <td><%= payment.payment_ammount %></td>
+              <td><%= payment.left_ammount %></td>
+              <td><%= payment.receiver.capitalize %></td>
+              <td><%= payment.giver.capitalize %></td>
+              <td><%= link_to '', edit_payment_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+            </tr>
+          <% end %>
         <% end %>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="col-sm-6">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <th colspan="2">Cash</th>
-          <th colspan="2">Borrow</th>
-          <th colspan="2">Total</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>Quntity- <%= cash = @products.where(payment_type: 'Cash').count %></td>
-          <td>Rs- <%= @products.where(payment_type: 'Cash').sum(:price).to_f %></td>
-          <td>Quntity- <%= borrow = @products.where(payment_type: 'Borrow').count %></td>
-          <td>Rs- <%= @products.where(payment_type: 'Borrow').sum(:price).to_f %></td>
-          <td>Quntity- <%= cash + borrow %></td>
-          <td>Rs- <%= @products.sum(:price) %></td>
-        </tr>
       </tbody>
     </table>
   </div>
