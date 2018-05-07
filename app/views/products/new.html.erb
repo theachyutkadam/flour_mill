@@ -1,2 +1,11 @@
-<h2>Enter <%= @cust.first_name.capitalize.to_s + " " + @cust.last_name.capitalize.to_s %>'s New Product</h2>
-<%= render 'form' %>
+<h4><%= @cust.first_name.capitalize.to_s + " " + @cust.last_name.capitalize.to_s %></h4>
+
+<div class="row">
+	<div class="col-sm-6"><%= render 'form' %></div>
+	<div class="col-sm-6"><%= render 'payment_form' %></div>
+</div>
+<br>
+<div class="row">
+	<div class="col-sm-6"><%= render 'products' %></div>
+	<div class="col-sm-6"><%= render 'payments' %></div>
+</div>

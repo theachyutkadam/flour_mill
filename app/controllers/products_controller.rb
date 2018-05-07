@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
     @cust = Customer.find(params[:cust_id])
     @products = @cust.products
     @product = Product.new
+    @payment = Payment.new
     @payments = @cust.payments
   end
 

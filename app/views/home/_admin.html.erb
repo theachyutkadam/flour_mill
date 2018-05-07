@@ -20,7 +20,7 @@
           <% if customer.payments.last.receiver == "default" %>
             <td><%= customer.products.sum(:price).to_i %> </td>
           <% else %>
-            <td><%= customer.payments.last.left_ammount.to_i %></td>
+            <td><%= customer.products.sum(:price) - customer.payments.sum(:payment_ammount) %></td>
           <% end %>
 
           <td>

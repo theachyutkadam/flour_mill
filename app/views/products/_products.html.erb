@@ -1,0 +1,33 @@
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Operator</th>
+      <th>Product name</th>
+      <th>Price</th>
+      <th>Weight</th>
+      <th>Payment_type</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.created_at.strftime '%d/%B/%Y'%></td>
+        <td><%= product.operator.first_name.capitalize%></td>
+        <td><%= product.product_name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.weight %></td>
+        <td><%= product.payment_type %></td>
+        <td>
+          <%= link_to '', edit_products_path(id: product.id, customer_id: product.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %>
+        </td>
+      </tr>
+    <% end %>
+    <th colspan="2">Total</th>
+    <th><%= @products.count %></th>
+    <th>Rs-<%= @products.sum(:price) %></th>
+    <th><%= @products.sum(:weight) %>/kg</th>
+  </tbody>
+</table>
