@@ -5,7 +5,11 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @customer = Customer.new
-    @customers = Customer.order(last_name: :asc)
+    if params[:search]
+      @customers = Customer.where("first_name like ? OR last_name like ? OR mobile_num like ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+    else
+      @customers = Customer.order(last_name: :asc)
+    end
   end
 
   # GET /customers/1

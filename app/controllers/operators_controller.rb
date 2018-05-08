@@ -5,7 +5,11 @@ class OperatorsController < ApplicationController
   # GET /operators.json  
   def index
     @operator = Operator.new
-    @operators = Operator.all
+    if params[:search]
+      @operators = Operator.where("first_name like ? OR last_name like ? OR mobile like ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+    else
+      @operators = Operator.order(last_name: :asc)
+    end
   end
 
   def show_operator_product

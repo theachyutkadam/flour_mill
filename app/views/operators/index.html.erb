@@ -14,7 +14,7 @@
   <tbody>
     <% @operators.each do |operator| %>
       <tr>
-        <td><%= operator.first_name.capitalize + " " + operator.last_name.capitalize %></td>
+        <td><%= operator.last_name.capitalize + " " + operator.first_name.capitalize %></td>
         <td><%= operator.mobile %></td>
         <td><%= operator.permanent_address.capitalize %></td>
         <td><%= operator.salary %></td>

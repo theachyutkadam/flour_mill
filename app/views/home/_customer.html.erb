@@ -1,4 +1,4 @@
-<center><strong style="font-size: 25px"><%= current_user.customer.first_name.capitalize + " " + current_user.customer.last_name.capitalize + " " +current_user.customer.address.capitalize+ " " + current_user.customer.mobile_num %><br>
+<center><strong style="font-size: 25px"><%= current_user.customer.last_name.capitalize + " " + current_user.customer.first_name.capitalize + " " +current_user.customer.address.capitalize+ " " + current_user.customer.mobile_num %><br>
 Details</strong style="font-size: 25px"></center>
 <br>
 <div class="row">
@@ -19,10 +19,13 @@ Details</strong style="font-size: 25px"></center>
 
       <tbody>
         <%sum = 0%>
+        <%count = 0%>
         <% @products.each do |product| %>
           <tr>
+
+            <%count = count + 1%>
             <%sum = sum + product.weight%>
-            <td><%= product.id %></td>
+            <td><%= count %></td>
             <td><%= product.created_at.strftime '%d/%B/%Y' %></td>
             <td><%= product.operator.first_name.capitalize %></td>
             <td><%= product.product_name.capitalize %></td>
@@ -49,9 +52,9 @@ Details</strong style="font-size: 25px"></center>
           <th>Date</th>
           <th>Giver</th>
           <th>Receiver</th>
-          <th>Payment Rs.</th>
-          <th>Left Rs.</th>
           <th>Previous Amt.</th>
+          <th>Left Rs.</th>
+          <th>Payment Rs.</th>
         </tr>
       </thead>
 
