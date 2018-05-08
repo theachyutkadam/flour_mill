@@ -2,6 +2,7 @@
 <table class="table table-bordered table-responsive">
   <thead>
     <tr>
+      <th>No</th>
       <th>Name</th>
       <th>Mobile</th>
       <th>Address</th>
@@ -12,9 +13,13 @@
   </thead>
 
   <tbody>
+    <% count = 1%>
+    <% number = 0%>
     <% @customers.each do |customer| %>
+      <% count = count + number%>
       <tr>
-        <td><%= customer.first_name.capitalize + " " + customer.last_name.capitalize %></td>
+        <td><%= count %></td>
+        <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
         <td><%= customer.mobile_num %></td>
         <td><%= customer.address.capitalize %></td>
         <td><%= customer.mail %></td>
@@ -23,6 +28,7 @@
         <td><%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
         <td><%= link_to '', new_payment_path(cust_id: customer.id), class:"btn btn-xs btn-warning glyphicon glyphicon-euro" %></td>
       </tr>
+      <% count += 1%>
     <% end %>
   </tbody>
 </table>

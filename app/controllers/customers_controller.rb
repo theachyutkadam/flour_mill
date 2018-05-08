@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @customer = Customer.new
-    @customers = Customer.all
+    @customers = Customer.order(last_name: :asc)
   end
 
   # GET /customers/1
