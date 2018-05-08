@@ -4,8 +4,8 @@
       <th>Date</th>
       <th>Operator</th>
       <th>Product name</th>
-      <th>Price</th>
-      <th>Weight</th>
+      <th>Price(Rs.)</th>
+      <th>Weight(kg.)</th>
       <th>Payment_type</th>
       <th>Edit</th>
     </tr>
@@ -27,7 +27,7 @@
     <% end %>
     <th colspan="2">Total</th>
     <th><%= @products.count %></th>
-    <th>Rs-<%= @products.sum(:price) %></th>
+    <th>Rs. <%= @products.sum(:price) %></th>
     <th><%= @products.sum(:weight) %>/kg</th>
   </tbody>
 </table>

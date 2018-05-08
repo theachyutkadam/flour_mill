@@ -37,7 +37,7 @@ class PaymentsController < ApplicationController
     @payment.left_ammount = @payment.previous_ammount - params[:payment_ammount].to_f
 
     if @payment.save
-      redirect_to products_index_path(cust_id: @payment.customer.id)
+      redirect_to new_product_path(cust_id: @payment.customer.id)
     else
       render :new
     end
@@ -47,7 +47,7 @@ class PaymentsController < ApplicationController
   # PATCH/PUT /payments/1.json
   def update
     if @payment.update(payment_params)
-      redirect_to new_payment_path(cust_id: @payment.customer.id)
+      redirect_to new_product_path(cust_id: @payment.customer.id)
     else
       render :edit
     end

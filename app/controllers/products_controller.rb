@@ -26,8 +26,8 @@ class ProductsController < ApplicationController
     @payments = Payment.all
     @product = Product.new(product_params)
     # puts @product.inspect
-    # @product.price = 3 * params[:product][:weight].to_i
-    @product.weight = params[:product][:price].to_i/3
+    @product.price = 3 * params[:product][:weight].to_f
+    # @product.weight = params[:product][:price].to_i/3
     # @product.payment_type = params[:product][:payment_type]
     respond_to do |format|
       if @product.save
@@ -44,7 +44,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
-      @product.weight = 3/params[:product][:price].to_i
+      @product.price = 3 * params[:product][:weight].to_f
       if @product.update(product_params)
         format.html { redirect_to new_product_path(cust_id: @product.customer_id), notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }

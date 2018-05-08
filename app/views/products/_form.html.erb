@@ -22,7 +22,7 @@
 
   <div class="col-sm-2">
     <div class="input-group-sm">
-      <%= f.text_field :price, placeholder: "Price", class: "form-control"%>
+      <%= f.text_field :weight, placeholder: "Weight", class: "form-control"%>
     </div>
   </div>
 
@@ -35,6 +35,6 @@
   </div>
 
   <div class="col-sm-2">
-    <%= link_to "Back", home_index_path, class: "btn btn-info" %>
+    <%= link_to "Back", new_product_path(cust_id: @cust.id), class: "btn btn-info" %>
   </div>
 <% end %>
