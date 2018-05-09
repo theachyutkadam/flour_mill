@@ -1,6 +1,10 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-dark bg-primary" >
   <!-- <nav class="navbar navbar-expand-lg navbar-dark primary-color"> -->
-
+<style>
+  .bg-primary {
+    background-color: red;
+  }
+</style>
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -10,10 +14,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!-- <a class="navbar-brand" href="#"><img class="img-rounded" src="images/Blog LOGO.jpg"> -->
 
       <a class="navbar-brand" rel="home" href="#">
-        <img style="max-width:100px; margin-top: -7px; src="/home/ak/workspace/flour_mill/app/assets/images/Blog_LOGO.jpg">
+        <img style="max-width:100px; margin-top: -7px; src="/home/ak/workspace/flour_mill/app/assets/images/images.png">
       </a>
     </div>
 
@@ -29,6 +32,12 @@
         <ul class="nav navbar-nav">
           <li><a href="/operators">Operator<span class="sr-only">(current)</span></a></li>
           <li><a href="/customers">Customer</a></li>
+          <li><a href="/expenses">Expense</a></li>
+        </ul>
+      <% end -%>
+      <% if current_user.role.name == "Operator" %>
+        <ul class="nav navbar-nav">
+          <li><a href="/home/index">Customer<span class="sr-only">(current)</span></a></li>
           <li><a href="/expenses">Expense</a></li>
         </ul>
       <% end -%>

@@ -1,6 +1,7 @@
 <%= form_for(:expenditure, url: create_expense_expenses_path) do |f|%>
   <% if @exp.errors.any? %>
     <div class="alert alert-warning fade-in ">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
       <ul>
       <% @exp.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -13,55 +14,61 @@
     <div class="row">
       <div class="col-sm-2">
         <div class="input-group-sm">
-          <td> <%= f.text_field :expense_type, placeholder: "Enter Expense Type...", class: "form-control" %></td>
+          <%= f.text_field :expense_type, placeholder: "Enter Expense Type...", class: "form-control" %>
         </div>
       </div>
     
       <div class="col-sm-2">
-          <div class="input-group-sm">
-        <td> <%= f.text_field :expense, placeholder: "Enter Amount...", class: "form-control" %></td>
+        <div class="input-group-sm">
+          <%= f.text_field :expense, placeholder: "Enter Amount...", class: "form-control" %>
         </div>
       </div>
 
       <div class="col-sm-1">
         <div class="input-group-sm">
-          <td> <%= f.submit "Submit", class: "btn btn-primary" %></td>
+          <%= f.submit "Submit", class: "btn btn-primary" %>
         </div>
       </div>
 
       <div class="col-sm-1">
         <div class="input-group-sm">
-          <td> <%= link_to "Back", home_index_path, class: "btn btn-info" %></td>
+          <%= link_to "Back", home_index_path, class: "btn btn-info" %>
         </div>
       </div>
     </div>
   </div>
 <% end -%><br>
 
-<div class="col-sm-6">
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Expense_type</th>
-        <th>Expense</th>
-        <th colspan="2">Link</th>
-      </tr>
-      <% sum = 0 %>
-      <% @expenses.each do |exp|%>
+<div class="row">
+  <div class="col-sm-6">
+    <table class="table table-bordered table-hover">
+      <thead>
         <tr>
-          <% sum = sum + exp.expence%>
-          <td><%= exp.created_at.strftime("%d/%b/%Y") %></td>
-          <td><%= exp.expence_type.capitalize %></td>
-          <td><%= exp.expence %></td>
-          <td><%= link_to "", edit_exp_expense_path(id: exp.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
-          <td><%= link_to "", destroy_exp_expense_path(id: exp.id), class:"btn btn-danger btn-xs glyphicon glyphicon-trash" %></td>
+          <th>No</th>
+          <th>Date</th>
+          <th>Expense_type</th>
+          <th>Expense</th>
+          <th colspan="2">Link</th>
         </tr>
-      <% end -%>
-      <th>Total
-        <th><%= @expenses.count %></th>
-        <th>Rs. <%= sum %></th>
-      </th>
-    </thead>
-  </table>
+        <% sum = 0 %>
+        <% count = 0 %>
+        <% @expenses.each do |exp|%>
+          <tr>
+            <% sum = sum + exp.expence%>
+            <% count = count + 1%>
+            <td><%= count %></td>
+            <td><%= exp.created_at.strftime("%d/%b/%Y") %></td>
+            <td><%= exp.expence_type.capitalize %></td>
+            <td><%= exp.expence %></td>
+            <td><%= link_to "", edit_exp_expense_path(id: exp.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+            <td><%= link_to "", destroy_exp_expense_path(id: exp.id), class:"btn btn-danger btn-xs glyphicon glyphicon-trash" %></td>
+          </tr>
+        <% end -%>
+        <th colspan="2">Total
+          <th><%= @expenses.count %></th>
+          <th>Rs. <%= sum %></th>
+        </th>
+      </thead>
+    </table>
+  </div>
 </div>

@@ -9,9 +9,15 @@ class HomeController < ApplicationController
         @customers = Customer.order(last_name: :asc)
         @operators = Operator.order(last_name: :asc)
       end
+
+
+
       # TODO Write a variable which only need for admin page.
     elsif current_user.role.name == "Customer"
       @products = Product.where(customer_id: current_user.customer.id).order(created_at: :desc)
+
+
+      
       @payments = Payment.where(customer_id: current_user.customer.id).order(created_at: :desc)
     elsif current_user.role.name == "Operator"
       if params[:search]

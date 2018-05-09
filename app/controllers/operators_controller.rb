@@ -19,6 +19,7 @@ class OperatorsController < ApplicationController
   def enter_operator_product
     @product = Product.new
     @customer = Customer.find(params[:cust_id])
+    @products = @customer.products
   end
 
   def create_product

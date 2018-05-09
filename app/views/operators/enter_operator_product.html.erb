@@ -10,40 +10,75 @@
     </div>
   <% end %>
 
-  <h3><%= @customer.first_name.capitalize.to_s + " " + @customer.last_name.capitalize.to_s %></h3>
+  <strong style="font-size: 25px"><%= @customer.last_name.capitalize.to_s + " " + @customer.first_name.capitalize.to_s %></strong><br>
 
   <%= f.hidden_field :customer_id, value: @customer.id %>
   <%= f.hidden_field :operator_id, value: current_user.operator.id %>
-  <div class="form_group">
-    <div class="row">
-      <div class="col-sm-1">
-        <%= f.radio_button(:payment_type, "Cash") %>Cash
-      </div>
-
-      <div class="col-sm-1">
-        <%= f.radio_button(:payment_type, "Borrow") %>Borrow
+  <!-- <div class="form_group"> -->
+  <div class="row"> 
+    <div class="col-sm-6">
+      <div class="col-sm-2">
+        <%= f.select :payment_type, [["Cash","cash"],["Borrow","borrow"]], {}, class: "form-control" %>
       </div>
 
       <div class="col-sm-2">
-        <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: "Select Gain"}, class: "form-control" %>
+        <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {}, class: "form-control" %>
       </div>
 
       <div class="col-sm-2">
-        <%= f.text_field :weight, placeholder: "Enter weight in Kg", class: "form-control" %>
-      </div>
-
-      <div class="col-sm-1">
         <div class="input-group-sm">
-          <%= f.submit :Save, class:"btn btn-primary" %>
-
+          <%= f.text_field :weight, placeholder: "Weight", class: "form-control"%>
         </div>
       </div>
 
-      <div class="col-sm-1">
-        <div class="input-group-sm">
-          <%= link_to "Back", home_index_path, class: "btn btn-info" %>
-        </div>
+      <div class="col-sm-2">
+        <%= f.submit :Save, class: "btn btn-primary" %>
+      </div>
+
+      <div class="col-sm-2">
+        <%= link_to "Back", home_index_path(cust_id: @customer.id), class: "btn btn-info" %>
       </div>
     </div>
   </div>
-<% end %>
+<% end %><br>
+
+
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <table class="table table-bordered table-hover"">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Date</th>
+          <th>Product name</th>
+          <th>Payment</th>
+          <th>Weight</th>
+          <th>Price</th>
+          <th colspan="2">Links</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%sum = 0%>
+        <%count = 0%>
+        <% @products.each do |product| %>
+          <tr>
+            <% count = count + 1%>
+            <% sum = sum + product.weight%>
+            <td><%= count%></td>
+            <td><%= product.created_at.strftime '%d/%B/%Y' %></td>
+            <td><%= product.product_name.capitalize %></td>
+            <td><%= product.payment_type %></td>
+            <td><%= product.weight %></td>
+            <td><%= product.price %></td>
+            <td><%= link_to '', edit_products_path(id: product.id, customer_id: product.customer_id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+          </tr>
+        <% end %>
+        <th colspan="4">Total</th>
+        <th><%= sum %>/kg</th>
+        <th>Rs-<%= sum * 3 %></th>
+      </tbody>
+    </table>
+  </div>
+</div>

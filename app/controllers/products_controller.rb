@@ -46,8 +46,13 @@ class ProductsController < ApplicationController
     respond_to do |format|
       @product.price = 3 * params[:product][:weight].to_f
       if @product.update(product_params)
-        format.html { redirect_to new_product_path(cust_id: @product.customer_id), notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
+        if current_user.role.name == "Operator"
+          format.html { redirect_to enter_operator_product_operators_path(cust_id: @product.customer_id), notice: 'Product was successfully updated.' }
+          format.json { render :show, status: :ok, location: @product }
+        else
+          format.html { redirect_to new_product_path(cust_id: @product.customer_id), notice: 'Product was successfully updated.' }
+          format.json { render :show, status: :ok, location: @product }
+        end
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }
