@@ -142,10 +142,10 @@ Details</strong style="font-size: 25px"></center>
 
       <tbody>
         <tr>
-          <td>Quntity- <%= cash = @products.where(payment_type: 'Cash').count %></td>
-          <td>Rs- <%= @products.where(payment_type: 'Cash').sum(:price).to_f %></td>
-          <td>Quntity- <%= borrow = @products.where(payment_type: 'Borrow').count %></td>
-          <td>Rs- <%= @products.where(payment_type: 'Borrow').sum(:price).to_f %></td>
+          <td>Quntity- <%= cash = @products.where(payment_type: 'cash').count %></td>
+          <td>Rs- <%= @products.where(payment_type: 'cash').sum(:price).to_f %></td>
+          <td>Quntity- <%= borrow = @products.where(payment_type: 'borrow').count %></td>
+          <td>Rs- <%= @products.where(payment_type: 'borrow').sum(:price).to_f %></td>
           <td>Quntity- <%= cash + borrow %></td>
           <td>Rs- <%= @products.sum(:price) %></td>
         </tr>

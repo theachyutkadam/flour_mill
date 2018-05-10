@@ -9,50 +9,39 @@
       </ul>
     </div>
   <% end %>
-  <h2><%= @customer.first_name.capitalize + " " + @customer.last_name.capitalize%> Left Rs.
-    <% if @customer.payments.last.receiver == "default" %>
-        <%= @customer.products.where(payment_type: 'Borrow').sum(:price).to_f %>
-      <% else %>
-        <%= @customer.payments.last.left_ammount.to_f %>
-    <% end %>
-  </h2>
+  <strong style="font-size: 20px"><%= @customer.first_name.capitalize + " " + @customer.last_name.capitalize%> Left Rs.
+        <%= @customer.products.where(payment_type: 'borrow').sum(:price).to_f - Payment.sum(:payment_ammount).to_f %>
+  </strong><br><br>
   <%= f.hidden_field :customer_id, value:@customer.id %>
   
-  <div class="form_group">
-    <div class="row">
-      <div class="col-sm-2">
-        <div class="input-group-sm">
-          <%= f.text_field :payment_ammount, placeholder: "Enter Ammount", class: "form-control" %>
-        </div>
+<div class="row">
+    <div class="col-sm-1">
+      <div class="input-group-sm">
+        <%= f.text_field :payment_ammount, placeholder: "Amount", class: "form-control" %>
       </div>
+    </div>
 
-      <div class="col-sm-2">
-        <div class="input-group-sm">
-          <%= f.text_field :receiver, placeholder: "Receiver Name", class: "form-control" %>
-        </div>
+    <div class="col-sm-1">
+      <div class="input-group-sm">
+        <%= f.text_field :receiver, placeholder: "Receiver", class: "form-control" %>
       </div>
-      <div class="col-sm-2">
-        <div class="input-group-sm">
-          <%= f.text_field :giver, placeholder: "Giver Name", class: "form-control" %>
-        </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="input-group-sm">
+        <%= f.text_field :giver, placeholder: "Giver", class: "form-control" %>
       </div>
-    </div><br>
+    </div>
 
-    <div class="row">
-      <div class="col-sm-1">
-        <div class="input-group-sm">
-          <%= f.submit :Save, class:"btn btn-primary" %>
-        </div>
-      </div>
+    <div class="col-sm-1">
+      <div class="input-group-sm"><%= f.submit :Save, class: "btn btn-primary" %></div>
+    </div>
 
-      <div class="col-sm-1">
-        <div class="input-group-sm">
-          <%= link_to "Back", home_index_path, class: "btn btn-info" %>
-        </div>
-      </div>
+    <div class="col-sm-1">
+      <div class="input-group-sm"><%= link_to "Back", home_index_path, class: "btn btn-info" %></div>
     </div>
   </div>
 <% end %><br>
+
 
 <div class="row">
   <div class="col-sm-6">

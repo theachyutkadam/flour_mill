@@ -11,29 +11,30 @@
   <% end %>
 
   <%= f.hidden_field :customer_id, value:@cust.id %>
-
-  <div class="col-sm-2">
-    <div class="input-group-sm">
-      <%= f.text_field :payment_ammount, placeholder: "Amount", class: "form-control" %>
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="input-group-sm">
+        <%= f.text_field :payment_ammount, placeholder: "Amount", class: "form-control" %>
+      </div>
     </div>
-  </div>
 
-  <div class="col-sm-2">
-    <div class="input-group-sm">
-      <%= f.text_field :receiver, placeholder: "Receiver", class: "form-control" %>
+    <div class="col-sm-3">
+      <div class="input-group-sm">
+        <%= f.text_field :receiver, placeholder: "Receiver", class: "form-control" %>
+      </div>
     </div>
-  </div>
-  <div class="col-sm-2">
-    <div class="input-group-sm">
-      <%= f.text_field :giver, placeholder: "Giver", class: "form-control" %>
+    <div class="col-sm-3">
+      <div class="input-group-sm">
+        <%= f.text_field :giver, placeholder: "Giver", class: "form-control" %>
+      </div>
     </div>
-  </div>
 
-  <div class="col-sm-2">
-    <div class="input-group-sm"><%= f.submit :Save, class: "btn btn-primary" %></div>
-  </div>
+    <div class="col-sm-2">
+      <div class="input-group-sm"><%= f.submit :Save, class: "btn btn-primary" %></div>
+    </div>
 
-  <div class="col-sm-1">
-    <div class="input-group-sm"><%= link_to "Back", home_index_path, class: "btn btn-info" %></div>
+    <div class="col-sm-1">
+      <div class="input-group-sm"><%= link_to "Back", home_index_path, class: "btn btn-info" %></div>
+    </div>
   </div>
 <% end %>

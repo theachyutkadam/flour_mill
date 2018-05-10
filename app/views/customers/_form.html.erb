@@ -50,6 +50,11 @@
           <%= f.text_field :address, placeholder: "Address", class: "form-control" %>
         </div>
       </div>
+      <div class="col-sm-2">
+        <div class="input-group-sm">
+          <%= f.number_field :family_members, in: 1..100, placeholder: "Family Member", class: "form-control" %>
+        </div>
+      </div>
 
       <div class="col-sm-2">
         <div class="input-group-sm">

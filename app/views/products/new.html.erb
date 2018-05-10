@@ -1,4 +1,6 @@
-<h4><%= @cust.last_name.capitalize.to_s + " " + @cust.first_name.capitalize.to_s %></h4>
+<strong style="font-size: 20px"><%= @cust.last_name.capitalize.to_s + " " + @cust.first_name.capitalize.to_s %> Details Left Amt Rs.
+<%= @cust.products.where(payment_type: 'borrow').sum(:price).to_f - Payment.sum(:payment_ammount).to_f %></strong>
+<br><br>
 
 <div class="row">
 	<div class="col-sm-6"><%= render 'form' %></div>
