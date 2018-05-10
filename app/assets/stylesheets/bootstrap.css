@@ -4345,8 +4345,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-nav .open .dropdown-menu > li > a {
     line-height: 20px;
+    color: white;
   }
-  .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-nav .open .dropdown-menu > li > a:hover {
+    color: black;
+  }
   .navbar-nav .open .dropdown-menu > li > a:focus {
     background-image: none;
   }
@@ -4508,11 +4511,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #777;
+  color: white;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #333;
+  color: initial;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
