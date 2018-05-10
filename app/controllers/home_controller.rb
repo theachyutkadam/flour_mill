@@ -3,8 +3,8 @@ class HomeController < ApplicationController
 
     if current_user.role.name == "Admin"
       if params[:search]
-        @customers = Customer.where("first_name like ? OR last_name like ? OR mobile_num like ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
-        @operators = Operator.where("first_name like ? OR last_name like ? OR mobile like ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+        @customers = Customer.where("first_name like ? OR last_name like ? OR mobile_num like ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").order(last_name: :asc)
+        @operators = Operator.where("first_name like ? OR last_name like ? OR mobile like ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").order(last_name: :asc)
       else
         @customers = Customer.order(last_name: :asc)
         @operators = Operator.order(last_name: :asc)

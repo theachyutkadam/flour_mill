@@ -10,16 +10,14 @@
     </div>
   <% end -%>
   <div class="form-group">
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="input-group-sm">
-          <%= f.password_field :password, placeholder: "Password Here", class: "form-control" %>
-        </div>
+    <div class="col-sm-2">
+      <div class="input-group-sm">
+        <%= f.password_field :password, placeholder: "Password Here", class: "form-control" %>
       </div>
-      <div class="col-sm-6">
-        <div class="input-group-sm">
-          <%= f.submit "Submit", class: "btn btn-primary btn-sm"%>
-        </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="input-group-sm">
+        <%= f.submit "Danger", class: "btn btn-danger btn-sm"%>
       </div>
     </div>
   </div>

@@ -3,7 +3,8 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <a class="navbar-brand" href="#">
-        <img alt="Brand" src="medium.jpg">
+        <%= image_tag("vishwakarma.png", width: '132px') %>
+        <!-- <%= image_tag("Blog_LOGO.jpg", width: '100px') %> -->
       </a>
     </div>
     <style type="text/css">
@@ -18,7 +19,6 @@
         <div class="form-group">
           <%= text_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
         </div>
-        <!-- <a href="#" class="glyphicon glyphicon-search"></a> -->
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <% if current_user.role.name == "Admin" %>
@@ -40,7 +40,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >Logout <span class="glyphicon glyphicon-triangle-bottom"></span> </a>
           <ul class="dropdown-menu">
             <% if current_user.role.name == "Admin" %>
-              <li><a href="#">Report </a></li>
+              <li><a href="/reports/index">Report </a></li>
             <% end -%>
             <li><a href="#">Information</a></li>
             <li><a href="#">Careers </a></li>

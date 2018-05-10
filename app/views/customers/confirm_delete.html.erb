@@ -1,6 +1,25 @@
-<center>
-  <%=form_for @customer, method: :delete do |f| %>
-    <%= f.password_field :password, placeholder: "Password Here" %><br><br>
-    <%= f.submit "Submit"%>
+<%=form_for @customer, method: :delete do |f| %>
+  <% if @customer.errors.any? %>
+    <div class="alert alert-danger fade in">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+      <ul>
+        <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end -%>
-</center>
+  <div class="form-group">
+    <div class="col-sm-2">
+      <div class="input-group-sm">
+        <%= f.password_field :password, placeholder: "Password Here", class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="input-group-sm">
+        <%= f.submit "Danger", class: "btn btn-danger btn-sm"%>
+      </div>
+    </div>
+  </div>
+
+<% end -%>
