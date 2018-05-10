@@ -15,16 +15,23 @@
     <tbody>
       <% count = 1%>
       <% number = 0%>
+      <% left_ammount = 0%>
       <% @customers.each do |customer| %>
       <% count = count + number%>
-
+      <%left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %>
         <tr>
           <td><%= count %></td>
           <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
           <td><%= customer.mobile_num %></td>
           <td><%= customer.address %></td>
           <td><%= customer.family_members %></td>
-          <td><strong>Rs. <%= customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %></strong></td>
+          <%if left_ammount < 0 %>
+            <td class="info"><strong>Rs. <%=left_ammount%></strong></td>
+          <% elsif left_ammount >= 500 %>
+            <td class="danger"><strong>Rs. <%=left_ammount%></strong></td>
+          <% elsif %>
+            <td><strong>Rs. <%=left_ammount%></strong></td>
+          <% end%>
           <td>
             <%= link_to '', new_product_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
             <%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %>
