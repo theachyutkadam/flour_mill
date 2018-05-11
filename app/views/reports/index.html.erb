@@ -9,10 +9,10 @@
       <th>Receive.Rs</th>
       <th colspan="2">Take.Rs</th>
       <th>Payment.Rs</th>
-      <th>Left Amt</th>
-      <th>Expense</th>
-      <th>Now</th>
-      <th>last</th>
+      <th>Now.Rs</th>
+      <th>Left.Rs</th>
+      <th>Expense.Rs</th>
+      <th>Last.Rs</th>
     </tr>
   </thead>
 
@@ -23,12 +23,12 @@
       <td><%= @customers.sum(:family_members) %></td>
       <td><%= @products.sum(:weight) %></td>
       <td><%= @products.sum(:price) %></td>
-      <td>C=<%= @products.where(payment_type: 'cash').sum(:price)%></td>
-      <td>B=<%= @products.where(payment_type: 'borrow').sum(:price)%></td>
+      <td>C= <%= @products.where(payment_type: 'cash').sum(:price)%></td>
+      <td>B= <%= @products.where(payment_type: 'borrow').sum(:price)%></td>
       <td><%= @payments.sum(:payment_ammount)%></td>
+      <td><%= @products.where(payment_type: 'cash').sum(:price) + @payments.sum(:payment_ammount)%></td>
       <td><%= @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount)%></td>
       <td><%= @expenses.sum(:expence) %></td>
-      <td><%= @products.where(payment_type: 'cash').sum(:price) + @payments.sum(:payment_ammount)%></td>
       <td><%= @expenses.sum(:expence) - @products.sum(:price)%></td>
     </tr>
   </tbody>
@@ -59,7 +59,6 @@
       <td><%= @products.where(product_name: 'bajari').sum(:weight) %> /kg</td>
       <td>Rs. <%= @products.where(product_name: 'bajari').sum(:price) %></td>
       <td>
-        <%= Product.where(product_name: 'bajari').group(:customer_id).count%>
       </td>
     </tr>
     <tr>
