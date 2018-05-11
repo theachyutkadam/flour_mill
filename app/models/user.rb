@@ -6,4 +6,16 @@ class User < ActiveRecord::Base
   has_one :customer
   has_one :operator
   belongs_to :role
+
+  def admin?
+    self.role.name == "Admin"
+  end
+
+  def operator?
+    self.role.name == "Operator"
+  end
+
+  def customer?
+    self.role.name == "Customer"
+  end
 end

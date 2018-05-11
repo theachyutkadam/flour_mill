@@ -3,14 +3,11 @@ class CustomersController < ApplicationController
 
   def index
     @customer = Customer.new
-    if params[:search]
-      @customers = Customer.where("first_name like ? OR last_name like ? OR mobile_num like ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
-    else
-      @customers = Customer.order(last_name: :asc)
-    end
-  end
-
-  def show
+    @customers = if params[:search]
+                  Customer.where("first_name like ? OR last_name like ? OR mobile_num like ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+                else
+                  Customer.order(last_name: :asc)
+                end
   end
 
   def new
@@ -21,38 +18,15 @@ class CustomersController < ApplicationController
   end
 
   def create
-    @user = User.new
-    @user.email = params[:customer][:mail]
-    @user.password = params[:customer][:mobile_num]
-    @user.role_id = Role.find_by_name("Customer").id
-    @user.email = "TODO@gmail.com"
-    @user.save
-    user_id = User.last.id
     @customer = Customer.new(customer_params)
-    @customer.user_id = user_id
     @customers = Customer.all
 
     if @customer.save
-      if @customer.mail.blank?
-        @user.email = @customer.first_name + @customer.mobile_num.to_s.last(4)
-        @customer.mail = @user.email
-        @user.save
-        @customer.save
-      end
       flash[:notice] = 'Customer was successfully created'
-      if current_user.role.name == "Admin"
-        redirect_to customers_path
-      elsif current_user.role.name == "Operator"
-        redirect_to home_index_path
-      end
+      current_user.admin? ? (redirect_to customers_path) : (redirect_to home_index_path)
     else
-      if current_user.role.name == "Admin"
-        render :index
-      elsif current_user.role.name == "Operator"
-        render :new
-      end
+      current_user.admin? ? (render :index) : (render :new)
     end
-
   end
 
   def update
