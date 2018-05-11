@@ -1,8 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
-  # GET /customers
-  # GET /customers.json
   def index
     @customer = Customer.new
     if params[:search]
@@ -12,22 +10,16 @@ class CustomersController < ApplicationController
     end
   end
 
-  # GET /customers/1
-  # GET /customers/1.json
   def show
   end
 
-  # GET /customers/new
   def new
     @customer = Customer.new
   end
 
-  # GET /customers/1/edit
   def edit
   end
 
-  # POST /customers
-  # POST /customers.json
   def create
     @user = User.new
     @user.email = params[:customer][:mail]
@@ -39,7 +31,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     @customer.user_id = user_id
     @customers = Customer.all
-    
+
     if @customer.save
       if @customer.mail.blank?
         @user.email = @customer.first_name + @customer.mobile_num.to_s.last(4)
@@ -63,8 +55,6 @@ class CustomersController < ApplicationController
 
   end
 
-  # PATCH/PUT /customers/1
-  # PATCH/PUT /customers/1.json
   def update
     respond_to do |format|
       if @customer.update(customer_params)
@@ -77,8 +67,6 @@ class CustomersController < ApplicationController
     end
   end
 
-  # DELETE /customers/1
-  # DELETE /customers/1.json
   def destroy
     if(params[:customer][:password] == "password")
     @customer.destroy
@@ -97,12 +85,10 @@ class CustomersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_customer
       @customer = Customer.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
       params.require(:customer).permit(:first_name, :middle_name, :last_name, :address, :mobile_num, :mail, :family_members)
     end
