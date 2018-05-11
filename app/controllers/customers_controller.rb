@@ -33,6 +33,7 @@ class CustomersController < ApplicationController
     @user.email = params[:customer][:mail]
     @user.password = params[:customer][:mobile_num]
     @user.role_id = Role.find_by_name("Customer").id
+    @user.email = "TODO@gmail.com"
     @user.save
     user_id = User.last.id
     @customer = Customer.new(customer_params)
@@ -40,11 +41,24 @@ class CustomersController < ApplicationController
     @customers = Customer.all
     
     if @customer.save
+      if @customer.mail.blank?
+        @user.email = @customer.first_name + @customer.mobile_num.to_s.last(4)
+        @customer.mail = @user.email
+        @user.save
+        @customer.save
+      end
       flash[:notice] = 'Customer was successfully created'
-
+      if current_user.role.name == "Admin"
         redirect_to customers_path
+      elsif current_user.role.name == "Operator"
+        redirect_to home_index_path
+      end
     else
-      render :index
+      if current_user.role.name == "Admin"
+        render :index
+      elsif current_user.role.name == "Operator"
+        render :new
+      end
     end
 
   end
