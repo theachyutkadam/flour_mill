@@ -12,9 +12,8 @@
   </thead>
 
   <tbody>
-    <% if @payments.nil? %>
-
-    <% else %>
+    <%if @payments.nil? %>
+    <%else%>
       <%@payments.each do |payment| %>
         <tr>
           <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>

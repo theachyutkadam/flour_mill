@@ -1,31 +1,141 @@
+
 <table class="table table-bordered table-hover">
   <thead>
+    <strong style="font-size: 15px">Report Table of Total</strong>
     <tr>
-      <th>Date</th>
-      <th>Previous</th>
-      <th>Payment In Rs.</th>
-      <th>Left Rs.</th>
-      <th>Receiver</th>
-      <th>Giver</th>
-      <th>Link</th>
+      <th>Operator</th>
+      <th colspan="2">Customer</th>
+      <th>Weight /Kg</th>
+      <th>Receive.Rs</th>
+      <th colspan="2">Take.Rs</th>
+      <th>Payment.Rs</th>
+      <th>Left Amt</th>
+      <th>Expense</th>
+      <th>Now</th>
+      <th>last</th>
     </tr>
   </thead>
 
   <tbody>
-    <% if @payments.nil? %>
+    <tr>
+      <td><%= @operators.count %></td>
+      <td><%= @customers.count %></td>
+      <td><%= @customers.sum(:family_members) %></td>
+      <td><%= @products.sum(:weight) %></td>
+      <td><%= @products.sum(:price) %></td>
+      <td>C=<%= @products.where(payment_type: 'cash').sum(:price)%></td>
+      <td>B=<%= @products.where(payment_type: 'borrow').sum(:price)%></td>
+      <td><%= @payments.sum(:payment_ammount)%></td>
+      <td><%= @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount)%></td>
+      <td><%= @expenses.sum(:expence) %></td>
+      <td><%= @products.where(payment_type: 'cash').sum(:price) + @payments.sum(:payment_ammount)%></td>
+      <td><%= @expenses.sum(:expence) - @products.sum(:price)%></td>
+    </tr>
+  </tbody>
+</table>
 
-    <% else %>
-      <%@payments.each do |payment| %>
-        <tr>
-          <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
-          <td><%= payment.previous_ammount %></td>
-          <td><%= payment.payment_ammount %></td>
-          <td><%= payment.left_ammount %></td>
-          <td><%= payment.receiver.capitalize %></td>
-          <td><%= payment.giver.capitalize %></td>
-          <td><%= link_to '', edit_payment_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
-        </tr>
-      <% end %>
-    <% end %>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <strong style="font-size: 15px">Report Product Details</strong>
+    <tr>
+      <th>Product</th>
+      <th>Times</th>
+      <th colspan="4">Take</th>
+      <th>Weight</th>
+      <th>Amount</th>
+      <th>times cust</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>Bajari</td>
+      <td><%= @products.where(product_name: 'bajari').count %></td>
+      <td>Cash- <%= @products.where(product_name: 'bajari', payment_type: 'cash').count %></td>
+      <td>Rs. <%= @products.where(product_name: 'bajari', payment_type: 'cash').sum(:price) %></td>
+      <td>Borrow- <%= @products.where(product_name: 'bajari', payment_type: 'borrow').count %></td>
+      <td>Rs.- <%= @products.where(product_name: 'bajari', payment_type: 'borrow').sum(:price)%></td>
+      <td><%= @products.where(product_name: 'bajari').sum(:weight) %> /kg</td>
+      <td>Rs. <%= @products.where(product_name: 'bajari').sum(:price) %></td>
+      <td>
+        <%= Product.where(product_name: 'bajari').group(:customer_id).count%>
+      </td>
+    </tr>
+    <tr>
+      <td>Wheat</td>
+      <td><%= @products.where(product_name: 'wheat').count %></td>
+      <td>Cash- <%= @products.where(product_name: 'wheat', payment_type: 'cash').count %></td>
+      <td>Rs. <%= @products.where(product_name: 'wheat', payment_type: 'cash').sum(:price) %></td>
+      <td>Borrow- <%= @products.where(product_name: 'wheat', payment_type: 'borrow').count %></td>
+      <td>Rs.- <%= @products.where(product_name: 'wheat', payment_type: 'borrow').sum(:price)%></td>
+      <td><%= @products.where(product_name: 'wheat').sum(:weight) %> /kg</td>
+      <td>Rs. <%= @products.where(product_name: 'wheat').sum(:price) %></td>
+      <td>
+        <%= Product.where(product_name: 'wheat').group(:customer_id).count%>
+      </td>
+    </tr>
+    <tr>
+      <td>Fad</td>
+      <td><%= @products.where(product_name: 'fad').count %></td>
+      <td>Cash- <%= @products.where(product_name: 'fad', payment_type: 'cash').count %></td>
+      <td>Rs. <%= @products.where(product_name: 'fad', payment_type: 'cash').sum(:price) %></td>
+      <td>Borrow- <%= @products.where(product_name: 'fad', payment_type: 'borrow').count %></td>
+      <td>Rs.- <%= @products.where(product_name: 'fad', payment_type: 'borrow').sum(:price)%></td>
+      <td><%= @products.where(product_name: 'fad').sum(:weight) %> /kg</td>
+      <td>Rs. <%= @products.where(product_name: 'fad').sum(:price) %></td>
+      <td>
+        <%= Product.where(product_name: 'fad').group(:customer_id).count%>
+      </td>
+    </tr>
+    <tr>
+      <td>Pulse</td>
+      <td><%= @products.where(product_name: 'pulse').count %></td>
+      <td>Cash- <%= @products.where(product_name: 'pulse', payment_type: 'cash').count %></td>
+      <td>Rs. <%= @products.where(product_name: 'pulse', payment_type: 'cash').sum(:price) %></td>
+      <td>Borrow- <%= @products.where(product_name: 'pulse', payment_type: 'borrow').count %></td>
+      <td>Rs.- <%= @products.where(product_name: 'pulse', payment_type: 'borrow').sum(:price)%></td>
+      <td><%= @products.where(product_name: 'pulse').sum(:weight) %> /kg</td>
+      <td>Rs. <%= @products.where(product_name: 'pulse').sum(:price) %></td>
+      <td>
+        <%= Product.where(product_name: 'pulse').group(:customer_id).count%>
+      </td>
+    </tr>
+    <tr>
+      <td>Other</td>
+      <td><%= @products.where(product_name: 'other').count %></td>
+      <td>Cash- <%= @products.where(product_name: 'other', payment_type: 'cash').count %></td>
+      <td>Rs. <%= @products.where(product_name: 'other', payment_type: 'cash').sum(:price) %></td>
+      <td>Borrow- <%= @products.where(product_name: 'other', payment_type: 'borrow').count %></td>
+      <td>Rs.- <%= @products.where(product_name: 'other', payment_type: 'borrow').sum(:price)%></td>
+      <td><%= @products.where(product_name: 'other').sum(:weight) %> /kg</td>
+      <td>Rs. <%= @products.where(product_name: 'other').sum(:price) %></td>
+      <td>
+        <%= Product.where(product_name: 'other').group(:customer_id).count%>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <strong style="font-size: 15px">Report Customer Details</strong>
+    <tr>
+      <th>Customer</th>
+      <th>Weight /Kg</th>
+      <th>Total.Rs</th>
+      <th>Times</th>
+      <th>customer</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @customers.count %></td>
+      <td><%= @products.where(customer_id:1).sum(:weight) %></td>
+      <td><%= @products.where(customer_id:1).sum(:price) %></td>
+      <td><%= @customers.count %></td>
+      <td><%= @customers.sum(:family_members) %></td>
+    </tr>
   </tbody>
 </table>
