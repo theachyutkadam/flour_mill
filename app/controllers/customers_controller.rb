@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_new_customer, only: [:index, :new]
 
   def index
     @customer = Customer.new
@@ -61,6 +62,10 @@ class CustomersController < ApplicationController
   private
     def set_customer
       @customer = Customer.find(params[:id])
+    end
+
+    def set_new_customer
+      @customer = Customer.new
     end
 
     def customer_params
