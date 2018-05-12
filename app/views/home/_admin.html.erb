@@ -20,7 +20,7 @@
       <% count = count + number%>
       <%left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %>
           <%if left_ammount < 0 %>
-            <tr class="warning">
+            <tr class="info">
           <% elsif left_ammount >= 500 %>
             <tr class="danger">
           <% elsif %>
