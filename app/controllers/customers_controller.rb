@@ -3,20 +3,12 @@ class CustomersController < ApplicationController
   before_action :set_new_customer, only: [:index, :new]
 
   def index
-    @customer = Customer.new
-    @customers = if params[:search]
-                  Customer.where("first_name like ? OR last_name like ? OR mobile_num like ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
-                else
-                  Customer.order(last_name: :asc)
-                end
+    @customers = Customer.search(params)
   end
 
-  def new
-    @customer = Customer.new
-  end
+  def new; end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @customer = Customer.new(customer_params)
