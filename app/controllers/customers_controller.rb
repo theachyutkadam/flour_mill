@@ -27,6 +27,7 @@ class CustomersController < ApplicationController
       flash[:notice] = 'Customer was successfully updated.'
       redirect_to home_index_path
     else
+      flash[:alert] = 'Customer not updated.'
       render :edit
     end
   end
@@ -34,10 +35,10 @@ class CustomersController < ApplicationController
   def destroy
     if(params[:customer][:password] == "password")
       @customer.destroy
-      flash[notice:] = 'Customer was successfully destroyed.'
+      flash[:notice] = 'Customer was successfully destroyed.'
       redirect_to home_index_path
     else
-      flash[:notice] = "Password is incorrect"
+      flash[:alert] = "Password is incorrect"
       redirect_to home_index_path
     end
   end
