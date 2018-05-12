@@ -1,4 +1,4 @@
-<%= form_for(:enter_operator_product, url: create_product_operators_path) do |f| %>
+<%= form_for(@product, url: create_product_operators_path) do |f| %>
   <% if @product.errors.any? %>
     <div class="alert alert-danger fade in">
       <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -13,7 +13,7 @@
   <strong style="font-size: 25px"><%= @customer.last_name.capitalize.to_s + " " + @customer.first_name.capitalize.to_s %></strong><br>
 
   <%= f.hidden_field :customer_id, value: @customer.id %>
-  <%= f.hidden_field :operator_id, value: current_user.operator.id %>
+  <%= f.hidden_field :operator_id, value: current_user.role.id %>
   <!-- <div class="form_group"> -->
   <div class="row"> 
     <div class="col-sm-6">
