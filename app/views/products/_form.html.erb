@@ -32,12 +32,15 @@
         <%= f.select :operator_id, Operator.all.collect {|a| [a.first_name, a.id]}, {}, class: "form-control" %>
       </div>
     <% end%>
-
-    <div class="col-sm-1">
+    <%if current_user.role.name == "Admin" %>
+      <div class="col-sm-2">
+    <%else%>
+      <div class="col-sm-1">
+    <%end%>
       <%= f.submit :Save, class: "btn btn-primary" %>
     </div>
 
-    <div class="col-sm-0">
+    <div class="col-sm-1">
       <%= link_to "Back", home_index_path(cust_id: @cust.id), class: "btn btn-info" %>
     </div>
   </div>
