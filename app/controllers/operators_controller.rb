@@ -16,18 +16,13 @@ class OperatorsController < ApplicationController
   end
 
   def create_product
-    @product = Product.new
-    product_params = params[:enter_operator_product]
-    @product.operator_id = product_params[:operator_id]
-    @product.customer_id = product_params[:customer_id]
-    @product.weight = product_params[:weight]
-    @product.product_name = product_params[:product_name]
-    @customer = Customer.find(product_params[:customer_id])
-    # @product.price = @product.weight * 3
+    @product = Product.new(product_params)
+    @product.price = 3 * @product.weight.to_f
     if @product.save
-      redirect_to show_operator_product_operators_path(cust_id: @product.customer_id)
+      flash[:notice] = 'Product was successfully Created.'
+      redirect_to enter_operator_product_operators_path(cust_id: @product.customer_id)
     else
-      # redirect_to enter_operator_product_operators_path(cust_id: product.customer_id)
+      flash[:danger] = 'Product Not Create.'
       render :enter_operator_product
     end
   end
@@ -105,7 +100,14 @@ class OperatorsController < ApplicationController
       @operator = Operator.find(params[:id])
     end
 
+    def set_new_operator
+      @operator = Operator.new
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
+    def product_params
+      params.require(:product).permit(:customer_id, :operator_id, :weight, :payment_type, :product_name)
+    end
     def operator_params
       params.require(:operator).permit(:first_name, :middle_name, :last_name, :mobile, :mail, :permanent_address, :salary)
     end
