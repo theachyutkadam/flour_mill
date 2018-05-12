@@ -43,7 +43,7 @@ class OperatorsController < ApplicationController
 
   # GET /operators/new
   def new
-    @operator = Operator.new
+    # @operator = Operator.new
   end
 
   # GET /operators/1/edit
@@ -53,36 +53,30 @@ class OperatorsController < ApplicationController
   # POST /operators
   # POST /operators.json
   def create
-    @user = User.new
-    @user.email = params[:operator][:mail]
-    @user.password = params[:operator][:mobile]
-    @user.role_id = Role.find_by_name("Operator").id
-    @user.save
     user_id = User.last.id
     @operator = Operator.new(operator_params)
+    @operators = Operator.all
+
     @operator.user_id = user_id
-    respond_to do |format|
-      if @operator.save
-        format.html { redirect_to home_index_path, notice: 'Operator was successfully created.' }
-        format.json { render :show, status: :created, location: @operator }
-      else
-        format.html { render :new }
-        format.json { render json: @operator.errors, status: :unprocessable_entity }
-      end
+
+    if @operator.save
+      flash[:notice] = 'Operator was successfully created.'
+      redirect_to home_index_path
+    else
+      # flash[:alert] = 'Operator Not Create.'
+      current_user.admin? ? (render :index) : (render :new)
     end
   end
 
   # PATCH/PUT /operators/1
   # PATCH/PUT /operators/1.json
   def update
-    respond_to do |format|
-      if @operator.update(operator_params)
-        format.html { redirect_to home_index_path, notice: 'Operator was successfully updated.' }
-        format.json { render :show, status: :ok, location: @operator }
-      else
-        format.html { render :edit }
-        format.json { render json: @operator.errors, status: :unprocessable_entity }
-      end
+    if @operator.update(operator_params)
+      flash[:notice] = 'Operator was successfully Update.'
+      redirect_to home_index_path
+    else
+      flash[:alert] = 'Operator Not Update.'
+      render :edit
     end
   end
 
@@ -96,7 +90,7 @@ class OperatorsController < ApplicationController
         format.json { head :no_content }
       end
     else
-      flash[:notice] = "Password incorrect"
+      flash[:warning] = "Password incorrect"
       redirect_to home_index_path
     end
   end
