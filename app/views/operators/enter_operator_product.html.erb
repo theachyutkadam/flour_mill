@@ -10,18 +10,15 @@
     </div>
   <% end %>
 
-  <strong style="font-size: 25px"><%= @customer.last_name.capitalize.to_s + " " + @customer.first_name.capitalize.to_s %></strong><br>
-
   <%= f.hidden_field :customer_id, value: @customer.id %>
   <%= f.hidden_field :operator_id, value: current_user.role.id %>
-  <!-- <div class="form_group"> -->
-  <div class="row"> 
-    <div class="col-sm-6">
-      <div class="col-sm-2">
+  <div class="form_group">
+    <div class="row">
+      <div class="col-sm-1">
         <%= f.select :payment_type, [["Borrow","borrow"],["Cash","cash"]], {}, class: "form-control" %>
       </div>
 
-      <div class="col-sm-2">
+      <div class="col-sm-1">
         <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {}, class: "form-control" %>
       </div>
 
@@ -31,11 +28,11 @@
         </div>
       </div>
 
-      <div class="col-sm-2">
+      <div class="col-sm-1">
         <%= f.submit :Save, class: "btn btn-primary" %>
       </div>
 
-      <div class="col-sm-2">
+      <div class="col-sm-1">
         <%= link_to "Back", home_index_path(cust_id: @customer.id), class: "btn btn-info" %>
       </div>
     </div>
