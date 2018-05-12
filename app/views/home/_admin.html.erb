@@ -17,15 +17,13 @@
       <% number = 0%>
       <% left_ammount = 0%>
       <% @customers.each do |customer| %>
-      <% count = count + number%>
-      <%left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %>
-          <%if left_ammount < 0 %>
-            <tr class="info">
-          <% elsif left_ammount >= 500 %>
-            <tr class="danger">
-          <% elsif %>
-            <tr>
-          <% end%>
+        <% count = count + number%>
+        <%left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %>
+        <%if left_ammount < 0 %>
+          <tr colspan="5" class="info">
+        <% elsif left_ammount >= 500 %>
+          <tr class="danger">
+        <% end%>
           <td><%= count %></td>
           <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
           <td><%= customer.mobile_num %></td>
@@ -36,7 +34,6 @@
             <%= link_to '', new_product_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
             <%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %>
             <%= link_to '', new_payment_path(cust_id: customer.id), class:"btn btn-xs btn-warning glyphicon glyphicon-euro" %>
-            <%= link_to '', confirm_delete_customers_path(cust_id: customer.id), class:"btn btn-danger btn-xs glyphicon glyphicon-trash" %>
           </td>
         </tr>
         <% count+= 1 %>
@@ -65,7 +62,7 @@
           <td>
             <%= link_to '', record_operators_path(operator_id: operator.id), class:"btn btn-info btn-xs glyphicon glyphicon-th-list" %>
             <%= link_to '', edit_operator_path(operator), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %>
-            <%= link_to '', confirm_delete_operators_path(operator_id: operator.id), class:"btn btn-danger btn-xs glyphicon glyphicon-trash" %>
+            <%= link_to '', new_payment_path(operator_id: operator.id), class:"btn btn-xs btn-warning glyphicon glyphicon-euro" %>
           </td>
         </tr>
       <% end %>
