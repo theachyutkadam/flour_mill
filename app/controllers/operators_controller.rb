@@ -1,19 +1,12 @@
 class OperatorsController < ApplicationController
   before_action :set_operator, only: [:show, :edit, :update, :destroy]
+  before_action :set_new_operator, only: [:index, :new]
 
   # GET /operators
   # GET /operators.json  
   def index
-    @operator = Operator.new
-    if params[:search]
-      @operators = Operator.where("first_name like ? OR last_name like ? OR mobile like ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
-    else
-      @operators = Operator.order(last_name: :asc)
-    end
-  end
-
-  def show_operator_product
-    @products = Product.where(customer_id: params[:cust_id], operator_id: current_user.operator.id)
+   @operators = Operator.search(params)
+   @operators = Operator.all
   end
 
   def enter_operator_product
