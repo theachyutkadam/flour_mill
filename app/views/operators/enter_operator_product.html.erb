@@ -62,22 +62,30 @@
       <tbody>
         <%sum = 0%>
         <%count = 0%>
-        <% @products.each do |product| %>
+        <% if @products.blank? %>
           <tr>
-            <% count = count + 1%>
-            <% sum = sum + product.weight%>
-            <td><%= count%></td>
-            <td><%= product.created_at.strftime '%d/%B/%Y' %></td>
-            <td><%= product.product_name.capitalize %></td>
-            <td><%= product.payment_type %></td>
-            <td><%= product.weight %></td>
-            <td><%= product.price %></td>
-            <td><%= link_to '', edit_products_path(id: product.id, customer_id: product.customer_id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+            <td colspan="7">Products are not available for this customer.</td>
+          </tr>
+        <% else %>
+          <% @products.each do |product| %>
+            <tr>
+              <% count = count + 1%>
+              <% sum = sum + product.weight%>
+              <td><%= count%></td>
+              <td><%= product.created_at.strftime '%d/%B/%Y' %></td>
+              <td><%= product.product_name.capitalize %></td>
+              <td><%= product.payment_type %></td>
+              <td><%= product.weight %></td>
+              <td><%= product.price %></td>
+              <td><%= link_to '', edit_products_path(id: product.id, customer_id: product.customer_id), class: "btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <th colspan="4">Total</th>
+            <th><%= sum %>/kg</th>
+            <th>Rs-<%= sum * 3 %></th>
           </tr>
         <% end %>
-        <th colspan="4">Total</th>
-        <th><%= sum %>/kg</th>
-        <th>Rs-<%= sum * 3 %></th>
       </tbody>
     </table>
   </div>
