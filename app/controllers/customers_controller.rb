@@ -31,24 +31,19 @@ class CustomersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @customer.update(customer_params)
-        format.html { redirect_to home_index_path, notice: 'Customer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @customer }
-      else
-        format.html { render :edit }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
+    if @customer.update(customer_params)
+      flash[:notice] = 'Customer was successfully updated.'
+      redirect_to home_index_path
+    else
+      render :edit
     end
   end
 
   def destroy
     if(params[:customer][:password] == "password")
-    @customer.destroy
-    respond_to do |format|
-      format.html { redirect_to home_index_path, notice: 'Customer was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      @customer.destroy
+      flash[notice:] = 'Customer was successfully destroyed.'
+      redirect_to home_index_path
     else
       flash[:notice] = "Password is incorrect"
       redirect_to home_index_path
