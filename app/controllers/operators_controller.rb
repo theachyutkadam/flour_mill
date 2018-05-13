@@ -17,7 +17,7 @@ class OperatorsController < ApplicationController
 
   def create_product
     @product = Product.new(product_params)
-    @product.price = 3 * @product.weight.to_f
+    @product.price.to_f = 3 * @product.weight.to_f
     if @product.save
       flash[:notice] = 'Product was successfully Created.'
       redirect_to enter_operator_product_operators_path(cust_id: @product.customer_id)

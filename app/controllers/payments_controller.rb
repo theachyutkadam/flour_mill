@@ -32,8 +32,8 @@ class PaymentsController < ApplicationController
   def create
     @customer = Customer.find(params[:payment][:customer_id])
     @payment = Payment.new(payment_params)
-    @payment.previous_ammount = Product.where(customer_id: @customer, payment_type: "borrow").sum(:price).to_f - @customer.payments.sum(:payment_ammount).to_f
-    @payment.left_ammount = @payment.previous_ammount - params[:payment][:payment_ammount].to_f
+    @payment.previous_ammount.to_f = Product.where(customer_id: @customer, payment_type: "borrow").sum(:price).to_f - @customer.payments.sum(:payment_ammount).to_f
+    @payment.left_ammount.to_f = @payment.previous_ammount - params[:payment][:payment_ammount].to_f
 
     if @payment.save
       redirect_to new_product_path(cust_id: @payment.customer.id)

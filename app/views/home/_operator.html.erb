@@ -4,10 +4,11 @@
       <th>No</th>
       <th>Date</th>
       <th>Name</th>
+      <th>Mail</th>
       <th>Address</th>
       <th>Mobile</th>
       <th>F.Members</th>
-      <th>Mail</th>
+      <th>Left.Rs</th>
       <th colspan="1"><%= link_to 'New Customer', new_customer_path, class: "btn btn-xs btn-info" %></th>
     </tr>
   </thead>
@@ -15,15 +16,21 @@
   <tbody>
     <%count = 0%>
     <% @customers.each do |customer| %>
-    <%count = count + 1%>
-      <tr>
+        <% count = count + 1%>
+        <%left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %>
+        <%if left_ammount < 0 %>
+          <tr colspan="5" class="info">
+        <% elsif left_ammount >= 500 %>
+          <tr class="danger">
+        <% end%>
         <td><%= count%></td>
         <td><%= customer.created_at.strftime '%d/%B/%Y' %></td>
         <td><%= customer.last_name.capitalize+ " " +customer.first_name.capitalize+ " " +customer.middle_name.capitalize %></td>
+        <td><%= customer.mail %></td>
         <td><%= customer.address.capitalize %></td>
         <td><%= customer.mobile_num %></td>
         <td><%= customer.family_members %></td>
-        <td><%= customer.mail %></td>
+        <td><strong><%=left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %></strong></td>
         <td><%= link_to '', enter_operator_product_operators_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
       </tr>
     <% end %>

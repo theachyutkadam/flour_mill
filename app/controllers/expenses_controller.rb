@@ -9,7 +9,7 @@ class ExpensesController < ApplicationController
     @exp = Expense.new
 
     @exp.expence_type = form[:expense_type]
-    @exp.expence = form[:expense]
+    @exp.expence = form[:expense].to_f
     if @exp.save
       redirect_to expenses_path
     else
