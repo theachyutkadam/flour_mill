@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
     @payments = Payment.all
     @product = Product.new(product_params)
     # puts @product.inspect
-    @product.price.to_f = 3 * params[:product][:weight].to_f
+    @product.price = 3 * params[:product][:weight].to_f
     # @product.weight = params[:product][:price].to_i/3
     # @product.payment_type = params[:product][:payment_type]
     @payment = Payment.new

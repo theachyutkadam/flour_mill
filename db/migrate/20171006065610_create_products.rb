@@ -2,7 +2,7 @@ class CreateProducts < ActiveRecord::Migration
   def change
     create_table :products do |t|
       t.string :product_name
-      t.decimal :price
+      t.float :price
       t.float :weight
       t.references :customer, index: true
       t.references :operator, index: true
