@@ -36,6 +36,12 @@
           </td>
         </tr>
       <% end %>
+      <tr>
+        <th>Total</th>
+        <th colspan="3">Customer's  = <%=@customers.count%></th>
+        <th><%=@customers.sum(:family_members)%></th>
+        <th>Rs. <%=Product.sum(:price) - Payment.sum(:payment_ammount)%></th>
+      </tr>
     </tbody>
   </table>
 </div>
