@@ -1,86 +1,69 @@
 <div class="row">
   <div class="col-sm-6">
-    <table class="table table-bordered table-hover" >
-      <thead>
-        <strong style="font-size: 15px">Products Entry Table</strong>
+    <table class="table">
+      <strong>Show Customer Details</strong>
+      <tr>
         <tr>
-          <th>No</th>
-          <th>Date</th>
-          <th>Operator</th>
-          <th>Product name</th>
-          <th>Weight</th>
-          <th>Price</th>
-          <th>Payment</th>
+        <th style="color: darkblue">First Name - </th>
+        <td style="color: black"><%=current_user.customer.first_name.capitalize %></td>
+        <th style="color: darkblue">Middle Name - </th>
+        <td style="color: black"><%=current_user.customer.middle_name.capitalize %></td>
+        <th style="color: darkblue">Last Name - </th>
+        <td style="color: black"><%=current_user.customer.last_name.capitalize %></td>
+        </tr>
+        <tr>
+        <th style="color: darkblue">Mail - </th>
+        <td style="color: black"><%=current_user.customer.mail %></td>
+        <th style="color: darkblue">Mobile - </th>
+        <td style="color: black"><%=current_user.customer.mobile_num %></td>
+        </tr>
+        <tr>
+        <th style="color: darkblue">Family Members - </th>
+        <td style="color: black"><%=current_user.customer.family_members %></td>
+        </tr>
+        <tr>
+        <th style="color: darkblue">Address - </th>
+        <td style="color: black"><%=current_user.customer.address.capitalize %></td>
+        </tr>
+    </tr>
+    </table>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <strong>Show Cash & Borrow Table</strong>
+        <tr>
+          <th colspan="2">Cash</th>
+          <th colspan="2">Borrow</th>
+          <th colspan="2">Total</th>
+          <th>Given</th>
+          <th>Left</th>
         </tr>
       </thead>
+        <%left_ammount = @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount) %>
 
       <tbody>
-        <%sum = 0%>
-        <%count = 0%>
-        <% @products.each do |product| %>
-          <tr>
-
-            <%count = count + 1%>
-            <%sum = sum + product.weight%>
-            <td><%= count %></td>
-            <td><%= product.created_at.strftime '%d/%B/%Y' %></td>
-            <td><%= product.operator.first_name.capitalize %></td>
-            <td><%= product.product_name.capitalize %></td>
-            <td><%= product.weight %></td>
-            <td><%= product.price %></td>
-            <td><%= product.payment_type %></td>
-          </tr>
-        <% end %>
-        <tr class="info">
-          <th colspan="3">Total</th>
-          <th>Product = <%= @products.count %></th>
-          <th><%= sum %>/kg</th>
-          <th>Rs-<%= sum * 3 %></th>
+        <%if left_ammount < 0 %>
+          <tr class="success">
+        <%elsif left_ammount >= 500 %>
+          <tr class="danger">
+        <%else%>
+          <tr class="warning">
+        <% end%>
+          <td>Quntity- <%= cash = @products.where(payment_type: 'cash').count %></td>
+          <td>Rs. <%= @products.where(payment_type: 'cash').sum(:price).to_f %></td>
+          <td>Quntity- <%= borrow = @products.where(payment_type: 'borrow').count %></td>
+          <td>Rs. <%= @products.where(payment_type: 'borrow').sum(:price).to_f %></td>
+          <td>Quntity- <%= cash + borrow %></td>
+          <td>Rs. <%= @products.sum(:price) %></td>
+          <td>Rs. <%= @payments.sum(:payment_ammount) %></td>
+          <td>Rs. <%= @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount) %></td>
         </tr>
       </tbody>
     </table>
   </div>
-
   <div class="col-sm-6">
     <table class="table table-bordered table-hover">
       <thead>
-        <strong style="font-size: 15px">Payment Details Table</strong>
-        <tr>
-          <th>Date</th>
-          <th>Giver</th>
-          <th>Receiver</th>
-          <th>Previous Amt.</th>
-          <th>Left Rs.</th>
-          <th>Payment Rs.</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <%@payments.each do |payment| %>
-          <tr>
-            <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
-            <td><%= payment.giver.capitalize %></td>
-            <td><%= payment.receiver.capitalize %></td>
-            <td><%= payment.previous_ammount %></td>
-            <td><%= payment.left_ammount %></td>
-            <td><%= payment.payment_ammount %></td>
-          </tr>
-        <% end %>
-        <tr class="info">
-          <th>Total</th>
-          <th colspan="4"><%= @payments.count%> Transaction's</th>
-          <th><%= @payments.sum(:payment_ammount)%></th>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-sm-6">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <strong style="font-size: 15px">Products Details Table</strong>
+        <strong>Products Details Table</strong>
         <tr>
           <th>Products</th>
           <th>No.of Times</th>
@@ -129,36 +112,80 @@
     </table>
   </div>
 
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <table class="table table-bordered table-hover" >
+      <thead>
+        <strong>Products Entry Table</strong>
+        <tr>
+          <th>No</th>
+          <th>Date</th>
+          <th>Operator</th>
+          <th>Product name</th>
+          <th>Payment</th>
+          <th>Weight</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%sum = 0%>
+        <%count = 0%>
+        <% @products.each do |product| %>
+          <tr>
+
+            <%count = count + 1%>
+            <%sum = sum + product.weight%>
+            <td><%= count %></td>
+            <td><%= product.created_at.strftime '%d/%B/%Y' %></td>
+            <td><%= product.operator.first_name.capitalize %></td>
+            <td><%= product.product_name.capitalize %></td>
+            <td><%= product.payment_type %></td>
+            <td><%= product.weight %></td>
+            <td><%= product.price %></td>
+          </tr>
+        <% end %>
+        <tr class="info">
+          <th colspan="4">Total</th>
+          <th>Product = <%= @products.count %></th>
+          <th><%= sum %>/kg</th>
+          <th>Rs. <%= sum * 3 %></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <div class="col-sm-6">
     <table class="table table-bordered table-hover">
       <thead>
-        <strong style="font-size: 15px">Show Cash & Borrow Table</strong>
+        <strong>Payment Details Table</strong>
         <tr>
-          <th colspan="2">Cash</th>
-          <th colspan="2">Borrow</th>
-          <th colspan="2">Total</th>
-          <th>Given</th>
-          <th>Left</th>
+          <th>Date</th>
+          <th>Giver</th>
+          <th>Receiver</th>
+          <th>Previous Amt.</th>
+          <th>Left Rs.</th>
+          <th>Payment Rs.</th>
         </tr>
       </thead>
-        <%left_ammount = @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount) %>
 
       <tbody>
-        <%if left_ammount < 0 %>
-          <tr class="success">
-        <%elsif left_ammount >= 500 %>
-          <tr class="danger">
-        <%else%>
-          <tr class="warning">
-        <% end%>
-          <td>Quntity- <%= cash = @products.where(payment_type: 'cash').count %></td>
-          <td>Rs. <%= @products.where(payment_type: 'cash').sum(:price).to_f %></td>
-          <td>Quntity- <%= borrow = @products.where(payment_type: 'borrow').count %></td>
-          <td>Rs. <%= @products.where(payment_type: 'borrow').sum(:price).to_f %></td>
-          <td>Quntity- <%= cash + borrow %></td>
-          <td>Rs. <%= @products.sum(:price) %></td>
-          <td>Rs. <%= @payments.sum(:payment_ammount) %></td>
-          <td>Rs. <%= @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount) %></td>
+        <%@payments.each do |payment| %>
+          <tr>
+            <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
+            <td><%= payment.giver.capitalize %></td>
+            <td><%= payment.receiver.capitalize %></td>
+            <td><%= payment.previous_ammount %></td>
+            <td><%= payment.left_ammount %></td>
+            <td><%= payment.payment_ammount %></td>
+          </tr>
+        <% end %>
+        <tr class="info">
+          <th>Total</th>
+          <th colspan="4"><%= @payments.count%> Transaction's</th>
+          <th><%= @payments.sum(:payment_ammount)%></th>
         </tr>
       </tbody>
     </table>
