@@ -29,14 +29,12 @@ class ProductsController < ApplicationController
     @product.price.to_f = 3 * params[:product][:weight].to_f
     # @product.weight = params[:product][:price].to_i/3
     # @product.payment_type = params[:product][:payment_type]
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to new_product_path(cust_id: @cust.id), notice: 'Product was successfully created.' }
-        format.json { render :new, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    @payment = Payment.new
+    if @product.save
+      flash[:notice] =  'Product was successfully created.'
+      redirect_to new_product_path(cust_id: @cust.id)
+    else
+      render :new
     end
   end
 
