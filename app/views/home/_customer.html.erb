@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-6">
-    <table class="table">
+    <table class="table table-bordered">
       <strong>Show Customer Details</strong>
       <tr>
         <tr>
@@ -20,6 +20,7 @@
         <tr>
         <th style="color: darkblue">Family Members - </th>
         <td style="color: black"><%=current_user.customer.family_members %></td>
+        <td rowspan="2" colspan="4"><strong style="font-size: 45px">Left Rs. <%= @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount) %></strong></td>
         </tr>
         <tr>
         <th style="color: darkblue">Address - </th>
@@ -184,7 +185,7 @@
         <% end %>
         <tr class="info">
           <th>Total</th>
-          <th colspan="4"><%= @payments.count%> Transaction's</th>
+          <th colspan="4">Transaction's = <%= @payments.count%></th>
           <th><%= @payments.sum(:payment_ammount)%></th>
         </tr>
       </tbody>
