@@ -8,7 +8,6 @@
       <th>Left Rs.</th>
       <th>Receiver</th>
       <th>Giver</th>
-      <th>Link</th>
     </tr>
   </thead>
 
@@ -23,7 +22,6 @@
           <td><%= payment.left_ammount %></td>
           <td><%= payment.receiver.capitalize %></td>
           <td><%= payment.giver.capitalize %></td>
-          <td><%= link_to '', edit_payment_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
         </tr>
       <% end %>
     <% end %>

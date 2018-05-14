@@ -10,6 +10,8 @@
     </div>
   <% end %>
 
+  <strong style="font-size: 20px"><%= @customer.last_name.capitalize + " " + @customer.first_name.capitalize%> Left Rs. <%= @customer.products.where(payment_type: 'borrow').sum(:price).to_f - @customer.payments.sum(:payment_ammount).to_f %>
+  </strong><br><br>
   <%= f.hidden_field :customer_id, value: @customer.id %>
   <%= f.hidden_field :operator_id, value: current_user.role.id %>
   <div class="form_group">
@@ -51,7 +53,6 @@
           <th>Payment</th>
           <th>Weight</th>
           <th>Price</th>
-          <th colspan="2">Links</th>
         </tr>
       </thead>
       <tbody>
@@ -72,7 +73,6 @@
               <td><%= product.payment_type %></td>
               <td><%= product.weight %></td>
               <td><%= product.price %></td>
-              <td><%= link_to '', edit_products_path(id: product.id, customer_id: product.customer_id), class: "btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
             </tr>
           <% end %>
           <tr>

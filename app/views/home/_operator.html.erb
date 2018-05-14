@@ -10,7 +10,7 @@
       <th>Mobile</th>
       <th>F.Members</th>
       <th>Left.Rs</th>
-      <th colspan="1"><%= link_to 'New Customer', new_customer_path, class: "btn btn-xs btn-info" %></th>
+      <th colspan="2"><%= link_to 'New Customer', new_customer_path, class: "btn btn-xs btn-info" %></th>
     </tr>
   </thead>
 
@@ -31,8 +31,9 @@
         <td><%= customer.address.capitalize %></td>
         <td><%= customer.mobile_num %></td>
         <td><%= customer.family_members %></td>
-        <td><strong><%=left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %></strong></td>
+        <td><strong style="font-size: 15px"><%=left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %></strong></td>
         <td><%= link_to '', enter_operator_product_operators_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
+        <td><%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
       </tr>
     <% end %>
   </tbody>

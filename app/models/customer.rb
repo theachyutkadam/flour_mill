@@ -8,6 +8,7 @@ class Customer < ActiveRecord::Base
   validates :address, presence: true, format: {with: /[a-z0-9]/, message: 'Write only small letter'}
   validates :mail, :uniqueness => { scope: :user_id }, on: :create
   validates :mobile_num, numericality: true, :length => { minimum: 10 }, uniqueness: true, on: :create
+  validates :family_members, numericality: true
   before_create :create_user
   before_update :update_user
 

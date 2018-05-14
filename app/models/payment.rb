@@ -7,7 +7,9 @@ class Payment < ActiveRecord::Base
   before_update :assign_attribute
   
   def last_payment_ammount
-    self.customer.payments.sum(:payment_ammount) - self.customer.payments.last.payment_ammount
+    last_id = self.customer.payments.last.id
+    self.customer.payments.sum(:payment_ammount) - self.customer.payments.find_by(id: last_id-1).left_ammount
+    # self.customer.payments.sum(:payment_ammount) - self.customer.payments.last.payment_ammount
   end
   def generate_previous_ammount
     Product.where(customer_id: self.customer_id, payment_type: "borrow").sum(:price) - self.customer.payments.sum(:payment_ammount) - last_payment_ammount

@@ -15,7 +15,7 @@
   <div class="row">
     <div class="col-sm-1">
       <div class="input-group-sm">
-        <%= f.text_field :payment_ammount, placeholder: "Amount", class: "form-control" %>
+        <%= f.text_field :payment_ammount, in: 1..100, placeholder: "Amount", class: "form-control" %>
       </div>
     </div>
     <div class="col-sm-1">
@@ -52,7 +52,6 @@
           <th>Left Rs.</th>
           <th>Receiver</th>
           <th>Giver</th>
-          <th>Link</th>
         </tr>
       </thead>
 
@@ -68,7 +67,6 @@
               <td><%= payment.left_ammount %></td>
               <td><%= payment.receiver.capitalize %></td>
               <td><%= payment.giver.capitalize %></td>
-              <td><%= link_to '', edit_payment_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
             </tr>
           <% end %>
         <% end %>
