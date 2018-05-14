@@ -15,10 +15,12 @@
 
     <tbody>
       <% count = 0%>
+      <% sum = 0%>
       <% left_ammount = 0%>
       <% @customers.each do |customer| %>
         <% count = count + 1%>
         <%left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %>
+        <% sum = sum + left_ammount%>
         <tr>
           <td><%= count %></td>
           <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
@@ -43,7 +45,7 @@
         <th>Total</th>
         <th colspan="3">Customer's  = <%=@customers.count%></th>
         <th><%=@customers.sum(:family_members)%></th>
-        <th>Rs. <%=Product.sum(:price) - Payment.sum(:payment_ammount)%></th>
+        <th>Rs. <%=sum%></th>
       </tr>
     </tbody>
   </table>
