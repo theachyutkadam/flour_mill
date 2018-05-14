@@ -10,6 +10,7 @@ class ExpensesController < ApplicationController
 
     @exp.expence_type = form[:expense_type]
     @exp.expence = form[:expense].to_f
+    @exp.quantity = form[:quantity]
     if @exp.save
       redirect_to expenses_path
     else
@@ -34,6 +35,7 @@ class ExpensesController < ApplicationController
     @exp = Expense.find(form[:id])
     @exp.expence_type = form[:expense_type]
     @exp.expence = form[:expense]
+    @exp.quantity = form[:quantity]
     @exp.save
     redirect_to expenses_path
   end

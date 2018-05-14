@@ -18,9 +18,15 @@
         </div>
       </div>
     
-      <div class="col-sm-2">
+      <div class="col-sm-1">
         <div class="input-group-sm">
           <%= f.text_field :expense, placeholder: "Amount", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="col-sm-1">
+        <div class="input-group-sm">
+          <%= f.number_field :quantity, placeholder: "Quantity", class: "form-control" %>
         </div>
       </div>
 
@@ -49,7 +55,7 @@
           <th>Date</th>
           <th>Expense_type</th>
           <th>Expense</th>
-          <th>Link</th>
+          <th>Quantity</th>
         </tr>
         <% sum = 0 %>
         <% count = 0 %>
@@ -61,7 +67,7 @@
             <td><%= exp.created_at.strftime("%d/%b/%Y") %></td>
             <td><%= exp.expence_type.capitalize %></td>
             <td><%= exp.expence %></td>
-            <td><%= link_to "", edit_exp_expense_path(id: exp.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+            <td><%= exp.quantity %></td>
           </tr>
         <% end -%>
         <th colspan="2">Total
