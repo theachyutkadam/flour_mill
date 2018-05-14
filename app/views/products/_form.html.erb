@@ -9,8 +9,10 @@
       </ul>
     </div>
   <% end %>
-
   <%= f.hidden_field :customer_id, value: @cust.id %>
+  <strong>
+    <%= @cust.first_name.capitalize + " " + @cust.last_name.capitalize%>
+  </strong><br><br>
   <div class="row">
     <div class="col-sm-2">
       <%= f.select :payment_type, [["Borrow","borrow"],["Cash","cash"]], {}, class: "form-control" %>

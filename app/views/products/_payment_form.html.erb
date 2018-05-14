@@ -10,6 +10,9 @@
     </div>
   <% end %>
 
+  <strong style="font-size: 20px">Left Rs. <%= @cust.products.where(payment_type: 'borrow').sum(:price).to_f - @cust.payments.sum(:payment_ammount).to_f %>
+  </strong><br><br>
+
   <%= f.hidden_field :customer_id, value:@cust.id %>
   <div class="row">
     <div class="col-sm-2">
