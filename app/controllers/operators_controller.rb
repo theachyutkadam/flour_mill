@@ -17,7 +17,7 @@ class OperatorsController < ApplicationController
 
   def create_product
     @product = Product.new(product_params)
-    @product.price.to_f = 3 * @product.weight.to_f
+    @product.price = 3 * @product.weight.to_f
     if @product.save
       flash[:notice] = 'Product was successfully Created.'
       redirect_to enter_operator_product_operators_path(cust_id: @product.customer_id)
@@ -80,10 +80,8 @@ class OperatorsController < ApplicationController
   def destroy
     if(params[:operator][:password] == "password")
       @operator.destroy
-      respond_to do |format|
-        format.html { redirect_to home_index_path, notice: 'Operator was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+      flash[:notice] = "Operator was successfully destroyed."
+      redirect_to home_index_path
     else
       flash[:warning] = "Password incorrect"
       redirect_to home_index_path
