@@ -8,11 +8,11 @@
       <th>Payment_type</th>
       <th>Price(Rs.)</th>
       <th>Weight(kg.)</th>
-      <th>Edit</th>
     </tr>
   </thead>
 
   <tbody>
+    <% aa = 0%>
     <% @products.each do |product| %>
       <tr>
         <td><%= product.created_at.strftime '%d/%B/%Y'%></td>
@@ -21,13 +21,6 @@
         <td><%= product.payment_type %></td>
         <td><%= product.price %></td>
         <td><%= product.weight %></td>
-        <%if @products.last %>
-          <td>
-            <%= link_to '', edit_products_path(id: product.id, customer_id: product.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %>
-          </td>
-        <%else%>
-
-        <% end%>
       </tr>
     <% end %>
     <th colspan="2">Total</th>
