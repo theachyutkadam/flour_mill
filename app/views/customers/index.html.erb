@@ -1,6 +1,7 @@
 <%= render 'form' %>
 <table class="table table-bordered table-responsive">
   <thead>
+    <strong>Customers Details</strong>
     <tr>
       <th>No</th>
       <th>Name</th>
@@ -20,18 +21,23 @@
     <% @customers.each do |customer| %>
       <% count = count + number%>
       <%left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %>
-      <%if left_ammount < 0 %>
-        <tr colspan="5" class="info">
-      <% elsif left_ammount >= 500 %>
-        <tr class="danger">
-      <% end%>
         <td><%= count %></td>
         <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
         <td><%= customer.mobile_num %></td>
         <td><%= customer.address.capitalize %></td>
         <td><%= customer.mail %></td>
         <td><%= customer.family_members %></td>
-        <td><strong>Rs. <%= customer.products.sum(:price).to_f %></strong></td>
+
+        <%if left_ammount < 0 %>
+          <td class="success"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
+        <% elsif left_ammount >= 500 %>
+          <td class="danger"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
+        <% else%>
+          <td><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
+        <% end%>
+
+        <!-- <td><strong style="font-size: 15px">Rs. <%= customer.products.sum(:price).to_f %></strong></td> -->
+
         <td><%= link_to '', new_product_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %></td>
         <td><%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
         <td><%= link_to '', new_payment_path(cust_id: customer.id), class:"btn btn-xs btn-warning glyphicon glyphicon-euro" %></td>

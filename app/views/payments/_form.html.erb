@@ -9,7 +9,7 @@
       </ul>
     </div>
   <% end %>
-  <strong style="font-size: 20px"><%= @customer.first_name.capitalize + " " + @customer.last_name.capitalize%> Left Rs.<%= @customer.products.where(payment_type: 'borrow').sum(:price).to_f - @customer.payments.sum(:payment_ammount).to_f %>
+  <strong style="font-size: 20px"><%= @customer.first_name.capitalize + " " + @customer.last_name.capitalize%> Left Rs. <%= @customer.products.where(payment_type: 'borrow').sum(:price).to_f - @customer.payments.sum(:payment_ammount).to_f %>
   </strong><br><br>
   <%= f.hidden_field :customer_id, value:@customer.id %>
   <div class="row">
@@ -44,6 +44,7 @@
   <div class="col-sm-6">
     <table class="table table-bordered table-hover">
       <thead>
+        <strong>Payments Details</strong>
         <tr>
           <th>Date</th>
           <th>Previous</th>
@@ -67,7 +68,7 @@
               <td><%= payment.left_ammount %></td>
               <td><%= payment.receiver.capitalize %></td>
               <td><%= payment.giver.capitalize %></td>
-              <td><%= link_to '', edit_product_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+              <td><%= link_to '', edit_payment_path(payment, cust_id: payment.customer.id), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
             </tr>
           <% end %>
         <% end %>
