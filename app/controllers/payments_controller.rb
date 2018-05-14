@@ -46,8 +46,10 @@ class PaymentsController < ApplicationController
   # PATCH/PUT /payments/1.json
   def update
     if @payment.update(payment_params)
+      flash[:notice] = "Payment Update Successfully."
       redirect_to new_product_path(cust_id: @payment.customer.id)
     else
+      flash[:alert] = "Payment Update Failed."
       render :edit
     end
   end
@@ -68,7 +70,7 @@ class PaymentsController < ApplicationController
       @payment = Payment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust pupdatearameters from the scary internet, only allow the white list through.
     def payment_params
       params.require(:payment).permit(:customer_id, :payment_ammount, :receiver, :giver, :previous_ammount, :left_ammount)
     end
