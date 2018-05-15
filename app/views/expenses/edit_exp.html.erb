@@ -21,6 +21,12 @@
         </div>
       </div>
 
+      <div class="col-sm-2">
+        <div class="input-group-sm">
+          <td> <%= f.text_area :description, value:@exp.description, class: "form-control" %></td>
+        </div>
+      </div>
+
       <div class="col-sm-1">
         <div class="input-group-sm">
           <td> <%= f.submit "Update", class: "btn btn-primary" %></td>
