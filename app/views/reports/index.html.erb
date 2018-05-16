@@ -1,3 +1,4 @@
+<% customers = 0 %>
 
 <table class="table table-bordered table-hover">
   <thead>
@@ -43,7 +44,7 @@
       <th colspan="4">Take</th>
       <th>Weight</th>
       <th>Amount</th>
-      <th>times cust</th>
+      <th colspan="2">times cust</th>
     </tr>
   </thead>
 
@@ -57,8 +58,14 @@
       <td>Rs.- <%= @products.where(product_name: 'bajari', payment_type: 'borrow').sum(:price)%></td>
       <td><%= @products.where(product_name: 'bajari').sum(:weight) %> /kg</td>
       <td>Rs. <%= @products.where(product_name: 'bajari').sum(:price) %></td>
-      <td>
-      </td>
+      <% array_top = [] %>
+      <%@customers.each do |customer|%>
+        <%customers = @products.where(product_name: 'bajari', customer_id: customer.id).sum(:weight)%>
+        <% array_top.push(customers) %>
+      <% end -%>
+      <td><%= array_top.max%>.kg</td>
+      <td><%= array_top.min%>.kg</td>
+      <td><%= array_top%>.kg</td>
     </tr>
     <tr>
       <td>Wheat</td>
@@ -69,9 +76,14 @@
       <td>Rs.- <%= @products.where(product_name: 'wheat', payment_type: 'borrow').sum(:price)%></td>
       <td><%= @products.where(product_name: 'wheat').sum(:weight) %> /kg</td>
       <td>Rs. <%= @products.where(product_name: 'wheat').sum(:price) %></td>
-      <td>
-        <%= Product.where(product_name: 'wheat').group(:customer_id).count%>
-      </td>
+      <% array_top = [] %>
+      <%@customers.each do |customer|%>
+        <%customers = @products.where(product_name: 'wheat', customer_id: customer.id).sum(:weight)%>
+        <% array_top.push(customers) %>
+      <% end -%>
+      <td><%= array_top.max%>.kg</td>
+      <td><%= array_top.min%>.kg</td>
+      <td><%= array_top%>.kg</td>
     </tr>
     <tr>
       <td>Fad</td>
@@ -82,9 +94,14 @@
       <td>Rs.- <%= @products.where(product_name: 'fad', payment_type: 'borrow').sum(:price)%></td>
       <td><%= @products.where(product_name: 'fad').sum(:weight) %> /kg</td>
       <td>Rs. <%= @products.where(product_name: 'fad').sum(:price) %></td>
-      <td>
-        <%= Product.where(product_name: 'fad').group(:customer_id).count%>
-      </td>
+      <% array_top = [] %>
+      <%@customers.each do |customer|%>
+        <%customers = @products.where(product_name: 'fad', customer_id: customer.id).sum(:weight)%>
+        <% array_top.push(customers) %>
+      <% end -%>
+      <td><%= array_top.max%>.kg</td>
+      <td><%= array_top.min%>.kg</td>
+      <td><%= array_top%>.kg</td>
     </tr>
     <tr>
       <td>Pulse</td>
@@ -95,9 +112,14 @@
       <td>Rs.- <%= @products.where(product_name: 'pulse', payment_type: 'borrow').sum(:price)%></td>
       <td><%= @products.where(product_name: 'pulse').sum(:weight) %> /kg</td>
       <td>Rs. <%= @products.where(product_name: 'pulse').sum(:price) %></td>
-      <td>
-        <%= Product.where(product_name: 'pulse').group(:customer_id).count%>
-      </td>
+      <% array_top = [] %>
+      <%@customers.each do |customer|%>
+        <%customers = @products.where(product_name: 'pulse', customer_id: customer.id).sum(:weight)%>
+        <% array_top.push(customers) %>
+      <% end -%>
+      <td><%= array_top.max%>.kg</td>
+      <td><%= array_top.min%>.kg</td>
+      <td><%= array_top%>.kg</td>
     </tr>
     <tr>
       <td>Other</td>
@@ -108,9 +130,14 @@
       <td>Rs.- <%= @products.where(product_name: 'other', payment_type: 'borrow').sum(:price)%></td>
       <td><%= @products.where(product_name: 'other').sum(:weight) %> /kg</td>
       <td>Rs. <%= @products.where(product_name: 'other').sum(:price) %></td>
-      <td>
-        <%= Product.where(product_name: 'other').group(:customer_id).count%>
-      </td>
+      <% array_top = [] %>
+      <%@customers.each do |customer|%>
+        <%customers = @products.where(product_name: 'other', customer_id: customer.id).sum(:weight)%>
+        <% array_top.push(customers) %>
+      <% end -%>
+      <td><%= array_top.max%>.kg</td>
+      <td><%= array_top.min%>.kg</td>
+      <td><%= array_top%>.kg</td>
     </tr>
   </tbody>
 </table>
