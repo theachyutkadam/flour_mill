@@ -10,7 +10,7 @@
       <th>Mobile</th>
       <th>F.Members</th>
       <th>Left.Rs</th>
-      <th colspan="2"><%= link_to 'New Customer', new_customer_path, class: "btn btn-xs btn-info" %></th>
+      <th colspan="3"><%= link_to 'New Customer', new_customer_path, class: "btn btn-xs btn-info" %></th>
     </tr>
   </thead>
 
@@ -37,6 +37,7 @@
         <% end%>
         <td><%= link_to '', enter_operator_product_operators_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
         <td><%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
+        <td><%= link_to '', record_operators_path(id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-list" %></td>
       </tr>
     <% end %>
   </tbody>
