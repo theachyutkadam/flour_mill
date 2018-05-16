@@ -30,7 +30,11 @@
       <td><%= @products.where(payment_type: 'cash').sum(:price) + @payments.sum(:payment_ammount)%></td>
       <td><%= @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount)%></td>
       <td><%= @expenses.sum(:expence) %></td>
-      <td><%= @expenses.sum(:expence) - @products.sum(:price)%></td>
+      <%if @expenses.sum(:expence) <= @products.sum(:price) %>
+        <td><%= @products.sum(:price) - @expenses.sum(:expence)%></td>
+      <%else%>
+        <td><%= @expenses.sum(:expence) - @products.sum(:price)%></td>
+      <%end%>
     </tr>
   </tbody>
 </table>
@@ -65,7 +69,6 @@
       <% end -%>
       <td><%= array_top.max%>.kg</td>
       <td><%= array_top.min%>.kg</td>
-      <td><%= array_top%>.kg</td>
     </tr>
     <tr>
       <td>Wheat</td>
@@ -83,7 +86,6 @@
       <% end -%>
       <td><%= array_top.max%>.kg</td>
       <td><%= array_top.min%>.kg</td>
-      <td><%= array_top%>.kg</td>
     </tr>
     <tr>
       <td>Fad</td>
@@ -101,7 +103,6 @@
       <% end -%>
       <td><%= array_top.max%>.kg</td>
       <td><%= array_top.min%>.kg</td>
-      <td><%= array_top%>.kg</td>
     </tr>
     <tr>
       <td>Pulse</td>
@@ -119,7 +120,6 @@
       <% end -%>
       <td><%= array_top.max%>.kg</td>
       <td><%= array_top.min%>.kg</td>
-      <td><%= array_top%>.kg</td>
     </tr>
     <tr>
       <td>Other</td>
@@ -137,7 +137,6 @@
       <% end -%>
       <td><%= array_top.max%>.kg</td>
       <td><%= array_top.min%>.kg</td>
-      <td><%= array_top%>.kg</td>
     </tr>
   </tbody>
 </table>
