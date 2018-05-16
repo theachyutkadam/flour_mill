@@ -19,4 +19,5 @@ group :development, :test do
   gem 'wirb'
   gem 'byebug'
   gem 'spring'
+  gem 'rspec-rails', '~> 3.6'
 end
