@@ -11,7 +11,7 @@ class ExpensesController < ApplicationController
     @exp.expence_type = form[:expense_type]
     @exp.expence = form[:expense].to_f
     @exp.quantity = form[:quantity]
-    @exp.quantity = form[:description]
+    @exp.description = form[:description]
     if @exp.save
       flash[:notice] = 'Expense was successfully Created.'
       redirect_to expenses_path
