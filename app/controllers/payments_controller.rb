@@ -36,8 +36,10 @@ class PaymentsController < ApplicationController
     @payment.left_ammount = @payment.previous_ammount - params[:payment][:payment_ammount].to_f
 
     if @payment.save
-      redirect_to new_product_path(cust_id: @payment.customer.id)
+      flash[:notice] = "Payment Created Successfully."
+      redirect_to home_index_path(cust_id: @payment.customer.id)
     else
+      flash[:alert] = "Payment Created Failed."
       render :new
     end
   end
