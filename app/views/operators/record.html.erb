@@ -7,7 +7,13 @@
         <tr>
           <th style="color: darkblue">Mail - </th>
           <td style="color: black"><%=@customer.mail %></td>
-          <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: darkorange">Left Rs. <%= left_ammount %></a></strong></td>
+          <%if left_ammount < 0 %>
+            <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: green">Left Rs. <%= left_ammount %></a></strong></td>
+          <%elsif left_ammount > 500 %>
+            <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: red">Left Rs. <%= left_ammount %></a></strong></td>
+          <%else %>
+            <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: darkorange">Left Rs. <%= left_ammount %></a></strong></td>
+          <%end %>
         </tr>
 
         <tr>
