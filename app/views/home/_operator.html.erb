@@ -17,13 +17,9 @@
   <tbody>
     <%count = 0%>
     <% @customers.each do |customer| %>
-        <% count = count + 1%>
-        <%left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %>
-        <%if left_ammount < 0 %>
-          <tr colspan="5" class="info">
-        <% elsif left_ammount >= 500 %>
-          <tr class="danger">
-        <% end%>
+      <% count = count + 1%>
+      <%left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %>
+      <tr>
         <td><%= count%></td>
         <td><%= customer.created_at.strftime '%d/%B/%Y' %></td>
         <td><%= customer.last_name.capitalize+ " " +customer.first_name.capitalize+ " " +customer.middle_name.capitalize %></td>
@@ -31,7 +27,14 @@
         <td><%= customer.address.capitalize %></td>
         <td><%= customer.mobile_num %></td>
         <td><%= customer.family_members %></td>
-        <td><strong style="font-size: 15px"><%=left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %></strong></td>
+
+        <%if left_ammount < 0 %>
+          <td class="success"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
+        <% elsif left_ammount >= 500 %>
+          <td class="danger"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
+        <% else%>
+          <td><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
+        <% end%>
         <td><%= link_to '', enter_operator_product_operators_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
         <td><%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
       </tr>
