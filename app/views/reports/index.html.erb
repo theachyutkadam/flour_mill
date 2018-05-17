@@ -64,8 +64,7 @@
       <td>Rs. <%= @products.where(product_name: 'bajari').sum(:price) %></td>
       <% array_top = [] %>
       <%@customers.each do |customer|%>
-        <%customers = @products.where(product_name: 'bajari', customer_id: customer.id).sum(:weight)%>
-        <% array_top.push(customers) %>
+        <% array_top.push(@products.where(product_name: 'bajari', customer_id: customer.id).sum(:weight)) %>
       <% end -%>
       <td><%= array_top.max%>.kg</td>
       <td><%= array_top.min%>.kg</td>
@@ -81,8 +80,7 @@
       <td>Rs. <%= @products.where(product_name: 'wheat').sum(:price) %></td>
       <% array_top = [] %>
       <%@customers.each do |customer|%>
-        <%customers = @products.where(product_name: 'wheat', customer_id: customer.id).sum(:weight)%>
-        <% array_top.push(customers) %>
+        <% array_top.push(@products.where(product_name: 'wheat', customer_id: customer.id).sum(:weight)) %>
       <% end -%>
       <td><%= array_top.max%>.kg</td>
       <td><%= array_top.min%>.kg</td>
@@ -98,8 +96,7 @@
       <td>Rs. <%= @products.where(product_name: 'fad').sum(:price) %></td>
       <% array_top = [] %>
       <%@customers.each do |customer|%>
-        <%customers = @products.where(product_name: 'fad', customer_id: customer.id).sum(:weight)%>
-        <% array_top.push(customers) %>
+        <% array_top.push(@products.where(product_name: 'fad', customer_id: customer.id).sum(:weight)) %>
       <% end -%>
       <td><%= array_top.max%>.kg</td>
       <td><%= array_top.min%>.kg</td>
@@ -115,8 +112,7 @@
       <td>Rs. <%= @products.where(product_name: 'pulse').sum(:price) %></td>
       <% array_top = [] %>
       <%@customers.each do |customer|%>
-        <%customers = @products.where(product_name: 'pulse', customer_id: customer.id).sum(:weight)%>
-        <% array_top.push(customers) %>
+        <% array_top.push(@products.where(product_name: 'pulse', customer_id: customer.id).sum(:weight)) %>
       <% end -%>
       <td><%= array_top.max%>.kg</td>
       <td><%= array_top.min%>.kg</td>
@@ -132,8 +128,7 @@
       <td>Rs. <%= @products.where(product_name: 'other').sum(:price) %></td>
       <% array_top = [] %>
       <%@customers.each do |customer|%>
-        <%customers = @products.where(product_name: 'other', customer_id: customer.id).sum(:weight)%>
-        <% array_top.push(customers) %>
+        <% array_top.push(@products.where(product_name: 'other', customer_id: customer.id).sum(:weight)) %>
       <% end -%>
       <td><%= array_top.max%>.kg</td>
       <td><%= array_top.min%>.kg</td>
