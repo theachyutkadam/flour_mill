@@ -13,7 +13,7 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     @customers = Customer.all
-
+    @customer.created_at = params[:customer][:created_at]
     if @customer.save
       flash[:notice] = 'Customer was successfully created'
       current_user.admin? ? (redirect_to customers_path) : (redirect_to home_index_path)
@@ -57,6 +57,6 @@ class CustomersController < ApplicationController
     end
 
     def customer_params
-      params.require(:customer).permit(:first_name, :middle_name, :last_name, :address, :mobile_num, :mail, :family_members)
+      params.require(:customer).permit(:first_name, :middle_name, :last_name, :address, :mobile_num, :mail, :family_members, :created_at)
     end
 end

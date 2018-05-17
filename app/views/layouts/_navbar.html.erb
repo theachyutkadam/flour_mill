@@ -19,7 +19,7 @@
         <div class="form-group">
           <%= text_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">🔍</button>
       </form>
       <% if current_user.role.name == "Admin" %>
         <ul class="nav navbar-nav" style="font-size: 15px; font-weight: bold;">
@@ -30,7 +30,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Reports<span class="glyphicon glyphicon-triangle-bottom"></span> </a>
               <ul class="dropdown-menu">
                 <li><a href="/reports/index">Paper Reports</a></li>
-                <li><a>Graph Reports</a></li>
+                <li><a>Graph Reports 📊</a></li>
               </ul>
           </li>
         </ul>
@@ -44,13 +44,13 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><%= current_user.role.name%> <span class="glyphicon glyphicon-triangle-bottom"></span> </a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >🔓<%= current_user.role.name%> <span class="glyphicon glyphicon-triangle-bottom"></span> </a>
           <ul class="dropdown-menu">
-            <li><a href="#">Information</a></li>
-            <li><a href="#">Careers </a></li>
-            <li><a href="#">Complaint </a></li>
+            <li><a href="#">💁 Information</a></li>
+            <li><a href="#">💼 Careers </a></li>
+            <li><a href="#">📬 Complaint </a></li>
             <li role="separator" class="divider"></li>
-            <li><%= link_to("Logout", destroy_user_session_path, method: :delete) if user_signed_in? %></li>
+            <li><%= link_to("🔐 Logout", destroy_user_session_path, method: :delete) if user_signed_in? %></li>
           </ul>
         </li>
       </ul>

@@ -5,9 +5,9 @@
       <tr>
         <th>No.</th>
         <th>Name</th>
-        <th>Mobile</th>
-        <th>Address</th>
-        <th>F.M</th>
+        <th>📞 Mobile</th>
+        <th>🏠 Address</th>
+        <th>👪 F.M</th>
         <th>Left Amt</th>
         <th colspan="1"><%= link_to 'New Customer', new_customer_path, class: "btn btn-xs btn-info" %></th>
       </tr>
@@ -57,8 +57,8 @@
       <strong>Operators Details</strong>
       <tr>
         <th>Name</th>
-        <th>Mobile</th>
-        <th>Address</th>
+        <th>📞 Mobile</th>
+        <th>🏠 Address</th>
         <th colspan="3"><%= link_to 'New Operator', new_operator_path, class: "btn btn-xs btn-info" %></th>
       </tr>
     </thead>
@@ -69,11 +69,7 @@
           <td><%= operator.last_name.capitalize + " " + operator.first_name.capitalize %></td>
           <td><%= operator.mobile %></td>
           <td><%= operator.permanent_address.capitalize %></td>
-          <td>
-            <%= link_to '', record_operators_path(operator_id: operator.id), class:"btn btn-info btn-xs glyphicon glyphicon-th-list" %>
-            <%= link_to '', edit_operator_path(operator), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %>
-            <%= link_to '', new_payment_path(operator_id: operator.id), class:"btn btn-xs btn-warning glyphicon glyphicon-euro" %>
-          </td>
+          <td><%= link_to '', edit_operator_path(operator), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
         </tr>
       <% end %>
     </tbody>

@@ -5,7 +5,7 @@
       <strong>Customer Details</strong>
       <tr>
         <tr>
-          <th style="color: darkblue">Mail - </th>
+          <th style="color: darkblue">📧 Mail - </th>
           <td style="color: black"><%=@customer.mail %></td>
           <%if left_ammount < 0 %>
             <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: green">Left Rs. <%= left_ammount %></a></strong></td>
@@ -24,16 +24,16 @@
         <tr>
           <th style="color: darkblue">Middle Name - </th>
           <td style="color: black"><%=@customer.middle_name.capitalize %></td>
-          <th style="color: darkblue">Mobile - </th>
+          <th style="color: darkblue">📞 Mobile - </th>
           <td style="color: black"><%=@customer.mobile_num %></td>
-          <th style="color: darkblue">Family Members</th>
+          <th style="color: darkblue">👪 Family Members</th>
           <td style="color: black"><%=@customer.family_members %></td>
         </tr>
 
         <tr>
           <th style="color: darkblue">Last Name - </th>
           <td style="color: black"><%=@customer.last_name.capitalize %></td>
-          <th style="color: darkblue">Address - </th>
+          <th style="color: darkblue">🏠 Address - </th>
           <td style="color: black" colspan="3"><%=@customer.address.capitalize %></td>
         </tr>
       </tr>

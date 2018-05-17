@@ -11,15 +11,19 @@
   <% end %>
   <%= f.hidden_field :customer_id, value: @cust.id %>
   <strong>
-    <%= @cust.first_name.capitalize + " " + @cust.last_name.capitalize%>
+    <%= @cust.last_name.capitalize + " " + @cust.first_name.capitalize%>
   </strong><br><br>
   <div class="row">
     <div class="col-sm-2">
       <%= f.select :payment_type, [["Borrow","borrow"],["Cash","cash"]], {}, class: "form-control" %>
     </div>
 
+    <div class="col-sm-3">
+      <%= f.date_field :created_at, class: "form-control" %>
+    </div>
+
     <div class="col-sm-2">
-      <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {}, class: "form-control" %>
+      <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Fad","fad"],["Other","other"]], {include_blank: '🌾 Product'}, class: "form-control" %>
     </div>
 
     <div class="col-sm-2">
@@ -34,12 +38,9 @@
       <%= f.select :operator_id, Operator.all.collect {|a| [a.first_name, a.id]}, {}, class: "form-control" %>
       </div>
     <% end%>
-    <div class="col-sm-1">
+    <div class="col-sm-0">
       <%= f.submit :Save, class: "btn btn-primary" %>
     </div>
 
-    <div class="col-sm-1">
-      <%= link_to "Back", home_index_path(cust_id: @cust.id), class: "btn btn-info" %>
-    </div>
   </div>
 <% end %>

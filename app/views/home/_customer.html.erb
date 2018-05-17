@@ -4,7 +4,7 @@
       <strong>Customer Details</strong>
       <tr>
         <tr>
-          <th style="color: darkblue">Mail - </th>
+          <th style="color: darkblue">📧 Mail - </th>
           <td style="color: black"><%=current_user.customer.mail %></td>
           <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: darkorange">Left Rs. <%= @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount) %></a></strong></td>
         </tr>
@@ -17,16 +17,16 @@
         <tr>
           <th style="color: darkblue">Middle Name - </th>
           <td style="color: black"><%=current_user.customer.middle_name.capitalize %></td>
-          <th style="color: darkblue">Mobile - </th>
+          <th style="color: darkblue">📞 Mobile - </th>
           <td style="color: black"><%=current_user.customer.mobile_num %></td>
-          <th style="color: darkblue">Family Members</th>
+          <th style="color: darkblue">👪 Family Members</th>
           <td style="color: black"><%=current_user.customer.family_members %></td>
         </tr>
 
         <tr>
           <th style="color: darkblue">Last Name - </th>
           <td style="color: black"><%=current_user.customer.last_name.capitalize %></td>
-          <th style="color: darkblue">Address - </th>
+          <th style="color: darkblue">🏠 Address - </th>
           <td style="color: black" colspan="3"><%=current_user.customer.address.capitalize %></td>
         </tr>
       </tr>
