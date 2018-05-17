@@ -6,4 +6,7 @@ class ReportsController < ApplicationController
     @payments = Payment.all
     @expenses = Expense.all
   end
+  def infor
+
+  end
 end
