@@ -23,14 +23,14 @@
       </form>
       <% if current_user.role.name == "Admin" %>
         <ul class="nav navbar-nav" style="font-size: 15px; font-weight: bold;">
-          <li><a href="/operators">Operator<span class="sr-only">(current)</span></a></li>
-          <li><a href="/customers">Customer</a></li>
-          <li><a href="/expenses">Expense</a></li>
+          <li><a href="/operators">👷 Operator<span class="sr-only">(current)</span></a></li>
+          <li><a href="/customers">👳 Customer</a></li>
+          <li><a href="/expenses">💱 Expense</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Reports<span class="glyphicon glyphicon-triangle-bottom"></span> </a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">📈 Reports<span class="glyphicon glyphicon-triangle-bottom"></span> </a>
               <ul class="dropdown-menu">
-                <li><a href="/reports/index">Paper Reports</a></li>
-                <li><a>Graph Reports 📊</a></li>
+                <li><a href="/reports/index">📂 File Reports</a></li>
+                <li><a>📊 Graph Reports</a></li>
               </ul>
           </li>
         </ul>
@@ -48,7 +48,7 @@
           <ul class="dropdown-menu">
             <li><a href="#">💁 Information</a></li>
             <li><a href="#">💼 Careers </a></li>
-            <li><a href="#">📬 Complaint </a></li>
+            <li><a href="/reports/information">📬 Complaint </a></li>
             <li role="separator" class="divider"></li>
             <li><%= link_to("🔐 Logout", destroy_user_session_path, method: :delete) if user_signed_in? %></li>
           </ul>
