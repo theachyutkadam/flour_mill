@@ -173,8 +173,8 @@
         <strong>Payment Details</strong>
         <tr>
           <th>Date</th>
-          <th>Giver</th>
           <th>Receiver</th>
+          <th>Giver</th>
           <th>Previous Amt.</th>
           <th>Left Rs.</th>
           <th>Payment Rs.</th>
@@ -185,8 +185,8 @@
         <%@payments.each do |payment| %>
           <tr>
             <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
-            <td><%= payment.giver.capitalize %></td>
             <td><%= payment.receiver.capitalize %></td>
+            <td><%= payment.giver.capitalize %></td>
             <td><%= payment.previous_ammount %></td>
             <td><%= payment.left_ammount %></td>
             <td><%= payment.payment_ammount %></td>
