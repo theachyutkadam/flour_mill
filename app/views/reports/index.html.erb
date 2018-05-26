@@ -135,26 +135,3 @@
     </tr>
   </tbody>
 </table>
-
-<table class="table table-bordered table-hover">
-  <thead>
-    <strong style="font-size: 15px">Report Customer Details</strong>
-    <tr>
-      <th>Customer</th>
-      <th>Weight /Kg</th>
-      <th>Total.Rs</th>
-      <th>Times</th>
-      <th>customer</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td><%= @customers.count %></td>
-      <td><%= @products.where(customer_id:1).sum(:weight) %></td>
-      <td><%= @products.where(customer_id:1).sum(:price) %></td>
-      <td><%= @customers.count %></td>
-      <td><%= @customers.sum(:family_members) %></td>
-    </tr>
-  </tbody>
-</table>
