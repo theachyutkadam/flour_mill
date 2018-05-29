@@ -37,7 +37,7 @@ class PaymentsController < ApplicationController
 
     if @payment.save
       flash[:notice] = "Payment Created Successfully."
-      redirect_to home_index_path(cust_id: @payment.customer.id)
+      redirect_to new_product_path(cust_id: @payment.customer.id)
     else
       flash[:alert] = "Payment Created Failed."
       render :new

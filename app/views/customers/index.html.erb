@@ -43,7 +43,7 @@
           <td><%= link_to '', new_product_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %></td>
         <%end %>
         <td><%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
-        <td><%= link_to '', new_payment_path(cust_id: customer.id), class:"btn btn-xs btn-warning glyphicon glyphicon-euro" %></td>
+        <td><%= link_to '', record_operators_path(id: customer.id), class:"btn btn-xs btn-primary glyphicon glyphicon-list" %></td>
       </tr>
       <% count += 1%>
     <% end %>
