@@ -28,12 +28,12 @@
         <td><%= customer.mail %></td>
         <td><%= customer.family_members %></td>
 
-        <%if left_ammount < 0 %>
+        <%if left_ammount <= 0 %>
           <td class="success"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
         <% elsif left_ammount >= 500 %>
           <td class="danger"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
         <% else%>
-          <td><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
+          <td class="warning"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
         <% end%>
 
         <!-- <td><strong style="font-size: 15px">Rs. <%= customer.products.sum(:price).to_f %></strong></td> -->

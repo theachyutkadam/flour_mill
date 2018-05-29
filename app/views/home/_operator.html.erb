@@ -28,16 +28,16 @@
         <td><%= customer.mobile_num %></td>
         <td><%= customer.family_members %></td>
 
-        <%if left_ammount < 0 %>
+        <%if left_ammount <= 0 %>
           <td class="success"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
         <% elsif left_ammount >= 500 %>
           <td class="danger"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
         <% else%>
-          <td><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
+          <td class="warning"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
         <% end%>
         <td><%= link_to '', enter_operator_product_operators_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
         <td><%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
-        <td><%= link_to '', record_operators_path(id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-list" %></td>
+        <td><%= link_to '', record_operators_path(id: customer.id), class:"btn btn-xs btn-primary glyphicon glyphicon-list" %></td>
       </tr>
     <% end %>
   </tbody>
