@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'will_paginate', '~>3.0'
 gem 'yaml_db'
+gem 'sms_mailer', github: "rzane/sms_mailer"
 
 group :development, :test do
   gem 'hirb'

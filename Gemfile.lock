@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/rzane/sms_mailer.git
+  revision: bfca6838989f41bab1c3161e6c4d575d51c0e214
+  specs:
+    sms_mailer (0.0.1)
+      actionmailer (>= 4.0.0)
+      nokogiri
+      railties
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -206,6 +215,7 @@ DEPENDENCIES
   rspec-rails (~> 3.6)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  sms_mailer!
   spring
   therubyracer
   turbolinks
