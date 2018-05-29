@@ -16,7 +16,7 @@ class CustomersController < ApplicationController
     @customer.created_at = params[:customer][:created_at]
     if @customer.save
       flash[:notice] = 'Customer was successfully created'
-      current_user.admin? ? (redirect_to customers_path) : (redirect_to home_index_path)
+      current_user.admin? ? (redirect_to new_product_path(cust_id: @customer.id)) : (redirect_to new_product_path(cust_id: @customer.id))
     else
       current_user.admin? ? (render :index) : (render :new)
     end
