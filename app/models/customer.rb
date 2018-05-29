@@ -33,7 +33,7 @@ class Customer < ActiveRecord::Base
   end
 
   def generate_username
-    first_name + mobile_num.to_s.last(4)
+    first_name + mobile_num.to_s.last(4) + "@gmail.com"
   end
 
   def update_user
