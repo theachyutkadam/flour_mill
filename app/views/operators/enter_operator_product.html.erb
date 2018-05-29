@@ -20,11 +20,11 @@
         <%= f.select :payment_type, [["Borrow","borrow"],["Cash","cash"]], {}, class: "form-control" %>
       </div>
 
-      <div class="col-sm-1">
+      <div class="col-sm-2">
         <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Gram Dal","gram dal"],["Rise", "rise"],["Other","other"]], {include_blank: '🌾 Product'}, class: "form-control" %>
       </div>
 
-      <div class="col-sm-2">
+      <div class="col-sm-1">
         <div class="input-group-sm">
           <%= f.text_field :weight, placeholder: "Weight", class: "form-control"%>
         </div>
