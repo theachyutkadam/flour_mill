@@ -10,10 +10,10 @@
       <th>Receive.Rs</th>
       <th colspan="2">Take.Rs</th>
       <th>Payment.Rs</th>
-      <th>Now.Rs</th>
       <th>Left.Rs</th>
+      <th>Got.Rs</th>
       <th>Expense.Rs</th>
-      <th>Last.Rs</th>
+      <th>Now.Rs</th>
     </tr>
   </thead>
 
@@ -27,14 +27,10 @@
       <td>C= <%= @products.where(payment_type: 'cash').sum(:price)%></td>
       <td>B= <%= @products.where(payment_type: 'borrow').sum(:price)%></td>
       <td><%= @payments.sum(:payment_ammount)%></td>
-      <td><%= @products.where(payment_type: 'cash').sum(:price) + @payments.sum(:payment_ammount)%></td>
       <td><%= @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount)%></td>
+      <td><%= @products.where(payment_type: 'cash').sum(:price) + @payments.sum(:payment_ammount)%></td>
       <td><%= @expenses.sum(:expence) %></td>
-      <%if @expenses.sum(:expence) <= @products.sum(:price) %>
-        <td><%= @products.sum(:price) - @expenses.sum(:expence)%></td>
-      <%else%>
-        <td><%= @expenses.sum(:expence) - @products.sum(:price)%></td>
-      <%end%>
+      <td><%= @products.sum(:price) - @expenses.sum(:expence)%></td>
     </tr>
   </tbody>
 </table>
@@ -86,17 +82,17 @@
       <td><%= array_top.min%>.kg</td>
     </tr>
     <tr>
-      <td>Fad</td>
-      <td><%= @products.where(product_name: 'fad').count %></td>
-      <td>Cash- <%= @products.where(product_name: 'fad', payment_type: 'cash').count %></td>
-      <td>Rs. <%= @products.where(product_name: 'fad', payment_type: 'cash').sum(:price) %></td>
-      <td>Borrow- <%= @products.where(product_name: 'fad', payment_type: 'borrow').count %></td>
-      <td>Rs.- <%= @products.where(product_name: 'fad', payment_type: 'borrow').sum(:price)%></td>
-      <td><%= @products.where(product_name: 'fad').sum(:weight) %> /kg</td>
-      <td>Rs. <%= @products.where(product_name: 'fad').sum(:price) %></td>
+      <td>Gram Dal</td>
+      <td><%= @products.where(product_name: 'gram dal').count %></td>
+      <td>Cash- <%= @products.where(product_name: 'gram dal', payment_type: 'cash').count %></td>
+      <td>Rs. <%= @products.where(product_name: 'gram dal', payment_type: 'cash').sum(:price) %></td>
+      <td>Borrow- <%= @products.where(product_name: 'gram dal', payment_type: 'borrow').count %></td>
+      <td>Rs.- <%= @products.where(product_name: 'gram dal', payment_type: 'borrow').sum(:price)%></td>
+      <td><%= @products.where(product_name: 'gram dal').sum(:weight) %> /kg</td>
+      <td>Rs. <%= @products.where(product_name: 'gram dal').sum(:price) %></td>
       <% array_top = [] %>
       <%@customers.each do |customer|%>
-        <% array_top.push(@products.where(product_name: 'fad', customer_id: customer.id).sum(:weight)) %>
+        <% array_top.push(@products.where(product_name: 'gram dal', customer_id: customer.id).sum(:weight)) %>
       <% end -%>
       <td><%= array_top.max%>.kg</td>
       <td><%= array_top.min%>.kg</td>
@@ -113,6 +109,22 @@
       <% array_top = [] %>
       <%@customers.each do |customer|%>
         <% array_top.push(@products.where(product_name: 'pulse', customer_id: customer.id).sum(:weight)) %>
+      <% end -%>
+      <td><%= array_top.max%>.kg</td>
+      <td><%= array_top.min%>.kg</td>
+    </tr>
+    <tr>
+      <td>Rise</td>
+      <td><%= @products.where(product_name: 'rise').count %></td>
+      <td>Cash- <%= @products.where(product_name: 'rise', payment_type: 'cash').count %></td>
+      <td>Rs. <%= @products.where(product_name: 'rise', payment_type: 'cash').sum(:price) %></td>
+      <td>Borrow- <%= @products.where(product_name: 'rise', payment_type: 'borrow').count %></td>
+      <td>Rs.- <%= @products.where(product_name: 'rise', payment_type: 'borrow').sum(:price)%></td>
+      <td><%= @products.where(product_name: 'rise').sum(:weight) %> /kg</td>
+      <td>Rs. <%= @products.where(product_name: 'rise').sum(:price) %></td>
+      <% array_top = [] %>
+      <%@customers.each do |customer|%>
+        <% array_top.push(@products.where(product_name: 'rise', customer_id: customer.id).sum(:weight)) %>
       <% end -%>
       <td><%= array_top.max%>.kg</td>
       <td><%= array_top.min%>.kg</td>
