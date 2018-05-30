@@ -1,0 +1,40 @@
+<table class="table table-bordered table-hover"">
+  <strong>Product Entry Details</strong>
+  <thead>
+    <tr>
+      <th>No</th>
+      <th>Date</th>
+      <th>Product name</th>
+      <th>Payment</th>
+      <th>Weight</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%sum = 0%>
+    <%count = 0%>
+    <% if @products.blank? %>
+      <tr>
+        <td colspan="7">Products are not available for this customer.</td>
+      </tr>
+    <% else %>
+      <% @products.each do |product| %>
+        <tr>
+          <% count = count + 1%>
+          <% sum = sum + product.weight%>
+          <td><%= count%></td>
+          <td><%= product.created_at.strftime '%d/%B/%Y' %></td>
+          <td><%= product.product_name.capitalize %></td>
+          <td><%= product.payment_type.capitalize %></td>
+          <td><%= product.weight %></td>
+          <td><%= product.price %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <th colspan="4">Total</th>
+        <th><%= sum %>/kg</th>
+        <th>Rs-<%= sum * 3 %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

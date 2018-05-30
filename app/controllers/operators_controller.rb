@@ -3,16 +3,18 @@ class OperatorsController < ApplicationController
   before_action :set_new_operator, only: [:index, :new]
 
   # GET /operators
-  # GET /operators.json  
+  # GET /operators.json
   def index
     @operators = Operator.search(params)
     @operators = Operator.all
   end
 
-  def enter_operator_product
+  def new_product
     @product = Product.new
     @customer = Customer.find(params[:cust_id])
     @products = @customer.products
+    @payment = Payment.new
+    @payments = @customer.payments
   end
 
   def create_product
@@ -20,10 +22,10 @@ class OperatorsController < ApplicationController
     @product.price = 3 * @product.weight.to_f
     if @product.save
       flash[:notice] = 'Product was successfully Created.'
-      redirect_to enter_operator_product_operators_path(cust_id: @product.customer_id)
+      redirect_to new_product_operators_path(cust_id: @product.customer_id)
     else
       flash[:danger] = 'Product Not Create.'
-      render :enter_operator_product
+      render :new_product
     end
   end
   # GET /operators/1

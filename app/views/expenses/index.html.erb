@@ -26,10 +26,9 @@
 
       <div class="col-sm-1">
         <div class="input-group-sm">
-          <%= f.number_field :quantity, in: 1..1000, placeholder: "Quantity", class: "form-control" %>
+          <%= f.number_field :quantity, in: 1..100, placeholder: "Quantity", class: "form-control" %>
         </div>
       </div>
-
       <div class="col-sm-1">
         <div class="input-group-sm">
           <%= f.submit "Submit", class: "btn btn-primary" %>

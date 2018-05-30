@@ -1,0 +1,37 @@
+<table class="table table-bordered table-hover">
+  <thead>
+    <strong>Payments Details</strong>
+    <tr>
+      <th>📆 Date</th>
+      <th>Previous</th>
+      <th>Payment In Rs.</th>
+      <th>Left Rs.</th>
+      <th>Receiver</th>
+      <th>Giver</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%if @payments.nil? %>
+    <%else%>
+      <%@payments.each do |payment| %>
+        <%if payment.payment_ammount < 0 %>
+          <tr class="warning">
+        <% else -%>
+          <tr>
+        <% end -%>
+          <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
+          <td><%= payment.previous_ammount %></td>
+          <%if payment.payment_ammount < 0 %>
+            <td style="color: red" ><%= payment.payment_ammount %></td>
+          <% else -%>
+            <td ><%= payment.payment_ammount %></td>
+          <% end -%>
+          <td><%= payment.left_ammount %></td>
+          <td><%= payment.receiver.capitalize %></td>
+          <td><%= payment.giver.capitalize %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

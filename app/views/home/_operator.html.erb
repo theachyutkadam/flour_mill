@@ -35,7 +35,7 @@
         <% else%>
           <td class="warning"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
         <% end%>
-        <td><%= link_to '', enter_operator_product_operators_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
+        <td><%= link_to '', new_product_operators_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
         <td><%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
         <td><%= link_to '', record_operators_path(id: customer.id), class:"btn btn-xs btn-primary glyphicon glyphicon-list" %></td>
       </tr>

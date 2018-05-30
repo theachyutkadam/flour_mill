@@ -20,7 +20,7 @@
         <td><%= operator.permanent_address.capitalize %></td>
         <td><%= operator.salary %></td>
         <td><%= operator.mail %></td>
-        <td><%= link_to '', record_operators_path(operator_id: operator.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %></td>
+        <td><%= link_to '', new_product_path(operator_id: operator.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %></td>
         <td><%= link_to '', edit_operator_path(operator), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
       </tr>
     <% end %>

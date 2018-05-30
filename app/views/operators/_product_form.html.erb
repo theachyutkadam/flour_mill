@@ -1,0 +1,42 @@
+<%= form_for(@product, url: create_product_operators_path) do |f| %>
+  <% if @product.errors.any? %>
+    <div class="alert alert-danger fade in">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <strong style="font-size: 20px"><%= @customer.last_name.capitalize + " " + @customer.first_name.capitalize%>
+  </strong><br><br>
+  <%= f.hidden_field :customer_id, value: @customer.id %>
+  <%= f.hidden_field :operator_id, value: current_user.role.id %>
+  <div class="form_group">
+    <div class="row">
+      <div class="col-sm-2">
+        <%= f.select :payment_type, [["Borrow","borrow"],["Cash","cash"]], {}, class: "form-control" %>
+      </div>
+
+      <div class="col-sm-3">
+        <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Gram Dal","gram dal"],["Rise", "rise"],["Other","other"]], {include_blank: '🌾 Product'}, class: "form-control" %>
+      </div>
+
+      <div class="col-sm-2">
+        <div class="input-group-sm">
+          <%= f.text_field :weight, placeholder: "Weight", class: "form-control"%>
+        </div>
+      </div>
+
+      <div class="col-sm-2">
+        <%= f.submit :Save, class: "btn btn-primary" %>
+      </div>
+
+      <div class="col-sm-1">
+        <%= link_to "Back", home_index_path(cust_id: @customer.id), class: "btn btn-info" %>
+      </div>
+    </div>
+  </div>
+<% end %>

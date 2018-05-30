@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :operators do
     collection do
       get :confirm_delete
-      get :enter_operator_product
+      get :new_product
       post :create_product
       get :record
     end
