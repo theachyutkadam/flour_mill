@@ -1088,7 +1088,8 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  background-image: url(germany.jpg);
+  /*background: url(user.png) no-repeat center center fixed; */
 }
 input,
 button,

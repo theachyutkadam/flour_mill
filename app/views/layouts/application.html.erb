@@ -37,10 +37,9 @@
       <%end%>
 
       <%= yield %>
-
-      <div style="background: white" class="footer navbar-fixed-bottom ">
-        <footer class="container-fluid fixed-bottom">
-          <!-- <div class="item"> -->
+      <% if user_signed_in? %>
+        <div style="background: white" class="footer navbar-fixed-bottom ">
+          <footer class="container-fluid fixed-bottom">
             <p class="m-0 text-center text-white">Copyright &copy;
               <a href=""> Vishawakrma Flour Mill </a>
               <a class="item" href="https://www.youtube.com/watch?v=115n8v9N-ro"><%= image_tag("youtube1.jpg", width: '80px') %></a>
@@ -50,12 +49,9 @@
               <a class="item" href="https://twitter.com/theachyutkadam"><%= image_tag("twitter.png", width: '30px') %></a>
               <a class="item" href="https://github.com/achyut-kadam"><%= image_tag("git.png", width: '30px') %></a>
             </p>
-          <!-- </div> -->
-        </footer>
-      </div>
-
+          </footer>
+        </div>
+      <% end %>
     </div>
-
   </body>
-
 </html>
