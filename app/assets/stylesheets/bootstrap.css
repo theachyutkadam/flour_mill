@@ -1086,11 +1086,26 @@ html {
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
+  height: 80%
   line-height: 1.42857143;
   color: #333;
-  background-image: url(germany.jpg);
-  /*background: url(user.png) no-repeat center center fixed; */
+  /*background-color: red;*/
 }
+
+.bg-img {
+    background-image: url("toulouse.jpg");
+    min-height: 750px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container {
+    position: absolute;
+    left: 0;
+    margin: 150px;
+    padding: 50px 150px 50px 150px;
+}
+
 input,
 button,
 select,
@@ -3118,7 +3133,7 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-primary {
   color: #fff;
-  background-color: #337ab7;
+  background-color: unset;
   border-color: #2e6da4;
 }
 .btn-primary:focus,
