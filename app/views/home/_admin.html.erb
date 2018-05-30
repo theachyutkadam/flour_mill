@@ -7,7 +7,6 @@
         <th>Name</th>
         <th>📞 Mobile</th>
         <th>🏠 Address</th>
-        <th>👪 F.M</th>
         <th>Left Amt</th>
         <th colspan="1"><%= link_to 'New Customer', new_customer_path, class: "btn btn-xs btn-info" %></th>
       </tr>
@@ -26,7 +25,6 @@
           <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
           <td><%= customer.mobile_num %></td>
           <td><%= customer.address.capitalize %></td>
-          <td><%= customer.family_members %></td>
           <%if left_ammount <= 0 %>
             <td class="success"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
           <% elsif left_ammount >= 500 %>
@@ -43,9 +41,7 @@
       <% end %>
       <tr>
         <th>Total</th>
-        <th colspan="3">Customer's  = <%=@customers.count%></th>
-        <th><%=@customers.sum(:family_members)%></th>
-        <th>Rs. <%=sum%></th>
+        <th colspan="6">Customer's  = <%=@customers.count%></th>
       </tr>
     </tbody>
   </table>
