@@ -30,10 +30,6 @@
           <td><%= payment.left_ammount %></td>
           <td><%= payment.receiver.capitalize %></td>
           <td><%= payment.giver.capitalize %></td>
-          <%if @payments.last %>
-            <td>Edit<%=  %></td>
-          <% else -%>
-          <% end -%>
         </tr>
       <% end %>
     <% end %>
