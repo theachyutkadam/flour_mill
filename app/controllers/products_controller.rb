@@ -5,10 +5,10 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @cust = Customer.find(params[:cust_id])
-    @products = @cust.products.order(created_at: :desc)
     @product = Product.new
     @payment = Payment.new
     @payments = @cust.payments
+    @products = @cust.products.order(created_at: :desc)
   end
 
   # GET /products/1/edit

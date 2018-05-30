@@ -10,14 +10,15 @@ class OperatorsController < ApplicationController
   end
 
   def new_product
-    @product = Product.new
     @customer = Customer.find(params[:cust_id])
-    @products = @customer.products
+    @product = Product.new
     @payment = Payment.new
     @payments = @customer.payments
+    @products = @customer.products.order(created_at: :desc)
   end
 
   def create_product
+    @customer = Customer.find(params[:product][:customer_id])
     @product = Product.new(product_params)
     @product.price = 3 * @product.weight.to_f
     if @product.save
