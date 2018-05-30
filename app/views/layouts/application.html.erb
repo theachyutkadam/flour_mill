@@ -38,11 +38,19 @@
 
       <%= yield %>
 
-      <div class="footer navbar-fixed-bottom">
+      <div style="background: white" class="footer navbar-fixed-bottom ">
         <footer class="container-fluid fixed-bottom">
-          <p class="m-0 text-center text-white">Copyright &copy;
-            <a href="https://plus.google.com/105924259559603220820">Achyut Kadam</a>
-          </p>
+          <!-- <div class="item"> -->
+            <p class="m-0 text-center text-white">Copyright &copy;
+              <a href=""> Vishawakrma Flour Mill </a>
+              <a class="item" href="https://www.youtube.com/watch?v=115n8v9N-ro"><%= image_tag("youtube1.jpg", width: '80px') %></a>
+              <a class="item" href="https://plus.google.com/105924259559603220820"><%= image_tag("google.png", width: '40px') %></a>
+              <a class="item" href="https://www.facebook.com/achyut.kadam.946/photos_all?lst=100005548129116%3A100005548129116%3A1527692465"><%= image_tag("facebook.png", width: '30px') %></a>
+              <a class="item" href="https://www.linkedin.com/in/achyut-kadam-445baa149/"><%= image_tag("linkedin.png", width: '30px') %></a>
+              <a class="item" href="https://twitter.com/theachyutkadam"><%= image_tag("twitter.png", width: '30px') %></a>
+              <a class="item" href="https://github.com/achyut-kadam"><%= image_tag("git.png", width: '30px') %></a>
+            </p>
+          <!-- </div> -->
         </footer>
       </div>
 
