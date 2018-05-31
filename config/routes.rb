@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'expenses/index'
   get 'reports/index'
   get 'reports/info'
+  get 'reports/owner'
 
   resources :products do
     collection do
