@@ -59,7 +59,7 @@
       <td>Rs. <%= @products.where(product_name: product.product_name, payment_type: 'cash').sum(:price) %></td>
       <td>Borrow- <%= @products.where(product_name: product.product_name, payment_type: 'borrow').count %></td>
       <td>Rs.- <%= @products.where(product_name: product.product_name, payment_type: 'borrow').sum(:price)%></td>
-      <td><%= @products.where(product_name: product.product_name).count%></td>
+      <td><%= @products.where(product_name: product.product_name).sum(:weight)%></td>
       <td><%= @products.where(product_name: product.product_name).sum(:price)%></td>
       <% array_top = [] %>
       <%@customers.each do |customer|%>
