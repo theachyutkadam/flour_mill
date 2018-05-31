@@ -14,14 +14,14 @@
         <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
       </div>
       <div class="text-center mt-4 mb-2">
-        <div class="checkbox">
+        <div class="checkbox" style="color: snow">
           <% if devise_mapping.rememberable? -%>
             <%= f.check_box :remember_me %> Remember Me
           <% end -%>
         </div>
       </div>
-      <div class="text-center mt-4 mb-2">
-        <%= f.submit "Sign in", class: "btn btn-primary" %>
+      <div class="text-center mt-4 mb-2 ">
+        <%= f.submit "Sign in", class: "btn btn-primary roundedCorner" %>
       </div>
     <% end %>
   </div>

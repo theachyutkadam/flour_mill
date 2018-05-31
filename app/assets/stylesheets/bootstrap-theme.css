@@ -597,7 +597,6 @@ fieldset[disabled] .btn-danger.active {
   width: 550px;
 }
 .item img {
-  max-width: 100%;
   -moz-transition: all 0.3s;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -605,5 +604,16 @@ fieldset[disabled] .btn-danger.active {
 .item:hover img {
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
-  transform: scale(1.5);
+  transform: scale(1.2);
+}
+.roundedCorner
+{
+  width:100px;height:50px;
+  border: solid 1px #555;
+  background-color: #eed;
+  box-shadow: 0px -10px 5px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 10px 5px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0px 10px 5px  rgba(0,0,0,0.6);
+  -o-box-shadow: 0px 10px 5px  rgba(0,0,0,0.6);
+  border-radius:25px;
 }

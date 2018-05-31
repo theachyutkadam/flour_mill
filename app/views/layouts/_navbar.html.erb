@@ -40,6 +40,13 @@
           <li><a href="/expenses">Expense</a></li>
         </ul>
       <% end -%>
+      <% if current_user.role.name == "Customer" %>
+        <ul class="nav navbar-nav">
+          <li><a href="">📊 Graph Report</a></li>
+          <li><a href="">Print<span class="sr-only">(current)</span></a></li>
+          <li><a href="">💳 Payment</a></li>
+        </ul>
+      <% end -%>
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
