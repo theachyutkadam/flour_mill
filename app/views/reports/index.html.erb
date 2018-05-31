@@ -44,106 +44,32 @@
       <th colspan="4">Take</th>
       <th>Weight</th>
       <th>Amount</th>
-      <th colspan="2">times cust</th>
+      <th colspan="4">times cust</th>
     </tr>
   </thead>
 
   <tbody>
+    <% array_uniq = 0 %>
+    <% array_uniq = Product.select(:product_name).distinct %>
+    <% array_uniq.each do |product|%>
     <tr>
-      <td>Bajari</td>
-      <td><%= @products.where(product_name: 'bajari').count %></td>
-      <td>Cash- <%= @products.where(product_name: 'bajari', payment_type: 'cash').count %></td>
-      <td>Rs. <%= @products.where(product_name: 'bajari', payment_type: 'cash').sum(:price) %></td>
-      <td>Borrow- <%= @products.where(product_name: 'bajari', payment_type: 'borrow').count %></td>
-      <td>Rs.- <%= @products.where(product_name: 'bajari', payment_type: 'borrow').sum(:price)%></td>
-      <td><%= @products.where(product_name: 'bajari').sum(:weight) %> /kg</td>
-      <td>Rs. <%= @products.where(product_name: 'bajari').sum(:price) %></td>
+      <td><%= product.product_name.capitalize%></td>
+      <td><%= @products.where(product_name: product.product_name).count%></td>
+      <td>Cash- <%= @products.where(product_name: product.product_name, payment_type: 'cash').count %></td>
+      <td>Rs. <%= @products.where(product_name: product.product_name, payment_type: 'cash').sum(:price) %></td>
+      <td>Borrow- <%= @products.where(product_name: product.product_name, payment_type: 'borrow').count %></td>
+      <td>Rs.- <%= @products.where(product_name: product.product_name, payment_type: 'borrow').sum(:price)%></td>
+      <td><%= @products.where(product_name: product.product_name).count%></td>
+      <td><%= @products.where(product_name: product.product_name).sum(:price)%></td>
       <% array_top = [] %>
       <%@customers.each do |customer|%>
-        <% array_top.push(@products.where(product_name: 'bajari', customer_id: customer.id).sum(:weight)) %>
+        <% array_top.push(@products.where(product_name: product.product_name, customer_id: customer.id).sum(:weight)) %>
       <% end -%>
       <td><%= array_top.max%>.kg</td>
+      <td><%= link_to "id" %></td>
       <td><%= array_top.min%>.kg</td>
+      <td><%= link_to "id" %></td>
     </tr>
-    <tr>
-      <td>Wheat</td>
-      <td><%= @products.where(product_name: 'wheat').count %></td>
-      <td>Cash- <%= @products.where(product_name: 'wheat', payment_type: 'cash').count %></td>
-      <td>Rs. <%= @products.where(product_name: 'wheat', payment_type: 'cash').sum(:price) %></td>
-      <td>Borrow- <%= @products.where(product_name: 'wheat', payment_type: 'borrow').count %></td>
-      <td>Rs.- <%= @products.where(product_name: 'wheat', payment_type: 'borrow').sum(:price)%></td>
-      <td><%= @products.where(product_name: 'wheat').sum(:weight) %> /kg</td>
-      <td>Rs. <%= @products.where(product_name: 'wheat').sum(:price) %></td>
-      <% array_top = [] %>
-      <%@customers.each do |customer|%>
-        <% array_top.push(@products.where(product_name: 'wheat', customer_id: customer.id).sum(:weight)) %>
-      <% end -%>
-      <td><%= array_top.max%>.kg</td>
-      <td><%= array_top.min%>.kg</td>
-    </tr>
-    <tr>
-      <td>Gram Dal</td>
-      <td><%= @products.where(product_name: 'gram dal').count %></td>
-      <td>Cash- <%= @products.where(product_name: 'gram dal', payment_type: 'cash').count %></td>
-      <td>Rs. <%= @products.where(product_name: 'gram dal', payment_type: 'cash').sum(:price) %></td>
-      <td>Borrow- <%= @products.where(product_name: 'gram dal', payment_type: 'borrow').count %></td>
-      <td>Rs.- <%= @products.where(product_name: 'gram dal', payment_type: 'borrow').sum(:price)%></td>
-      <td><%= @products.where(product_name: 'gram dal').sum(:weight) %> /kg</td>
-      <td>Rs. <%= @products.where(product_name: 'gram dal').sum(:price) %></td>
-      <% array_top = [] %>
-      <%@customers.each do |customer|%>
-        <% array_top.push(@products.where(product_name: 'gram dal', customer_id: customer.id).sum(:weight)) %>
-      <% end -%>
-      <td><%= array_top.max%>.kg</td>
-      <td><%= array_top.min%>.kg</td>
-    </tr>
-    <tr>
-      <td>Pulse</td>
-      <td><%= @products.where(product_name: 'pulse').count %></td>
-      <td>Cash- <%= @products.where(product_name: 'pulse', payment_type: 'cash').count %></td>
-      <td>Rs. <%= @products.where(product_name: 'pulse', payment_type: 'cash').sum(:price) %></td>
-      <td>Borrow- <%= @products.where(product_name: 'pulse', payment_type: 'borrow').count %></td>
-      <td>Rs.- <%= @products.where(product_name: 'pulse', payment_type: 'borrow').sum(:price)%></td>
-      <td><%= @products.where(product_name: 'pulse').sum(:weight) %> /kg</td>
-      <td>Rs. <%= @products.where(product_name: 'pulse').sum(:price) %></td>
-      <% array_top = [] %>
-      <%@customers.each do |customer|%>
-        <% array_top.push(@products.where(product_name: 'pulse', customer_id: customer.id).sum(:weight)) %>
-      <% end -%>
-      <td><%= array_top.max%>.kg</td>
-      <td><%= array_top.min%>.kg</td>
-    </tr>
-    <tr>
-      <td>Rise</td>
-      <td><%= @products.where(product_name: 'rise').count %></td>
-      <td>Cash- <%= @products.where(product_name: 'rise', payment_type: 'cash').count %></td>
-      <td>Rs. <%= @products.where(product_name: 'rise', payment_type: 'cash').sum(:price) %></td>
-      <td>Borrow- <%= @products.where(product_name: 'rise', payment_type: 'borrow').count %></td>
-      <td>Rs.- <%= @products.where(product_name: 'rise', payment_type: 'borrow').sum(:price)%></td>
-      <td><%= @products.where(product_name: 'rise').sum(:weight) %> /kg</td>
-      <td>Rs. <%= @products.where(product_name: 'rise').sum(:price) %></td>
-      <% array_top = [] %>
-      <%@customers.each do |customer|%>
-        <% array_top.push(@products.where(product_name: 'rise', customer_id: customer.id).sum(:weight)) %>
-      <% end -%>
-      <td><%= array_top.max%>.kg</td>
-      <td><%= array_top.min%>.kg</td>
-    </tr>
-    <tr>
-      <td>Other</td>
-      <td><%= @products.where(product_name: 'other').count %></td>
-      <td>Cash- <%= @products.where(product_name: 'other', payment_type: 'cash').count %></td>
-      <td>Rs. <%= @products.where(product_name: 'other', payment_type: 'cash').sum(:price) %></td>
-      <td>Borrow- <%= @products.where(product_name: 'other', payment_type: 'borrow').count %></td>
-      <td>Rs.- <%= @products.where(product_name: 'other', payment_type: 'borrow').sum(:price)%></td>
-      <td><%= @products.where(product_name: 'other').sum(:weight) %> /kg</td>
-      <td>Rs. <%= @products.where(product_name: 'other').sum(:price) %></td>
-      <% array_top = [] %>
-      <%@customers.each do |customer|%>
-        <% array_top.push(@products.where(product_name: 'other', customer_id: customer.id).sum(:weight)) %>
-      <% end -%>
-      <td><%= array_top.max%>.kg</td>
-      <td><%= array_top.min%>.kg</td>
-    </tr>
+    <% end -%>
   </tbody>
 </table>
