@@ -21,10 +21,8 @@
       </div>
     </div>
 
-    <div class="col-sm-3">
-      <div class="input-group-sm">
-        <%= f.text_field :receiver, placeholder: "Receiver", class: "form-control" %>
-      </div>
+    <div class="col-sm-2">
+      <%= f.select :receiver, Operator.all.collect {|a| [a.first_name, a.first_name]}, {include_blank: 'Receiver'}, class: "form-control" %>
     </div>
     <div class="col-sm-3">
       <div class="input-group-sm">

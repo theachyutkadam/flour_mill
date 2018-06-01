@@ -35,6 +35,10 @@ class PaymentsController < ApplicationController
     @payment.previous_ammount = Product.where(customer_id: @customer, payment_type: "borrow").sum(:price) - @customer.payments.sum(:payment_ammount)
     @payment.left_ammount = @payment.previous_ammount - params[:payment][:payment_ammount].to_f
 
+    if params[:payment][:payment_ammount].to_i < 0
+      @payment.receiver = params[:payment][:giver]
+      @payment.giver = params[:payment][:receiver]
+    end
     if @payment.save
       flash[:notice] = "Payment Created Successfully."
       redirect_to new_product_path(cust_id: @payment.customer.id)
