@@ -163,7 +163,7 @@
       <tbody>
         <%@payments.each do |payment| %>
         <%if payment.payment_ammount < 0 %>
-          <tr class="warning">
+          <tr style="color: red" class="warning">
         <% else -%>
           <tr>
         <% end -%>
@@ -171,11 +171,7 @@
           <td><%= payment.receiver.capitalize %></td>
           <td><%= payment.giver.capitalize %></td>
           <td><%= payment.previous_ammount %></td>
-          <%if payment.payment_ammount < 0 %>
-            <td style="color: red" ><%= payment.payment_ammount %></td>
-          <% else -%>
-            <td ><%= payment.payment_ammount %></td>
-          <% end -%>
+          <td><%= payment.payment_ammount %></td>
           <td><%= payment.left_ammount %></td>
         </tr>
       <% end %>
