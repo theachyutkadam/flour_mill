@@ -17,7 +17,7 @@
     </tr>
   </thead>
 
-  <tbody style="background-color: aquamarine">
+  <tbody style="background-color: #dce5f4">
     <tr>
       <td><%= @operators.count %></td>
       <td><%= @customers.count %></td>
@@ -48,7 +48,7 @@
       <th colspan="4">times cust</th>
     </tr>
   </thead>
-  <tbody style="background-color: aquamarine">
+  <tbody style="background-color: #dce5f4">
     <% array_uniq = 0, sum_times = 0, times = 0, sum_take_cash_count = 0, take_cash_count = 0, sum_take_cash_sum_weight = 0, take_cash_sum_weight = 0, sum_take_cash_sum_price = 0, take_cash_sum_price = 0, sum_take_borrow_count = 0, take_borrow_count = 0, sum_take_borrow_sum_weight = 0, take_borrow_sum_weight = 0, sum_take_borrow_sum_price = 0, take_borrow_sum_price = 0, sum_product_sum_weight = 0, product_sum_weight = 0, sum_product_sum_price = 0, product_sum_price = 0 %>
 
     <% array_uniq = Product.select(:product_name).distinct %>
