@@ -7,9 +7,9 @@
         <tr>
           <th style="color: darkblue">📧 Mail - </th>
           <td style="color: black"><%=@customer.mail %></td>
-          <%if left_ammount < 0 %>
+          <%if left_ammount <= 0 %>
             <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: green">Left Rs. <%= left_ammount %></a></strong></td>
-          <%elsif left_ammount > 500 %>
+          <%elsif left_ammount >= 500 %>
             <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: red">Left Rs. <%= left_ammount %></a></strong></td>
           <%else %>
             <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: darkorange">Left Rs. <%= left_ammount %></a></strong></td>
@@ -39,7 +39,7 @@
       </tr>
     </table>
     <table class="table table-bordered table-hover">
-      <thead>
+      <thead style="background-color: gold">
         <strong>Cash & Borrow Count</strong>
         <tr>
           <th colspan="2">Cash</th>
@@ -51,7 +51,7 @@
       </thead>
 
       <tbody>
-        <%if left_ammount < 0 %>
+        <%if left_ammount <= 0 %>
           <tr class="success">
         <%elsif left_ammount >= 500 %>
           <tr class="danger">
@@ -155,26 +155,34 @@
           <th>Receiver</th>
           <th>Giver</th>
           <th>Previous Amt.</th>
-          <th>Left Rs.</th>
           <th>Payment Rs.</th>
+          <th>Left Rs.</th>
         </tr>
       </thead>
 
       <tbody>
         <%@payments.each do |payment| %>
+        <%if payment.payment_ammount < 0 %>
+          <tr class="warning">
+        <% else -%>
           <tr>
-            <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
-            <td><%= payment.receiver.capitalize %></td>
-            <td><%= payment.giver.capitalize %></td>
-            <td><%= payment.previous_ammount %></td>
-            <td><%= payment.left_ammount %></td>
-            <td><%= payment.payment_ammount %></td>
-          </tr>
-        <% end %>
+        <% end -%>
+          <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
+          <td><%= payment.receiver.capitalize %></td>
+          <td><%= payment.giver.capitalize %></td>
+          <td><%= payment.previous_ammount %></td>
+          <%if payment.payment_ammount < 0 %>
+            <td style="color: red" ><%= payment.payment_ammount %></td>
+          <% else -%>
+            <td ><%= payment.payment_ammount %></td>
+          <% end -%>
+          <td><%= payment.left_ammount %></td>
+        </tr>
+      <% end %>
         <tr style="background-color: gold">
           <th>Total</th>
-          <th colspan="4">Transaction's = <%= @payments.count%></th>
-          <th><%= @payments.sum(:payment_ammount)%></th>
+          <th colspan="3">Transaction's = <%= @payments.count%></th>
+          <th colspan="2"><%= @payments.sum(:payment_ammount)%></th>
         </tr>
       </tbody>
     </table>
