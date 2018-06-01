@@ -21,13 +21,22 @@
     <% @customers.each do |customer| %>
       <% count = count + number%>
       <%left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %>
-        <td><%= count %></td>
-        <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
-        <td><%= customer.mobile_num %></td>
-        <td><%= customer.address.capitalize %></td>
-        <td><%= customer.mail %></td>
-        <td><%= customer.family_members %></td>
-
+      <tr>
+        <% if customer.products.blank? %>
+          <td class="info"><%= count %></td>
+          <td class="info"><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
+          <td class="info"><%= customer.mobile_num %></td>
+          <td class="info"><%= customer.address.capitalize %></td>
+          <td class="info"><%= customer.mail %></td>
+          <td class="info"><%= customer.family_members %></td>
+        <% else %>
+          <td><%= count %></td>
+          <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
+          <td><%= customer.mobile_num %></td>
+          <td><%= customer.address.capitalize %></td>
+          <td><%= customer.mail %></td>
+          <td><%= customer.family_members %></td>
+        <% end %>
         <%if left_ammount <= 0 %>
           <td class="success"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
         <% elsif left_ammount >= 500 %>
