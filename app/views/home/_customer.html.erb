@@ -32,7 +32,7 @@
       </tr>
     </table>
     <table class="table table-bordered table-hover">
-      <thead>
+      <thead style="background-color: gold">
         <strong>Cash & Borrow Count</strong>
         <tr>
           <th colspan="2">Cash</th>
@@ -66,7 +66,7 @@
   </div>
   <div class="col-sm-6">
     <table class="table table-bordered table-hover">
-      <thead>
+      <thead style="background-color: gold">
         <strong>Products Count</strong>
         <tr>
           <th>Products</th>
@@ -78,37 +78,17 @@
 
       <tbody>
         <tr>
-          <td>Bajari</td>
-          <td><%= @products.where(product_name: 'bajari').count  %></td>
-          <td><%= @products.where(product_name: 'bajari').sum(:weight).to_f %></td>
-          <td><%= @products.where(product_name: 'bajari').sum(:price).to_f %></td>
+          <% array_uniq = Product.select(:product_name).distinct %>
+          <% array_uniq.each do |product|%>
+            <td><%= product.product_name%></td>
+            <td><%= @products.where(product_name: product.product_name).count%></td>
+            <td><%= @products.where(product_name: product.product_name).sum(:weight)%></td>
+            <td><%= @products.where(product_name: product.product_name).sum(:price)%></td>
         </tr>
-        <tr>
-          <td>Wheat</td>
-          <td><%= @products.where(product_name: 'wheat').count  %></td>
-          <td><%= @products.where(product_name: 'wheat').sum(:weight).to_f %></td>
-          <td><%= @products.where(product_name: 'wheat').sum(:price).to_f %></td>
-        </tr>
-        <tr>
-          <td>Pulse</td>
-          <td><%= @products.where(product_name: 'pulse').count  %></td>
-          <td><%= @products.where(product_name: 'pulse').sum(:weight).to_f %></td>
-          <td><%= @products.where(product_name: 'pulse').sum(:price).to_f %></td>
-        </tr>
-        <tr>
-          <td>Fad</td>
-          <td><%= @products.where(product_name: 'fad').count  %></td>
-          <td><%= @products.where(product_name: 'fad').sum(:weight).to_f %></td>
-          <td><%= @products.where(product_name: 'fad').sum(:price).to_f %></td>
-        </tr>
-        <tr>
-          <td>Other</td>
-          <td><%= @products.where(product_name: 'other').count  %></td>
-          <td><%= @products.where(product_name: 'other').sum(:weight).to_f %></td>
-          <td><%= @products.where(product_name: 'other').sum(:price).to_f %></td>
-        </tr>
-        <tr class="info">
-          <th colspan="2">Total<%@products.sum(:weight).to_f%></th>
+        <% end -%>
+        <tr style="background-color: gold">
+          <th>Total = <%=array_uniq.count%></th>
+          <th><%= @products.count%></th>
           <th><%= @products.sum(:weight).to_f%>/kg</th>
           <th>Rs. <%= @products.sum(:price).to_f%></th>
         </tr>
@@ -121,7 +101,7 @@
 <div class="row">
   <div class="col-sm-6">
     <table class="table table-bordered table-hover" >
-      <thead>
+      <thead style="background-color: gold">
         <strong>Products Entry Details</strong>
         <tr>
           <th>No</th>
@@ -151,7 +131,7 @@
             <td><%= product.price %></td>
           </tr>
         <% end %>
-        <tr class="info">
+        <tr style="background-color: gold">
           <th colspan="4">Total</th>
           <th>Product = <%= @products.count %></th>
           <th><%= sum %>/kg</th>
@@ -163,7 +143,7 @@
 
   <div class="col-sm-6">
     <table class="table table-bordered table-hover">
-      <thead>
+      <thead style="background-color: gold">
         <strong>Payment Details</strong>
         <tr>
           <th>Date</th>
@@ -177,16 +157,20 @@
 
       <tbody>
         <%@payments.each do |payment| %>
+        <%if payment.payment_ammount < 0 %>
+          <tr style="color: red" class="warning">
+        <% else -%>
           <tr>
-            <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
-            <td><%= payment.giver.capitalize %></td>
-            <td><%= payment.receiver.capitalize %></td>
-            <td><%= payment.previous_ammount %></td>
-            <td><%= payment.left_ammount %></td>
-            <td><%= payment.payment_ammount %></td>
-          </tr>
-        <% end %>
-        <tr class="info">
+        <% end -%>
+          <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
+          <td><%= payment.receiver.capitalize %></td>
+          <td><%= payment.giver.capitalize %></td>
+          <td><%= payment.previous_ammount %></td>
+          <td><%= payment.left_ammount %></td>
+          <td><%= payment.payment_ammount %></td>
+        </tr>
+      <% end %>
+        <tr style="background-color: gold">
           <th>Total</th>
           <th colspan="4">Transaction's = <%= @payments.count%></th>
           <th><%= @payments.sum(:payment_ammount)%></th>
