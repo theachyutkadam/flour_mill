@@ -1093,7 +1093,7 @@ body {
 }
 
 .bg-img {
-    background-image: url("architecture.jpg");
+    background-image: url("toulouse.jpg");
     min-height: 900px;
     background-position: center;
     background-repeat: no-repeat;
@@ -4529,7 +4529,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: white;
+  color: black;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
