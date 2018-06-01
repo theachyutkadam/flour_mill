@@ -1,7 +1,7 @@
 <% customers = 0 %>
 
 <table class="table table-bordered table-hover">
-  <thead>
+  <thead style="background-color: gold">
     <strong style="font-size: 15px">Report Table of Total</strong>
     <tr>
       <th>Operator</th>
@@ -17,7 +17,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody style="background-color: aquamarine">
     <tr>
       <td><%= @operators.count %></td>
       <td><%= @customers.count %></td>
@@ -36,40 +36,73 @@
 </table>
 
 <table class="table table-bordered table-hover">
-  <thead>
+  <thead style="background-color: gold">
     <strong style="font-size: 15px">Report Product Details</strong>
     <tr>
       <th>Product</th>
       <th>Times</th>
-      <th colspan="4">Take</th>
+      <th colspan="3">Take Cash</th>
+      <th colspan="3">Take Borrow</th>
       <th>Weight</th>
       <th>Amount</th>
       <th colspan="4">times cust</th>
     </tr>
   </thead>
+  <tbody style="background-color: aquamarine">
+    <% array_uniq = 0, sum_times = 0, times = 0, sum_take_cash_count = 0, take_cash_count = 0, sum_take_cash_sum_weight = 0, take_cash_sum_weight = 0, sum_take_cash_sum_price = 0, take_cash_sum_price = 0, sum_take_borrow_count = 0, take_borrow_count = 0, sum_take_borrow_sum_weight = 0, take_borrow_sum_weight = 0, sum_take_borrow_sum_price = 0, take_borrow_sum_price = 0, sum_product_sum_weight = 0, product_sum_weight = 0, sum_product_sum_price = 0, product_sum_price = 0 %>
 
-  <tbody>
-    <% array_uniq = 0 %>
     <% array_uniq = Product.select(:product_name).distinct %>
     <% array_uniq.each do |product|%>
-    <tr>
-      <td><%= product.product_name.capitalize%></td>
-      <td><%= @products.where(product_name: product.product_name).count%></td>
-      <td>Cash- <%= @products.where(product_name: product.product_name, payment_type: 'cash').count %></td>
-      <td>Rs. <%= @products.where(product_name: product.product_name, payment_type: 'cash').sum(:price) %></td>
-      <td>Borrow- <%= @products.where(product_name: product.product_name, payment_type: 'borrow').count %></td>
-      <td>Rs.- <%= @products.where(product_name: product.product_name, payment_type: 'borrow').sum(:price)%></td>
-      <td><%= @products.where(product_name: product.product_name).sum(:weight)%></td>
-      <td><%= @products.where(product_name: product.product_name).sum(:price)%></td>
-      <% array_top = [] %>
-      <%@customers.each do |customer|%>
-        <% array_top.push(@products.where(product_name: product.product_name, customer_id: customer.id).sum(:weight)) %>
-      <% end -%>
-      <td><%= array_top.max%>.kg</td>
-      <td><%= link_to "id" %></td>
-      <td><%= array_top.min%>.kg</td>
-      <td><%= link_to "id" %></td>
-    </tr>
+      <% times = @products.where(product_name: product.product_name).count%>
+      <% take_cash_count = @products.where(product_name: product.product_name, payment_type: 'cash').count %>
+      <% take_cash_sum_weight = @products.where(product_name: product.product_name, payment_type: 'cash').sum(:weight) %>
+      <% take_cash_sum_price = @products.where(product_name: product.product_name, payment_type: 'cash').sum(:price) %>
+      <% take_borrow_count = @products.where(product_name: product.product_name, payment_type: 'borrow').count %>
+      <% take_borrow_sum_weight = @products.where(product_name: product.product_name, payment_type: 'borrow').sum(:weight) %>
+      <% take_borrow_sum_price = @products.where(product_name: product.product_name, payment_type: 'borrow').sum(:price)%>
+      <% product_sum_weight = @products.where(product_name: product.product_name).sum(:weight)%>
+      <% product_sum_price = @products.where(product_name: product.product_name).sum(:price)%>
+      <% sum_times = sum_times + times %>
+      <% sum_take_cash_count = sum_take_cash_count + take_cash_count %>
+      <% sum_take_cash_sum_weight = sum_take_cash_sum_weight + take_cash_sum_weight %>
+      <% sum_take_cash_sum_price = sum_take_cash_sum_price + take_cash_sum_price %>
+      <% sum_take_borrow_count = sum_take_borrow_count + take_borrow_count %>
+      <% sum_take_borrow_sum_weight = sum_take_borrow_sum_weight + take_borrow_sum_weight %>
+      <% sum_take_borrow_sum_price = sum_take_borrow_sum_price + take_borrow_sum_price %>
+      <% sum_product_sum_weight = sum_product_sum_weight + product_sum_weight %>
+      <% sum_product_sum_price = sum_product_sum_price + product_sum_price %>
+      <tr>
+        <td><%= product.product_name.capitalize %></td>
+        <td><%= times %></td>
+        <td>Cash= <%= take_cash_count %></td>
+        <td><%= take_cash_sum_weight %>/kg</td>
+        <td>Rs.<%= take_cash_sum_price %></td>
+        <td>Borrow= <%= take_borrow_count %></td>
+        <td><%= take_borrow_sum_weight %>/kg</td>
+        <td>Rs.<%= take_borrow_sum_price %></td>
+        <td><%= product_sum_weight %>/kg</td>
+        <td>Rs.<%= product_sum_price %></td>
+        <% array_top = [] %>
+        <%@customers.each do |customer|%>
+          <% array_top.push(@products.where(product_name: product.product_name, customer_id: customer.id).sum(:weight)) %>
+        <% end -%>
+        <td><%= array_top.max%>.kg</td>
+        <td><%= link_to "id" %></td>
+        <td><%= array_top.min%>.kg</td>
+        <td><%= link_to "id" %></td>
+      </tr>
     <% end -%>
+    <tr style="background-color: gold">
+      <th><%= array_uniq.count %></th>
+      <th><%= sum_times %></th>
+      <th>Cash= <%= sum_take_cash_count %></th>
+      <th><%= sum_take_cash_sum_weight %>/kg</th>
+      <th>Rs.<%= sum_take_cash_sum_price %></th>
+      <th>Borrow= <%= sum_take_borrow_count %></th>
+      <th><%= sum_take_borrow_sum_weight %>/kg</th>
+      <th>Rs.<%= sum_take_borrow_sum_price %></th>
+      <th><%= sum_product_sum_weight %>/kg</th>
+      <th>Rs.<%= sum_product_sum_price %></th>
+    </tr>
   </tbody>
 </table>

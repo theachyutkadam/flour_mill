@@ -1,5 +1,5 @@
 <div class="col-sm-6">
-  <table class="table table-bordered table-responsive table-hover">
+  <table class="table table-bordered scrollable table-responsive table-hover">
     <thead>
       <strong>Customers Details</strong>
       <tr>
@@ -14,17 +14,22 @@
 
     <tbody>
       <% count = 0%>
-      <% sum = 0%>
       <% left_ammount = 0%>
       <% @customers.each do |customer| %>
         <% count = count + 1%>
         <%left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %>
-        <% sum = sum + left_ammount%>
         <tr>
-          <td><%= count %></td>
-          <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
-          <td><%= customer.mobile_num %></td>
-          <td><%= customer.address.capitalize %></td>
+          <% if customer.products.blank? %>
+            <td class="info"><%= count %></td>
+            <td class="info"><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
+            <td class="info"><%= customer.mobile_num %></td>
+            <td class="info"><%= customer.address.capitalize %></td>
+          <% else %>
+            <td><%= count %></td>
+            <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
+            <td><%= customer.mobile_num %></td>
+            <td><%= customer.address.capitalize %></td>
+          <% end %>
           <%if left_ammount <= 0 %>
             <td class="success"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
           <% elsif left_ammount >= 500 %>

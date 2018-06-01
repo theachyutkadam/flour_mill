@@ -13,19 +13,25 @@
 
   <tbody>
     <% aa = 0%>
-    <% @products.each do |product| %>
+    <% if @products.blank? %>
       <tr>
-        <td><%= product.created_at.strftime '%d/%B/%Y'%></td>
-        <td><%= product.operator.first_name.capitalize%></td>
-        <td><%= product.product_name.capitalize %></td>
-        <td><%= product.payment_type.capitalize %></td>
-        <td><%= product.price %></td>
-        <td><%= product.weight %></td>
+        <td colspan="7">Products are not available for this customer.</td>
       </tr>
-    <% end %>
+    <% else %>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.created_at.strftime '%d/%B/%Y'%></td>
+          <td><%= product.operator.first_name.capitalize%></td>
+          <td><%= product.product_name.capitalize %></td>
+          <td><%= product.payment_type.capitalize %></td>
+          <td><%= product.price %></td>
+          <td><%= product.weight %></td>
+        </tr>
+      <% end %>
     <th colspan="2">Total</th>
     <th colspan="2"><%= @products.count %></th>
     <th>Rs. <%= @products.sum(:price) %></th>
     <th><%= @products.sum(:weight) %>/kg</th>
+    <% end %>
   </tbody>
 </table>
