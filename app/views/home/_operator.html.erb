@@ -21,7 +21,7 @@
       <tr>
         <% if customer.products.blank? %>
           <td class="info"><%= count %></td>
-          <td class="info"><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
+          <td class="info"><%= customer.last_name.capitalize + " " + customer.first_name.capitalize + " " + customer.middle_name.capitalize %></td>
           <td class="info"><%= customer.mobile_num %></td>
           <td class="info"><%= customer.address.capitalize %></td>
           <td class="info"><%= customer.mail %></td>
