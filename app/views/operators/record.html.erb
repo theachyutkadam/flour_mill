@@ -42,10 +42,10 @@
       <thead style="background-color: gold">
         <strong>Cash & Borrow Count</strong>
         <tr>
-          <th colspan="2">Cash</th>
-          <th colspan="2">Borrow</th>
-          <th colspan="2">Total</th>
-          <th>Given</th>
+          <th colspan="3">Cash</th>
+          <th colspan="3">Borrow</th>
+          <th colspan="3">Total</th>
+          <th>Payment</th>
           <th>Left</th>
         </tr>
       </thead>
@@ -58,11 +58,14 @@
         <%else%>
           <tr class="warning">
         <% end%>
-          <td>Quntity- <%= cash = @products.where(payment_type: 'cash').count %></td>
+          <td><%= cash = @products.where(payment_type: 'cash').count %></td>
+          <td><%= @products.where(payment_type: 'cash').sum(:weight).to_f %> /kg</td>
           <td>Rs. <%= @products.where(payment_type: 'cash').sum(:price).to_f %></td>
-          <td>Quntity- <%= borrow = @products.where(payment_type: 'borrow').count %></td>
+          <td><%= borrow = @products.where(payment_type: 'borrow').count %></td>
+          <td><%= @products.where(payment_type: 'borrow').sum(:weight).to_f %> /kg</td>
           <td>Rs. <%= @products.where(payment_type: 'borrow').sum(:price).to_f %></td>
-          <td>Quntity- <%= cash + borrow %></td>
+          <td><%= cash + borrow %></td>
+          <td><%= @products.sum(:weight) %> /kg</td>
           <td>Rs. <%= @products.sum(:price) %></td>
           <td>Rs. <%= @payments.sum(:payment_ammount) %></td>
           <td>Rs. <%= @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount) %></td>
