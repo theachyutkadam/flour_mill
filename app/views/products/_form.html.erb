@@ -11,7 +11,7 @@
   <% end %>
   <%= f.hidden_field :customer_id, value: @cust.id %>
   <strong>
-    <%= @cust.last_name.capitalize + " " + @cust.first_name.capitalize%>
+    <%= @cust.last_name.capitalize + " " + @cust.first_name.capitalize + " " + @cust.middle_name.capitalize%>
   </strong><br><br>
   <div class="row">
     <div class="col-sm-2">

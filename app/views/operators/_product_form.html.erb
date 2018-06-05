@@ -11,7 +11,7 @@
   <% end %>
 
   <strong>
-    <%= @customer.last_name.capitalize + " " + @customer.first_name.capitalize%>
+    <%= @customer.last_name.capitalize + " " + @customer.first_name.capitalize + " " + @customer.middle_name.capitalize %>
   </strong><br>
   <%= f.hidden_field :customer_id, value: @customer.id %>
   <%= f.hidden_field :operator_id, value: current_user.role.id %>
