@@ -45,6 +45,9 @@ class ProductsController < ApplicationController
       if current_user.role.name == "Operator"
         flash[:notice] = 'Product was successfully updated.'
         redirect_to enter_operator_product_operators_path(cust_id: @product.customer_id)
+      elsif current_user.role.name == "Admin"
+        flash[:notice] = 'Product was successfully updated.'
+        redirect_to new_product_path(cust_id: @product.customer.id)
       else
         flash[:notice] = 'Product update failed.'
         render :new
