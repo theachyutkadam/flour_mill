@@ -38,18 +38,20 @@
 
       <%= yield %>
       <% if user_signed_in? %>
-        <div style="background: grey" class="footer navbar-fixed-bottom ">
-          <footer class="container-fluid fixed-bottom">
-            <p style="color: white" class="m-0 text-center text-white">Copyright &copy;
-              <a style="color: lightblue" href=""> Vishawakrma Flour Mill </a>
-              <a class="item" href="https://www.youtube.com/watch?v=115n8v9N-ro"><%= image_tag("youtube1.jpg", width: '60px') %></a>
-              <a class="item" href="https://plus.google.com/105924259559603220820"><%= image_tag("google.png", width: '30px') %></a>
-              <a class="item" href="https://www.facebook.com/achyut.kadam.946/photos_all?lst=100005548129116%3A100005548129116%3A1527692465"><%= image_tag("facebook.png", width: '30px') %></a>
-              <a class="item" href="https://www.linkedin.com/in/achyut-kadam-445baa149/"><%= image_tag("linkedin.png", width: '30px') %></a>
-              <a class="item" href="https://twitter.com/theachyutkadam"><%= image_tag("twitter.png", width: '30px') %></a>
-              <a class="item" href="https://github.com/theachyutkadam"><%= image_tag("git.png", width: '30px') %></a>
-            </p>
-          </footer>
+        <div class="col-sm-12">
+          <div style="background: grey" class="footer navbar-fixed-bottom ">
+            <footer class="container-fluid">
+              <p style="color: white" class="m-0 text-center text-white">Copyright &copy;
+                <a style="color: lightblue" href=""> Vishawakrma Flour Mill </a>
+                <a class="item" href="https://www.youtube.com/watch?v=115n8v9N-ro"><%= image_tag("youtube1.jpg", width: '60px') %></a>
+                <a class="item" href="https://plus.google.com/105924259559603220820"><%= image_tag("google.png", width: '30px') %></a>
+                <a class="item" href="https://www.facebook.com/achyut.kadam.946/photos_all?lst=100005548129116%3A100005548129116%3A1527692465"><%= image_tag("facebook.png", width: '30px') %></a>
+                <a class="item" href="https://www.linkedin.com/in/achyut-kadam-445baa149/"><%= image_tag("linkedin.png", width: '30px') %></a>
+                <a class="item" href="https://twitter.com/theachyutkadam"><%= image_tag("twitter.png", width: '30px') %></a>
+                <a class="item" href="https://github.com/theachyutkadam"><%= image_tag("git.png", width: '30px') %></a>
+              </p>
+            </footer>
+          </div>
         </div>
       <% end %>
     </div>
