@@ -6,13 +6,14 @@
         <tr>
           <th style="color: darkblue">📧 Mail - </th>
           <td style="color: black"><%=current_user.customer.mail %></td>
-          <%if left_ammount <= 0 %>
-            <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: green">Left Rs. <%= left_ammount %></a></strong></td>
-          <%elsif left_ammount >= 500 %>
-            <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: red">Left Rs. <%= left_ammount %></a></strong></td>
-          <%else %>
-            <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: darkorange">Left Rs. <%= left_ammount %></a></strong></td>
-          <%end %>
+          <%left_amt = @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount) %>
+              <%if left_amt <= 0 %>
+                <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: green">Left Rs. <%= left_amt %></a></strong></td>
+              <%elsif left_amt >= 500 %>
+                <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: red">Left Rs. <%= left_amt %></a></strong></td>
+            <%else %>
+                <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: darkorange">Left Rs. <%= left_amt %></a></strong></td>
+            <%end %>
         </tr>
 
         <tr>
@@ -48,12 +49,12 @@
           <th>Left</th>
         </tr>
       </thead>
-        <%left_ammount = @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount) %>
+          <%left_ammount = @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount) %>
 
       <tbody>
-        <%if left_ammount < 0 %>
+          <%if left_ammount < 0 %>
           <tr class="success">
-        <%elsif left_ammount >= 500 %>
+          <%elsif left_ammount >= 500 %>
           <tr class="danger">
         <%else%>
           <tr class="warning">
@@ -86,7 +87,7 @@
         <tr>
           <% array_uniq = Product.select(:product_name).distinct %>
           <% array_uniq.each do |product|%>
-            <td><%= product.product_name%></td>
+            <td><%= product.product_name.capitalize %></td>
             <td><%= @products.where(product_name: product.product_name).count%></td>
             <td><%= @products.where(product_name: product.product_name).sum(:weight)%></td>
             <td><%= @products.where(product_name: product.product_name).sum(:price)%></td>
@@ -172,7 +173,7 @@
           <td><%= payment.receiver.capitalize %></td>
           <td><%= payment.giver.capitalize %></td>
           <td><%= payment.previous_ammount %></td>
-          <td><%= payment.left_ammount %></td>
+            <td><%= payment.left_ammount %></td>
           <td><%= payment.payment_ammount %></td>
         </tr>
       <% end %>

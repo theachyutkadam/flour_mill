@@ -19,7 +19,7 @@
         <tr>
           <th style="color: darkblue">First Name - </th>
           <td style="color: black"><%=@customer.first_name.capitalize %></td>
-          </tr>
+        </tr>
 
         <tr>
           <th style="color: darkblue">Middle Name - </th>
@@ -89,7 +89,7 @@
         <tr>
           <% array_uniq = Product.select(:product_name).distinct %>
           <% array_uniq.each do |product|%>
-            <td><%= product.product_name%></td>
+            <td><%= product.product_name.capitalize%></td>
             <td><%= @products.where(product_name: product.product_name).count%></td>
             <td><%= @products.where(product_name: product.product_name).sum(:weight)%></td>
             <td><%= @products.where(product_name: product.product_name).sum(:price)%></td>
