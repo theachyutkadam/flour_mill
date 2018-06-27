@@ -16,7 +16,7 @@
     <%else%>
       <%@payments.each do |payment| %>
         <%if payment.payment_ammount < 0 %>
-          <tr style="color: red" class="warning">
+          <tr class="red_amt warning">
         <% else -%>
           <tr>
         <% end -%>

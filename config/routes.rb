@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'reports/index'
   get 'reports/info'
   get 'reports/owner'
+  get 'reports/report_customers'
+  
 
   resources :products do
     collection do

@@ -647,3 +647,19 @@ fieldset[disabled] .btn-danger.active {
 button:hover, a:hover {
   opacity: 0.7;
 }
+
+.green_amt {
+  font-size: 20px;
+  color: green;
+  font-weight: bold;
+}
+.red_amt {
+  font-size: 20px;
+  color: red;
+  font-weight: bold;
+}
+.orange_amt {
+  font-size: 20px;
+  color: orange;
+  font-weight: bold;
+}

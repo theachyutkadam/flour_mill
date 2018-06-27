@@ -1,0 +1,30 @@
+<table class="table table-bordered table-hover">
+  <thead style="background-color: gold">
+    <strong style="font-size: 15px">Products Report</strong><br>
+    <tr>
+      <th>Customer</th>
+      <th>Mobile</th>
+      <th>Left Rs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%sum = 0%>
+    <%cust_count = 0%>
+    <% @customers.each do |customer|%>
+    <% borrow_amt = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount)%>
+      <tr>
+        <%if borrow_amt >0 %>
+          <%sum = sum + borrow_amt%>
+          <%cust_count = cust_count + 1%>
+          <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize + " " + customer.middle_name.capitalize%></td>
+          <td><%= customer.mobile_num%></td>
+          <td><%= borrow_amt %></td>
+        <% end -%>
+      </tr>
+    <%end%>
+    <tr style="background-color: gold">
+      <th colspan="2">Total Borrow Customers = <%= cust_count %></th>
+      <th>Total Borrow Ammount Rs = <%= sum %></th>
+    </tr>
+  </tbody>
+</table>

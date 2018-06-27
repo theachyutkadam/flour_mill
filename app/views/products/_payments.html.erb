@@ -12,22 +12,31 @@
   </thead>
 
   <tbody>
+    <%take = 0%>
+    <%receive = 0%>    
     <%if @payments.nil? %>
     <%else%>
       <%@payments.each do |payment| %>
-        <%if payment.payment_ammount < 0 %>
+      <% payment_ammount = payment.payment_ammount %>
+        <%if payment_ammount < 0 %>
           <tr style="color: red" class="warning">
-        <% else -%>
+          <%take = take + payment_ammount%>
+        <% elsif payment_ammount > 0%>
+          <%receive = receive + payment_ammount%>
           <tr>
         <% end -%>
           <td><%= payment.created_at.strftime("%d/%b/%Y") %></td>
           <td><%= payment.previous_ammount %></td>
-          <td ><%= payment.payment_ammount %></td>
+          <td><%= payment_ammount %></td>
           <td><%= payment.left_ammount %></td>
           <td><%= payment.receiver.capitalize %></td>
           <td><%= payment.giver.capitalize %></td>
         </tr>
       <% end %>
     <% end %>
+    <tr>
+      <th>Transaction's = <%= @payments.count %></th>
+      <th colspan="2">Receive = <%=receive%> &nbsp; &nbsp; Take = <%=take%></th>
+    </tr>
   </tbody>
 </table>

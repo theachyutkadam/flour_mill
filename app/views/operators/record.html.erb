@@ -1,4 +1,4 @@
-<%left_ammount = @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount) %>
+<%left_amt = @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount) %>
 <div class="row">
   <div class="col-sm-6">
     <table class="table table-bordered">
@@ -7,13 +7,13 @@
         <tr>
           <th style="color: darkblue">📧 Mail - </th>
           <td style="color: black"><%=@customer.mail %></td>
-          <%if left_ammount <= 0 %>
-            <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: green">Left Rs. <%= left_ammount %></a></strong></td>
-          <%elsif left_ammount >= 500 %>
-            <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: red">Left Rs. <%= left_ammount %></a></strong></td>
-          <%else %>
-            <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: darkorange">Left Rs. <%= left_ammount %></a></strong></td>
-          <%end %>
+          <%if left_amt <= 0 %>
+            <td rowspan="2" colspan="4" align="center" class="green_amt">Left Rs.<%= left_amt %></td><br><br>
+          <%elsif left_amt >=500 %>
+            <td rowspan="2" colspan="4" align="center" class="red_amt">Left Rs.<%= left_amt %></td><br><br>
+          <%else%>
+            <td rowspan="2" colspan="4" align="center" class="orange_amt">Left Rs.<%= left_amt %></td><br><br>
+          <%end%>
         </tr>
 
         <tr>
@@ -51,9 +51,9 @@
       </thead>
 
       <tbody>
-        <%if left_ammount <= 0 %>
+        <%if left_amt <= 0 %>
           <tr class="success">
-        <%elsif left_ammount >= 500 %>
+        <%elsif left_amt >= 500 %>
           <tr class="danger">
         <%else%>
           <tr class="warning">

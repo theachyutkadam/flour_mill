@@ -9,7 +9,16 @@
       </ul>
     </div>
   <% end %>
-  <strong style="font-size: 20px"><%= @customer.first_name.capitalize + " " + @customer.last_name.capitalize%> Left Rs. <%= @customer.products.where(payment_type: 'borrow').sum(:price).to_f - @customer.payments.sum(:payment_ammount).to_f %>
+  <strong style="font-size: 20px"><%= @customer.first_name.capitalize + " " + @customer.last_name.capitalize%>
+
+    <%left_amt = @cust.products.where(payment_type: 'borrow').sum(:price).to_f - @cust.payments.sum(:payment_ammount).to_f %>
+    <%if left_amt <= 0 %>
+      <div class="green_amt">Left Rs. <%= left_amt %></div><br><br>
+    <%elsif left_amt >= 500 %>
+      <div class="red_amt">Left Rs. <%= left_amt %></div><br><br>
+    <%else%>
+      <div class="orange_amt">Left Rs. <%= left_amt %></div><br><br>
+    <%end%>
   </strong><br><br>
   <%= f.hidden_field :customer_id, value:@customer.id %>
   <div class="row">
