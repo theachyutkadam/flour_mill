@@ -24,8 +24,8 @@
           <td><%= product.operator.first_name.capitalize%></td>
           <td><%= product.product_name.capitalize %></td>
           <td><%= product.payment_type.capitalize %></td>
-          <td><%= product.price %></td>
-          <td><%= product.weight %></td>
+          <td>Rs. <%= product.price %></td>
+          <td><%= product.weight %> /kg</td>
         </tr>
       <% end %>
     <th colspan="2">Total</th>
