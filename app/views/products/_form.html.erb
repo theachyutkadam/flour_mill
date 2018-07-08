@@ -18,15 +18,22 @@
       <%= f.select :payment_type, [["Cash","cash"],["Borrow","borrow"]], {}, class: "form-control" %>
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-2">
       <%= f.select :product_name, [["Bajari","bajari"],["Wheat","wheat"],["Pulse","pulse"],["Gram Dal","gram dal"],["Rise", "rise"],["Jowar", "jowar"],["Other","other"]], {include_blank: '🌾 Product'}, class: "form-control" %>
     </div>
 
     <div class="col-sm-2">
       <div class="input-group-sm">
-        <%= f.text_field :weight, placeholder: "Weight", class: "form-control"%>
+        <%= f.text_field :weight, id:"weight", oninput: "setPrice()", placeholder: "Weight", class: "form-control"%>
       </div>
     </div>
+
+    <div class="col-sm-1">
+      <div class="input-group-sm">
+        <p style="font-weight: bold;" id="price">Rs. 00</p>
+      </div>
+    </div>
+
     <% if current_user.role.name =="Operator" %>
       <% f.hidden_field :operator_id, value: current_user.role.id, class: "form-control" %>
     <% else%>
