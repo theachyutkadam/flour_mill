@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'mysql2', "~> 0.3.10"
 gem 'rails', '4.2.0'
+gem 'client_side_validations'
 
 group :assets do
 	gem 'sass-rails', '~> 5.0'
