@@ -30,12 +30,10 @@
             <td><%= customer.mobile_num %></td>
             <td><%= customer.address.capitalize %></td>
           <% end %>
-          <%if left_ammount <= 0 %>
-            <td class="success"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
-          <% elsif left_ammount >= 500 %>
+          <% if left_ammount >= 500 %>
             <td class="danger"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
           <% else%>
-            <td class="warning"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
+            <td><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
           <% end%>
           <td>
             <%= link_to '', new_product_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
