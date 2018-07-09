@@ -1091,6 +1091,10 @@ body {
   color: #333;
   /*background-color: red;*/
 }
+.field_with_errors .message {
+  color: red;
+  font-size: 12px;
+}
 
 .bg-img {
     background-image: url("toulouse.jpg");
