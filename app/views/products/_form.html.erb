@@ -1,14 +1,4 @@
-<%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
-    <div class="alert alert-danger fade in">
-      <a href="#" class="close" data-dismiss="alert">&times;</a>
-      <ul>
-        <% @product.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for @product, :validate => true  do |f| %>
   <%= f.hidden_field :customer_id, value: @cust.id %>
   <strong>
     <%= @cust.last_name.capitalize + " " + @cust.first_name.capitalize + " " + @cust.middle_name.capitalize%>

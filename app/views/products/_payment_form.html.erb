@@ -9,7 +9,8 @@
       </ul>
     </div>
   <% end %>
-
+<%if @products.nil? %>
+<%else%>
   <%left_amt = @cust.products.where(payment_type: 'borrow').sum(:price).to_f - @cust.payments.sum(:payment_ammount).to_f %>
   <%if left_amt <= 0 %>
     <div class="green_amt">Left Rs. <%= left_amt %></div><br>
@@ -18,6 +19,7 @@
   <%else%>
     <div class="orange_amt">Left Rs. <%= left_amt %></div><br>
   <%end%>
+<%end%>
 
   <%= f.hidden_field :customer_id, value:@cust.id %>
   <div class="row">
