@@ -44,7 +44,9 @@ class PaymentsController < ApplicationController
       redirect_to new_product_path(cust_id: @payment.customer.id)
     else
       flash[:alert] = "Payment Created Failed."
-      render :new
+      # render :new
+      # redirect_to new_product_path(cust_id: @payment.customer.id)
+      render :controller => 'products', :action => 'new', :cust_id => @payment.customer.id
     end
   end
 
