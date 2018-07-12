@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     @cust = Customer.find(params[:cust_id])
     @product = Product.new
     @payment = Payment.new
-    @payments = @cust.payments
+    @payments = @cust.payments.order(created_at: :desc)
     @products = @cust.products.order(created_at: :desc)
   end
 
