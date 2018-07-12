@@ -1,17 +1,6 @@
 <%= form_for(@payment) do |f| %>
-  <% if @payment.errors.any? %>
-     <div class="alert alert-danger fade in">
-      <a href="#" class="close" data-dismiss="alert">&times;</a>
-      <ul>
-        <% @payment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
   <strong style="font-size: 20px"><%= @customer.first_name.capitalize + " " + @customer.last_name.capitalize%>
-
-    <%left_amt = @cust.products.where(payment_type: 'borrow').sum(:price).to_f - @cust.payments.sum(:payment_ammount).to_f %>
+    <%left_amt = @customer.products.where(payment_type: 'borrow').sum(:price).to_f - @customer.payments.sum(:payment_ammount).to_f %>
     <%if left_amt <= 0 %>
       <div class="green_amt">Left Rs. <%= left_amt %></div><br><br>
     <%elsif left_amt >= 500 %>

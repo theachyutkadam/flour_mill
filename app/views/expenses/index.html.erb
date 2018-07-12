@@ -1,15 +1,4 @@
 <%= form_for(:expenditure, url: create_expense_expenses_path) do |f|%>
-  <% if @exp.errors.any? %>
-    <div class="alert alert-danger fade-in ">
-      <a href="#" class="close" data-dismiss="alert">&times;</a>
-      <ul>
-      <% @exp.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="form_group">
     <div class="row">
       <div class="col-sm-2">
