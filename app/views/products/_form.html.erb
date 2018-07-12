@@ -27,7 +27,7 @@
     <% if current_user.role.name =="Operator" %>
       <% f.hidden_field :operator_id, value: current_user.role.id, class: "form-control" %>
     <% else%>
-      <div class="col-sm-2">
+    <div class="col-sm-2">
         <%= f.select :operator_id, Operator.all.collect {|a| [a.first_name, a.id]}, {}, class: "form-control" %>
       </div>
     <% end%>
