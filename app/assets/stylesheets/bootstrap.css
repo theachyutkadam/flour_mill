@@ -1309,7 +1309,7 @@ h6,
   font-size: 12px;
 }
 p {
-  margin: 11px 0 10px;
+  margin: 8px 0 10px;
 }
 .lead {
   margin-bottom: 20px;
@@ -1831,7 +1831,7 @@ pre code {
     width: 25%;
   }
   .col-sm-2 {
-    width: 16.66666667%;
+    width: 16.2666667%;
   }
   .col-sm-1 {
     width: 8.33333333%;
@@ -2572,7 +2572,7 @@ output {
   display: block;
   width: 100%;
   height: 32px;
-  padding: 6px 12px;
+  padding: 7px 7px;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
