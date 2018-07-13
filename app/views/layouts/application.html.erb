@@ -16,23 +16,19 @@
       <% if flash[:notice] %>
         <div class="alert alert-success alert-dismissible fade in">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Success!</strong>
           <%= flash[:notice] %>
         </div>
       <% elsif flash[:alert] %>
         <div class="alert alert-danger alert-dismissible fade in">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Danger!</strong>
           <%= flash[:alert] %>
         </div>
       <% elsif false %>
         <div class="alert alert-info alert-dismissible fade in">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Info!</strong> This alert box could indicate a neutral informative change or action.
         </div>
         <div class="alert alert-warning alert-dismissible fade in">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
         </div>
       <%end%>
 
