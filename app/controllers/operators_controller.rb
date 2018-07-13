@@ -37,6 +37,7 @@ class OperatorsController < ApplicationController
 
   def record
     @customer = Customer.find(params[:id])
+    @items = Item.all
     @products = Product.where(customer_id: params[:id]).order(created_at: :desc)
     @payments = Payment.where(customer_id: params[:id]).order(created_at: :desc)
     # @products = Operator.find(params[:operator_id]).products
