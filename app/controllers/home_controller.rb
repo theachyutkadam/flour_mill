@@ -4,6 +4,7 @@ class HomeController < ApplicationController
       @customers = Customer.search(params)
       @operators = Operator.search(params)
     elsif current_user.customer?
+      @items = Item.all
       @products = Product.where(customer_id: current_user.customer.id).order(created_at: :desc)
       @payments = Payment.where(customer_id: current_user.customer.id).order(created_at: :desc)
     elsif current_user.operator?
