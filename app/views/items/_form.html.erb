@@ -1,0 +1,49 @@
+<%= form_for @item, :validate => true do |f| %>
+  <div class="form_group">
+    <div class="row">
+    <div class="col-sm-6">
+      
+      <div class="col-sm-4">
+        <%= f.text_field :item_name, placeholder: "Item Name", class: "form-control" %>
+      </div>
+      
+        <div class="col-sm-2">
+            <%= f.number_field :rate, placeholder: "Rate Rs.", class: "form-control" %>
+        </div>
+      
+        <div class="col-sm-2">
+          <%= f.submit :save, class: "btn btn-primary"%>
+        </div>
+      
+        <div class="col-sm-1">
+          <%= link_to "Back", home_index_path, class: "btn btn-info" %>
+      </div>
+    </div>
+  </div>
+  </div>
+<% end %><br>
+
+<div class="col-sm-6">
+  <table class="table table-bordered scrollable table-responsive table-hover">
+    <thead>
+      <strong>Items Rate Details</strong>
+      <tr>
+        <th>Date</th>
+        <th>Item name</th>
+        <th>Rate Rs.</th>
+        <th colspan="3">Link</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item.created_at .strftime("%d/%b/%Y")%></td>
+          <td><%= item.item_name.capitalize %></td>
+          <td>Rs. <%= item.rate %> per Kg</td>
+          <td><%= link_to '', edit_item_path(item), class:"btn btn-xs btn-success glyphicon glyphicon-edit"  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
