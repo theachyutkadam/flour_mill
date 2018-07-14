@@ -2368,10 +2368,24 @@ if (typeof jQuery === 'undefined') {
       data.offset = data.offset || {}
 
       if (data.offsetBottom != null) data.offset.bottom = data.offsetBottom
-      if (data.offsetTop    != null) data.offset.top    = data.offsetTop
+      if (data.offsetTop != null) data.offset.top = data.offsetTop
 
       Plugin.call($spy, data)
     })
   })
 
 }(jQuery);
+
+$(function(){
+  $(".dropdown").hover(
+  function() {
+    $('.dropdown-menu', this).stop( true, true ).fadeIn("fast");
+    $(this).toggleClass('open');
+    $('b', this).toggleClass("caret caret-up");
+  },
+  function() {
+    $('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
+    $(this).toggleClass('open');
+    $('b', this).toggleClass("caret caret-up");
+  });
+});
