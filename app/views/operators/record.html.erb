@@ -8,11 +8,11 @@
           <th style="color: darkblue">📧 Mail - </th>
           <td style="color: black"><%=@customer.mail %></td>
           <%if left_amt <= 0 %>
-            <td rowspan="2" colspan="4" align="center" class="green_amt">Left Rs.<%= left_amt %></td><br><br>
+            <td rowspan="2" colspan="4" align="center" class="green_amt">Left Rs. <%= left_amt %></td><br><br>
           <%elsif left_amt >=500 %>
-            <td rowspan="2" colspan="4" align="center" class="red_amt">Left Rs.<%= left_amt %></td><br><br>
+            <td rowspan="2" colspan="4" align="center" class="red_amt">Left Rs. <%= left_amt %></td><br><br>
           <%else%>
-            <td rowspan="2" colspan="4" align="center" class="orange_amt">Left Rs.<%= left_amt %></td><br><br>
+            <td rowspan="2" colspan="4" align="center" class="orange_amt">Left Rs. <%= left_amt %></td><br><br>
           <%end%>
         </tr>
 
@@ -51,12 +51,8 @@
       </thead>
 
       <tbody>
-        <%if left_amt <= 0 %>
-          <tr class="success">
-        <%elsif left_amt >= 500 %>
+        <%if left_amt >= 500 %>
           <tr class="danger">
-        <%else%>
-          <tr class="warning">
         <% end%>
           <td><%= cash = @products.where(payment_type: 'cash').count %></td>
           <td><%= @products.where(payment_type: 'cash').sum(:weight).to_f %> /kg</td>
@@ -73,12 +69,14 @@
       </tbody>
     </table>
   </div>
+
   <div class="col-sm-6">
     <table class="table table-bordered table-hover">
       <thead style="background-color: gold">
         <strong>Products Count</strong>
         <tr>
           <th>Products</th>
+          <th>Rate per Kg</th>
           <th>No.of Times</th>
           <th>Weight</th>
           <th>Price</th>
@@ -90,6 +88,7 @@
           <% array_uniq = Product.select(:product_name).distinct %>
           <% array_uniq.each do |product|%>
             <td><%= product.product_name.capitalize%></td>
+            <td><%= Item.select(:rate).where(item_name: "product.item_name")%></td>
             <td><%= @products.where(product_name: product.product_name).count%></td>
             <td><%= @products.where(product_name: product.product_name).sum(:weight)%></td>
             <td><%= @products.where(product_name: product.product_name).sum(:price)%></td>
@@ -97,13 +96,13 @@
         <% end -%>
         <tr style="background-color: gold">
           <th colspan="2">Total<%@products.sum(:weight).to_f%></th>
+          <th><%= @products.count%></th>
           <th><%= @products.sum(:weight).to_f%>/kg</th>
           <th>Rs. <%= @products.sum(:price).to_f%></th>
         </tr>
       </tbody>
     </table>
   </div>
-
 </div>
 
 <div class="row">
