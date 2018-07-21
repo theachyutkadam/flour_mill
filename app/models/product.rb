@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
-
   belongs_to :customer
   belongs_to :operator
+  belongs_to :item
 
   validates :product_name, presence: true
   validates :price, presence: true, numericality: true
