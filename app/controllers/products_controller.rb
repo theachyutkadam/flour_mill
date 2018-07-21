@@ -25,9 +25,9 @@ class ProductsController < ApplicationController
     @products = @cust.products
     @payments = Payment.all
     @product = Product.new(product_params)
-    @product.price = 3 * params[:product][:weight].to_f
-    # @product.weight = params[:product][:price].to_i/3
-    # @product.payment_type = params[:product][:payment_type]
+    x = params[:product][:product_name]
+    @product.price = Item.find(x).rate * params[:product][:weight].to_f
+    @product.item_id = x
     @payment = Payment.new
     if @product.save
       flash[:notice] =  'Product was successfully created.'
