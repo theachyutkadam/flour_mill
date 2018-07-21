@@ -10,7 +10,7 @@ RSpec.describe User, type: :model do
   end
 
   it "should verify Admin user" do
-		role = Role.create!(name: "Admin")
+	  role = Role.create!(name: "Admin")
 	  user = User.create!(email: "ravi@gmail.com", password: "password", role_id: role.id)
 	  expect(user.admin?).to eq(true)
 	  expect(user.operator?).to eq(false)
