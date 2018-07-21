@@ -85,14 +85,14 @@
 
       <tbody>
         <tr>
-          <% array_uniq = Product.select(:product_name).distinct %>
-          <% array_uniq.each do |product|%>
-            <td><%= product.product_name.capitalize%></td>
-            <td><%= Item.select(:rate).where(item_name: "product.item_name")%></td>
-            <td><%= @products.where(product_name: product.product_name).count%></td>
-            <td><%= @products.where(product_name: product.product_name).sum(:weight)%></td>
-            <td><%= @products.where(product_name: product.product_name).sum(:price)%></td>
-        </tr>
+        <% array_uniq = Product.select(:product_name).distinct %>
+          <% @items.each do |item|%>
+            <td><%= item.item_name.capitalize%></td>
+            <td>Rs.<%= item.rate%>  /Kg</td>
+            <td><%= @products.where(product_name: item).count%></td>
+            <td><%= @products.where(product_name: item).sum(:weight)%> /kg</td>
+            <td>Rs. <%= @products.where(product_name: item).sum(:price)%></td>
+          </tr>
         <% end -%>
         <tr style="background-color: gold">
           <th colspan="2">Total<%@products.sum(:weight).to_f%></th>
@@ -132,7 +132,7 @@
             <td><%= count %></td>
             <td><%= product.created_at.strftime '%d/%B/%Y' %></td>
             <td><%= product.operator.first_name.capitalize %></td>
-            <td><%= product.product_name.capitalize %></td>
+            <td><%= product.item.item_name.capitalize %></td>
             <td><%= product.payment_type %></td>
             <td><%= product.weight %></td>
             <td><%= product.price %></td>
