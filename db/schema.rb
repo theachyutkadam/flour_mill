@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180515132834) do
+ActiveRecord::Schema.define(version: 20180721203153) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "first_name",     limit: 255
@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(version: 20180515132834) do
     t.datetime "updated_at",                 null: false
     t.integer  "quantity",     limit: 4
     t.text     "description",  limit: 65535
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string   "item_name",  limit: 255
+    t.integer  "rate",       limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "operators", force: :cascade do |t|
@@ -72,9 +79,11 @@ ActiveRecord::Schema.define(version: 20180515132834) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.string   "payment_type", limit: 255
+    t.integer  "item_id",      limit: 4
   end
 
   add_index "products", ["customer_id"], name: "index_products_on_customer_id", using: :btree
+  add_index "products", ["item_id"], name: "index_products_on_item_id", using: :btree
   add_index "products", ["operator_id"], name: "index_products_on_operator_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
@@ -106,6 +115,7 @@ ActiveRecord::Schema.define(version: 20180515132834) do
   add_foreign_key "customers", "users"
   add_foreign_key "operators", "users"
   add_foreign_key "products", "customers"
+  add_foreign_key "products", "items"
   add_foreign_key "products", "operators"
   add_foreign_key "users", "roles"
 end
