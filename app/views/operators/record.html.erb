@@ -133,7 +133,7 @@
             <td><%= product.created_at.strftime '%d/%B/%Y' %></td>
             <td><%= product.operator.first_name.capitalize %></td>
             <td><%= product.item.item_name.capitalize %></td>
-            <td><%= product.payment_type %></td>
+            <td><%= product.payment_type.capitalize %></td>
             <td><%= product.weight %></td>
             <td><%= product.price %></td>
           </tr>

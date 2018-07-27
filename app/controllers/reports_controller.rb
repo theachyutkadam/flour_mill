@@ -5,6 +5,7 @@ class ReportsController < ApplicationController
     @products = Product.all
     @payments = Payment.all
     @expenses = Expense.all
+    @items = Item.all
   end
 
   def report_customers
