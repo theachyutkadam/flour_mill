@@ -22,7 +22,7 @@
         <tr>
           <td><%= product.created_at.strftime '%d/%B/%Y'%></td>
           <td><%= product.operator.first_name.capitalize%></td>
-          <td><%= product.item.item_name %></td>
+          <td><%= product.item.item_name.capitalize %></td>
           <td><%= product.payment_type.capitalize %></td>
           <td><%= product.weight %> /kg</td>
           <td>Rs. <%= product.price %></td>
