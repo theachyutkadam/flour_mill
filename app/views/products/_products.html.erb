@@ -5,9 +5,10 @@
       <th>📆 Date</th>
       <th>Operator</th>
       <th>Product name</th>
-      <th>Payment_type</th>
       <th>Weight(kg.)</th>
       <th>Price(Rs.)</th>
+      <th>Payment</th>
+      <th>Left(Rs.)</th>
     </tr>
   </thead>
 
@@ -23,13 +24,21 @@
           <td><%= product.created_at.strftime '%d/%B/%Y'%></td>
           <td><%= product.operator.first_name.capitalize%></td>
           <td><%= product.item.item_name.capitalize %></td>
-          <td><%= product.payment_type.capitalize %></td>
           <td><%= product.weight %> /kg</td>
           <td>Rs. <%= product.price %></td>
+          <td><%= product.payment_type.capitalize %></td>
+          <% left_amt = product.price - product.payment_type.to_f %>
+          <%if left_amt < 0 %>
+            <td style="color: green">Rs. <%= left_amt%></td>
+          <%elsif left_amt > 0 %>
+            <td style="color: red">Rs. <%= left_amt%></td>  
+          <%else%>
+            <td>Rs. <%= left_amt%></td>  
+          <%end%>
         </tr>
       <% end %>
     <th colspan="2">Total</th>
-    <th colspan="2"><%= @products.count %></th>
+    <th><%= @products.count %></th>
     <th><%= @products.sum(:weight) %>/kg</th>
     <th>Rs. <%= @products.sum(:price) %></th>
     <% end %>

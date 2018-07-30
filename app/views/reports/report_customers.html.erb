@@ -12,7 +12,7 @@
       <%sum = 0%>
       <%cust_count = 0%>
       <% @customers.each do |customer|%>
-      <% borrow_amt = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount)%>
+      <%borrow_amt = customer.products.sum(:price).to_f - customer.products.sum(:payment_type).to_f - customer.payments.sum(:payment_ammount).to_f %>
         <tr>
           <%if borrow_amt >0 %>
             <%sum = sum + borrow_amt%>

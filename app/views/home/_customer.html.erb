@@ -6,14 +6,14 @@
         <tr>
           <th style="color: darkblue">📧 Mail - </th>
           <td style="color: black"><%=current_user.customer.mail %></td>
-          <%left_amt = @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount) %>
-              <%if left_amt <= 0 %>
-                <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: green">Left Rs. <%= left_amt %></a></strong></td>
-              <%elsif left_amt >= 500 %>
-                <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: red">Left Rs. <%= left_amt %></a></strong></td>
-            <%else %>
-                <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: darkorange">Left Rs. <%= left_amt %></a></strong></td>
-            <%end %>
+          <%left_amt = @products.sum(:price).to_f - @products.sum(:payment_type).to_f - @payments.sum(:payment_ammount).to_f %>
+          <%if left_amt <= 0 %>
+            <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: green">Left Rs. <%= left_amt %></a></strong></td>
+          <%elsif left_amt >= 500 %>
+            <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: red">Left Rs. <%= left_amt %></a></strong></td>
+          <%else %>
+            <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: darkorange">Left Rs. <%= left_amt %></a></strong></td>
+          <%end %>
         </tr>
 
         <tr>
@@ -77,7 +77,7 @@
         <strong>Products Count</strong>
         <tr>
           <th>Products</th>
-          <th>RAte</th>
+          <th>Rate</th>
           <th>No.of Times</th>
           <th>Weight</th>
           <th>Price</th>
@@ -122,34 +122,42 @@
           <th>Date</th>
           <th>Operator</th>
           <th>Product name</th>
-          <th>Payment</th>
           <th>Weight</th>
           <th>Price</th>
+          <th>Payment</th>
+          <th>Left Rs.</th>
         </tr>
       </thead>
 
       <tbody>
-        <%sum = 0%>
         <%count = 0%>
         <% @products.each do |product| %>
           <tr>
-
             <%count = count + 1%>
-            <%sum = sum + product.weight%>
             <td><%= count %></td>
             <td><%= product.created_at.strftime '%d/%B/%Y' %></td>
             <td><%= product.operator.first_name.capitalize %></td>
             <td><%= product.item.item_name.capitalize %></td>
-            <td><%= product.payment_type.capitalize %></td>
-            <td><%= product.weight %></td>
-            <td><%= product.price %></td>
+            <td><%= product.weight %> /kg</td>
+            <td>Rs. <%= product.price %></td>
+            <td>Rs. <%= product.payment_type %></td>
+            <% left_amt = product.price - product.payment_type.to_f %>
+            <%if left_amt < 0 %>
+              <td style="color: green">Rs. <%= left_amt%></td>
+            <%elsif left_amt > 0 %>
+              <td style="color: red">Rs. <%= left_amt%></td>  
+            <%else%>
+              <td>Rs. <%= left_amt%></td>  
+            <%end%>
           </tr>
         <% end %>
         <tr style="background-color: gold">
-          <th colspan="4">Total</th>
+          <th colspan="3">Total</th>
           <th>Product = <%= @products.count %></th>
-          <th><%= sum %>/kg</th>
-          <th>Rs. <%= sum * 3 %></th>
+          <th><%= @products.sum(:weight) %> /kg</th>
+          <th>Rs. <%=@products.sum(:price) %></th>
+          <th>Rs. <%=@products.sum(:payment_type) %></th>
+          <th>Rs. <%=@products.sum(:price) - @products.sum(:payment_type).to_f %></th>
         </tr>
       </tbody>
     </table>

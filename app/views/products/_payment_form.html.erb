@@ -11,7 +11,7 @@
   <% end %>
 <%if @products.nil? %>
 <%else%>
-  <%left_amt = @cust.products.where(payment_type: 'borrow').sum(:price).to_f - @cust.payments.sum(:payment_ammount).to_f %>
+  <%left_amt = @cust.products.sum(:price).to_f - @cust.products.sum(:payment_type).to_f - @cust.payments.sum(:payment_ammount).to_f %>
   <%if left_amt <= 0 %>
     <div class="green_amt">Left Rs. <%= left_amt %></div><br>
   <%elsif left_amt >=500 %>

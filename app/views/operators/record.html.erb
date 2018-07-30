@@ -1,4 +1,4 @@
-<%left_amt = @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount) %>
+<%left_amt = @customer.products.sum(:price).to_f - @customer.products.sum(:payment_type).to_f - @customer.payments.sum(:payment_ammount).to_f %>
 <div class="row">
   <div class="col-sm-6">
     <table class="table table-bordered">
@@ -15,7 +15,6 @@
             <td rowspan="2" colspan="4" align="center" class="orange_amt">Left Rs. <%= left_amt %></td><br><br>
           <%end%>
         </tr>
-
         <tr>
           <th style="color: darkblue">First Name - </th>
           <td style="color: black"><%=@customer.first_name.capitalize %></td>
@@ -115,9 +114,10 @@
           <th>Date</th>
           <th>Operator</th>
           <th>Product name</th>
-          <th>Payment</th>
           <th>Weight</th>
           <th>Price</th>
+          <th>Payment</th>
+          <th>Left Rs.</th>
         </tr>
       </thead>
 
@@ -133,16 +133,26 @@
             <td><%= product.created_at.strftime '%d/%B/%Y' %></td>
             <td><%= product.operator.first_name.capitalize %></td>
             <td><%= product.item.item_name.capitalize %></td>
-            <td><%= product.payment_type.capitalize %></td>
             <td><%= product.weight %></td>
             <td><%= product.price %></td>
+            <td><%= product.payment_type%></td>
+            <% left_amt = product.price - product.payment_type.to_f %>
+            <%if left_amt < 0 %>
+              <td style="color: green">Rs. <%= left_amt%></td>
+            <%elsif left_amt > 0 %>
+              <td style="color: red">Rs. <%= left_amt%></td>  
+            <%else%>
+              <td>Rs. <%= left_amt%></td>  
+            <%end%>
           </tr>
         <% end %>
         <tr style="background-color: gold">
-          <th colspan="4">Total</th>
+          <th colspan="3">Total</th>
           <th>Product = <%= @products.count %></th>
           <th><%= sum %>/kg</th>
-          <th>Rs. <%= sum * 3 %></th>
+          <th>Rs. <%=@products.sum(:price) %></th>
+          <th>Rs. <%=@products.sum(:payment_type) %></th>
+          <th>Rs. <%=@products.sum(:price) - @products.sum(:payment_type).to_f %></th>
         </tr>
       </tbody>
     </table>

@@ -17,7 +17,7 @@
       <% left_ammount = 0%>
       <% @customers.each do |customer| %>
         <% count = count + 1%>
-        <%left_ammount = customer.products.where(payment_type: 'borrow').sum(:price) - customer.payments.sum(:payment_ammount) %>
+        <%left_ammount = customer.products.sum(:price).to_f - customer.products.sum(:payment_type).to_f - customer.payments.sum(:payment_ammount).to_f %>
        <% if customer.products.blank? %>
        <tr style="background: lavender">
             <td><%= count %></td>
@@ -32,6 +32,8 @@
           <% end %>
           <% if left_ammount >= 500 %>
             <td class="danger"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
+          <% elsif left_ammount < 0 %>
+            <td class="success"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
           <% else%>
             <td><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
           <% end%>
