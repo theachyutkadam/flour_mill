@@ -4,9 +4,6 @@
     <%= @cust.last_name.capitalize + " " + @cust.first_name.capitalize + " " + @cust.middle_name.capitalize%>
   </strong><br><br>
   <div class="row">
-    <div class="col-sm-2">
-      <%= f.select :payment_type, [["Cash","cash"],["Borrow","borrow"]], {}, class: "form-control" %>
-    </div>
 
     <div class="col-sm-2">
       <%= f.select :product_name, Item.all.collect {|a| [a.item_name.capitalize, a.id]}, {include_blank: "Product" }, onchange: "showRate()", class: "form-control" %>
@@ -28,6 +25,10 @@
       <div class="input-group-sm">
         <%= f.label :price, id:"price" %>
       </div>
+    </div>
+
+    <div class="col-sm-2">
+      <%= f.text_field :payment_type, placeholder: "Ammount", class: "form-control" %>
     </div>
 
     <% if current_user.role.name =="Operator" %>

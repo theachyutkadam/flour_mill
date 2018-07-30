@@ -26,6 +26,7 @@ class ProductsController < ApplicationController
     @payments = Payment.all
     @product = Product.new(product_params)
     x = params[:product][:product_name]
+    pay_amt = params[:product][:payment_type]
     @product.price = Item.find(x).rate * params[:product][:weight].to_f
     @product.item_id = x
     @payment = Payment.new
