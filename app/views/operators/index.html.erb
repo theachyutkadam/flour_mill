@@ -3,6 +3,8 @@
   <thead>
     <strong>Operators Details</strong>
     <tr>
+      <th>No</th>
+      <th>📆 Date</th>
       <th>Name</th>
       <th>📞 Mobile</th>
       <th>🏠 Address</th>
@@ -13,8 +15,11 @@
   </thead>
 
   <tbody>
+    <% count = 1%>
     <% @operators.each do |operator| %>
       <tr>
+        <td><%= count %></td>
+        <td><%= operator.created_at.strftime '%d/%b/%Y' %></td>
         <td><%= operator.last_name.capitalize + " " + operator.first_name.capitalize %></td>
         <td><%= operator.mobile %></td>
         <td><%= operator.permanent_address.capitalize %></td>
@@ -22,6 +27,7 @@
         <td><%= operator.mail %></td>
         <td><%= link_to '', edit_operator_path(operator), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %></td>
       </tr>
+      <% count += 1%>
     <% end %>
   </tbody>
 </table>

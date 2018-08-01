@@ -4,6 +4,7 @@
     <strong>Customers Details</strong>
     <tr>
       <th>No</th>
+      <th>📆 Date</th>
       <th>Name</th>
       <th>📞 Mobile</th>
       <th>🏠 Address</th>
@@ -24,6 +25,7 @@
       <% if customer.products.blank? %>
       <tr style="background: lavender">
           <td><%= count %></td>
+          <td><%= customer.created_at.strftime '%d/%b/%Y' %></td>
           <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize + " " + customer.middle_name.capitalize %></td>
           <td><%= customer.mobile_num %></td>
           <td><%= customer.address.capitalize %></td>
@@ -31,6 +33,7 @@
           <td><%= customer.family_members %></td>
         <% else %>
           <td><%= count %></td>
+          <td><%= customer.created_at.strftime '%d/%b/%Y' %></td>
           <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize + " " + customer.middle_name.capitalize %></td>
           <td><%= customer.mobile_num %></td>
           <td><%= customer.address.capitalize %></td>
