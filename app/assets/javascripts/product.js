@@ -3,11 +3,12 @@ function setPrice() {
   var rate = document.getElementById("rate").value;
   if(weight == "" && rate == "") {
     document.getElementById("price").innerHTML = "Rs. 00";
-    // document.getElementById("rate").innerHTML = "Rs. 00";
   }
   else {
     var price = parseFloat(weight) * parseFloat(rate);
-    document.getElementById("price").innerHTML = "Rs. " +price;
+    var price_show = document.getElementById("price").innerHTML = "Rs. " +price;
+    var price_payment = document.getElementById("payment_type");
+    price_payment.value = price;
   }
 }
 
