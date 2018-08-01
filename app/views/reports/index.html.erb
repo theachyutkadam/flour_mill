@@ -53,8 +53,6 @@
   </thead>
   <tbody style="background-color: white">
     <% array_uniq = Product.select(:product_name).distinct %>
-    <% @items.each do |item|%>
-    <% end -%>
     <% array_uniq.each do |product|%>
       <tr>
         <td><%= @items.select(:item_name).where(id: product.product_name.to_i) %></td>
