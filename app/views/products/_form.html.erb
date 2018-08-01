@@ -6,12 +6,12 @@
   <div class="row">
 
     <div class="col-sm-2">
-      <%= f.select :product_name, Item.all.collect {|a| [a.item_name.capitalize, a.id]}, {include_blank: "Product" }, onchange: "showRate()", class: "form-control" %>
+      <%= f.select :product_name, Item.all.collect {|a| [a.item_name.capitalize, a.id]}, {}, onchange: "showRate()", class: "form-control" %>
     </div>
 
     <div class="col-sm-1">
       <div class="input-group-sm">
-        <%=text_field_tag :rate %>
+        <%=text_field_tag :rate%>
       </div>
     </div>
 
@@ -23,12 +23,12 @@
 
     <div class="col-sm-2">
       <div class="input-group-sm">
-        <%= f.label :price, id:"price" %>
+        <%= f.label :price, id:"price"%>
       </div>
     </div>
 
     <div class="col-sm-2">
-      <%= f.text_field :payment_type, placeholder: "Ammount", class: "form-control" %>
+      <%= f.text_field :payment_type, id: "payment_type", placeholder: "Ammount", class: "form-control" %>
     </div>
 
     <% if current_user.role.name =="Operator" %>
