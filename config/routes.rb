@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'reports/info'
   get 'reports/owner'
   get 'reports/report_customers'
+  get 'reports/date_vis_product'
   
 
   resources :products do
