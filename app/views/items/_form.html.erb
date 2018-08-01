@@ -2,21 +2,17 @@
   <div class="form_group">
     <div class="row">
     <div class="col-sm-6">
-      
       <div class="col-sm-4">
         <%= f.text_field :item_name, placeholder: "Item Name", class: "form-control" %>
       </div>
-      
-        <div class="col-sm-2">
-            <%= f.number_field :rate, placeholder: "Rate Rs.", class: "form-control" %>
-        </div>
-      
-        <div class="col-sm-2">
-          <%= f.submit :save, class: "btn btn-primary"%>
-        </div>
-      
-        <div class="col-sm-1">
-          <%= link_to "Back", home_index_path, class: "btn btn-info" %>
+      <div class="col-sm-2">
+          <%= f.number_field :rate, placeholder: "Rate Rs.", class: "form-control" %>
+      </div>
+      <div class="col-sm-2">
+        <%= f.submit :save, class: "btn btn-primary"%>
+      </div>
+      <div class="col-sm-1">
+        <%= link_to "Back", home_index_path, class: "btn btn-info" %>
       </div>
     </div>
   </div>
