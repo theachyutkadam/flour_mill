@@ -18,4 +18,9 @@ class ReportsController < ApplicationController
   def date_vis_product
     @products = Product.all.order(created_at: :desc)
   end
+
+  def customer_product
+    created_at = params[:customer][:created_at]
+    @products = Product.where("Date(created_at) =?", created_at)
+  end
 end

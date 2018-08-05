@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'reports/owner'
   get 'reports/report_customers'
   get 'reports/date_vis_product'
+  get 'reports/customer_product'
   
 
   resources :products do
