@@ -1,6 +1,6 @@
 <div class="col-sm-6">
   <%= form_for :customer, url: reports_customer_product_path, method: :get, remote: true do |f| %>
-    <%=f.date_field :created_at%>
+    <%=f.date_field :created_at, value: Date.today%>
     <%= f.submit "Submit" %>
   <%end%>
   

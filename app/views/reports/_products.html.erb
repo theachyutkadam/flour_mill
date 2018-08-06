@@ -6,8 +6,6 @@
         <th>📆 Date</th>
         <th>Customer</th>
         <th>Mobile</th>
-        <th>Weight(kg.)</th>
-        <th>Price(Rs.)</th>
         <th>Link</th>
       </tr>
     </thead>
@@ -24,8 +22,6 @@
             <td><%= product.created_at.strftime '%d/%b/%Y'%></td>
             <td><%= product.customer.last_name.capitalize + " " + product.customer.first_name.capitalize%></td>
             <td><%= product.customer.mobile_num.capitalize %></td>
-            <td><%= product.weight %> /kg</td>
-            <td>Rs. <%= product.price %></td>
             <td>
               <%= link_to '', new_product_path(cust_id: product.customer_id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
               <%= link_to '', record_operators_path(id: product.customer_id), class:"btn btn-xs btn-primary glyphicon glyphicon-list" %>
@@ -33,10 +29,43 @@
           </tr>
         <% end %>
       <tr style="background-color: gold">
-        <th colspan="3">Total Customer's = <%=  @products.where("Date(created_at) =?", "2018-07-31").count %></th>
-        <th><%= @products.where("Date(created_at) =?", "2018-07-31").sum(:weight) %>/kg</th>
-        <th>Rs. <%= @products.where("Date(created_at) =?", "2018-07-31").sum(:price) %></th>
-        <th>Count = <%= @products.where("Date(created_at) =?", "2018-07-31").count %></th>
+        <th colspan="3">Total Customer's = <%=  @products.where("Date(created_at) =?", @created_at).count %></th>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-sm-6">
+  <table class="table table-bordered scrollable table-responsive table-hover">
+     <thead style="background-color: gold">
+       <strong style="font-size: 15px">Date Vis Products</strong><br>
+       <tr>
+        <th>📆 Date</th>
+        <th>Product</th>
+        <th>Weight(kg.)</th>
+        <th>Price(Rs.)</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <% if @products.blank? %>
+        <tr>
+          <td colspan="7">No record available this date.</td>
+        </tr>
+      <% else %>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.created_at.strftime '%d/%b/%Y'%></td>
+            <td><%= product.item.item_name%></td>
+            <td><%= product.weight %> /kg</td>
+            <td>Rs. <%= product.price %></td>
+          </tr>
+        <% end %>
+      <tr style="background-color: gold">
+        <th colspan="2">Total product's = <%=  @products.where("Date(created_at) =?", @created_at).count %></th>
+        <th><%= @products.where("Date(created_at) =?", @created_at).sum(:weight) %>/kg</th>
+        <th>Rs. <%= @products.where("Date(created_at) =?", @created_at).sum(:price) %></th>
       <% end %>
     </tbody>
   </table>

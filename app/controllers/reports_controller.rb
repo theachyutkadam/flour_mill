@@ -21,6 +21,7 @@ class ReportsController < ApplicationController
 
   def customer_product
     created_at = params[:customer][:created_at]
+    @created_at = params[:customer][:created_at]
     @products = Product.where("Date(created_at) =?", created_at)
   end
 end
