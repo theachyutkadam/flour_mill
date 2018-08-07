@@ -1,3 +1,4 @@
+<% array_uniq = Product.select(:product_name).distinct %>
 <% customers = 0 %>
 
 <table class="table table-bordered table-hover">
@@ -5,11 +6,10 @@
     <strong style="font-size: 15px">Total Reports</strong>
     <tr>
       <th>Operators</th>
-      <th colspan="2">Customers</th>
+      <th>Customers</th>
+      <th>F.M</th>
       <th>Weight /Kg</th>
       <th>Receive.Rs</th>
-      <th colspan="2">Cash</th>
-      <th colspan="2">Borrow</th>
       <th>Payment.Rs</th>
       <th>B.Left.Rs</th>
       <th>Got.Rs</th>
@@ -25,10 +25,6 @@
       <td><%= @customers.sum(:family_members) %></td>
       <td><%= @products.sum(:weight) %>/kg</td>
       <td>Rs. <%= @products.sum(:price) %></td>
-      <td><%= @products.where(payment_type: 'cash').sum(:weight)%> /kg</td>
-      <td>Rs.<%= @products.where(payment_type: 'cash').sum(:price)%></td>
-      <td><%= @products.where(payment_type: 'borrow').sum(:weight)%> /kg</td>
-      <td>Rs.<%= @products.where(payment_type: 'borrow').sum(:price)%></td>
       <td>Rs. <%= @payments.sum(:payment_ammount)%></td>
       <td>Rs. <%= @products.where(payment_type: 'borrow').sum(:price) - @payments.sum(:payment_ammount)%></td>
       <td>Rs. <%= @products.where(payment_type: 'cash').sum(:price) + @payments.sum(:payment_ammount)%></td>
@@ -42,43 +38,37 @@
   <thead style="background-color: gold">
     <strong style="font-size: 15px">Products Report</strong><br>
     <tr>
+      <th>No</th>
       <th>Products</th>
       <th>Count</th>
-      <th colspan="3">Cash Details</th>
-      <th colspan="3">Borrow Details</th>
       <th>Weight</th>
       <th>Price</th>
     </tr>
 
   </thead>
   <tbody style="background-color: white">
-    <% array_uniq = Product.select(:product_name).distinct %>
-    <% array_uniq.each do |product|%>
-      <tr>
-        <td><%= @items.select(:item_name).where(id: product.product_name.to_i) %></td>
-        <td><%= @products.where(product_name: product.product_name).count%></td>
-        <td><%= @products.where(product_name: product.product_name, payment_type: 'cash').count %></td>
-        <td><%= @products.where(product_name: product.product_name, payment_type: 'cash').sum(:weight) %> /kg</td>
-        <td>Rs. <%= @products.where(product_name: product.product_name, payment_type: 'cash').sum(:price) %></td>
-        <td><%= @products.where(product_name: product.product_name, payment_type: 'borrow').count %></td>
-        <td><%= @products.where(product_name: product.product_name, payment_type: 'borrow').sum(:weight) %> /kg</td>
-        <td>Rs. <%= @products.where(product_name: product.product_name, payment_type: 'borrow').sum(:price)%></td>
-        <td><%= @products.where(product_name: product.product_name).sum(:weight)%> /kg</td>
-        <td>Rs. <%= @products.where(product_name: product.product_name).sum(:price)%></td>
-      </tr>
-    <% end -%>
-    <tr style="background-color: gold">
-      <th><%= array_uniq.count %></th>
-      <th><%= Product.count %></th>
-      <th><%= Product.where(payment_type: 'cash').count %></th>
-      <th><%= Product.where(payment_type: 'cash').sum(:weight) %> /kg</th>
-      <th>Rs. <%= Product.where(payment_type: 'cash').sum(:price) %></th>
-      <th><%= Product.where(payment_type: 'borrow').count %></th>
-      <th><%= Product.where(payment_type: 'borrow').sum(:weight) %> /kg</th>
-      <th>Rs. <%= Product.where(payment_type: 'borrow').sum(:price)%></th>
-      <th><%= Product.sum(:weight)%> /kg</th>
-      <th>Rs. <%= Product.sum(:price)%></th>
-    </tr>
+    <% if @products.blank? %>
+            <tr>
+              <td colspan="7">No record available this date.</td>
+            </tr>
+          <% else %>
+            <% no = 1%>
+            <% Item.all.each do |item| %>
+              <tr>
+                <td><%= no%></td>
+                <td><%= item.item_name.capitalize%></td>
+                <td><%= Product.where(product_name: item.id).count%></td>
+                <td><%= Product.where(product_name: item.id).sum(:weight)%> /kg</td>
+                <td>Rs. <%= Product.where(product_name: item.id).sum(:price)%></td>
+              </tr>
+              <%no+=1%>
+            <% end %>
+          <tr style="background-color: gold">
+            <th colspan="2">Total product's <%=no-1%></th>
+            <th><%=  @products.count %></th>
+            <th><%= @products.sum(:weight) %> /kg</th>
+            <th>Rs. <%= @products.sum(:price) %></th>
+          <% end %>
   </tbody>
 </table>
 
@@ -87,57 +77,43 @@
   <thead style="background-color: gold">
     <strong style="font-size: 15px">Operators Report</strong>
     <tr>
-      <th rowspan="2">Operators</th>
-      <th rowspan="2">Weight /Kg</th>
-      <th rowspan="2">Amount</th>
-      <th rowspan="2">Times</th>
-      <th colspan="3">Cash Details</th>
-      <th colspan="3">Borrow Details</th>
+      <th>Operators</th>
+      <th>Times</th>
+      <th>Weight /Kg</th>
+      <th>Amount</th>
       <% @items.each do |item|%>
-        <th rowspan="2"><%= item.item_name.capitalize %></th>
+        <th colspan="3"><%= item.item_name.capitalize %></th>
       <% end -%>
     </tr>
-    <tr>
-      <th>Count</th>
-      <th>Kg</th>
-      <th>Rs.</th>
-      <th>Count</th>
-      <th>Kg</th>
-      <th>Rs.</th>
-    </tr>
+   
   </thead>
 
   <tbody style="background-color: white">
     <% @operators.each do |operator|%>
       <tr>
         <td><%= operator.first_name.capitalize + " " + operator.last_name.capitalize%></td>
+        <td><%= @products.where(operator_id: operator.id).count%></td>
         <td><%= @products.where(operator_id: operator.id).sum(:weight)%>/kg</td>
         <td>Rs. <%= @products.where(operator_id: operator.id).sum(:price)%></td>
-        <td><%= @products.where(operator_id: operator.id).count%></td>
-        <td>C- <%= @products.where(operator_id: operator.id, payment_type: "cash").count%></td>
-        <td><%= @products.where(operator_id: operator.id, payment_type: "cash").sum(:weight)%> /kg</td>
-        <td>Rs. <%= @products.where(operator_id: operator.id, payment_type: "cash").sum(:price)%></td>
-        <td>B- <%= @products.where(operator_id: operator.id, payment_type: "borrow").count%></td>
-        <td><%= @products.where(operator_id: operator.id, payment_type: "borrow").sum(:weight)%> /kg</td>
-        <td>Rs. <%= @products.where(operator_id: operator.id, payment_type: "borrow").sum(:price)%></td>
-        <%array_uniq.each do |product|%>
-          <td><%= @products.where(product_name: product.product_name, operator_id: operator.id).count%></td>
+        
+        <% Item.all.each do |item| %>
+
+          <td><%= @products.where(product_name: item.id, operator_id: operator.id).count%></td>
+          <td><%= @products.where(product_name: item.id, operator_id: operator.id).sum(:weight)%> /kg</td>
+          <td>Rs. <%= Product.where(product_name: item.id, operator_id: operator.id).sum(:price)%></td>
         <% end -%>
       </tr>
     <% end -%>
     <tr style="background-color: gold">
       <th><%= @operators.count %></th>
+      <th><%= @products.count %></th>
       <th><%= @products.sum(:weight)%>/kg</th>
       <th>Rs. <%= @products.sum(:price)%></th>
-      <th><%= @products.count %></th>
-      <th>C= <%= @products.where(payment_type: "cash").count%></th>
-      <th><%= @products.where(payment_type: "cash").sum(:weight)%> /kg</th>
-      <th>Rs. <%= @products.where(payment_type: "cash").sum(:price)%></th>
-      <th>B= <%= @products.where(payment_type: "borrow").count%></th>
-      <th><%= @products.where(payment_type: "borrow").sum(:weight)%> /kg</th>
-      <th>Rs. <%= @products.where(payment_type: "borrow").sum(:price)%></th>
-      <%array_uniq.each do |product|%>
-        <th><%= @products.where(product_name: product.product_name).count%></th>
+      
+      <% Item.all.each do |item| %>
+        <th><%= @products.where(product_name: item.id).count%></th>
+        <th><%= @products.where(product_name: item.id).sum(:weight)%> /kg</th>
+        <th>Rs. <%= @products.where(product_name: item.id).sum(:price)%></th>
       <% end -%>
     </tr>
   </tbody>
