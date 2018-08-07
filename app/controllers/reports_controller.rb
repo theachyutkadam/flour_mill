@@ -9,10 +9,7 @@ class ReportsController < ApplicationController
   end
 
   def report_customers
-    @customers = Customer.all
-    @operators = Operator.all
-    @products = Product.all
-    @payments = Payment.all
+    @customers = Customer.all.order(last_name: :asc).search(params)
   end
 
   def date_vis_product
