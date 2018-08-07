@@ -1,10 +1,16 @@
 <div class="col-sm-6">
   <%= form_for :customer, url: reports_customer_product_path, method: :get, remote: true do |f| %>
-    <%=f.date_field :created_at, value: Date.today%>
-    <%= f.submit "Submit" %>
+  <div class="col-sm-3">
+    <div class="input-group-sm">
+      <%= f.date_field :created_at, value: Date.today, class: "form-control"%>
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <%= f.submit :save, class: "btn btn-primary" %>
+  </div>
   <%end%>
   
-</div><br><br>
+</div><br><br><br>
 
 <div id="searched-products">
   <%= render "products" %>
