@@ -24,7 +24,9 @@
     <thead>
       <strong>Items Rate Details</strong>
       <tr>
+        <th>No</th>
         <th>Date</th>
+        <th>Update Rate</th>
         <th>Item name</th>
         <th>Rate Rs.</th>
         <th colspan="3">Link</th>
@@ -32,14 +34,21 @@
     </thead>
 
     <tbody>
+      <%count = 1%>
       <% @items.each do |item| %>
         <tr>
+          <td><%= count%></td>
           <td><%= item.created_at .strftime("%d/%b/%Y")%></td>
+          <td><%= item.updated_at .strftime("%d/%b/%Y")%></td>
           <td><%= item.item_name.capitalize %></td>
           <td>Rs. <%= item.rate %> per Kg</td>
           <td><%= link_to '', edit_item_path(item), class:"btn btn-xs btn-success glyphicon glyphicon-edit"  %></td>
         </tr>
+        <%count += 1%>
       <% end %>
+      <tr>
+        <th colspan="6">Total Item's <%=Item.count%></th>
+      </tr>
     </tbody>
   </table>
 </div>
