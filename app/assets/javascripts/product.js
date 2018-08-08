@@ -1,7 +1,7 @@
 function setPrice() {
   var weight = document.getElementById("weight").value;
   var rate = document.getElementById("rate").value;
-  if(weight == "" && rate == "") {
+  if(weight == "") {
     document.getElementById("price").innerHTML = "Rs. 00";
   }
   else {
