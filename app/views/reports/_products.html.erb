@@ -5,6 +5,7 @@
        <tr>
         <th>No</th>
         <th>Customer</th>
+        <th>Product Count</th>
         <th>Mobile</th>
         <th>Link</th>
       </tr>
@@ -27,6 +28,7 @@
           <tr>
             <td><%= count%></td>
             <td><%= Customer.find(cust).last_name.capitalize + " " + Customer.find(cust).first_name.capitalize + " " + Customer.find(cust).middle_name.capitalize%></td>
+            <td><%= Product.where("Date(created_at) =?", @created_at).where(customer_id: cust).count%></td>
             <td><%= Customer.find(cust).mobile_num%></td>
             <td>
               <%= link_to '', new_product_path(cust_id: cust), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
@@ -36,7 +38,8 @@
           <%count+=1%>
         <% end %>
       <tr style="background-color: gold">
-        <th colspan="4">Total Customer's = <%= distinct.count %></th>
+        <th colspan="2">Total Customer's = <%= distinct.count %></th>
+        <th colspan="3">Total Product = <%= Product.where("Date(created_at) =?", @created_at).count %></th>
       <% end %>
     </tbody>
   </table>
@@ -64,16 +67,12 @@
       <% else %>
         <% no = 1%>
         <% Item.all.each do |item| %>
-        <% sum = 0, weight = 0, price = 0%>
-        <% sum = Product.where("Date(created_at) =?", @created_at).where(item_id: item.id).count%>
-        <% weight =  Product.where("Date(created_at) =?", @created_at).where(item_id: item.id).sum(:weight)%>
-        <% price = Product.where("Date(created_at) =?", @created_at).where(item_id: item.id).sum(:price)%>
           <tr>
             <td><%= no%></td>
             <td><%= item.item_name.capitalize%></td>
-            <td><%= sum%></td>
-            <td><%= weight%> /kg</td>
-            <td>Rs. <%= price%></td>
+            <td><%= Product.where("Date(created_at) =?", @created_at).where(item_id: item.id).count%></td>
+            <td><%= Product.where("Date(created_at) =?", @created_at).where(item_id: item.id).sum(:weight)%> /kg</td>
+            <td>Rs. <%= Product.where("Date(created_at) =?", @created_at).where(item_id: item.id).sum(:price)%></td>
           </tr>
           <%no+=1%>
         <% end %>
