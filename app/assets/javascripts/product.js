@@ -14,6 +14,9 @@ function setPrice() {
 
 function showRate() {
   var item_id = document.getElementById("product_product_name").value;
+  if (item_id == "") {
+    item_id = 1
+  }
   url = "/items/" + item_id + ".json"
   $.ajax({url: url, success: function(result){
     console.log(result.item.rate);
