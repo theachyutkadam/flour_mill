@@ -30,9 +30,9 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">📈 Reports<span class="glyphicon glyphicon-triangle-bottom"></span> </a>
               <ul class="dropdown-menu">
-                <li><a href="/reports/index">📂 File Reports</a></li>
-                <li><a href="/reports/date_vis_product">🌾 Products Reports</a></li>
-                <li><a href="/reports/report_customers">👳 Customers Reports</a></li>
+                <li><a href="/reports/index">Total Reports</a></li>
+                <li><a href="/reports/date_vis_product">Daily Reports</a></li>
+                <li><a href="/reports/report_customers">Borrow Reports</a></li>
                 <li><a>👷 Operators Reports</a></li>
                 <li><a>📊 Graph Reports</a></li>
               </ul>
@@ -44,6 +44,7 @@
           <li><a href="/customers">Customer<span class="sr-only">(current)</span></a></li>
           <li><a href="/expenses">Expense</a></li>
           <li><a href="/reports/owner">👤 Contact</a></li>
+          <li><a href="/reports/report_customers">Borrow Reports</a></li>
         </ul>
       <% end -%>
       <% if current_user.role.name == "Customer" %>
