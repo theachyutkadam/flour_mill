@@ -25,7 +25,6 @@
       <strong>Items Rate Details</strong>
       <tr>
         <th>No</th>
-        <th>Date</th>
         <th>Update Rate</th>
         <th>Item name</th>
         <th>Rate Rs.</th>
@@ -38,7 +37,6 @@
       <% @items.each do |item| %>
         <tr>
           <td><%= count%></td>
-          <td><%= item.created_at .strftime("%d/%b/%Y")%></td>
           <td><%= item.updated_at .strftime("%d/%b/%Y")%></td>
           <td><%= item.item_name.capitalize %></td>
           <td>Rs. <%= item.rate %> per Kg</td>
