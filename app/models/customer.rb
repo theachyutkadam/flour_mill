@@ -37,9 +37,7 @@ class Customer < ActiveRecord::Base
   end
 
   def update_user
-    if self.mail.blank?
-      self.mail = generate_username
-    end
+    self.mail = generate_username
     self.user.update(email: self.mail, password: mobile_num)
   end
 end
