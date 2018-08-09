@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
   before_action :set_new_customer, only: [:index, :new]
 
   def index
-    @customers = Customer.search(params)
+    @customers = Customer.search(params).all.order(created_at: :asc)
   end
 
   def new; end
