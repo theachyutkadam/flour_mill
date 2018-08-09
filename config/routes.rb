@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'reports/index'
   get 'reports/info'
   get 'reports/owner'
+  get 'reports/contact'
   get 'reports/report_customers'
   get 'reports/date_vis_product'
   get 'reports/customer_product'
