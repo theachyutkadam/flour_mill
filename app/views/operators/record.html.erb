@@ -9,7 +9,7 @@
           <td style="color: black"><%=@customer.mail %></td>
           <%if left_amt <= 0 %>
             <td rowspan="2" colspan="4" align="center" class="green_amt">Left Rs. <%= left_amt %></td><br><br>
-          <%elsif left_amt >=500 %>
+          <%elsif left_amt >=100 %>
             <td rowspan="2" colspan="4" align="center" class="red_amt">Left Rs. <%= left_amt %></td><br><br>
           <%else%>
             <td rowspan="2" colspan="4" align="center" class="orange_amt">Left Rs. <%= left_amt %></td><br><br>

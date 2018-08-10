@@ -9,7 +9,7 @@
           <%left_amt = @products.sum(:price).to_f - @products.sum(:payment_type).to_f - @payments.sum(:payment_ammount).to_f %>
           <%if left_amt <= 0 %>
             <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: green">Left Rs. <%= left_amt %></a></strong></td>
-          <%elsif left_amt >= 500 %>
+          <%elsif left_amt >= 100 %>
             <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: red">Left Rs. <%= left_amt %></a></strong></td>
           <%else %>
             <td rowspan="2" colspan="4" align="center"><strong style="font-size: 20px"><a style="color: darkorange">Left Rs. <%= left_amt %></a></strong></td>

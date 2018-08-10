@@ -13,7 +13,7 @@
   <%left_amt = @cust.products.where(payment_type: 'borrow').sum(:price).to_f - @cust.payments.sum(:payment_ammount).to_f %>
     <%if left_amt <= 0 %>
       <div class="green_amt">Left Rs. <%= left_amt %></div><br><br>
-    <%elsif left_amt >=500 %>
+    <%elsif left_amt >=100 %>
       <div class="red_amt">Left Rs. <%= left_amt %></div><br><br>
     <%else%>
       <div class="orange_amt">Left Rs. <%= left_amt %></div><br><br>
