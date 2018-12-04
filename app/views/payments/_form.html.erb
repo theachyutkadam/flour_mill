@@ -1,6 +1,6 @@
 <%= form_for(@payment) do |f| %>
   <strong style="font-size: 20px"><%= @customer.first_name.capitalize + " " + @customer.last_name.capitalize%>
-    <%left_amt = @customer.products.where(payment_type: 'borrow').sum(:price).to_f - @customer.payments.sum(:payment_ammount).to_f %>
+    <% '%.2f'% left_amt = @customer.products.where(payment_type: 'borrow').sum(:price) - @customer.payments.sum(:payment_ammount) %>
     <%if left_amt <= 0 %>
       <div class="green_amt">Left Rs. <%= left_amt %></div><br><br>
     <%elsif left_amt >= 100 %>
