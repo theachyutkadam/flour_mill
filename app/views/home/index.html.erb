@@ -1,7 +1,15 @@
 <% if current_user.role.name == "Admin" %>
- <%= render "home/admin" %>
+  <% if Operator.all.count < 1 %>
+    <%= render "operators/form" %>
+  <% else %>
+    <%= render "home/admin" %>
+  <%end%>
 <% elsif current_user.role.name == "Customer"%>
  <%= render "home/customer" %>
 <% elsif current_user.role.name == "Operator"%>
- <%= render "home/operator" %>
+	<% if Operator.all.count < 1 %>
+	  <%= render "operators/form" %>
+	<% else %>
+	 <%= render "home/operator" %>
+	<% end%>
 <% end%>
