@@ -10,6 +10,9 @@ puts "Creating User..."
 User.create(email: "admin@gmail.com", password: "password", role_id: 1)
 puts "User created successfully"
 
+puts "Creating Item..."
+Item.create(item_name: "wheat", rate: 5)
+puts "Item created successfully"
 # Operator Users
 # puts "Creating Operator..."
 # User.create(email: "ravikiran@gmail.com", password: "9158308765", role_id: 2)
