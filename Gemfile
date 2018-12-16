@@ -26,5 +26,8 @@ group :development, :production, :test do
   gem 'byebug'
   gem 'spring'
   gem 'rspec-rails', '~> 3.6'
-  gem "factory_bot_rails", "~> 4.0"
+end
+
+group :development, :test do
+  gem 'factory_bot_rails', '~> 4.0'
 end
