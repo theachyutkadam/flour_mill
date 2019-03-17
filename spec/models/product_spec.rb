@@ -6,18 +6,18 @@ RSpec.describe Product, type: :model do
     before(:each) do
       role_operator = FactoryBot.create(:role, name: "Operator")
       role_customer = FactoryBot.create(:role, name: "Customer")
-      user_operator = FactoryBot.create(:user, role_id: role_operator.id, email: "user_operator@gmail.com")
-      user_customer = FactoryBot.create(:user, role_id: role_customer.id, email: "user_customer@gmail.com")
+      user_operator = FactoryBot.create(:user, email: "user_operator@gmail.com")
+      user_customer = FactoryBot.create(:user, email: "user_customer@gmail.com")
       @customer = FactoryBot.create(:customer, user_id: user_operator.id)
       @operator = FactoryBot.create(:operator, user_id: user_customer.id)
       @item = FactoryBot.create(:item)
       @product = FactoryBot.create(:product)
     end
     it "should belongs to customer" do
-      expect(@customer).to eq(@product.customer)
+      expect(@customer.id).to eq(@product.customer.id)
     end
     it "should belongs to operator" do
-      expect(@operator).to eq(@product.operator)
+      expect(@operator.id).to eq(@product.operator.id)
     end
     it "should belongs to item" do
       expect(@item).to eq(@product.item)
