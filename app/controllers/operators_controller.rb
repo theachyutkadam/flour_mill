@@ -44,9 +44,7 @@ class OperatorsController < ApplicationController
   end
 
   # GET /operators/new
-  def new
-    # @operator = Operator.new
-  end
+  def new; end
 
   # GET /operators/1/edit
   def edit
