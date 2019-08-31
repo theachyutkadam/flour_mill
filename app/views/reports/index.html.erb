@@ -17,7 +17,6 @@
       <th>Now.Rs</th>
     </tr>
   </thead>
-
   <tbody style="background-color: white">
     <tr>
       <td><%= @operators.count %></td>
@@ -44,34 +43,33 @@
       <th>Weight</th>
       <th>Price</th>
     </tr>
-
   </thead>
   <tbody style="background-color: white">
     <% if @products.blank? %>
-            <tr>
-              <td colspan="7">No record available this date.</td>
-            </tr>
-          <% else %>
-            <% no = 1%>
-            <% Item.all.each do |item| %>
-              <tr>
-                <td><%= no%></td>
-                <td><%= item.item_name.capitalize%></td>
-                <td><%= Product.where(product_name: item.id).count%></td>
-                <td><%= Product.where(product_name: item.id).sum(:weight)%> /kg</td>
-                <td>Rs. <%= Product.where(product_name: item.id).sum(:price)%></td>
-              </tr>
-              <%no+=1%>
-            <% end %>
-          <tr style="background-color: gold">
-            <th colspan="2">Total product's <%=no-1%></th>
-            <th><%=  @products.count %></th>
-            <th><%= @products.sum(:weight) %> /kg</th>
-            <th>Rs. <%= @products.sum(:price) %></th>
-          <% end %>
+      <tr>
+        <td colspan="7">No record available this date.</td>
+      </tr>
+    <% else %>
+      <% no = 1%>
+      <% Item.all.each do |item| %>
+        <tr>
+          <td><%= no%></td>
+          <td><%= item.item_name.capitalize%></td>
+          <td><%= Product.where(product_name: item.id).count%></td>
+          <td><%= Product.where(product_name: item.id).sum(:weight)%> /kg</td>
+          <td>Rs. <%= Product.where(product_name: item.id).sum(:price)%></td>
+        </tr>
+        <%no+=1%>
+      <%end%>
+      <tr style="background-color: gold">
+        <th colspan="2">Total product's <%=no-1%></th>
+        <th><%=  @products.count %></th>
+        <th><%= @products.sum(:weight) %> /kg</th>
+        <th>Rs. <%= @products.sum(:price) %></th>
+      </tr>
+    <%end%>
   </tbody>
 </table>
-
 
 <table class="table table-bordered table-hover">
   <thead style="background-color: gold">
@@ -83,11 +81,9 @@
       <th>Amount</th>
       <% @items.each do |item|%>
         <th colspan="3"><%= item.item_name.capitalize %></th>
-      <% end -%>
+      <%end%>
     </tr>
-   
   </thead>
-
   <tbody style="background-color: white">
     <% @operators.each do |operator|%>
       <tr>
@@ -95,26 +91,23 @@
         <td><%= @products.where(operator_id: operator.id).count%></td>
         <td><%= @products.where(operator_id: operator.id).sum(:weight)%>/kg</td>
         <td>Rs. <%= @products.where(operator_id: operator.id).sum(:price)%></td>
-        
         <% Item.all.each do |item| %>
-
           <td><%= @products.where(product_name: item.id, operator_id: operator.id).count%></td>
           <td><%= @products.where(product_name: item.id, operator_id: operator.id).sum(:weight)%> /kg</td>
           <td>Rs. <%= Product.where(product_name: item.id, operator_id: operator.id).sum(:price)%></td>
-        <% end -%>
+        <%end%>
       </tr>
-    <% end -%>
+    <%end%>
     <tr style="background-color: gold">
       <th><%= @operators.count %></th>
       <th><%= @products.count %></th>
       <th><%= @products.sum(:weight)%>/kg</th>
       <th>Rs. <%= @products.sum(:price)%></th>
-      
       <% Item.all.each do |item| %>
         <th><%= @products.where(product_name: item.id).count%></th>
         <th><%= @products.where(product_name: item.id).sum(:weight)%> /kg</th>
         <th>Rs. <%= @products.where(product_name: item.id).sum(:price)%></th>
-      <% end -%>
+      <%end%>
     </tr>
   </tbody>
 </table>

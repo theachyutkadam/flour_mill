@@ -11,32 +11,31 @@
         <th colspan="1"><%= link_to 'New Customer', new_customer_path, class: "btn btn-xs btn-info" %></th>
       </tr>
     </thead>
-
     <tbody>
       <% count = 0%>
       <% left_ammount = 0%>
       <% @customers.each do |customer| %>
         <% count = count + 1%>
         <%left_ammount = customer.products.sum(:price).to_f - customer.products.sum(:payment_type).to_f - customer.payments.sum(:payment_ammount).to_f %>
-       <% if customer.products.blank? %>
-       <tr style="background: lavender">
+        <% if customer.products.blank? %>
+          <tr style="background: lavender">
             <td><%= count %></td>
             <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
             <td><%= customer.mobile_num %></td>
             <td><%= customer.address.capitalize %></td>
-          <% else %>
+        <% else %>
             <td><%= count %></td>
             <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize %></td>
             <td><%= customer.mobile_num %></td>
             <td><%= customer.address.capitalize %></td>
-          <% end %>
-          <% if left_ammount >= 100 %>
-            <td class="danger"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
-          <% elsif left_ammount < 0 %>
-            <td class="success"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
-          <% else%>
-            <td><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
-          <% end%>
+        <% end %>
+        <% if left_ammount >= 100 %>
+          <td class="danger"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
+        <% elsif left_ammount < 0 %>
+          <td class="success"><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
+        <% else%>
+          <td><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
+        <% end%>
           <td>
             <%= link_to '', new_product_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
             <%= link_to '', edit_customer_path(customer), class:"btn btn-xs btn-success glyphicon glyphicon-edit" %>
@@ -63,7 +62,6 @@
         <th colspan="3"><%= link_to 'New Operator', new_operator_path, class: "btn btn-xs btn-info" %></th>
       </tr>
     </thead>
-
     <tbody>
       <% @operators.each do |operator| %>
         <tr>

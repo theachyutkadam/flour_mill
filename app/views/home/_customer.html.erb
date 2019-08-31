@@ -71,6 +71,7 @@
       </tbody>
     </table>
   </div>
+
   <div class="col-sm-6">
     <table class="table table-bordered table-hover">
       <thead style="background-color: gold">
@@ -83,23 +84,17 @@
           <th>Price</th>
         </tr>
       </thead>
-
       <tbody>
         <tr>
-          
-
-        <% array_uniq = Product.select(:product_name).distinct %>
+          <% array_uniq = Product.select(:product_name).distinct %>
           <% @items.each do |item|%>
             <td><%= item.item_name.capitalize%></td>
             <td>Rs.<%= item.rate%>  /Kg</td>
             <td><%= @products.where(product_name: item).count%></td>
             <td><%= @products.where(product_name: item).sum(:weight)%> /kg</td>
             <td>Rs. <%= @products.where(product_name: item).sum(:price)%></td>
-          </tr>
-        <% end -%>
-
-
-
+          <% end -%>
+        </tr>
         <tr style="background-color: gold">
           <th colspan="2">Total = <%=array_uniq.count%></th>
           <th><%= @products.count%></th>
@@ -109,7 +104,6 @@
       </tbody>
     </table>
   </div>
-
 </div>
 
 <div class="row">
@@ -128,7 +122,6 @@
           <th>Left Rs.</th>
         </tr>
       </thead>
-
       <tbody>
         <%count = 0%>
         <% @products.each do |product| %>
@@ -176,7 +169,6 @@
           <th>Payment Rs.</th>
         </tr>
       </thead>
-
       <tbody>
         <%@payments.each do |payment| %>
         <%if payment.payment_ammount < 0 %>
@@ -188,10 +180,10 @@
           <td><%= payment.receiver.capitalize %></td>
           <td><%= payment.giver.capitalize %></td>
           <td><%= payment.previous_ammount %></td>
-            <td><%= payment.left_ammount %></td>
+          <td><%= payment.left_ammount %></td>
           <td><%= payment.payment_ammount %></td>
         </tr>
-      <% end %>
+      <%end%>
         <tr style="background-color: gold">
           <th>Total</th>
           <th colspan="4">Transaction's = <%= @payments.count%></th>

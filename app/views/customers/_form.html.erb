@@ -6,25 +6,21 @@
           <%= f.text_field :first_name, placeholder: "First Name", class: "form-control" %>
         </div>
       </div>
-
       <div class="col-sm-2">
         <div class="input-group-sm">
           <%= f.text_field :middle_name, placeholder: "Middle Name", class: "form-control" %>
         </div>
       </div>
-
       <div class="col-sm-2">
         <div class="input-group-sm">
           <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
         </div>
       </div>
-
       <div class="col-sm-4">
         <div class="input-group-sm">
           <%= f.text_field :mail, placeholder: "📧 Email", class: "form-control" %>
         </div>
       </div>
-
       <div class="col-sm-2">
         <div class="input-group-sm">
           <%= f.text_field :mobile_num, placeholder: "📞 Mobile No", class: "form-control" %>
@@ -32,6 +28,7 @@
       </div>
     </div>
   </div>
+
   <div class="form-group">
     <div class="row">
       <div class="col-sm-6">
@@ -44,7 +41,6 @@
           <%= f.number_field :family_members, in: 1..100, placeholder: "👪 Family Member", class: "form-control" %>
         </div>
       </div>
-
       <div class="col-sm-2">
         <div class="input-group-sm">
           <%= f.submit class: "btn btn-sm btn-primary" %>

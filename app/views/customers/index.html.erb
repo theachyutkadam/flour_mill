@@ -23,7 +23,7 @@
       <% count = count + number%>
       <%left_ammount = customer.products.sum(:price).to_f - customer.products.sum(:payment_type).to_f - customer.payments.sum(:payment_ammount).to_f %>
       <% if customer.products.blank? %>
-      <tr style="background: lavender">
+        <tr style="background: lavender">
           <td><%= count %></td>
           <td><%= customer.created_at.strftime '%d/%b/%Y' %></td>
           <td><%= customer.last_name.capitalize + " " + customer.first_name.capitalize + " " + customer.middle_name.capitalize %></td>
@@ -47,8 +47,6 @@
         <% else%>
           <td><strong style="font-size: 15px">Rs. <%=left_ammount%></strong></td>
         <% end%>
-
-        <!-- <td><strong style="font-size: 15px">Rs. <%= customer.products.sum(:price).to_f %></strong></td> -->
         <%if current_user.role.name == "Operator" %>
           <td><%= link_to '', new_product_operators_path(cust_id: customer.id), class:"btn btn-xs btn-info glyphicon glyphicon-plus" %>
         <%else %>
