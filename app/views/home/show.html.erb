@@ -1,0 +1,33 @@
+<div class="col-sm-6">
+  <table class="table table-bordered scrollable table-responsive table-hover">
+    <thead>
+      <strong>Customers Details</strong>
+      <tr>
+        <th>No.</th>
+        <th>Name</th>
+        <th>📞 Mobile</th>
+        <th>🏠 Address</th>
+        <th>Left Amt</th>
+        <th colspan="1"><%= link_to 'New Customer', new_customer_path, class: "btn btn-xs btn-info" %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% count = 0%>
+      <% left_ammount = 0%>
+      <% @api_customers.each do |customer| %>
+       <tr style="background: lavender">
+            <td><%= count %></td>
+            <td><%= customer.first_name.capitalize %></td>
+            <td><%= customer.last_name.capitalize %></td>
+            <td><%= customer.contact %></td>
+            <td><%= customer.address.capitalize %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <th>Total</th>
+        <th colspan="6">Customer's  = <%=@api_customers.count%></th>
+      </tr>
+    </tbody>
+  </table>
+</div>
