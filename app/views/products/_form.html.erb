@@ -5,19 +5,19 @@
   </strong><br><br>
   <div class="row">
 
-    <div class="col-sm-2">
+    <%=f.hidden_field :rate, id:"rate", value: "", class: "form-control"%>
+    <div class="col-sm-2" style="width: 17.266667;">
       <%= f.select :product_name, Item.all.collect {|a| [a.item_name.capitalize, a.id]}, {}, onchange: "showRate()", class: "form-control" %>
     </div>
 
-    <div class="col-sm-1">
-      <div class="input-group-sm">
-        <%=text_field_tag :rate, value= Item.first.rate%>
-      </div>
-    </div>
+    <!-- <div class="col-sm-2"> -->
+      <!-- <div class="input-group-sm"> -->
+      <!-- </div> -->
+    <!-- </div> -->
 
     <div class="col-sm-2">
       <div class="input-group-sm">
-        <%= f.text_field :weight, id:"weight", oninput: "setPrice()", placeholder: "Weight in Kg", class: "form-control"%>
+        <%= f.text_field :weight, id: "weight", oninput: "setPrice()", placeholder: "Weight", class: "form-control"%>
       </div>
     </div>
 

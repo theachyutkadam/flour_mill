@@ -1,5 +1,7 @@
 function setPrice() {
   var weight = document.getElementById("weight").value;
+  var item_id = $("#product_product_name").val()
+  $("#product_rate").val(item_id)
   var rate = document.getElementById("rate").value;
   if(weight == "") {
     document.getElementById("price").innerHTML = "Rs. 00";
