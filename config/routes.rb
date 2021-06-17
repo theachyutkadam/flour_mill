@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'reports/report_customers'
   get 'reports/date_vis_product'
   get 'reports/customer_product'
-  
 
   resources :products do
     collection do
@@ -29,6 +28,7 @@ Rails.application.routes.draw do
   end
   resources :customers do
     collection do
+      get :google_auth_login
       get :confirm_delete
     end
   end

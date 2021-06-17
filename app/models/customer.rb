@@ -26,7 +26,7 @@ class Customer < ActiveRecord::Base
     end
     user = User.new
     user.email = self.mail
-    user.password = mobile_num
+    user.password = mobile_num.present? ? mobile_num : "1234567986"
     user.role_id = Role.find_by_name("Customer").id
     user.save
     self.user_id = user.id
