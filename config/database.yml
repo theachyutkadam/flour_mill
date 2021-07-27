@@ -27,6 +27,7 @@ default: &default
 
 development:
   <<: *default
+  host: localhost
   database: flour_mill_development
 
 # Warning: The database defined as "test" will be erased and
