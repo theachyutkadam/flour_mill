@@ -14,15 +14,15 @@ puts "Creating Item..."
 Item.create(item_name: "wheat", rate: 5)
 puts "Item created successfully"
 # Operator Users
-# puts "Creating Operator..."
-# User.create(email: "ravikiran@gmail.com", password: "9158308765", role_id: 2)
+puts "Creating Operator..."
+User.create(email: "operator1@gmail.com", password: "password1", role_id: 2)
 # User.create(email: "suryakant@gmail.com", password: "9673151454", role_id: 2)
 # User.create(email: "achyut@gmail.com", password: "9607180726", role_id: 2)
 # puts "Operator created successfully"
 
 # Customers
 # puts "Creating customer..."
-# User.create(email: "ganesh@gmail.com", password: "12345678", role_id: 3)
+User.create(email: "customer1@gmail.com", password: "password1", role_id: 3)
 # User.create(email: "sachin@gmail.com", password: "12345678", role_id: 3)
 # User.create(email: "akash@gmail.com", password: "12345678", role_id: 3)
 # puts "Created customer successfully"
