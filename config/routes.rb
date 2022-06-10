@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'reports/report_customers'
   get 'reports/date_vis_product'
   get 'reports/customer_product'
-  
+
 
   resources :products do
     collection do
@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   end
 
   get 'home/index'
+  get 'home/show'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

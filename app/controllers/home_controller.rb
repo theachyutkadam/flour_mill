@@ -11,4 +11,13 @@ class HomeController < ApplicationController
       @customers = Customer.search(params)
     end
   end
+
+  def show
+    students = RestClient.get("http://localhost:4001/api/v1/students", :content_type => :json, :accept => :json)
+    @api_students = JSON.parse(students)
+binding.pry
+    customers = RestClient.get("http://localhost:4001/api/v1/customers", :content_type => :json, :accept => :json)
+    @api_customers = JSON.parse(customers)
+  end
+
 end
