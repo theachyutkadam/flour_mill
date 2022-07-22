@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/rzane/sms_mailer.git
+  remote: https://github.com/rzane/sms_mailer.git
   revision: bfca6838989f41bab1c3161e6c4d575d51c0e214
   specs:
     sms_mailer (0.0.1)
@@ -193,7 +193,7 @@ GEM
     turbolinks (5.1.1)
       turbolinks-source (~> 5.1)
     turbolinks-source (5.1.0)
-    tzinfo (1.2.5)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     uglifier (4.1.15)
       execjs (>= 0.3.0, < 3)
